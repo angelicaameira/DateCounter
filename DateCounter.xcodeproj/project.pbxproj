@@ -16,6 +16,8 @@
 		4369B8CA28ECB1E1007B7935 /* DateCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8C928ECB1E1007B7935 /* DateCounterTests.swift */; };
 		4369B8D428ECB1E1007B7935 /* DateCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8D328ECB1E1007B7935 /* DateCounterUITests.swift */; };
 		4369B8D628ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */; };
+		BFEE1CD828EF6BF4004E52D8 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */; };
+		BFEE1CDA28EF78DF004E52D8 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD928EF78DF004E52D8 /* AddEventView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		4369B8CF28ECB1E1007B7935 /* DateCounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateCounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4369B8D328ECB1E1007B7935 /* DateCounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUITests.swift; sourceTree = "<group>"; };
 		4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		BFEE1CD928EF78DF004E52D8 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				4369B8B228ECB1E0007B7935 /* DateCounterApp.swift */,
 				4369B8B428ECB1E0007B7935 /* Persistence.swift */,
 				4369B8B928ECB1E0007B7935 /* ContentView.swift */,
+				BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */,
+				BFEE1CD928EF78DF004E52D8 /* AddEventView.swift */,
 				4369B8BB28ECB1E1007B7935 /* Assets.xcassets */,
 				4369B8BD28ECB1E1007B7935 /* DateCounter.entitlements */,
 				4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */,
@@ -266,8 +272,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4369B8B328ECB1E0007B7935 /* DateCounterApp.swift in Sources */,
+				BFEE1CDA28EF78DF004E52D8 /* AddEventView.swift in Sources */,
 				4369B8B528ECB1E0007B7935 /* Persistence.swift in Sources */,
 				4369B8BA28ECB1E0007B7935 /* ContentView.swift in Sources */,
+				BFEE1CD828EF6BF4004E52D8 /* DetailView.swift in Sources */,
 				4369B8B828ECB1E0007B7935 /* DateCounter.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

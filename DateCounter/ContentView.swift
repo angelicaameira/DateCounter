@@ -10,81 +10,78 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Event.date, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
-
+    private var events: FetchedResults<Event>
+    @State private var showingAddAlert = false
+    @State private var showError = false
+    @State private var errorMessage = "No error"
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(events) { event in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        DetailView(event: event)
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(event.title ?? "Unnamed event")
+                        Text(event.date?.formatted() ?? Date.now.formatted())
+                    }
+                    .sheet(isPresented: $showingAddAlert) {
+                        AddEventView(event: event)
                     }
                 }
-                .onDelete(perform: deleteItems)
+                .onDelete(perform: deleteEvents)
             }
+#if os(OSX)
+            .listStyle(.sidebar)
+#endif
             .toolbar {
 #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
 #endif
                 ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    Button {
+                        showingAddAlert.toggle()
+                    } label: {
+                        Label("Add Event", systemImage: "plus")
                     }
                 }
             }
             Text("Select an item")
+            .navigationTitle("Events")
+#if os(iOS)
+            .navigationBarTitleDisplayMode(.inline)
+#endif
+            
+            .alert("An error occurred when deleting event", isPresented: $showError, actions: {
+                Text("Ok")
+            }, message: {
+                Text(errorMessage)
+            })
         }
     }
-
-    private func addItem() {
+    
+    private func deleteEvents(offsets: IndexSet) {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
+            offsets.map { events[$0] }.forEach(viewContext.delete)
+            
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                errorMessage = error.localizedDescription
+                showError = true
             }
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
