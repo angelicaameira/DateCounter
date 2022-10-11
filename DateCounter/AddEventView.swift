@@ -13,35 +13,43 @@ struct AddEventView: View {
     @Environment(\.dismiss) var dismiss
     @State private var title = ""
     @State private var eventDescription = ""
-    @State private var date = ""
+    @State private var date = Date()
     @State private var showError = false
     @State private var errorMessage = "No error"
-    @State var event: Event
+    @State var event: Event? = nil
     
     var body: some View {
         VStack {
-            Text("Add event")
+            Text(event == nil ? "Add event" : "Edit event")
                 .font(.headline)
             Form {
                 Section {
                     TextField("Event name", text: $title)
                 }
-                
+//
                 Section {
                     TextField("Description", text: $eventDescription)
                 }
                 
                 Section {
-                    TextField("Date", text: $date)
+                    DatePicker("Date", selection: $date)
+                
+//                    TextField("Date", value: $date, formatter: itemFormatter, prompt: Text("Type the date"))
+//                    TextField("Date", text: event.date)
                 }
                 
                 Section {
-                    Button("save", action: addItem)
+                    Button("Save", action: addItem)
                 }
             }
+            .onAppear(perform: {
+                guard let event = event else { return }
+                title = event.title ?? ""
+                eventDescription = event.eventDescription ?? ""
+                date = event.date ?? Date()
+            })
 #if os(OSX)
             .padding()
-            
 #endif
             .alert("An error occurred when adding event", isPresented: $showError, actions: {
                 Text("Ok")
@@ -60,11 +68,16 @@ struct AddEventView: View {
     
     private func addItem() {
         withAnimation {
-            let newItem = Event(context: viewContext)
-            newItem.id = UUID()
+            let newItem: Event
+            if let event = event {
+                newItem = event
+            } else {
+                newItem = Event(context: viewContext)
+                newItem.id = UUID()
+            }
             newItem.title = title.isEmpty ? nil : title
             newItem.eventDescription = eventDescription.isEmpty ? nil : eventDescription
-            newItem.date = Date()
+            newItem.date = date
             
             do {
                 try viewContext.save()
@@ -78,14 +91,22 @@ struct AddEventView: View {
 }
 
 struct AddEventView_Previews: PreviewProvider {
-    static var previews: some View {
+    static let event: Event = {
         let event = Event(context: PersistenceController.preview.container.viewContext)
         event.title = "My awesome event"
         event.eventDescription = "Event description, which might be big so we have a somewhat lenghty description here"
-        event.date = Date()
-
-        return NavigationView {
-            AddEventView(event: event)
+        event.date = Date(timeInterval: -82173681, since: Date())
+        return event
+    }()
+    
+    static var previews: some View {
+        NavigationView {
+            AddEventView()
         }
+        .previewDisplayName("Add event")
+        NavigationView {
+            AddEventView(event: AddEventView_Previews.event)
+        }
+        .previewDisplayName("Edit event")
     }
 }

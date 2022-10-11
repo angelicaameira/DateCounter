@@ -34,7 +34,6 @@ struct DetailView: View {
                 } header: {
                     Text("Date")
                 }
-                
             }
             .navigationTitle(event.title ?? "Unknown title")
         
