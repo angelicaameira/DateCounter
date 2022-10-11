@@ -9,14 +9,14 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Event.date, ascending: true)
-        ],
-        animation: .default
-    )
-    private var events: FetchedResults<Event>
+    //    @Environment(\.managedObjectContext) private var viewContext
+    //    @FetchRequest(
+    //        sortDescriptors: [
+    //            NSSortDescriptor(keyPath: \Event.date, ascending: true)
+    //        ],
+    //        animation: .default
+    //    )
+    //    private var events: FetchedResults<Event>
     @State private var showingAddAlert = false
     @State private var showingEditSheet = false
     @State private var showError = false
@@ -25,64 +25,56 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                Section {
-                    FilteredList(
-                        predicates: [
-                            NSPredicate(format: "%K > %@", "date", Date.now as CVarArg),
-                            NSPredicate(format: "%K < %@", "date", monthForFuture(period: .month) as CVarArg)
-                        ],
-                        ordering: [
-                            NSSortDescriptor(key: "date", ascending: true)
-                        ]
-                    ){ (event: Event) in
-                        EventListRow(event: event)
+                FilteredList(
+                    predicates: [
+                        NSPredicate(format: "%K > %@", "date", Date.now as CVarArg),
+                        NSPredicate(format: "%K < %@", "date", monthForFuture(period: .month) as CVarArg)
+                    ],
+                    ordering: [
+                        NSSortDescriptor(key: "date", ascending: true)
+                    ], header: {
+                        Text(Period.month.stringValue())
                     }
-                } header: {
-                    Text(Period.month.stringValue())
+                ){ (event: Event) in
+                    EventListRow(event: event)
                 }
-                Section {
-                    FilteredList(
-                        predicates: [
-                            NSPredicate(format: "%K > %@", "date", monthForFuture(period: .month) as CVarArg),
-                            NSPredicate(format: "%K < %@", "date", monthForFuture(period: .semester) as CVarArg)
-                        ],
-                        ordering: [
-                            NSSortDescriptor(key: "date", ascending: true)
-                        ]
-                    ){ (event: Event) in
-                        EventListRow(event: event)
+                FilteredList(
+                    predicates: [
+                        NSPredicate(format: "%K > %@", "date", monthForFuture(period: .month) as CVarArg),
+                        NSPredicate(format: "%K < %@", "date", monthForFuture(period: .semester) as CVarArg)
+                    ],
+                    ordering: [
+                        NSSortDescriptor(key: "date", ascending: true)
+                    ], header: {
+                        Text(Period.semester.stringValue())
                     }
-                } header: {
-                    Text(Period.semester.stringValue())
+                ){ (event: Event) in
+                    EventListRow(event: event)
                 }
-                Section {
-                    FilteredList(
-                        predicates: [
-                            NSPredicate(format: "%K > %@", "date", monthForFuture(period: .semester) as CVarArg),
-                            NSPredicate(format: "%K < %@", "date", monthForFuture(period: .year) as CVarArg)
-                        ],
-                        ordering: [
-                            NSSortDescriptor(key: "date", ascending: true)
-                        ]
-                    ){ (event: Event) in
-                        EventListRow(event: event)
+                FilteredList(
+                    predicates: [
+                        NSPredicate(format: "%K > %@", "date", monthForFuture(period: .semester) as CVarArg),
+                        NSPredicate(format: "%K < %@", "date", monthForFuture(period: .year) as CVarArg)
+                    ],
+                    ordering: [
+                        NSSortDescriptor(key: "date", ascending: true)
+                    ], header: {
+                        Text(Period.year.stringValue())
                     }
-                } header: {
-                    Text(Period.year.stringValue())
+                ){ (event: Event) in
+                    EventListRow(event: event)
                 }
-                Section {
-                    FilteredList(
-                        predicates: [
-                            NSPredicate(format: "%K > %@", "date", monthForFuture(period: .year) as CVarArg)
-                        ],
-                        ordering: [
-                            NSSortDescriptor(key: "date", ascending: true)
-                        ]
-                    ){ (event: Event) in
-                        EventListRow(event: event)
+                FilteredList(
+                    predicates: [
+                        NSPredicate(format: "%K > %@", "date", monthForFuture(period: .year) as CVarArg)
+                    ],
+                    ordering: [
+                        NSSortDescriptor(key: "date", ascending: true)
+                    ], header: {
+                        Text(Period.decade.stringValue())
                     }
-                } header: {
-                    Text(Period.decade.stringValue())
+                ){ (event: Event) in
+                    EventListRow(event: event)
                 }
             }
             .sheet(isPresented: $showingAddAlert) {
@@ -117,19 +109,6 @@ struct ContentView: View {
         }, message: {
             Text(errorMessage)
         })
-    }
-    
-    private func deleteEvents(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { events[$0] }
-                .forEach(viewContext.delete)
-            do {
-                try viewContext.save()
-            } catch {
-                errorMessage = error.localizedDescription
-                showError = true
-            }
-        }
     }
     
     enum Period {

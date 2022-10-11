@@ -9,24 +9,49 @@ import SwiftUI
 import CoreData
 
 struct FilteredList<T: NSManagedObject, Content: View>: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @FetchRequest var fetchRequest: FetchedResults<T>
     var content: (T) -> Content
+    let header: Content
+//    var onDelete: Optional<(IndexSet) -> Void>
     
     var body: some View {
-        ForEach(fetchRequest, id: \.self) { item in
-            self.content(item)
+        if (!fetchRequest.isEmpty) {
+            Section {
+                ForEach(fetchRequest, id: \.self) { item in
+                    self.content(item)
+                }
+                .onDelete(perform: deleteEvents(offsets:))
+            } header: {
+                header
+            }
         }
-//        List(fetchRequest, id: \.self) { item in
-//            self.content(item)
-//        }
     }
     
-    init(predicates: [NSPredicate]?, ordering: [NSSortDescriptor], @ViewBuilder content: @escaping (T) -> Content) {
+    init(predicates: [NSPredicate]?, ordering: [NSSortDescriptor], @ViewBuilder header: () -> Content,
+//         onDelete: Optional<(IndexSet) -> Void>,
+         @ViewBuilder content: @escaping (T) -> Content) {
         _fetchRequest = FetchRequest<T>(
             sortDescriptors: ordering,
             predicate: predicates != nil && !predicates!.isEmpty ? NSCompoundPredicate(andPredicateWithSubpredicates: predicates!) : nil
         )
         self.content = content
+        self.header = header()
+//        self.onDelete = onDelete
+    }
+    
+    private func deleteEvents(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { fetchRequest[$0] }
+                .forEach(viewContext.delete)
+            do {
+                try viewContext.save()
+            } catch {
+//                errorMessage = error.localizedDescription
+//                showError = true
+            }
+        }
     }
 }
 

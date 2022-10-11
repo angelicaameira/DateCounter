@@ -77,7 +77,6 @@ struct DetailView: View {
 }
 
 struct DetailView_Previews: PreviewProvider {
-
     static var previews: some View {
         let event = Event(context: PersistenceController.preview.container.viewContext)
         event.title = "My awesome event"
