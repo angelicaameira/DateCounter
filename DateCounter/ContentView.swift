@@ -9,14 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    //    @Environment(\.managedObjectContext) private var viewContext
-    //    @FetchRequest(
-    //        sortDescriptors: [
-    //            NSSortDescriptor(keyPath: \Event.date, ascending: true)
-    //        ],
-    //        animation: .default
-    //    )
-    //    private var events: FetchedResults<Event>
+   // @Environment(\.editMode) var editMode
     @State private var showingAddAlert = false
     @State private var showingEditSheet = false
     @State private var showError = false
@@ -27,14 +20,24 @@ struct ContentView: View {
             List {
                 FilteredList(
                     predicates: [
+                        NSPredicate(format: "%K < %@", "date", Date.now as CVarArg),
+                    ],
+                    ordering: [
+                        NSSortDescriptor(key: "date", ascending: true)
+                    ],
+                    header: "Past"
+                ){ (event: Event) in
+                    EventListRow(event: event)
+                }
+                FilteredList(
+                    predicates: [
                         NSPredicate(format: "%K > %@", "date", Date.now as CVarArg),
                         NSPredicate(format: "%K < %@", "date", monthForFuture(period: .month) as CVarArg)
                     ],
                     ordering: [
                         NSSortDescriptor(key: "date", ascending: true)
-                    ], header: {
-                        Text(Period.month.stringValue())
-                    }
+                    ],
+                    header: Period.month.stringValue()
                 ){ (event: Event) in
                     EventListRow(event: event)
                 }
@@ -45,9 +48,7 @@ struct ContentView: View {
                     ],
                     ordering: [
                         NSSortDescriptor(key: "date", ascending: true)
-                    ], header: {
-                        Text(Period.semester.stringValue())
-                    }
+                    ], header: Period.semester.stringValue()
                 ){ (event: Event) in
                     EventListRow(event: event)
                 }
@@ -58,9 +59,8 @@ struct ContentView: View {
                     ],
                     ordering: [
                         NSSortDescriptor(key: "date", ascending: true)
-                    ], header: {
-                        Text(Period.year.stringValue())
-                    }
+                    ],
+                    header: Period.year.stringValue()
                 ){ (event: Event) in
                     EventListRow(event: event)
                 }
@@ -70,23 +70,23 @@ struct ContentView: View {
                     ],
                     ordering: [
                         NSSortDescriptor(key: "date", ascending: true)
-                    ], header: {
-                        Text(Period.decade.stringValue())
-                    }
+                    ],
+                    header: Period.decade.stringValue()
                 ){ (event: Event) in
                     EventListRow(event: event)
                 }
             }
+            
+//            HStack {
+//                            Spacer()
+//                            EditButton()
+//                        }
+
             .sheet(isPresented: $showingAddAlert) {
                 AddEventView()
             }
             .navigationTitle("Events")
-#if os(OSX)
-            .listStyle(.sidebar)
-#endif
-#if os(iOS)
-            .listStyle(.insetGrouped)
-#endif
+            .listStyle(.automatic)
             .toolbar {
 #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -101,7 +101,10 @@ struct ContentView: View {
                     }
                 }
             }
-            Text("Select an item")
+            #if os(OSX)
+            .frame(minWidth: 200)
+            #endif
+            Text("Select an event")
         }
         
         .alert("An error occurred when deleting event", isPresented: $showError, actions: {
@@ -169,5 +172,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+          //  .environmentObject(ModelData())
     }
 }

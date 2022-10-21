@@ -13,8 +13,7 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
     
     @FetchRequest var fetchRequest: FetchedResults<T>
     var content: (T) -> Content
-    let header: Content
-//    var onDelete: Optional<(IndexSet) -> Void>
+    let header: String
     
     var body: some View {
         if (!fetchRequest.isEmpty) {
@@ -24,12 +23,13 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
                 }
                 .onDelete(perform: deleteEvents(offsets:))
             } header: {
-                header
+                Text(header)
             }
         }
     }
     
-    init(predicates: [NSPredicate]?, ordering: [NSSortDescriptor], @ViewBuilder header: () -> Content,
+    init(predicates: [NSPredicate]?, ordering: [NSSortDescriptor],
+         header: String, //() -> Content,
 //         onDelete: Optional<(IndexSet) -> Void>,
          @ViewBuilder content: @escaping (T) -> Content) {
         _fetchRequest = FetchRequest<T>(
@@ -37,7 +37,7 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
             predicate: predicates != nil && !predicates!.isEmpty ? NSCompoundPredicate(andPredicateWithSubpredicates: predicates!) : nil
         )
         self.content = content
-        self.header = header()
+        self.header = header
 //        self.onDelete = onDelete
     }
     

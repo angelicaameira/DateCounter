@@ -18,24 +18,24 @@ struct DetailView: View {
     @State private var showingEditAlert = false
     
     var body: some View {
-            List {
-                Section {
-                    Text(event.title ?? "Unknown title")
-                } header: {
-                    Text("Title")
-                }
-                Section {
-                    Text(event.eventDescription ?? "Unknown description")
-                } header: {
-                    Text("Details")
-                }
-                Section {
-                    Text(event.date?.formatted() ?? "No date")
-                } header: {
-                    Text("Date")
-                }
+        List {
+            Section {
+                Text(event.title ?? "Unknown title")
+            } header: {
+                Text("Title")
             }
-            .navigationTitle(event.title ?? "Unknown title")
+            Section {
+                Text(event.eventDescription ?? "Unknown description")
+            } header: {
+                Text("Details")
+            }
+            Section {
+                Text(event.date?.formatted() ?? "No date")
+            } header: {
+                Text("Date")
+            }
+        }
+        .navigationTitle(event.title ?? "Unknown title")
         
         .alert("Delete event", isPresented: $showingDeleteAlert) {
             Button("Delete", role: .destructive, action: deleteEvent)
@@ -54,12 +54,9 @@ struct DetailView: View {
             Button {
                 showingDeleteAlert = true
             } label: {
-                Label("Delete this book", systemImage: "trash")
+                Label("Delete this event", systemImage: "trash")
             }
         }
-#if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-#endif
     }
     
     func deleteEvent() {
@@ -82,7 +79,7 @@ struct DetailView_Previews: PreviewProvider {
         event.title = "My awesome event"
         event.eventDescription = "Event description, which might be big so we have a somewhat lenghty description here"
         event.date = Date()
-
+        
         return NavigationView {
             DetailView(event: event)
         }
