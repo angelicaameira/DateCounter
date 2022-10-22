@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43342C4128F24606004B9EE5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 43342C4028F24606004B9EE5 /* README.md */; };
 		4369B8B328ECB1E0007B7935 /* DateCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B228ECB1E0007B7935 /* DateCounterApp.swift */; };
 		4369B8B528ECB1E0007B7935 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B428ECB1E0007B7935 /* Persistence.swift */; };
 		4369B8B828ECB1E0007B7935 /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43342C4028F24606004B9EE5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4369B8AF28ECB1E0007B7935 /* DateCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4369B8B228ECB1E0007B7935 /* DateCounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterApp.swift; sourceTree = "<group>"; };
 		4369B8B428ECB1E0007B7935 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		4369B8A628ECB1E0007B7935 = {
 			isa = PBXGroup;
 			children = (
+				43342C4028F24606004B9EE5 /* README.md */,
 				4369B8B128ECB1E0007B7935 /* DateCounter */,
 				4369B8C828ECB1E1007B7935 /* DateCounterTests */,
 				4369B8D228ECB1E1007B7935 /* DateCounterUITests */,
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43342C4128F24606004B9EE5 /* README.md in Resources */,
 				4369B8C028ECB1E1007B7935 /* Preview Assets.xcassets in Resources */,
 				4369B8BC28ECB1E1007B7935 /* Assets.xcassets in Resources */,
 			);
