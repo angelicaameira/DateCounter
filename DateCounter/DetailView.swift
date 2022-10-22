@@ -16,14 +16,12 @@ struct DetailView: View {
     @State private var showError = false
     @State private var errorMessage = "No error"
     @State private var showingEditAlert = false
+    @State private var eventDescription = ""
+    @State private var eventDate = ""
     
     var body: some View {
         List {
-            Section {
-                Text(event.title ?? "Unknown title")
-            } header: {
-                Text("Title")
-            }
+#if os(iOS)
             Section {
                 Text(event.eventDescription ?? "Unknown description")
             } header: {
@@ -34,6 +32,26 @@ struct DetailView: View {
             } header: {
                 Text("Date")
             }
+#endif
+            
+#if os(OSX)
+            Section {
+                TextField("Description", text: $eventDescription)
+            } header: {
+                Text("Description")
+            }
+            .onAppear {
+                eventDescription = event.eventDescription ?? "Unknown description"
+            }
+            Section {
+                TextField("Date", text: $eventDate)
+            } header: {
+                Text("Date")
+            }
+            .onAppear {
+                eventDate = event.date?.formatted() ?? "Unknown date"
+            }
+#endif
         }
         .navigationTitle(event.title ?? "Unknown title")
         
@@ -56,7 +74,23 @@ struct DetailView: View {
             } label: {
                 Label("Delete this event", systemImage: "trash")
             }
+#if os(OSX)
+            Button {
+                editEventMac()
+            } label: {
+                Label("Edit this event", systemImage: "pencil")
+            }
+#endif
         }
+    }
+    
+    func editEventMac() {
+//        do {
+//            try viewContext.save()
+//        } catch {
+//            errorMessage = error.localizedDescription
+//            showError = true
+//        }
     }
     
     func deleteEvent() {

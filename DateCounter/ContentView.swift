@@ -9,7 +9,6 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-   // @Environment(\.editMode) var editMode
     @State private var showingAddAlert = false
     @State private var showingEditSheet = false
     @State private var showError = false
@@ -77,16 +76,16 @@ struct ContentView: View {
                 }
             }
             
-//            HStack {
-//                            Spacer()
-//                            EditButton()
-//                        }
-
+            //            HStack {
+            //                            Spacer()
+            //                            EditButton()
+            //                        }
+            
             .sheet(isPresented: $showingAddAlert) {
                 AddEventView()
             }
             .navigationTitle("Events")
-            .listStyle(.automatic)
+            .listStyle(.sidebar)
             .toolbar {
 #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -101,9 +100,9 @@ struct ContentView: View {
                     }
                 }
             }
-            #if os(OSX)
+#if os(OSX)
             .frame(minWidth: 200)
-            #endif
+#endif
             Text("Select an event")
         }
         
@@ -172,6 +171,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-          //  .environmentObject(ModelData())
+        //  .environmentObject(ModelData())
     }
 }

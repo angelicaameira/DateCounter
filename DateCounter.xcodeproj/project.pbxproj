@@ -18,6 +18,7 @@
 		4369B8D628ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */; };
 		BF1E20A928F5968A00D688B0 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E20A828F5968A00D688B0 /* FilteredList.swift */; };
 		BF7821CC290174A600838000 /* DateCounterCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7821CB290174A600838000 /* DateCounterCommands.swift */; };
+		BF7821CE2902E43100838000 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7821CD2902E43100838000 /* ModelData.swift */; };
 		BFEE1CD828EF6BF4004E52D8 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */; };
 		BFEE1CDA28EF78DF004E52D8 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD928EF78DF004E52D8 /* AddEventView.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BF1E20A828F5968A00D688B0 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		BF7821CB290174A600838000 /* DateCounterCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterCommands.swift; sourceTree = "<group>"; };
+		BF7821CD2902E43100838000 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BFEE1CD928EF78DF004E52D8 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +89,6 @@
 		4369B8A628ECB1E0007B7935 = {
 			isa = PBXGroup;
 			children = (
-				BF7821CB290174A600838000 /* DateCounterCommands.swift */,
 				4369B8B128ECB1E0007B7935 /* DateCounter */,
 				4369B8C828ECB1E1007B7935 /* DateCounterTests */,
 				4369B8D228ECB1E1007B7935 /* DateCounterUITests */,
@@ -108,9 +109,11 @@
 		4369B8B128ECB1E0007B7935 /* DateCounter */ = {
 			isa = PBXGroup;
 			children = (
+				BF7821CB290174A600838000 /* DateCounterCommands.swift */,
 				4369B8B228ECB1E0007B7935 /* DateCounterApp.swift */,
 				4369B8B428ECB1E0007B7935 /* Persistence.swift */,
 				4369B8B928ECB1E0007B7935 /* ContentView.swift */,
+				BF7821CD2902E43100838000 /* ModelData.swift */,
 				BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */,
 				BFEE1CD928EF78DF004E52D8 /* AddEventView.swift */,
 				BF1E20A828F5968A00D688B0 /* FilteredList.swift */,
@@ -279,6 +282,7 @@
 			files = (
 				4369B8B328ECB1E0007B7935 /* DateCounterApp.swift in Sources */,
 				BFEE1CDA28EF78DF004E52D8 /* AddEventView.swift in Sources */,
+				BF7821CE2902E43100838000 /* ModelData.swift in Sources */,
 				4369B8B528ECB1E0007B7935 /* Persistence.swift in Sources */,
 				4369B8BA28ECB1E0007B7935 /* ContentView.swift in Sources */,
 				BF7821CC290174A600838000 /* DateCounterCommands.swift in Sources */,
