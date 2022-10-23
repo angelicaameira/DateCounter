@@ -75,17 +75,11 @@ struct ContentView: View {
                     EventListRow(event: event)
                 }
             }
-            
-            //            HStack {
-            //                            Spacer()
-            //                            EditButton()
-            //                        }
-            
-            .sheet(isPresented: $showingAddAlert) {
-                AddEventView()
-            }
             .navigationTitle("Events")
             .listStyle(.sidebar)
+#if os(OSX)
+            .frame(minWidth: 220)
+#endif
             .toolbar {
 #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -100,17 +94,20 @@ struct ContentView: View {
                     }
                 }
             }
-#if os(OSX)
-            .frame(minWidth: 200)
-#endif
-            Text("Select an event")
+            defaultDetail()
         }
-        
+        .sheet(isPresented: $showingAddAlert) {
+            AddEventView()
+        }
         .alert("An error occurred when deleting event", isPresented: $showError, actions: {
             Text("Ok")
         }, message: {
             Text(errorMessage)
         })
+    }
+    
+    func defaultDetail() -> some View {
+        return Text("Select an event")
     }
     
     enum Period {
@@ -147,22 +144,6 @@ struct ContentView: View {
         case .decade:
             let components = DateComponents(year: 10)
             return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
-        }
-    }
-}
-
-struct EventListRow: View {
-    let event: Event
-    
-    var body: some View {
-        NavigationLink {
-            DetailView(event: event)
-        } label: {
-            HStack {
-                Text(event.title ?? "Unnamed event")
-                Spacer()
-                Text(event.date?.formatted() ?? Date.now.formatted())
-            }
         }
     }
 }

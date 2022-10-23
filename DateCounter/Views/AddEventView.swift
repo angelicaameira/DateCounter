@@ -19,10 +19,25 @@ struct AddEventView: View {
     @State var event: Event? = nil
     
     var body: some View {
-        VStack {
+#if !os(OSX)
+        NavigationView {
+            content()
+        }
+#endif
+#if os(OSX)
+        content()
+            .frame(minWidth: 250, maxWidth: 500)
+            .padding()
+#endif
+    }
+    
+    func content() -> some View {
+        return VStack {
+#if os(OSX)
             Text(event == nil ? "Add event" : "Edit event")
                 .font(.headline)
                 .padding(.top)
+#endif
             Form {
                 Section {
                     TextField("Event name", text: $title)
@@ -34,11 +49,6 @@ struct AddEventView: View {
                 Section {
                     DatePicker("Date", selection: $date)
                 }
-                
-                Section {
-                    Button("Save", action: addItem)
-                    Button("Cancel", role: .cancel, action: cancel)
-                }
             }
             .onAppear(perform: {
                 guard let event = event else { return }
@@ -46,20 +56,26 @@ struct AddEventView: View {
                 eventDescription = event.eventDescription ?? ""
                 date = event.date ?? Date()
             })
-            
-            
-#if os(OSX)
-            .frame(minWidth: 200)
-            .frame(maxWidth: 500)
-            .padding()
-#endif
             .alert("An error occurred when adding event", isPresented: $showError, actions: {
                 Text("Ok")
             }, message: {
                 Text(errorMessage)
             })
-            
         }
+        .navigationTitle(event == nil ? "Add event" : "Edit event")
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Save", action: addItem)
+            }
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") {
+                    dismiss()
+                }
+            }
+        }
+#if !os(OSX)
+        .navigationViewStyle(.stack)
+#endif
     }
     
     private let itemFormatter: DateFormatter = {
@@ -68,11 +84,6 @@ struct AddEventView: View {
         formatter.timeStyle = .medium
         return formatter
     }()
-    
-    
-    func cancel() {
-        dismiss()
-    }
     
     private func addItem() {
         withAnimation {
@@ -99,22 +110,22 @@ struct AddEventView: View {
 }
 
 struct AddEventView_Previews: PreviewProvider {
-    static let event: Event = {
-        let event = Event(context: PersistenceController.preview.container.viewContext)
-        event.title = "My awesome event"
-        event.eventDescription = "Event description, which might be big so we have a somewhat lenghty description here"
-        event.date = Date(timeInterval: -82173681, since: Date())
-        return event
-    }()
-    
     static var previews: some View {
+#if !os(OSX)
         NavigationView {
             AddEventView()
         }
         .previewDisplayName("Add event")
         NavigationView {
-            AddEventView(event: AddEventView_Previews.event)
+            AddEventView(event: DateCounterApp_Previews.event)
         }
         .previewDisplayName("Edit event")
+#endif
+#if os(OSX)
+        AddEventView()
+        .previewDisplayName("Add event")
+        AddEventView(event: DateCounterApp_Previews.event)
+        .previewDisplayName("Edit event")
+#endif
     }
 }

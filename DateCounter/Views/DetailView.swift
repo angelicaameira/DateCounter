@@ -85,18 +85,18 @@ struct DetailView: View {
     }
     
     func editEventMac() {
-//        do {
-//            try viewContext.save()
-//        } catch {
-//            errorMessage = error.localizedDescription
-//            showError = true
-//        }
+        do {
+            try viewContext.save()
+        } catch {
+            errorMessage = error.localizedDescription
+            showError = true
+        }
     }
     
     func deleteEvent() {
         viewContext.delete(event)
         do {
-            try? viewContext.save()
+            try viewContext.save()
 #if os(iOS)
             dismiss()
 #endif
@@ -109,13 +109,13 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let event = Event(context: PersistenceController.preview.container.viewContext)
-        event.title = "My awesome event"
-        event.eventDescription = "Event description, which might be big so we have a somewhat lenghty description here"
-        event.date = Date()
-        
-        return NavigationView {
-            DetailView(event: event)
+#if !os(OSX)
+        NavigationView {
+            DetailView(event: DateCounterApp_Previews.event)
         }
+#endif
+#if os(OSX)
+        DetailView(event: DateCounterApp_Previews.event)
+#endif
     }
 }
