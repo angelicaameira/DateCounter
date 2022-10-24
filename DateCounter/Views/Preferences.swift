@@ -30,6 +30,11 @@ struct Preferences: View {
 
 struct Preferences_Previews: PreviewProvider {
     static var previews: some View {
+#if os(OSX)
         Preferences()
+#else
+        Text("Unsupported platform\n(maybe this will change!)")
+            .multilineTextAlignment(.center)
+#endif
     }
 }

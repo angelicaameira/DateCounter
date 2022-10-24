@@ -48,6 +48,9 @@ struct AddEventView: View {
                 
                 Section {
                     DatePicker("Date", selection: $date)
+                    #if !os(OSX)
+                        .datePickerStyle(.graphical)
+                    #endif
                 }
             }
             .onAppear(perform: {

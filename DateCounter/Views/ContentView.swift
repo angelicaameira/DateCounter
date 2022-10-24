@@ -9,72 +9,14 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @State private var showingAddAlert = false
-    @State private var showingEditSheet = false
+    @State private var showAddAlert = false
+    @State private var showEditSheet = false
     @State private var showError = false
     @State private var errorMessage = "No error"
     
     var body: some View {
         NavigationView {
-            List {
-                FilteredList(
-                    predicates: [
-                        NSPredicate(format: "%K < %@", "date", Date.now as CVarArg),
-                    ],
-                    ordering: [
-                        NSSortDescriptor(key: "date", ascending: true)
-                    ],
-                    header: "Past"
-                ){ (event: Event) in
-                    EventListRow(event: event)
-                }
-                FilteredList(
-                    predicates: [
-                        NSPredicate(format: "%K > %@", "date", Date.now as CVarArg),
-                        NSPredicate(format: "%K < %@", "date", monthForFuture(period: .month) as CVarArg)
-                    ],
-                    ordering: [
-                        NSSortDescriptor(key: "date", ascending: true)
-                    ],
-                    header: Period.month.stringValue()
-                ){ (event: Event) in
-                    EventListRow(event: event)
-                }
-                FilteredList(
-                    predicates: [
-                        NSPredicate(format: "%K > %@", "date", monthForFuture(period: .month) as CVarArg),
-                        NSPredicate(format: "%K < %@", "date", monthForFuture(period: .semester) as CVarArg)
-                    ],
-                    ordering: [
-                        NSSortDescriptor(key: "date", ascending: true)
-                    ], header: Period.semester.stringValue()
-                ){ (event: Event) in
-                    EventListRow(event: event)
-                }
-                FilteredList(
-                    predicates: [
-                        NSPredicate(format: "%K > %@", "date", monthForFuture(period: .semester) as CVarArg),
-                        NSPredicate(format: "%K < %@", "date", monthForFuture(period: .year) as CVarArg)
-                    ],
-                    ordering: [
-                        NSSortDescriptor(key: "date", ascending: true)
-                    ],
-                    header: Period.year.stringValue()
-                ){ (event: Event) in
-                    EventListRow(event: event)
-                }
-                FilteredList(
-                    predicates: [
-                        NSPredicate(format: "%K > %@", "date", monthForFuture(period: .year) as CVarArg)
-                    ],
-                    ordering: [
-                        NSSortDescriptor(key: "date", ascending: true)
-                    ],
-                    header: Period.decade.stringValue()
-                ){ (event: Event) in
-                    EventListRow(event: event)
-                }
-            }
+            sidebarView()
             .navigationTitle("Events")
             .listStyle(.sidebar)
 #if os(OSX)
@@ -86,19 +28,30 @@ struct ContentView: View {
                     EditButton()
                 }
 #endif
-                ToolbarItem {
+#if os(OSX)
+                ToolbarItem(placement: .automatic) {
                     Button {
-                        showingAddAlert.toggle()
+                        toggleSidebar()
+                    } label: {
+                        Image(systemName: "sidebar.left")
+                    }
+                }
+#endif
+                ToolbarItem(placement: .automatic) {
+                    Button {
+                        showAddAlert.toggle()
                     } label: {
                         Label("Add Event", systemImage: "plus")
                     }
                 }
             }
-            defaultDetail()
+            defaultDetailView()
         }
-        .sheet(isPresented: $showingAddAlert) {
+        
+        .sheet(isPresented: $showAddAlert) {
             AddEventView()
         }
+        
         .alert("An error occurred when deleting event", isPresented: $showError, actions: {
             Text("Ok")
         }, message: {
@@ -106,45 +59,100 @@ struct ContentView: View {
         })
     }
     
-    func defaultDetail() -> some View {
-        return Text("Select an event")
-    }
-    
-    enum Period {
-        case month
-        case semester
-        case year
-        case decade
-        
-        func stringValue() -> String {
-            switch self {
-            case .month:
-                return "Month"
-            case .semester:
-                return "Semester"
-            case .year:
-                return "Year"
-            case .decade:
-                return "Decade"
+    func sidebarView() -> some View {
+        return List {
+            FilteredList(
+                predicates: [
+                    NSPredicate(format: "%K < %@", "date", Date.now as CVarArg),
+                ],
+                ordering: [
+                    NSSortDescriptor(key: "date", ascending: true)
+                ],
+                header: "Past"
+            ){ (event: Event) in
+                EventListRow(event: event)
+            }
+            FilteredList(
+                predicates: [
+                    NSPredicate(format: "%K > %@", "date", Date.now as CVarArg),
+                    NSPredicate(format: "%K < %@", "date", monthForFuture(period: .month) as CVarArg)
+                ],
+                ordering: [
+                    NSSortDescriptor(key: "date", ascending: true)
+                ],
+                header: Period.month.stringValue
+            ){ (event: Event) in
+                EventListRow(event: event)
+            }
+            FilteredList(
+                predicates: [
+                    NSPredicate(format: "%K > %@", "date", monthForFuture(period: .month) as CVarArg),
+                    NSPredicate(format: "%K < %@", "date", monthForFuture(period: .semester) as CVarArg)
+                ],
+                ordering: [
+                    NSSortDescriptor(key: "date", ascending: true)
+                ], header: Period.semester.stringValue
+            ){ (event: Event) in
+                EventListRow(event: event)
+            }
+            FilteredList(
+                predicates: [
+                    NSPredicate(format: "%K > %@", "date", monthForFuture(period: .semester) as CVarArg),
+                    NSPredicate(format: "%K < %@", "date", monthForFuture(period: .year) as CVarArg)
+                ],
+                ordering: [
+                    NSSortDescriptor(key: "date", ascending: true)
+                ],
+                header: Period.year.stringValue
+            ){ (event: Event) in
+                EventListRow(event: event)
+            }
+            FilteredList(
+                predicates: [
+                    NSPredicate(format: "%K > %@", "date", monthForFuture(period: .year) as CVarArg)
+                ],
+                ordering: [
+                    NSSortDescriptor(key: "date", ascending: true)
+                ],
+                header: Period.decade.stringValue
+            ){ (event: Event) in
+                EventListRow(event: event)
             }
         }
     }
     
+    #if os(OSX)
+    func toggleSidebar() {
+        NSApp.sendAction(#selector(NSSplitViewController.toggleSidebar(_:)), to: nil, from: nil)
+    }
+    #endif
+    
+    func defaultDetailView() -> some View {
+        return Text("Select an event")
+    }
+    
+    enum Period: String, CaseIterable, Codable {
+        case month = "Month"
+        case semester = "Semester"
+        case year = "Year"
+        case decade = "Decade"
+        
+        var stringValue: String { rawValue }
+    }
+    
     func monthForFuture(period: Period) -> Date {
+        var components: DateComponents
         switch period {
         case .month:
-            let components = DateComponents(month: 1)
-            return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
+            components = DateComponents(month: 1)
         case .semester:
-            let components = DateComponents(month: 6)
-            return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
+            components = DateComponents(month: 6)
         case .year:
-            let components = DateComponents(year: 1)
-            return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
+            components = DateComponents(year: 1)
         case .decade:
-            let components = DateComponents(year: 10)
-            return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
+            components = DateComponents(year: 10)
         }
+        return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
     }
 }
 
@@ -152,6 +160,5 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-        //  .environmentObject(ModelData())
     }
 }
