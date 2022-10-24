@@ -15,45 +15,30 @@ struct DetailView: View {
     @State private var showingDeleteAlert = false
     @State private var showError = false
     @State private var errorMessage = "No error"
-    @State private var showingEditAlert = false
+    @State private var eventTitle = ""
     @State private var eventDescription = ""
-    @State private var eventDate = ""
+    @State private var eventDate = Date.now
+    @State private var isEditing = false
     
     var body: some View {
         List {
-#if os(iOS)
-            Section {
-                Text(event.eventDescription ?? "Unknown description")
-            } header: {
-                Text("Details")
+            if isEditing {
+                editingView()
+            } else {
+                displayingView()
             }
-            Section {
-                Text(event.date?.formatted() ?? "No date")
-            } header: {
-                Text("Date")
-            }
-#endif
-            
-#if os(OSX)
-            Section {
-                TextField("Description", text: $eventDescription)
-            } header: {
-                Text("Description")
-            }
-            .onAppear {
-                eventDescription = event.eventDescription ?? "Unknown description"
-            }
-            Section {
-                TextField("Date", text: $eventDate)
-            } header: {
-                Text("Date")
-            }
-            .onAppear {
-                eventDate = event.date?.formatted() ?? "Unknown date"
-            }
-#endif
         }
         .navigationTitle(event.title ?? "Unknown title")
+        .toolbar {
+            toolbarContent()
+            ToolbarItem {
+                Button {
+                    showingDeleteAlert = true
+                } label: {
+                    Label("Delete this event", systemImage: "trash")
+                }
+            }
+        }
         
         .alert("Delete event", isPresented: $showingDeleteAlert) {
             Button("Delete", role: .destructive, action: deleteEvent)
@@ -67,25 +52,76 @@ struct DetailView: View {
         }, message: {
             Text(errorMessage)
         })
-        
-        .toolbar {
-            Button {
-                showingDeleteAlert = true
-            } label: {
-                Label("Delete this event", systemImage: "trash")
+    }
+    
+    func displayingView() -> some View {
+        return Group {
+            Section {
+                Text(event.eventDescription ?? "Unknown description")
+            } header: {
+                Text("Details")
             }
-#if os(OSX)
-            Button {
-                editEventMac()
-            } label: {
-                Label("Edit this event", systemImage: "pencil")
+            Section {
+                Text(event.date?.formatted() ?? "No date")
+            } header: {
+                Text("Date")
             }
-#endif
         }
     }
     
-    func editEventMac() {
+    func editingView() -> some View {
+        return Group {
+            Section {
+                TextField("Title", text: $eventTitle)
+            } header: {
+                Text("Title")
+            }
+            Section {
+                TextField("Description", text: $eventDescription)
+            } header: {
+                Text("Description")
+            }
+            .onAppear {
+                eventDescription = event.eventDescription ?? "Unknown description"
+            }
+            Section {
+                DatePicker("Date", selection: $eventDate)
+            } header: {
+                Text("Date")
+            }
+            .onAppear {
+                eventTitle = event.title ?? ""
+                eventDescription = event.eventDescription ?? ""
+                eventDate = event.date ?? Date.now
+            }
+        }
+    }
+    
+    func toolbarContent() -> ToolbarItem<(), Button<Label<Text, Image>>> {
+        if !isEditing {
+            return ToolbarItem(placement: .cancellationAction) {
+                Button {
+                    isEditing = true
+                } label: {
+                    Label("Edit this event", systemImage: "pencil")
+                }
+            }
+        }
+        return ToolbarItem(placement: .cancellationAction) {
+            Button {
+                saveEvent()
+                isEditing = false
+            } label: {
+                Label("Save this event", systemImage: "checkmark.circle")
+            }
+        }
+    }
+    
+    func saveEvent() {
         do {
+            event.title = eventTitle
+            event.eventDescription = eventDescription
+            event.date = eventDate
             try viewContext.save()
         } catch {
             errorMessage = error.localizedDescription
