@@ -31,7 +31,8 @@ struct DetailView: View {
         .navigationTitle(event.title ?? "Unknown title")
         .toolbar {
             toolbarContent()
-            ToolbarItem {
+            
+            ToolbarItem(placement: destructiveActionPlacement) {
                 Button {
                     showingDeleteAlert = true
                 } label: {
@@ -52,6 +53,14 @@ struct DetailView: View {
         }, message: {
             Text(errorMessage)
         })
+    }
+    
+    var destructiveActionPlacement: ToolbarItemPlacement {
+#if os(OSX)
+        .automatic
+#else
+        .destructiveAction
+#endif
     }
     
     func displayingView() -> some View {
@@ -81,11 +90,11 @@ struct DetailView: View {
             } header: {
                 Text("Description")
             }
-            .onAppear {
-                eventDescription = event.eventDescription ?? "Unknown description"
-            }
             Section {
                 DatePicker("Date", selection: $eventDate)
+#if !os(OSX)
+                    .datePickerStyle(.graphical)
+#endif
             } header: {
                 Text("Date")
             }
@@ -94,12 +103,15 @@ struct DetailView: View {
                 eventDescription = event.eventDescription ?? ""
                 eventDate = event.date ?? Date.now
             }
+//            .onDisappear {
+//                viewContext.reset()
+//            }
         }
     }
     
     func toolbarContent() -> ToolbarItem<(), Button<Label<Text, Image>>> {
         if !isEditing {
-            return ToolbarItem(placement: .cancellationAction) {
+            return ToolbarItem(placement: .primaryAction) {
                 Button {
                     isEditing = true
                 } label: {
@@ -107,10 +119,9 @@ struct DetailView: View {
                 }
             }
         }
-        return ToolbarItem(placement: .cancellationAction) {
+        return ToolbarItem(placement: .primaryAction) {
             Button {
                 saveEvent()
-                isEditing = false
             } label: {
                 Label("Save this event", systemImage: "checkmark.circle")
             }
@@ -119,10 +130,11 @@ struct DetailView: View {
     
     func saveEvent() {
         do {
-            event.title = eventTitle
-            event.eventDescription = eventDescription
+            event.title = eventTitle.isEmpty ? nil : eventTitle
+            event.eventDescription = eventDescription.isEmpty ? nil : eventDescription
             event.date = eventDate
             try viewContext.save()
+            isEditing = false
         } catch {
             errorMessage = error.localizedDescription
             showError = true
@@ -133,10 +145,11 @@ struct DetailView: View {
         viewContext.delete(event)
         do {
             try viewContext.save()
-#if os(iOS)
+#if !os(OSX)
             dismiss()
 #endif
         } catch {
+            viewContext.reset()
             errorMessage = error.localizedDescription
             showError = true
         }
