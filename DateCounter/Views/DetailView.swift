@@ -15,6 +15,7 @@ struct DetailView: View {
     @State private var showingDeleteAlert = false
     @State private var showError = false
     @State private var errorMessage = "No error"
+    @State private var errorTitle = "No action"
     @State private var eventTitle = ""
     @State private var eventDescription = ""
     @State private var eventDate = Date.now
@@ -48,7 +49,7 @@ struct DetailView: View {
             Text("Are you sure?")
         }
         
-        .alert("An error occurred when deleting event", isPresented: $showError, actions: {
+        .alert(errorTitle, isPresented: $showError, actions: {
             Text("Ok")
         }, message: {
             Text(errorMessage)
@@ -133,10 +134,12 @@ struct DetailView: View {
             event.title = eventTitle.isEmpty ? nil : eventTitle
             event.eventDescription = eventDescription.isEmpty ? nil : eventDescription
             event.date = eventDate
+            
             try viewContext.save()
             isEditing = false
         } catch {
             errorMessage = error.localizedDescription
+            errorTitle = "Error when editing event"
             showError = true
         }
     }
