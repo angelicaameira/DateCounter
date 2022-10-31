@@ -32,18 +32,34 @@ struct DateCounterApp: App {
 }
 
 struct DateCounterApp_Previews: PreviewProvider {
-    static let event: Event = {
+    
+    static func event(period: Period) -> Event {
         let event = Event(context: PersistenceController.preview.container.viewContext)
         event.title = "My awesome event"
         event.eventDescription = "Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines"
-        event.date = Date(timeInterval: -82173681, since: Date())
+        let timeInterval: TimeInterval
+        switch period {
+        case .past:
+            timeInterval = -82173681
+        case .month:
+            timeInterval = 150000
+        case .semester:
+            timeInterval = 5173681
+        case .year:
+            timeInterval = 22173681
+        case .decade:
+            timeInterval = 82173681
+        }
+        
+        event.date = Date(timeInterval: timeInterval, since: Date.now)
         return event
-    }()
+    }
     
     static var previews: some View {
         VStack {
-            Text(event.title!)
-            Text(event.eventDescription!)
+            Text(event(period: .month).title!)
+            Text(event(period: .month).eventDescription!)
+            Text(event(period: .month).date!.formatted())
         }
     }
 }

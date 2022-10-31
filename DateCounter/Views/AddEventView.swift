@@ -34,7 +34,7 @@ struct AddEventView: View {
     func content() -> some View {
         return VStack {
 #if os(OSX)
-            Text(event == nil ? "Add event" : "Edit event")
+            Text(pastEvent == nil ? "Add event" : "Edit event")
                 .font(.headline)
                 .padding(.top)
 #endif
@@ -119,7 +119,7 @@ struct AddEventView_Previews: PreviewProvider {
         Group {
             AddEventView()
                 .previewDisplayName("Add event")
-            AddEventView(event: DateCounterApp_Previews.event)
+            AddEventView(event: DateCounterApp_Previews.event(period: .past))
                 .previewDisplayName("Edit event")
         }
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)

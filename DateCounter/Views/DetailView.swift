@@ -20,6 +20,7 @@ struct DetailView: View {
     @State private var eventDescription = ""
     @State private var eventDate = Date.now
     @State private var isEditing = false
+    @State private var updateScreen = false
     
     var body: some View {
         List {
@@ -76,7 +77,44 @@ struct DetailView: View {
             } header: {
                 Text("Date")
             }
+            
+            Section {
+                if let time = remainingTime(forComponent: .year), time != 0 {
+                    Text("\(time) years")
+                }
+                if let time = remainingTime(forComponent: .month), time != 0 {
+                    Text("\(time) months")
+                }
+                if let time = remainingTime(forComponent: .weekOfYear), time != 0 {
+                    Text("\(time) weeks")
+                }
+                if let time = remainingTime(forComponent: .day), time != 0 {
+                    Text("\(time) days")
+                }
+                if let time = remainingTime(forComponent: .hour), time != 0 {
+                    Text("\(time) hours")
+                }
+                if let time = remainingTime(forComponent: .minute), time != 0 {
+                    Text("\(time) minutes")
+                }
+                if let time = remainingTime(forComponent: .second), time != 0 {
+                    Text("\(time) seconds")
+                }
+            } header: {
+                if (updateScreen || true ) {
+                    Text("Remaining time on different units")
+                }
+            }
+            .onReceive(Timer.publish(every: 1, on: .main, in: .default).autoconnect()) { timerOutput in
+                self.updateScreen.toggle()
+            }
         }
+    }
+    
+    func remainingTime(forComponent component: Calendar.Component) -> Int? {
+        let dateComponents = Calendar.current.dateComponents([component], from: Date.now, to: event.date!)
+        
+        return dateComponents.value(for: component)
     }
     
     func editingView() -> some View {
@@ -147,27 +185,30 @@ struct DetailView: View {
     func deleteEvent() {
         viewContext.delete(event)
         do {
+//            throw NSError(domain: "error", code: 152, userInfo: [NSLocalizedFailureErrorKey: "Could not delete because I didn't want to do it"])
             try viewContext.save()
 #if !os(OSX)
             dismiss()
 #endif
         } catch {
-            viewContext.reset()
+            viewContext.undo()
             errorMessage = error.localizedDescription
+            errorTitle = "Error when deleting event"
             showError = true
         }
     }
+
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
 #if !os(OSX)
         NavigationView {
-            DetailView(event: DateCounterApp_Previews.event)
+            DetailView(event: DateCounterApp_Previews.event(period: .semester))
         }
 #endif
 #if os(OSX)
-        DetailView(event: DateCounterApp_Previews.event)
+        DetailView(event: DateCounterApp_Previews.pastEvent)
 #endif
     }
 }

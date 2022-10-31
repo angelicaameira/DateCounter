@@ -131,15 +131,6 @@ struct ContentView: View {
         return Text("Select an event")
     }
     
-    enum Period: String, CaseIterable, Codable {
-        case month = "Month"
-        case semester = "Semester"
-        case year = "Year"
-        case decade = "Decade"
-        
-        var stringValue: String { rawValue }
-    }
-    
     func monthForFuture(period: Period) -> Date {
         var components: DateComponents
         switch period {
@@ -151,9 +142,21 @@ struct ContentView: View {
             components = DateComponents(year: 1)
         case .decade:
             components = DateComponents(year: 10)
+        case .past:
+            components = DateComponents(nanosecond: 1) //FIXME: that's not supposed to happen
         }
         return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
     }
+}
+
+enum Period: String, CaseIterable, Codable {
+    case past = "Past"
+    case month = "Month"
+    case semester = "Semester"
+    case year = "Year"
+    case decade = "Decade"
+    
+    var stringValue: String { rawValue }
 }
 
 struct ContentView_Previews: PreviewProvider {
