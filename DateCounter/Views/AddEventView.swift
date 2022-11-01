@@ -34,7 +34,7 @@ struct AddEventView: View {
     func content() -> some View {
         return VStack {
 #if os(OSX)
-            Text(pastEvent == nil ? "Add event" : "Edit event")
+            Text(event == nil ? "Add event" : "Edit event")
                 .font(.headline)
                 .padding(.top)
 #endif

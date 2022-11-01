@@ -112,7 +112,10 @@ struct DetailView: View {
     }
     
     func remainingTime(forComponent component: Calendar.Component) -> Int? {
-        let dateComponents = Calendar.current.dateComponents([component], from: Date.now, to: event.date!)
+        
+        guard let dataOfEvent = event.date else {return 0}
+        
+        let dateComponents = Calendar.current.dateComponents([component], from: Date.now, to: dataOfEvent)
         
         return dateComponents.value(for: component)
     }
@@ -208,7 +211,7 @@ struct DetailView_Previews: PreviewProvider {
         }
 #endif
 #if os(OSX)
-        DetailView(event: DateCounterApp_Previews.pastEvent)
+        DetailView(event: DateCounterApp_Previews.event(period: .past))
 #endif
     }
 }
