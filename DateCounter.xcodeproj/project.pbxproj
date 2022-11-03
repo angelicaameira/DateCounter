@@ -60,6 +60,8 @@
 		4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		43F0D2222904ACE6004C1D8E /* EventListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListRow.swift; sourceTree = "<group>"; };
 		43F0D2242904CB73004C1D8E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		43F0D22B2906159D004C1D8E /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
+		43F0D22D290615C1004C1D8E /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BF1E20A828F5968A00D688B0 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		BF7821CB290174A600838000 /* DateCounterCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterCommands.swift; sourceTree = "<group>"; };
 		BF7821CD2902E43100838000 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
@@ -170,6 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				BF7821CD2902E43100838000 /* ModelData.swift */,
+				43F0D22B2906159D004C1D8E /* Event+CoreDataClass.swift */,
+				43F0D22D290615C1004C1D8E /* Event+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

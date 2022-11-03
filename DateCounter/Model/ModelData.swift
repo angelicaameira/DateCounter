@@ -12,14 +12,17 @@ import Combine
 
 import SwiftUI
 
-struct ModelData: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct ModelData_Previews: PreviewProvider {
-    static var previews: some View {
-        ModelData()
-    }
+final class ModelData: ObservableObject {
+//    @SectionedFetchRequest<String, Event>(
+//        sectionIdentifier: \.date,
+//        sortDescriptors: [SortDescriptor(\.date, order: .reverse)]
+//    )
+//    private var events: SectionedFetchResults<String, Event>
+    
+//    var categories: [String: [Event]] {
+//        Dictionary(
+//            grouping: events,
+//            by: { $0.date }
+//        )
+//    }
 }

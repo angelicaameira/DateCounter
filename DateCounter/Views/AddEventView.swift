@@ -21,18 +21,18 @@ struct AddEventView: View {
     var body: some View {
 #if !os(OSX)
         NavigationView {
-            content()
+            content
         }
 #endif
 #if os(OSX)
-        content()
-            .frame(minWidth: 250, maxWidth: 500)
+        content
+            .frame(minWidth: 250, maxWidth: 800)
             .padding()
 #endif
     }
     
-    func content() -> some View {
-        return VStack {
+    private var content: some View {
+        VStack {
 #if os(OSX)
             Text(event == nil ? "Add event" : "Edit event")
                 .font(.headline)
@@ -48,9 +48,9 @@ struct AddEventView: View {
                 
                 Section {
                     DatePicker("Date", selection: $date)
-                    #if !os(OSX)
+#if !os(OSX)
                         .datePickerStyle(.graphical)
-                    #endif
+#endif
                 }
             }
             .onAppear(perform: {
@@ -126,9 +126,9 @@ struct AddEventView_Previews: PreviewProvider {
 #endif
 #if os(OSX)
         AddEventView()
-        .previewDisplayName("Add event")
+            .previewDisplayName("Add event")
         AddEventView(event: DateCounterApp_Previews.event)
-        .previewDisplayName("Edit event")
+            .previewDisplayName("Edit event")
 #endif
     }
 }
