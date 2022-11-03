@@ -17,35 +17,35 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             sidebarView()
-            .navigationTitle("Events")
-            .listStyle(.sidebar)
+                .navigationTitle("Events")
+                .listStyle(.sidebar)
 #if os(OSX)
-            .frame(minWidth: 220)
+                .frame(minWidth: 220)
 #endif
-            .toolbar {
+                .toolbar {
 #if os(iOS)
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EditButton()
+                    }
 #endif
 #if os(OSX)
-                ToolbarItem(placement: .automatic) {
-                    Button {
-                        toggleSidebar()
-                    } label: {
-                        Image(systemName: "sidebar.left")
+                    ToolbarItem(placement: .navigation) {
+                        Button {
+                            toggleSidebar()
+                        } label: {
+                            Image(systemName: "sidebar.left")
+                        }
                     }
-                }
 #endif
-                ToolbarItem(placement: .automatic) {
-                    Button {
-                        showAddAlert.toggle()
-                    } label: {
-                        Label("Add Event", systemImage: "plus")
+                    ToolbarItem(placement: .primaryAction) {
+                        Button {
+                            showAddAlert.toggle()
+                        } label: {
+                            Label("Add Event", systemImage: "plus")
+                        }
                     }
                 }
-            }
-            defaultDetailView()
+            defaultDetailView
         }
         
         .sheet(isPresented: $showAddAlert) {
@@ -121,14 +121,14 @@ struct ContentView: View {
         }
     }
     
-    #if os(OSX)
+#if os(OSX)
     func toggleSidebar() {
         NSApp.sendAction(#selector(NSSplitViewController.toggleSidebar(_:)), to: nil, from: nil)
     }
-    #endif
+#endif
     
-    func defaultDetailView() -> some View {
-        return Text("Select an event")
+    private var defaultDetailView: some View {
+        Text("Select an event")
     }
     
     func monthForFuture(period: Period) -> Date {

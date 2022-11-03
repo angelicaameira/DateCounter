@@ -21,18 +21,18 @@ struct AddEventView: View {
     var body: some View {
 #if !os(OSX)
         NavigationView {
-            content()
+            content
         }
 #endif
 #if os(OSX)
-        content()
-            .frame(minWidth: 250, maxWidth: 500)
+        content
+            .frame(minWidth: 250, maxWidth: 800)
             .padding()
 #endif
     }
     
-    func content() -> some View {
-        return VStack {
+    private var content: some View {
+        VStack {
 #if os(OSX)
             Text(event == nil ? "Add event" : "Edit event")
                 .font(.headline)

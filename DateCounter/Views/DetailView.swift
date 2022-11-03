@@ -25,15 +25,14 @@ struct DetailView: View {
     var body: some View {
         List {
             if isEditing {
-                editingView()
+                editingView
             } else {
-                displayingView()
+                displayingView
             }
         }
         .navigationTitle(event.title ?? "Unknown title")
         .toolbar {
-            toolbarContent()
-            
+            toolbarContent
             ToolbarItem(placement: destructiveActionPlacement) {
                 Button {
                     showingDeleteAlert = true
@@ -65,8 +64,8 @@ struct DetailView: View {
 #endif
     }
     
-    func displayingView() -> some View {
-        return Group {
+    private var displayingView: some View {
+        Group {
             Section {
                 Text(event.eventDescription ?? "Unknown description")
             } header: {
@@ -120,8 +119,8 @@ struct DetailView: View {
         return dateComponents.value(for: component)
     }
     
-    func editingView() -> some View {
-        return Group {
+    private var editingView: some View {
+        Group {
             Section {
                 TextField("Title", text: $eventTitle)
             } header: {
@@ -151,7 +150,7 @@ struct DetailView: View {
         }
     }
     
-    func toolbarContent() -> ToolbarItem<(), Button<Label<Text, Image>>> {
+    private var toolbarContent: ToolbarItem<(), Button<Label<Text, Image>>> {
         if !isEditing {
             return ToolbarItem(placement: .primaryAction) {
                 Button {
