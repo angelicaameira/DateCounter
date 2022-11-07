@@ -116,7 +116,6 @@
 			children = (
 				4369B8B228ECB1E0007B7935 /* DateCounterApp.swift */,
 				43F0D2212904AC1A004C1D8E /* Resources */,
-				BFAF742F291416290047F42B /* Model */,
 				43F0D21F2904AC0E004C1D8E /* Views */,
 				4369B8BB28ECB1E1007B7935 /* Assets.xcassets */,
 				4369B8BD28ECB1E1007B7935 /* DateCounter.entitlements */,
@@ -171,13 +170,6 @@
 				4369B8B428ECB1E0007B7935 /* Persistence.swift */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		BFAF742F291416290047F42B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
