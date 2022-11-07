@@ -111,8 +111,8 @@ struct DetailView: View {
     }
     
     func remainingTime(forComponent component: Calendar.Component) -> Int? {
-        
-        guard let dataOfEvent = event.date else {return 0}
+        guard let dataOfEvent = event.date
+        else {return 0}
         
         let dateComponents = Calendar.current.dateComponents([component], from: Date.now, to: dataOfEvent)
         
