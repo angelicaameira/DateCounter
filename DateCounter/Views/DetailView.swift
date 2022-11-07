@@ -19,11 +19,11 @@ struct DetailView: View {
     @State private var eventTitle = ""
     @State private var eventDescription = ""
     @State private var eventDate = Date.now
-    @State private var isEditing = false
+    @State var isEditing = false
     @State private var updateScreen = false
     
     var body: some View {
-        List {
+        Group {
             if isEditing {
                 editingView
             } else {
@@ -65,11 +65,13 @@ struct DetailView: View {
     }
     
     private var displayingView: some View {
-        Group {
-            Section {
-                Text(event.eventDescription ?? "Unknown description")
-            } header: {
-                Text("Details")
+        List {
+            if let description = event.eventDescription {
+                Section {
+                    Text(description)
+                } header: {
+                    Text("Details")
+                }
             }
             Section {
                 Text(event.date?.formatted() ?? "No date")
@@ -111,25 +113,27 @@ struct DetailView: View {
     }
     
     func remainingTime(forComponent component: Calendar.Component) -> Int? {
-        guard let dataOfEvent = event.date
-        else {return 0}
-        
+        guard let dataOfEvent = event.date else { return 0 }
         let dateComponents = Calendar.current.dateComponents([component], from: Date.now, to: dataOfEvent)
         
         return dateComponents.value(for: component)
     }
     
     private var editingView: some View {
-        Group {
+        Form {
             Section {
                 TextField("Title", text: $eventTitle)
             } header: {
+#if !os(OSX)
                 Text("Title")
+#endif
             }
             Section {
                 TextField("Description", text: $eventDescription)
             } header: {
+#if !os(OSX)
                 Text("Description")
+#endif
             }
             Section {
                 DatePicker("Date", selection: $eventDate)
@@ -137,7 +141,9 @@ struct DetailView: View {
                     .datePickerStyle(.graphical)
 #endif
             } header: {
+#if !os(OSX)
                 Text("Date")
+#endif
             }
             .onAppear {
                 eventTitle = event.title ?? ""
@@ -148,6 +154,9 @@ struct DetailView: View {
 //                viewContext.reset()
 //            }
         }
+#if os(OSX)
+        .padding()
+#endif
     }
     
     private var toolbarContent: ToolbarItem<(), Button<Label<Text, Image>>> {
@@ -174,7 +183,6 @@ struct DetailView: View {
             event.title = eventTitle.isEmpty ? nil : eventTitle
             event.eventDescription = eventDescription.isEmpty ? nil : eventDescription
             event.date = eventDate
-            
             try viewContext.save()
             isEditing = false
         } catch {
@@ -208,9 +216,17 @@ struct DetailView_Previews: PreviewProvider {
         NavigationView {
             DetailView(event: DateCounterApp_Previews.event(period: .semester))
         }
+        .previewDisplayName("Detail")
+        NavigationView {
+            DetailView(event: DateCounterApp_Previews.event(period: .semester), isEditing: true)
+        }
+        .previewDisplayName("Edit")
 #endif
 #if os(OSX)
         DetailView(event: DateCounterApp_Previews.event(period: .past))
+            .previewDisplayName("Detail")
+        DetailView(event: DateCounterApp_Previews.event(period: .past), isEditing: true)
+            .previewDisplayName("Edit")
 #endif
     }
 }

@@ -16,7 +16,7 @@ struct DateCounterApp: App {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
 #if os(OSX)
-                .frame(minWidth: 500, minHeight: 200)
+                .frame(minWidth: 500, minHeight: 250)
 #endif
         }
         .commands {
