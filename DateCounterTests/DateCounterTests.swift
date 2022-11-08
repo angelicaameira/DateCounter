@@ -30,23 +30,24 @@ final class DateCounterTests: XCTestCase {
         case semester
         case year
         case decade
+        case past
     }
     
     func monthForFuture(period: Period) -> Date {
+        var components: DateComponents
         switch period {
         case .month:
-            let components = DateComponents(month: 1)
-            return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
+            components = DateComponents(month: 1)
         case .semester:
-            let components = DateComponents(month: 6)
-            return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
+            components = DateComponents(month: 6)
         case .year:
-            let components = DateComponents(year: 1)
-            return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
+            components = DateComponents(year: 1)
         case .decade:
-            let components = DateComponents(year: 10)
-            return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
+            components = DateComponents(year: 10)
+        case .past:
+            components = DateComponents(nanosecond: 1) //FIXME: that's not supposed to happen
         }
+        return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
     }
     
     func testFutureDateMonth() {

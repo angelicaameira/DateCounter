@@ -91,6 +91,7 @@ struct AddEventView: View {
     private func addItem() {
         withAnimation {
             let newItem: Event
+            
             if let event = event {
                 newItem = event
             } else {
@@ -105,6 +106,7 @@ struct AddEventView: View {
                 try viewContext.save()
                 dismiss()
             } catch {
+                viewContext.delete(newItem)
                 errorMessage = error.localizedDescription
                 showError = true
             }
@@ -114,21 +116,12 @@ struct AddEventView: View {
 
 struct AddEventView_Previews: PreviewProvider {
     static var previews: some View {
-#if !os(OSX)
-        NavigationView {
+        Group {
             AddEventView()
+                .previewDisplayName("Add event")
+            AddEventView(event: DateCounterApp_Previews.event(period: .past))
+                .previewDisplayName("Edit event")
         }
-        .previewDisplayName("Add event")
-        NavigationView {
-            AddEventView(event: DateCounterApp_Previews.event)
-        }
-        .previewDisplayName("Edit event")
-#endif
-#if os(OSX)
-        AddEventView()
-            .previewDisplayName("Add event")
-        AddEventView(event: DateCounterApp_Previews.event)
-            .previewDisplayName("Edit event")
-#endif
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

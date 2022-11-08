@@ -130,6 +130,33 @@ struct ContentView: View {
     private var defaultDetailView: some View {
         Text("Select an event")
     }
+    
+    func monthForFuture(period: Period) -> Date {
+        var components: DateComponents
+        switch period {
+        case .month:
+            components = DateComponents(month: 1)
+        case .semester:
+            components = DateComponents(month: 6)
+        case .year:
+            components = DateComponents(year: 1)
+        case .decade:
+            components = DateComponents(year: 10)
+        case .past:
+            components = DateComponents(nanosecond: 1) //FIXME: that's not supposed to happen
+        }
+        return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
+    }
+}
+
+enum Period: String, CaseIterable, Codable {
+    case past = "Past"
+    case month = "Month"
+    case semester = "Semester"
+    case year = "Year"
+    case decade = "Decade"
+    
+    var stringValue: String { rawValue }
 }
 
 struct ContentView_Previews: PreviewProvider {

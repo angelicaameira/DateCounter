@@ -25,12 +25,12 @@ struct EventListRow: View {
 
 struct EventListRow_Previews: PreviewProvider {
     static var previews: some View {
-        EventListRow(event: DateCounterApp_Previews.event)
+        EventListRow(event: DateCounterApp_Previews.event(period: .past))
             .previewLayout(.fixed(width: 300, height: 70))
             .previewDisplayName("Row")
         List {
             ForEach(0...15, id: \.self) { item in
-                EventListRow(event: DateCounterApp_Previews.event)
+                EventListRow(event: DateCounterApp_Previews.event(period: .past))
             }
         }
     }
