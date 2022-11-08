@@ -52,10 +52,11 @@ struct DetailView: View {
                     }
                 }
             }
+#if os(OSX)
             .onDeleteCommand {
                 showDeleteAlert = true
             }
-            
+#endif
             .alert("Delete event", isPresented: $showDeleteAlert) {
                 Button("Delete", role: .destructive, action: deleteEvent)
                 Button("Cancel", role: .cancel) { }
