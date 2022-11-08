@@ -20,6 +20,9 @@ struct EventListRow: View {
                 Text(event.date?.formatted() ?? Date.now.formatted())
             }
         }
+        .onDeleteCommand {
+            //TODO: refactor to allow deleting the row here
+        }
     }
 }
 

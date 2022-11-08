@@ -11,8 +11,8 @@ import CoreData
 struct DetailView: View {
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.dismiss) var dismiss
-    @State var event: Event
-    @State private var showingDeleteAlert = false
+    var event: Event
+    @State private var showDeleteAlert = false
     @State private var showError = false
     @State private var errorMessage = "No error"
     @State private var errorTitle = "No action"
@@ -22,38 +22,53 @@ struct DetailView: View {
     @State var isEditing = false
     @State private var updateScreen = false
     
+    var isValidEvent: Bool {
+        return !(event.isDeleted || event.title == nil)
+    }
+    
+    var defaultDetailView: some View {
+        Text("Select an event")
+    }
+    
     var body: some View {
-        Group {
-            if isEditing {
-                editingView
-            } else {
-                displayingView
-            }
-        }
-        .navigationTitle(event.title ?? "Unknown title")
-        .toolbar {
-            toolbarContent
-            ToolbarItem(placement: destructiveActionPlacement) {
-                Button {
-                    showingDeleteAlert = true
-                } label: {
-                    Label("Delete this event", systemImage: "trash")
+        if !isValidEvent {
+            defaultDetailView
+        } else {
+            Group {
+                if isEditing {
+                    editingView
+                } else {
+                    displayingView
                 }
             }
+            .navigationTitle(event.title ?? "Unknown title")
+            .toolbar {
+                toolbarContent
+                ToolbarItem(placement: destructiveActionPlacement) {
+                    Button {
+                        showDeleteAlert = true
+                    } label: {
+                        Label("Delete this event", systemImage: "trash")
+                    }
+                }
+            }
+            .onDeleteCommand {
+                showDeleteAlert = true
+            }
+            
+            .alert("Delete event", isPresented: $showDeleteAlert) {
+                Button("Delete", role: .destructive, action: deleteEvent)
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("Are you sure?")
+            }
+            
+            .alert(errorTitle, isPresented: $showError, actions: {
+                Text("Ok")
+            }, message: {
+                Text(errorMessage)
+            })
         }
-        
-        .alert("Delete event", isPresented: $showingDeleteAlert) {
-            Button("Delete", role: .destructive, action: deleteEvent)
-            Button("Cancel", role: .cancel) { }
-        } message: {
-            Text("Are you sure?")
-        }
-        
-        .alert(errorTitle, isPresented: $showError, actions: {
-            Text("Ok")
-        }, message: {
-            Text(errorMessage)
-        })
     }
     
     var destructiveActionPlacement: ToolbarItemPlacement {
@@ -207,7 +222,6 @@ struct DetailView: View {
             showError = true
         }
     }
-
 }
 
 struct DetailView_Previews: PreviewProvider {
