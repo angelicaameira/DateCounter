@@ -42,12 +42,63 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct WidgetsEntryView : View {
+    @Environment(\.widgetFamily) var family
     var entry: Provider.Entry
 
+    @ViewBuilder
     var body: some View {
-        VStack {
+        switch family {
+        case .systemSmall:
+            defaultView
+        case .systemMedium:
+            defaultView
+        case .systemLarge:
+            defaultView
+        case .systemExtraLarge:
+            defaultView
+        case .accessoryCircular:
+            ZStack {
+                AccessoryWidgetBackground()
+                VStack(alignment: .center) {
+                    Text("Font title here")
+                    Text("Font title here")
+                    Text("Font title here")
+                    Text(entry.date, style: .relative)
+                }
+                .font(.footnote)
+            }
+        case .accessoryRectangular:
+            accessoryRectangular
+        case .accessoryInline:
+            accessoryInline
+        @unknown default:
+            defaultView
+        }
+    }
+    
+    var defaultView: some View {
+        return VStack {
             Text("Event title")
             Text(entry.date, style: .time)
+        }
+    }
+    
+    var accessoryInline: some View {
+        VStack {
+            Text("(8h) Event title")
+        }
+    }
+    
+    var accessoryRectangular: some View {
+        VStack(alignment: .leading) {
+            Text("Event title")
+                .foregroundColor(.primary)
+                .bold()
+            Text("Event description")
+                .foregroundColor(.secondary)
+                .font(.footnote)
+            Text(entry.date, style: .relative)
+                .foregroundColor(.accentColor)
         }
     }
 }
