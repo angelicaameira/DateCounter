@@ -1,5 +1,5 @@
 //
-//  AddEventView.swift
+//  ManageEventView.swift
 //  DateCounter
 //
 //  Created by Angélica Andrade de Meira on 06/10/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct AddEventView: View {
+struct ManageEventView: View {
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.dismiss) var dismiss
     @State private var title = ""
@@ -52,13 +52,15 @@ struct AddEventView: View {
                         .datePickerStyle(.graphical)
 #endif
                 }
+                
+                .onAppear(perform: {
+                    guard let event = event else { return }
+                    title = event.title ?? ""
+                    eventDescription = event.eventDescription ?? ""
+                    date = event.date ?? Date()
+                })
             }
-            .onAppear(perform: {
-                guard let event = event else { return }
-                title = event.title ?? ""
-                eventDescription = event.eventDescription ?? ""
-                date = event.date ?? Date()
-            })
+            
             .alert("An error occurred when adding event", isPresented: $showError, actions: {
                 Text("Ok")
             }, message: {
@@ -68,7 +70,7 @@ struct AddEventView: View {
         .navigationTitle(event == nil ? "Add event" : "Edit event")
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save", action: addItem)
+                Button("Save", action: saveItem)
             }
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {
@@ -81,14 +83,7 @@ struct AddEventView: View {
 #endif
     }
     
-    private let itemFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .medium
-        return formatter
-    }()
-    
-    private func addItem() {
+    private func saveItem() {
         withAnimation {
             let newItem: Event
             
@@ -114,12 +109,12 @@ struct AddEventView: View {
     }
 }
 
-struct AddEventView_Previews: PreviewProvider {
+struct ManageEventView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AddEventView()
+            ManageEventView()
                 .previewDisplayName("Add event")
-            AddEventView(event: DateCounterApp_Previews.event(period: .past))
+            ManageEventView(event: DateCounterApp_Previews.event(period: .past))
                 .previewDisplayName("Edit event")
         }
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
