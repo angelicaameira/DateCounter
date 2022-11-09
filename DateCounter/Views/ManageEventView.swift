@@ -52,7 +52,6 @@ struct ManageEventView: View {
                         .datePickerStyle(.graphical)
 #endif
                 }
-                
                 .onAppear(perform: {
                     guard let event = event else { return }
                     title = event.title ?? ""
@@ -60,7 +59,6 @@ struct ManageEventView: View {
                     date = event.date ?? Date()
                 })
             }
-            
             .alert("An error occurred when adding event", isPresented: $showError, actions: {
                 Text("Ok")
             }, message: {
