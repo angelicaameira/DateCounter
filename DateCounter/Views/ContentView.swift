@@ -49,7 +49,7 @@ struct ContentView: View {
         }
         
         .sheet(isPresented: $showAddAlert) {
-            AddEventView()
+            ManageEventView()
         }
         
         .alert("An error occurred when deleting event", isPresented: $showError, actions: {

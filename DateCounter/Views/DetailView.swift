@@ -35,11 +35,7 @@ struct DetailView: View {
             defaultDetailView
         } else {
             Group {
-                if isEditing {
-                    editingView
-                } else {
-                    displayingView
-                }
+                displayingView
             }
             .navigationTitle(event.title ?? "Unknown title")
             .toolbar {
@@ -52,10 +48,11 @@ struct DetailView: View {
                     }
                 }
             }
+#if os(OSX)
             .onDeleteCommand {
                 showDeleteAlert = true
             }
-            
+#endif
             .alert("Delete event", isPresented: $showDeleteAlert) {
                 Button("Delete", role: .destructive, action: deleteEvent)
                 Button("Cancel", role: .cancel) { }
@@ -68,6 +65,10 @@ struct DetailView: View {
             }, message: {
                 Text(errorMessage)
             })
+            
+            .sheet(isPresented: $isEditing) {
+                ManageEventView(event: event)
+            }
         }
     }
     
@@ -134,76 +135,13 @@ struct DetailView: View {
         return dateComponents.value(for: component)
     }
     
-    private var editingView: some View {
-        Form {
-            Section {
-                TextField("Title", text: $eventTitle)
-            } header: {
-#if !os(OSX)
-                Text("Title")
-#endif
-            }
-            Section {
-                TextField("Description", text: $eventDescription)
-            } header: {
-#if !os(OSX)
-                Text("Description")
-#endif
-            }
-            Section {
-                DatePicker("Date", selection: $eventDate)
-#if !os(OSX)
-                    .datePickerStyle(.graphical)
-#endif
-            } header: {
-#if !os(OSX)
-                Text("Date")
-#endif
-            }
-            .onAppear {
-                eventTitle = event.title ?? ""
-                eventDescription = event.eventDescription ?? ""
-                eventDate = event.date ?? Date.now
-            }
-//            .onDisappear {
-//                viewContext.reset()
-//            }
-        }
-#if os(OSX)
-        .padding()
-#endif
-    }
-    
     private var toolbarContent: ToolbarItem<(), Button<Label<Text, Image>>> {
-        if !isEditing {
-            return ToolbarItem(placement: .primaryAction) {
-                Button {
-                    isEditing = true
-                } label: {
-                    Label("Edit this event", systemImage: "pencil")
-                }
-            }
-        }
-        return ToolbarItem(placement: .primaryAction) {
+        ToolbarItem(placement: .primaryAction) {
             Button {
-                saveEvent()
+                isEditing = true
             } label: {
-                Label("Save this event", systemImage: "checkmark.circle")
+                Label("Edit this event", systemImage: "pencil")
             }
-        }
-    }
-    
-    func saveEvent() {
-        do {
-            event.title = eventTitle.isEmpty ? nil : eventTitle
-            event.eventDescription = eventDescription.isEmpty ? nil : eventDescription
-            event.date = eventDate
-            try viewContext.save()
-            isEditing = false
-        } catch {
-            errorMessage = error.localizedDescription
-            errorTitle = "Error when editing event"
-            showError = true
         }
     }
     
