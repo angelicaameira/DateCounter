@@ -17,7 +17,9 @@ struct EventListRow: View {
             HStack {
                 Text(event.title ?? "Unnamed event")
                 Spacer()
-                Text(event.date?.formatted() ?? Date.now.formatted())
+                if let date = event.date {
+                    Text(date, style: .relative)
+                }
             }
         }
 #if os(OSX)
