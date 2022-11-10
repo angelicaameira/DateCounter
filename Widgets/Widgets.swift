@@ -43,48 +43,78 @@ struct SimpleEntry: TimelineEntry {
 
 struct WidgetsEntryView : View {
     @Environment(\.widgetFamily) var family
+    @Environment(\.isLuminanceReduced) var isLuminanceReduced
     var entry: Provider.Entry
 
     @ViewBuilder
     var body: some View {
-        switch family {
-        case .systemSmall:
-            defaultView
-        case .systemMedium:
-            defaultView
-        case .systemLarge:
-            defaultView
-        case .systemExtraLarge:
-            defaultView
-        case .accessoryCircular:
-            ZStack {
-                AccessoryWidgetBackground()
-                VStack(alignment: .center) {
-                    Text("Font title here")
-                    Text("Font title here")
-                    Text("Font title here")
-                    Text(entry.date, style: .relative)
-                }
-                .font(.footnote)
+        ZStack {
+            switch family {
+            case .systemSmall: defaultView
+            case .systemMedium: defaultView
+            case .systemLarge: defaultView
+            case .systemExtraLarge: defaultView
+            case .accessoryCircular: accessoryCircular
+            case .accessoryRectangular: accessoryRectangular
+            case .accessoryInline: accessoryInline
+            @unknown default: defaultView
             }
-        case .accessoryRectangular:
-            accessoryRectangular
-        case .accessoryInline:
-            accessoryInline
-        @unknown default:
-            defaultView
         }
+    }
+    
+    var accessoryCircular: some View {
+        ZStack {
+//            if #available(iOSApplicationExtension 16.0, *) {
+                AccessoryWidgetBackground()
+                ProgressView(timerInterval: dateRange, label: {
+                    Text("Event title here")
+                }, currentValueLabel: {
+                    Text(dateForPeriod, style: .relative)
+                        .font(.subheadline)
+                })
+                .progressViewStyle(.circular)
+//            } else {
+//                VStack(alignment: .center) {
+//                    HStack(alignment: .center) {
+//                        Text("Event title here")
+//                          .textCase(.uppercase)
+//                    }
+//                    HStack(alignment: .center) {
+//                        Spacer()
+//                        Text(dateForPeriod, style: .relative)
+//                    }
+//                }
+//                .font(.footnote)
+//            }
+        }
+    }
+    
+    var dateRange: ClosedRange<Date> {
+        return Date.now...dateForPeriod
+    }
+    
+    var dateForPeriod: Date {
+        let components = DateComponents(second: 100) //FIXME: biggest date bug? After 2150000000 it begins going down
+        return Calendar.current.date(byAdding: components, to: Date.now)!
     }
     
     var defaultView: some View {
-        return VStack {
-            Text("Event title")
-            Text(entry.date, style: .time)
+        return VStack(alignment: .leading) {
+            Text("Event title that is large so that it can not possibly fit into the system small widget.")
+                .truncationMode(.middle)
+            Text(dateForPeriod, style: .relative)
+                .font(.largeTitle)
+                .foregroundColor(.orange)
+                .lineLimit(2)
+                .minimumScaleFactor(0.5)
         }
+        .padding()
     }
     
     var accessoryInline: some View {
-        VStack {
+        ViewThatFits {
+            Text("Event title: \(dateForPeriod, style: .relative)")
+            Text("Event title: \(dateForPeriod, style: .offset)")
             Text("(8h) Event title")
         }
     }
@@ -92,8 +122,8 @@ struct WidgetsEntryView : View {
     var accessoryRectangular: some View {
         VStack(alignment: .leading) {
             Text("Event title")
-                .foregroundColor(.primary)
-                .bold()
+                .font(.headline)
+                .widgetAccentable()
             Text("Event description")
                 .foregroundColor(.secondary)
                 .font(.footnote)
@@ -112,10 +142,16 @@ struct Widgets: Widget {
         }
         .configurationDisplayName("Events")
         .description("See how much time remaining for your events")
+#if os(watchOS)
+        .supportedFamilies([.accessoryCircular, .accessoryRectangular, .accessoryInline])
+#else
+        .supportedFamilies([.accessoryCircular, .accessoryRectangular, .accessoryInline, .systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
+#endif
     }
 }
 
 struct Widgets_Previews: PreviewProvider {
+#if !os(watchOS)
     static let families: [WidgetFamily] = [
         .systemSmall,
         .systemMedium,
@@ -125,6 +161,13 @@ struct Widgets_Previews: PreviewProvider {
         .accessoryCircular,
         .accessoryInline
     ]
+#else
+    static let families: [WidgetFamily] = [
+        .accessoryRectangular,
+        .accessoryCircular,
+        .accessoryInline
+    ]
+#endif
     
     static var previews: some View {
         ForEach(families, id: \.self) { family in
