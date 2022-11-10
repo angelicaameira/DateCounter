@@ -6,8 +6,11 @@
 //
 
 import XCTest
+@testable import DateCounter
 
 final class DateCounterTests: XCTestCase {
+    
+    let contentView = ContentView()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -25,34 +28,19 @@ final class DateCounterTests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
     
-    enum Period {
-        case month
-        case semester
-        case year
-        case decade
-        case past
-    }
-    
-    func monthForFuture(period: Period) -> Date {
-        var components: DateComponents
-        switch period {
-        case .month:
-            components = DateComponents(month: 1)
-        case .semester:
-            components = DateComponents(month: 6)
-        case .year:
-            components = DateComponents(year: 1)
-        case .decade:
-            components = DateComponents(year: 10)
-        case .past:
-            components = DateComponents(nanosecond: 1) //FIXME: that's not supposed to happen
+    func testRemainingTime() {
+        let detailView = DetailView(event: DateCounterApp_Previews.event(period: .month))
+        let remainingTime = detailView.remainingTime(forComponent: .second)
+        guard let remainingTime = remainingTime else {
+            XCTFail("remainingTime could not be generated")
+            return
         }
-        return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
+        XCTAssert(remainingTime.distance(to: 150000) <= 1)
     }
     
     func testFutureDateMonth() {
         print("MONTH")
-        let finalDate = monthForFuture(period: .month)
+        let finalDate = contentView.monthForFuture(period: .month)
         print(finalDate.formatted())
         
         let components = DateComponents(month: 1)
@@ -62,7 +50,7 @@ final class DateCounterTests: XCTestCase {
     
     func testFutureDateSemester() {
         print("SEMESTER")
-        let finalDate = monthForFuture(period: .semester)
+        let finalDate = contentView.monthForFuture(period: .semester)
         print(finalDate.formatted())
         
         let components = DateComponents(month: 6)
@@ -71,7 +59,7 @@ final class DateCounterTests: XCTestCase {
     
     func testFutureDateYear() {
         print("YEAR")
-        let finalDate = monthForFuture(period: .year)
+        let finalDate = contentView.monthForFuture(period: .year)
         print(finalDate.formatted())
         
         let components = DateComponents(year: 1)
@@ -80,7 +68,7 @@ final class DateCounterTests: XCTestCase {
     
     func testFutureDateDecade() {
         print("DECADE")
-        let finalDate = monthForFuture(period: .decade)
+        let finalDate = contentView.monthForFuture(period: .decade)
         print(finalDate.formatted())
         
         let components = DateComponents(year: 10)

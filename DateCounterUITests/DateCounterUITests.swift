@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import DateCounter
 
 final class DateCounterUITests: XCTestCase {
 
