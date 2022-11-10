@@ -99,7 +99,7 @@ struct ManageEventView: View {
                 try viewContext.save()
                 dismiss()
             } catch {
-                viewContext.delete(newItem)
+                viewContext.rollback()
                 errorMessage = error.localizedDescription
                 showError = true
             }
