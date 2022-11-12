@@ -11,14 +11,25 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     
-    static let event: Event = {
+    static let placeholderEventType: EventType = {
+        EventType(identifier: "Awesome identifier", display: "Awesome display")
+    }()
+    
+    static func event(for selectedEvent: EventType?) -> Event {
         let event = Event(context: PersistenceController.preview.container.viewContext)
-        event.title = "My awesome event"
-        event.eventDescription = "Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines"
+        
+        if let selectedEvent = selectedEvent {
+            event.title = selectedEvent.displayString
+            event.eventDescription = selectedEvent.eventDescription
+            //"Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines"
+        } else {
+            event.title = "My awesome event"
+            event.eventDescription = "Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines"
+        }
         event.date = Date(timeInterval: 150000, since: Date.now)
         // max TimeInterval: 15926483100000
         return event
-    }()
+    }
     
     var dateForPeriod: Date {
         let components = DateComponents(second: 150000) //FIXME: biggest date bug? After 2150000000 it begins going down
@@ -26,16 +37,17 @@ struct Provider: IntentTimelineProvider {
     }
     
     func placeholder(in context: Context) -> EventEntry {
-        EventEntry(event: Provider.event, date: dateForPeriod, configuration: ConfigurationIntent())
+        EventEntry(event: Provider.event(for: Provider.placeholderEventType), date: dateForPeriod, configuration: EventSelectionIntent())
     }
     
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (EventEntry) -> ()) {
-        let entry = EventEntry(event: Provider.event, date: Date.now, configuration: configuration)
+    func getSnapshot(for configuration: EventSelectionIntent, in context: Context, completion: @escaping (EventEntry) -> ()) {
+        let entry = EventEntry(event: Provider.event(for: configuration.event), date: Date.now, configuration: configuration)
+        
         completion(entry)
     }
     
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [EventEntry] = [EventEntry(event: Provider.event, date: Date.now, configuration: configuration)]
+    func getTimeline(for configuration: EventSelectionIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        let entries: [EventEntry] = [EventEntry(event: Provider.event(for: configuration.event), date: Date.now, configuration: configuration)]
         
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
@@ -49,7 +61,7 @@ struct EventEntry: TimelineEntry {
     var eventDate: Date { event.date ?? Date.now }
 
     let date: Date
-    let configuration: ConfigurationIntent
+    let configuration: EventSelectionIntent
 }
 
 struct EventWidgetView : View {
@@ -160,7 +172,7 @@ struct Widgets: Widget {
     let kind: String = "Event"
     
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: EventSelectionIntent.self, provider: Provider()) { entry in
             EventWidgetView(entry: entry)
         }
         .configurationDisplayName("Events")
@@ -195,7 +207,7 @@ struct Widgets_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(families, id: \.self) { family in
             Group {
-                EventWidgetView(entry: EventEntry(event: Provider.event, date: Date.now, configuration: ConfigurationIntent()))
+                EventWidgetView(entry: EventEntry(event: Provider.event(for: Provider.placeholderEventType), date: Date.now, configuration: EventSelectionIntent()))
                     .previewContext(WidgetPreviewContext(family: family))
                     .previewDisplayName(family.description)
             }
