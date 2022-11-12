@@ -23,7 +23,6 @@
 		435D47A7291F2514006714A3 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D47A6291F2514006714A3 /* IntentHandler.swift */; };
 		435D47AF291F2514006714A3 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D47AE291F2514006714A3 /* IntentsUI.framework */; };
 		435D47B2291F2515006714A3 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D47B1291F2515006714A3 /* IntentViewController.swift */; };
-		435D47B5291F2515006714A3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435D47B3291F2515006714A3 /* MainInterface.storyboard */; };
 		435D47B9291F2515006714A3 /* EventIntentsUI.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47AD291F2514006714A3 /* EventIntentsUI.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		435D47BC291F2515006714A3 /* EventIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47A2291F2514006714A3 /* EventIntents.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		435D47C3291F26A8006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
@@ -510,7 +509,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				435D47B5291F2515006714A3 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,7 +719,7 @@
 				INFOPLIST_FILE = EventIntentsUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EventIntentsUI;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -748,7 +746,7 @@
 				INFOPLIST_FILE = EventIntentsUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EventIntentsUI;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

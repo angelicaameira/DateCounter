@@ -5,6 +5,7 @@
 //  Created by Antonio Germano on 08/11/22.
 //
 
+#if !os(OSX)
 import ActivityKit
 import WidgetKit
 import SwiftUI
@@ -56,3 +57,4 @@ struct WidgetsLiveActivity: Widget {
         }
     }
 }
+#endif

@@ -66,7 +66,9 @@ struct EventEntry: TimelineEntry {
 
 struct EventWidgetView : View {
     @Environment(\.widgetFamily) var family
+#if !os(OSX)
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
+#endif
     var entry: Provider.Entry
     
     @ViewBuilder
@@ -98,59 +100,65 @@ struct EventWidgetView : View {
     
     var accessoryCircular: some View {
         ZStack {
-//            if #available(iOSApplicationExtension 16.0, *) {
-            AccessoryWidgetBackground()
-            ProgressView(timerInterval: dateRange, label: {
-                Text(entry.title)
-            }, currentValueLabel: {
-                Text(entry.eventDate, style: .relative)
-                    .font(.subheadline)
-            })
-            .progressViewStyle(.circular)
-//            } else {
-//                VStack(alignment: .center) {
-//                    HStack(alignment: .center) {
-//                        Text("Event title here")
-//                          .textCase(.uppercase)
-//                    }
-//                    HStack(alignment: .center) {
-//                        Spacer()
-//                        Text(dateForPeriod, style: .relative)
-//                    }
-//                }
-//                .font(.footnote)
-//            }
+            if #available(iOSApplicationExtension 16.0, *),
+               #available(macOSApplicationExtension 13.0, *) {
+                AccessoryWidgetBackground()
+                ProgressView(timerInterval: dateRange, label: {
+                    Text(entry.title)
+                }, currentValueLabel: {
+                    Text(entry.eventDate, style: .relative)
+                        .font(.subheadline)
+                })
+                .progressViewStyle(.circular)
+            } else {
+                VStack(alignment: .center) {
+                    HStack(alignment: .center) {
+                        Text("Event title here")
+                            .textCase(.uppercase)
+                    }
+                    HStack(alignment: .center) {
+                        Spacer()
+                        Text(entry.eventDate, style: .relative)
+                    }
+                }
+                .font(.footnote)
+            }
         }
     }
     
     var defaultView: some View {
-//        ZStack {
-//            AccessoryWidgetBackground()
-            VStack(alignment: .leading) {
-                Spacer()
-                Text(entry.title)
-                    .truncationMode(.middle)
-                Text(entry.eventDate, style: .relative)
-                    .font(.largeTitle)
-                    .foregroundColor(.orange)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.5)
-                Spacer()
-            }
-//        }
+        //        ZStack {
+        //            AccessoryWidgetBackground()
+        VStack(alignment: .leading) {
+            Spacer()
+            Text(entry.title)
+                .truncationMode(.middle)
+            Text(entry.eventDate, style: .relative)
+                .font(.largeTitle)
+                .foregroundColor(.orange)
+                .lineLimit(2)
+                .minimumScaleFactor(0.5)
+            Spacer()
+        }
+        //        }
         .padding()
-//        .background(ContainerRelativeShape().fill(Color.init(.sRGB, red: 0.89, green: 0.89, blue: 0.89, opacity: 0.9)))
+        //        .background(ContainerRelativeShape().fill(Color.init(.sRGB, red: 0.89, green: 0.89, blue: 0.89, opacity: 0.9)))
     }
     
+    @ViewBuilder
     var accessoryInline: some View {
-        ViewThatFits {
-            Text("\(entry.title): \(entry.eventDate, style: .relative)")
-            Text("\(entry.title): \(entry.eventDate, style: .offset)")
-            if eventHourComponent.isEmpty {
-                Text(entry.title)
-            } else {
-                Text("(\(eventHourComponent)h) \(entry.title)")
+        if #available(macOSApplicationExtension 13.0, *) {
+            ViewThatFits {
+                Text("\(entry.title): \(entry.eventDate, style: .relative)")
+                Text("\(entry.title): \(entry.eventDate, style: .offset)")
+                if eventHourComponent.isEmpty {
+                    Text(entry.title)
+                } else {
+                    Text("(\(eventHourComponent)h) \(entry.title)")
+                }
             }
+        } else {
+            Text("\(entry.title): \(entry.eventDate, style: .relative)")
         }
     }
     
@@ -158,7 +166,9 @@ struct EventWidgetView : View {
         VStack(alignment: .leading) {
             Text(entry.title)
                 .font(.headline)
+#if !os(OSX)
                 .widgetAccentable()
+#endif
             Text(entry.description)
                 .foregroundColor(.secondary)
                 .font(.footnote)
@@ -179,14 +189,25 @@ struct Widgets: Widget {
         .description("See the remaining time for your events")
 #if os(watchOS)
         .supportedFamilies([.accessoryCircular, .accessoryRectangular, .accessoryInline])
-#else
+#endif
+#if os(iOS)
         .supportedFamilies([.accessoryCircular, .accessoryRectangular, .accessoryInline, .systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
+#endif
+#if os(OSX)
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
 #endif
     }
 }
 
 struct Widgets_Previews: PreviewProvider {
-#if !os(watchOS)
+#if os(OSX)
+    static let families: [WidgetFamily] = [
+        .systemSmall,
+        .systemMedium,
+        .systemLarge
+    ]
+#endif
+#if os(iOS)
     static let families: [WidgetFamily] = [
         .systemSmall,
         .systemMedium,
@@ -196,7 +217,8 @@ struct Widgets_Previews: PreviewProvider {
         .accessoryCircular,
         .accessoryInline
     ]
-#else
+#endif
+#if os(watchOS)
     static let families: [WidgetFamily] = [
         .accessoryRectangular,
         .accessoryCircular,

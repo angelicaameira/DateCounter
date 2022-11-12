@@ -13,7 +13,9 @@ struct WidgetsBundle: WidgetBundle {
     var body: some Widget {
         Widgets()
         if #available(iOSApplicationExtension 16.1, *) {
+#if !os(OSX)
             WidgetsLiveActivity()
+#endif
         }
     }
 }
