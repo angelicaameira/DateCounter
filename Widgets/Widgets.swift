@@ -59,7 +59,7 @@ struct EventEntry: TimelineEntry {
     var title: String { event.title ?? "Unnamed event" }
     var description: String { event.eventDescription ?? "" }
     var eventDate: Date { event.date ?? Date.now }
-
+    
     let date: Date
     let configuration: EventSelectionIntent
 }
@@ -169,14 +169,14 @@ struct EventWidgetView : View {
 }
 
 struct Widgets: Widget {
-    let kind: String = "Event"
+    let kind: String = "com.angelicameira.DateCounter.Event"
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: EventSelectionIntent.self, provider: Provider()) { entry in
             EventWidgetView(entry: entry)
         }
         .configurationDisplayName("Events")
-        .description("See how much time remaining for your events")
+        .description("See the remaining time for your events")
 #if os(watchOS)
         .supportedFamilies([.accessoryCircular, .accessoryRectangular, .accessoryInline])
 #else

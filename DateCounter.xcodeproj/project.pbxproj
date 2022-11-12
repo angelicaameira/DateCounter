@@ -16,7 +16,7 @@
 		435D478D291B1EBB006714A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 435D478C291B1EBB006714A3 /* Assets.xcassets */; };
 		435D478F291B1EBB006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
 		435D4790291B1EBB006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
-		435D4794291B1EBB006714A3 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D477E291B1EBA006714A3 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		435D4794291B1EBB006714A3 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D477E291B1EBA006714A3 /* WidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		435D479B291F070E006714A3 /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
 		435D479C291F0719006714A3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B428ECB1E0007B7935 /* Persistence.swift */; };
 		435D47A4291F2514006714A3 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D47A3291F2514006714A3 /* Intents.framework */; };
@@ -24,8 +24,8 @@
 		435D47AF291F2514006714A3 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D47AE291F2514006714A3 /* IntentsUI.framework */; };
 		435D47B2291F2515006714A3 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D47B1291F2515006714A3 /* IntentViewController.swift */; };
 		435D47B5291F2515006714A3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435D47B3291F2515006714A3 /* MainInterface.storyboard */; };
-		435D47B9291F2515006714A3 /* EventIntentsUI.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47AD291F2514006714A3 /* EventIntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		435D47BC291F2515006714A3 /* EventIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47A2291F2514006714A3 /* EventIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		435D47B9291F2515006714A3 /* EventIntentsUI.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47AD291F2514006714A3 /* EventIntentsUI.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		435D47BC291F2515006714A3 /* EventIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47A2291F2514006714A3 /* EventIntents.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		435D47C3291F26A8006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
 		435D47C4291F26BC006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
 		4369B8B328ECB1E0007B7935 /* DateCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B228ECB1E0007B7935 /* DateCounterApp.swift */; };
@@ -612,16 +612,19 @@
 /* Begin PBXTargetDependency section */
 		435D4792291B1EBB006714A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 435D477D291B1EBA006714A3 /* WidgetsExtension */;
 			targetProxy = 435D4791291B1EBB006714A3 /* PBXContainerItemProxy */;
 		};
 		435D47B8291F2515006714A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 435D47AC291F2514006714A3 /* EventIntentsUI */;
 			targetProxy = 435D47B7291F2515006714A3 /* PBXContainerItemProxy */;
 		};
 		435D47BB291F2515006714A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 435D47A1291F2514006714A3 /* EventIntents */;
 			targetProxy = 435D47BA291F2515006714A3 /* PBXContainerItemProxy */;
 		};
