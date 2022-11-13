@@ -34,7 +34,12 @@ struct PersistenceController {
     let container: NSPersistentCloudKitContainer
 
     init(inMemory: Bool = false) {
+        let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.br.com.angelicameira.DateCounter")!
+        let storeURL = containerURL.appendingPathComponent("DateCounter.sqlite")
+        let description = NSPersistentStoreDescription(url: storeURL)
+        
         container = NSPersistentCloudKitContainer(name: "DateCounter")
+        container.persistentStoreDescriptions = [description]
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
