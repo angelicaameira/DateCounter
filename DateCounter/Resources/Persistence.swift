@@ -16,7 +16,7 @@ struct PersistenceController {
         
         for index in 1..<10 {
             let event = Event(context: viewContext)
-            event.title = "My event \(index)"
+            event.title = "Preview event \(index)"
             event.eventDescription = "Event \(index) description, which might be big so we have a somewhat lengthy description here"
             event.date = Date(timeInterval: TimeInterval(1000000*index*index), since: Date())
         }

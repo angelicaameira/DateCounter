@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import CoreData
 
 struct Provider: IntentTimelineProvider {
     
@@ -16,18 +17,27 @@ struct Provider: IntentTimelineProvider {
     }()
     
     static func event(for selectedEvent: EventType?) -> Event {
-        let event = Event(context: PersistenceController.preview.container.viewContext)
+        let viewContext = PersistenceController.shared.container.viewContext
         
         if let selectedEvent = selectedEvent {
-            event.title = selectedEvent.displayString
-            event.eventDescription = selectedEvent.eventDescription
-            //"Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines"
-        } else {
-            event.title = "My awesome event"
-            event.eventDescription = "Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines"
+            let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+            fetchRequest.predicate = NSPredicate(format: "id = %@", selectedEvent.identifier!)
+            fetchRequest.fetchLimit = 1
+            do {
+                let events = try viewContext.fetch(fetchRequest)
+                if let event = events.first {
+                    return event
+                }
+            } catch {
+                print("Error \(error)")
+            }
         }
+        
+        let event: Event
+        event = Event(context: viewContext)
+        event.title = "My awesome event"
+        event.eventDescription = "Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines"
         event.date = Date(timeInterval: 150000, since: Date.now)
-        // max TimeInterval: 15926483100000
         return event
     }
     
