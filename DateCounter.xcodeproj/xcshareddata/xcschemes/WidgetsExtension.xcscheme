@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4369B8AE28ECB1E0007B7935"
-               BuildableName = "DateCounter.app"
-               BlueprintName = "DateCounter"
+               BuildableName = "TheDateCounter.app"
+               BlueprintName = "TheDateCounter"
                ReferencedContainer = "container:DateCounter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -71,8 +71,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4369B8AE28ECB1E0007B7935"
-            BuildableName = "DateCounter.app"
-            BlueprintName = "DateCounter"
+            BuildableName = "TheDateCounter.app"
+            BlueprintName = "TheDateCounter"
             ReferencedContainer = "container:DateCounter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -107,8 +107,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4369B8AE28ECB1E0007B7935"
-            BuildableName = "DateCounter.app"
-            BlueprintName = "DateCounter"
+            BuildableName = "TheDateCounter.app"
+            BlueprintName = "TheDateCounter"
             ReferencedContainer = "container:DateCounter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
