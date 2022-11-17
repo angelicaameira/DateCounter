@@ -124,7 +124,7 @@
 		435D47B1291F2515006714A3 /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
 		435D47B4291F2515006714A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		435D47B6291F2515006714A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4369B8AF28ECB1E0007B7935 /* DateCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4369B8AF28ECB1E0007B7935 /* TheDateCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheDateCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4369B8B228ECB1E0007B7935 /* DateCounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterApp.swift; sourceTree = "<group>"; };
 		4369B8B428ECB1E0007B7935 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4369B8B728ECB1E0007B7935 /* DateCounter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DateCounter.xcdatamodel; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 		4369B8B028ECB1E0007B7935 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4369B8AF28ECB1E0007B7935 /* DateCounter.app */,
+				4369B8AF28ECB1E0007B7935 /* TheDateCounter.app */,
 				4369B8C528ECB1E1007B7935 /* DateCounterTests.xctest */,
 				4369B8CF28ECB1E1007B7935 /* DateCounterUITests.xctest */,
 				435D477E291B1EBA006714A3 /* WidgetsExtension.appex */,
@@ -385,9 +385,9 @@
 			productReference = 435D47AD291F2514006714A3 /* EventIntentsUI.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		4369B8AE28ECB1E0007B7935 /* DateCounter */ = {
+		4369B8AE28ECB1E0007B7935 /* TheDateCounter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4369B8D928ECB1E1007B7935 /* Build configuration list for PBXNativeTarget "DateCounter" */;
+			buildConfigurationList = 4369B8D928ECB1E1007B7935 /* Build configuration list for PBXNativeTarget "TheDateCounter" */;
 			buildPhases = (
 				4369B8AB28ECB1E0007B7935 /* Sources */,
 				4369B8AC28ECB1E0007B7935 /* Frameworks */,
@@ -401,9 +401,9 @@
 				435D47B8291F2515006714A3 /* PBXTargetDependency */,
 				435D47BB291F2515006714A3 /* PBXTargetDependency */,
 			);
-			name = DateCounter;
+			name = TheDateCounter;
 			productName = DateCounter;
-			productReference = 4369B8AF28ECB1E0007B7935 /* DateCounter.app */;
+			productReference = 4369B8AF28ECB1E0007B7935 /* TheDateCounter.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4369B8C428ECB1E1007B7935 /* DateCounterTests */ = {
@@ -487,7 +487,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4369B8AE28ECB1E0007B7935 /* DateCounter */,
+				4369B8AE28ECB1E0007B7935 /* TheDateCounter */,
 				4369B8C428ECB1E1007B7935 /* DateCounterTests */,
 				4369B8CE28ECB1E1007B7935 /* DateCounterUITests */,
 				435D477D291B1EBA006714A3 /* WidgetsExtension */,
@@ -638,12 +638,12 @@
 		};
 		4369B8C728ECB1E1007B7935 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4369B8AE28ECB1E0007B7935 /* DateCounter */;
+			target = 4369B8AE28ECB1E0007B7935 /* TheDateCounter */;
 			targetProxy = 4369B8C628ECB1E1007B7935 /* PBXContainerItemProxy */;
 		};
 		4369B8D128ECB1E1007B7935 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4369B8AE28ECB1E0007B7935 /* DateCounter */;
+			target = 4369B8AE28ECB1E0007B7935 /* TheDateCounter */;
 			targetProxy = 4369B8D028ECB1E1007B7935 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -668,7 +668,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
@@ -698,7 +698,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
@@ -727,7 +727,7 @@
 				CODE_SIGN_ENTITLEMENTS = EventIntentsUI/EventIntentsUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventIntentsUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EventIntentsUI;
@@ -755,7 +755,7 @@
 				CODE_SIGN_ENTITLEMENTS = EventIntentsUI/EventIntentsUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventIntentsUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EventIntentsUI;
@@ -784,7 +784,7 @@
 				CODE_SIGN_ENTITLEMENTS = EventIntents/EventIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EventIntents;
@@ -812,7 +812,7 @@
 				CODE_SIGN_ENTITLEMENTS = EventIntents/EventIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EventIntents;
@@ -958,10 +958,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DateCounter/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DateCounter/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Date Counter";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -995,10 +997,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DateCounter/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DateCounter/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Date Counter";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -1029,7 +1033,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounterTests;
@@ -1050,7 +1054,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounterTests;
@@ -1070,7 +1074,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounterUITests;
@@ -1090,7 +1094,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounterUITests;
@@ -1143,7 +1147,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4369B8D928ECB1E1007B7935 /* Build configuration list for PBXNativeTarget "DateCounter" */ = {
+		4369B8D928ECB1E1007B7935 /* Build configuration list for PBXNativeTarget "TheDateCounter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4369B8DA28ECB1E1007B7935 /* Debug */,
