@@ -5,7 +5,7 @@
 //  Created by Antonio Germano on 08/11/22.
 //
 
-#if !os(OSX)
+#if os(iOS)
 import ActivityKit
 import WidgetKit
 import SwiftUI

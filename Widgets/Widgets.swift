@@ -41,13 +41,13 @@ struct Provider: IntentTimelineProvider {
         return event
     }
     
-    var dateForPeriod: Date {
+    var placeholderDate: Date {
         let components = DateComponents(second: 150000) //FIXME: biggest date bug? After 2150000000 it begins going down
         return Calendar.current.date(byAdding: components, to: Date.now)!
     }
     
     func placeholder(in context: Context) -> EventEntry {
-        EventEntry(event: Provider.event(for: Provider.placeholderEventType), date: dateForPeriod, configuration: EventSelectionIntent())
+        EventEntry(event: Provider.event(for: Provider.placeholderEventType), date: placeholderDate, configuration: EventSelectionIntent())
     }
     
     func getSnapshot(for configuration: EventSelectionIntent, in context: Context, completion: @escaping (EventEntry) -> ()) {
@@ -123,7 +123,7 @@ struct EventWidgetView : View {
             } else {
                 VStack(alignment: .center) {
                     HStack(alignment: .center) {
-                        Text("Event title here")
+                        Text(entry.title)
                             .textCase(.uppercase)
                     }
                     HStack(alignment: .center) {
