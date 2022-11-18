@@ -31,14 +31,26 @@ struct EventListRow: View {
 }
 
 struct EventListRow_Previews: PreviewProvider {
+    
     static var previews: some View {
-        EventListRow(event: DateCounterApp_Previews.event(period: .past))
+        EventListRow(event: DateCounterApp_Previews.event(period: nil))
             .previewLayout(.fixed(width: 300, height: 70))
-            .previewDisplayName("Row")
-        List {
-            ForEach(0...15, id: \.self) { item in
-                EventListRow(event: DateCounterApp_Previews.event(period: .past))
+            .previewDisplayName("Single row")
+        
+        NavigationView {
+            List {
+                ForEach(0...3, id: \.self) { section in
+                    Section {
+                        ForEach(0...4, id: \.self) { item in
+                            EventListRow(event: DateCounterApp_Previews.event(period: nil))
+                        }
+                    } header: {
+                        Text("Section \(section)")
+                    }
+                }
             }
+            .navigationTitle("EventListRow")
         }
+        .previewDisplayName("Multiple rows")
     }
 }

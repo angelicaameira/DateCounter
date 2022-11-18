@@ -33,12 +33,24 @@ struct DateCounterApp: App {
 
 struct DateCounterApp_Previews: PreviewProvider {
     
-    static func event(period: Period) -> Event {
+    static func event(period: Period?) -> Event {
         let event = Event(context: PersistenceController.preview.container.viewContext)
-        event.title = "My awesome event"
+        let eventTitles = [
+            "My awesome event",
+            "Sister's birthday",
+            "Doctor's appointment",
+            "Buy groceries"
+        ]
+        event.title = eventTitles.randomElement()
         event.eventDescription = "Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines"
         let timeInterval: TimeInterval
-        switch period {
+        let actualPeriod: Period
+        if let period = period {
+            actualPeriod = period
+        } else {
+            actualPeriod = Period.allCases.randomElement()!
+        }
+        switch actualPeriod {
         case .past:
             timeInterval = -82173681
         case .month:
