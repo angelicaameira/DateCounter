@@ -19,36 +19,38 @@
 		<dict>
 			<key>INIntentCategory</key>
 			<string>information</string>
-			<key>INIntentConfigurable</key>
-			<true/>
 			<key>INIntentDescription</key>
 			<string>Choose an event</string>
 			<key>INIntentDescriptionID</key>
 			<string>tVvJ9c</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
-			<key>INIntentIneligibleForSuggestions</key>
-			<true/>
 			<key>INIntentLastParameterTag</key>
 			<integer>12</integer>
-			<key>INIntentManagedParameterCombinations</key>
-			<dict>
-				<key>event</key>
-				<dict>
-					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
-					<true/>
-					<key>INIntentParameterCombinationUpdatesLinked</key>
-					<true/>
-				</dict>
-			</dict>
 			<key>INIntentName</key>
 			<string>EventSelection</string>
+			<key>INIntentParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationIsPrimary</key>
+					<true/>
+					<key>INIntentParameterCombinationSubtitle</key>
+					<string>No description</string>
+					<key>INIntentParameterCombinationSubtitleID</key>
+					<string>iLZqYk</string>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>No summary</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>xmK2vK</string>
+				</dict>
+			</dict>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
 					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterCustomDisambiguation</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
 					<string>Event</string>
@@ -67,6 +69,10 @@
 						<dict>
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>Which event would you like to see?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>4BNfvo</string>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Configuration</string>
 						</dict>
@@ -76,30 +82,8 @@
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
 						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${event}’.</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>sSPMaa</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>DisambiguationIntroduction</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Just to confirm, you wanted ‘${event}’?</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>7vNwq7</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Confirmation</string>
-						</dict>
 					</array>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
-					<true/>
-					<key>INIntentParameterSupportsResolution</key>
 					<true/>
 					<key>INIntentParameterTag</key>
 					<integer>12</integer>
@@ -137,7 +121,7 @@
 	<array>
 		<dict>
 			<key>INTypeDisplayName</key>
-			<string>Event Type</string>
+			<string>Event</string>
 			<key>INTypeDisplayNameID</key>
 			<string>2IfCNm</string>
 			<key>INTypeLastPropertyTag</key>
@@ -195,20 +179,6 @@
 					<integer>4</integer>
 					<key>INTypePropertyType</key>
 					<string>SpeakableString</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDisplayName</key>
-					<string>Event Description</string>
-					<key>INTypePropertyDisplayNameID</key>
-					<string>Vn3n1q</string>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>5</integer>
-					<key>INTypePropertyName</key>
-					<string>eventDescription</string>
-					<key>INTypePropertyTag</key>
-					<integer>100</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
 				</dict>
 			</array>
 		</dict>

@@ -14,7 +14,6 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
-				<string>EventSelection</string>
 				<string>EventSelectionIntent</string>
 			</array>
 		</dict>
