@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import DateCounter
+@testable import TheDateCounter
 
 final class DateCounterTests: XCTestCase {
     

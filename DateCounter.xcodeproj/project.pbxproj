@@ -1043,7 +1043,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateCounter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DateCounter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheDateCounter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TheDateCounter";
 			};
 			name = Debug;
 		};
@@ -1064,7 +1064,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateCounter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DateCounter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheDateCounter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TheDateCounter";
 			};
 			name = Release;
 		};
@@ -1079,12 +1079,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounterUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DateCounter;
+				TEST_TARGET_NAME = TheDateCounter;
 			};
 			name = Debug;
 		};
@@ -1099,12 +1100,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounterUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DateCounter;
+				TEST_TARGET_NAME = TheDateCounter;
 			};
 			name = Release;
 		};
