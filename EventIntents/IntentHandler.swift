@@ -58,10 +58,10 @@ class IntentHandler: INExtension, EventSelectionIntentHandling {
 //    }
     
     func resolveEvent(for intent: EventSelectionIntent, with completion: @escaping (EventTypeResolutionResult) -> Void) {
-        let collection = INObjectCollection(items: [
-            EventType(identifier: "ID", display: "Meu evento 1"),
-            EventType(identifier: "ID2", display: "Meu evento 2")
-        ]) //(items: characters)
+//        let collection = INObjectCollection(items: [
+//            EventType(identifier: "ID", display: "Meu evento 1"),
+//            EventType(identifier: "ID2", display: "Meu evento 2")
+//        ]) //(items: characters)
         
         completion(.success(with: EventType(identifier: "ID", display: "Meu evento 1")))
 
