@@ -80,6 +80,7 @@ struct DetailView: View {
 #endif
     }
     
+    private let components: [Calendar.Component] = [.era, .year, .month, .weekOfMonth, .day, .hour, .minute, .second]
     private var displayingView: some View {
         List {
             if let description = event.eventDescription {
@@ -96,35 +97,41 @@ struct DetailView: View {
             }
             
             Section {
-                if let time = remainingTime(forComponent: .year), time != 0 {
-                    Text("\(time) years")
-                }
-                if let time = remainingTime(forComponent: .month), time != 0 {
-                    Text("\(time) months")
-                }
-                if let time = remainingTime(forComponent: .weekOfYear), time != 0 {
-                    Text("\(time) weeks")
-                }
-                if let time = remainingTime(forComponent: .day), time != 0 {
-                    Text("\(time) days")
-                }
-                if let time = remainingTime(forComponent: .hour), time != 0 {
-                    Text("\(time) hours")
-                }
-                if let time = remainingTime(forComponent: .minute), time != 0 {
-                    Text("\(time) minutes")
-                }
-                if let time = remainingTime(forComponent: .second), time != 0 {
-                    Text("\(time) seconds")
+                ForEach(components, id: \.self) { component in
+                    if let time = remainingTime(forComponent: component), time != 0 {
+                        Text("\(time) \(stringForComponent(component))\(time > 1 || time < 1 ? "s" : "")")
+                    }
                 }
             } header: {
-                if (updateScreen || true ) {
+                if (updateScreen || true) {
                     Text("Remaining time on different units")
                 }
             }
             .onReceive(Timer.publish(every: 1, on: .main, in: .default).autoconnect()) { timerOutput in
                 self.updateScreen.toggle()
             }
+        }
+    }
+    
+    func stringForComponent(_ component: Calendar.Component) -> String {
+        switch component {
+        case .era: return "era"
+        case .year: return "year"
+        case .month: return "month"
+        case .day: return "day"
+        case .hour: return "hour"
+        case .minute: return "minute"
+        case .second: return "second"
+        case .weekday: return "week day"
+        case .weekdayOrdinal: return "weekday ordinal"
+        case .quarter: return "quarter"
+        case .weekOfMonth: return "week"// of month"
+        case .weekOfYear: return "week of year"
+        case .yearForWeekOfYear: return "year for week of year"
+        case .nanosecond: return "nanosecond"
+        case .calendar: return "calendar"
+        case .timeZone: return "timezone"
+        @unknown default: return "unknown"
         }
     }
     
