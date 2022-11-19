@@ -45,7 +45,6 @@ struct ManageEventView: View {
                 Section {
                     TextField("Description", text: $eventDescription)
                 }
-                
                 Section {
                     DatePicker("Date", selection: $date)
 #if !os(OSX)

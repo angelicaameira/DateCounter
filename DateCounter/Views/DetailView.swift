@@ -16,9 +16,6 @@ struct DetailView: View {
     @State private var showError = false
     @State private var errorMessage = "No error"
     @State private var errorTitle = "No action"
-    @State private var eventTitle = ""
-    @State private var eventDescription = ""
-    @State private var eventDate = Date.now
     @State var isEditing = false
     @State private var updateScreen = false
     
@@ -40,7 +37,7 @@ struct DetailView: View {
             .navigationTitle(event.title ?? "Unknown title")
             .toolbar {
                 toolbarContent
-                ToolbarItem(placement: destructiveActionPlacement) {
+                ToolbarItem(placement: .destructiveAction) {
                     Button {
                         showDeleteAlert = true
                     } label: {
@@ -72,14 +69,6 @@ struct DetailView: View {
         }
     }
     
-    var destructiveActionPlacement: ToolbarItemPlacement {
-#if os(OSX)
-        .automatic
-#else
-        .destructiveAction
-#endif
-    }
-    
     private let components: [Calendar.Component] = [.era, .year, .month, .weekOfMonth, .day, .hour, .minute, .second]
     private var displayingView: some View {
         List {
@@ -90,10 +79,12 @@ struct DetailView: View {
                     Text("Details")
                 }
             }
-            Section {
-                Text(event.date?.formatted() ?? "No date")
-            } header: {
-                Text("Date")
+            if let date = event.date {
+                Section {
+                    Text("\(date, style: .date), \(date, style: .time)")
+                } header: {
+                    Text("Date")
+                }
             }
             
             Section {
@@ -125,7 +116,7 @@ struct DetailView: View {
         case .weekday: return "week day"
         case .weekdayOrdinal: return "weekday ordinal"
         case .quarter: return "quarter"
-        case .weekOfMonth: return "week"// of month"
+        case .weekOfMonth: return "week"
         case .weekOfYear: return "week of year"
         case .yearForWeekOfYear: return "year for week of year"
         case .nanosecond: return "nanosecond"
@@ -155,7 +146,6 @@ struct DetailView: View {
     func deleteEvent() {
         viewContext.delete(event)
         do {
-//            throw NSError(domain: "error", code: 152, userInfo: [NSLocalizedFailureErrorKey: "Could not delete because I didn't want to do it"])
             try viewContext.save()
 #if !os(OSX)
             dismiss()

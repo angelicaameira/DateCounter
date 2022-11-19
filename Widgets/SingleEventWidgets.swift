@@ -1,5 +1,5 @@
 //
-//  Widgets.swift
+//  SingleEventWidgets.swift
 //  Widgets
 //
 //  Created by Antonio Germano on 08/11/22.
@@ -59,7 +59,7 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: EventSelectionIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let entries: [EventEntry] = [EventEntry(event: Provider.event(for: configuration.event), date: Date.now, configuration: configuration)]
         
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let timeline = Timeline(entries: entries, policy: .never)
         completion(timeline)
     }
 }
@@ -137,8 +137,6 @@ struct EventWidgetView : View {
     }
     
     var defaultView: some View {
-        //        ZStack {
-        //            AccessoryWidgetBackground()
         VStack(alignment: .leading) {
             Spacer()
             Text(entry.title)
@@ -150,9 +148,8 @@ struct EventWidgetView : View {
                 .minimumScaleFactor(0.5)
             Spacer()
         }
-        //        }
+        
         .padding()
-        //        .background(ContainerRelativeShape().fill(Color.init(.sRGB, red: 0.89, green: 0.89, blue: 0.89, opacity: 0.9)))
     }
     
     @ViewBuilder
@@ -188,7 +185,7 @@ struct EventWidgetView : View {
     }
 }
 
-struct Widgets: Widget {
+struct SingleEventWidgets: Widget {
     let kind: String = "com.angelicameira.DateCounter.Event"
     
     var body: some WidgetConfiguration {
