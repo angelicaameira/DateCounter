@@ -11,8 +11,7 @@ struct Preferences: View {
     @AppStorage("My.preference")
     private var string = "Ops"
     private var options = ["Test", "Two", "Oops"]
-//    private var zoom: MapView.Zoom = .medium
-
+    
     var body: some View {
         Form {
             Picker("Title", selection: $string) {
@@ -22,8 +21,8 @@ struct Preferences: View {
             }
             .pickerStyle(.inline)
         }
-        .frame(width: 300)
         .navigationTitle("Settings")
+        .frame(width: 300)
         .padding(80)
     }
 }

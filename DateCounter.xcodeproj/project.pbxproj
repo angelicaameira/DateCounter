@@ -13,7 +13,7 @@
 		435D4783291B1EBA006714A3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D4782291B1EBA006714A3 /* SwiftUI.framework */; };
 		435D4786291B1EBA006714A3 /* WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D4785291B1EBA006714A3 /* WidgetsBundle.swift */; };
 		435D4788291B1EBA006714A3 /* WidgetsLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D4787291B1EBA006714A3 /* WidgetsLiveActivity.swift */; };
-		435D478A291B1EBA006714A3 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D4789291B1EBA006714A3 /* Widgets.swift */; };
+		435D478A291B1EBA006714A3 /* SingleEventWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D4789291B1EBA006714A3 /* SingleEventWidgets.swift */; };
 		435D478D291B1EBB006714A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 435D478C291B1EBB006714A3 /* Assets.xcassets */; };
 		435D478F291B1EBB006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
 		435D4790291B1EBB006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
@@ -111,7 +111,7 @@
 		435D4782291B1EBA006714A3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		435D4785291B1EBA006714A3 /* WidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsBundle.swift; sourceTree = "<group>"; };
 		435D4787291B1EBA006714A3 /* WidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsLiveActivity.swift; sourceTree = "<group>"; };
-		435D4789291B1EBA006714A3 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
+		435D4789291B1EBA006714A3 /* SingleEventWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEventWidgets.swift; sourceTree = "<group>"; };
 		435D478B291B1EBA006714A3 /* Widgets.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widgets.intentdefinition; sourceTree = "<group>"; };
 		435D478C291B1EBB006714A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		435D478E291B1EBB006714A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 			children = (
 				435D4785291B1EBA006714A3 /* WidgetsBundle.swift */,
 				435D4787291B1EBA006714A3 /* WidgetsLiveActivity.swift */,
-				435D4789291B1EBA006714A3 /* Widgets.swift */,
+				435D4789291B1EBA006714A3 /* SingleEventWidgets.swift */,
 				435D478B291B1EBA006714A3 /* Widgets.intentdefinition */,
 				435D478C291B1EBB006714A3 /* Assets.xcassets */,
 				435D478E291B1EBB006714A3 /* Info.plist */,
@@ -557,7 +557,7 @@
 				435D478F291B1EBB006714A3 /* Widgets.intentdefinition in Sources */,
 				435D4788291B1EBA006714A3 /* WidgetsLiveActivity.swift in Sources */,
 				435D479C291F0719006714A3 /* Persistence.swift in Sources */,
-				435D478A291B1EBA006714A3 /* Widgets.swift in Sources */,
+				435D478A291B1EBA006714A3 /* SingleEventWidgets.swift in Sources */,
 				435D4786291B1EBA006714A3 /* WidgetsBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
