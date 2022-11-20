@@ -211,12 +211,12 @@ struct EventWidgetView : View {
                         .foregroundColor(.secondary)
                         .font(.subheadline)
                         .minimumScaleFactor(0.65)
+                        .padding(.bottom, 0.1)
                 }
                 VStack(alignment: .trailing) {
                     Text(entry.eventDate, style: .relative)
                         .font(.title)
                         .minimumScaleFactor(0.5)
-                        .padding(.bottom, 0.1)
                         .opacity(0.65)
                 }
             }
