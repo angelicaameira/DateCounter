@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            sidebarView()
+            sidebarView
                 .navigationTitle("Events")
                 .listStyle(.sidebar)
 #if os(OSX)
@@ -58,8 +58,8 @@ struct ContentView: View {
         })
     }
     
-    func sidebarView() -> some View {
-        return List {
+    var sidebarView: some View {
+        List {
             FilteredList(
                 predicates: [
                     NSPredicate(format: "%K < %@", "date", Date.now as CVarArg),
