@@ -11,43 +11,60 @@ import CoreData
 class IntentHandler: INExtension, EventSelectionIntentHandling {
     
     func provideEventOptionsCollection(for intent: EventSelectionIntent, with completion: @escaping (INObjectCollection<EventType>?, Error?) -> Void) {
-        
         let events: [Event]
         do {
-            events = try PersistenceController.shared.container.viewContext.fetch(NSFetchRequest<Event>(entityName: "Event"))
+            let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+            events = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
         } catch {
-            completion(nil, nil)
+            completion(nil, nil)//NSError(domain: "Failed to retrieve Event list from CoreData", code: -1))
             return
         }
         
         if events.isEmpty {
-            completion(nil, nil)
+            completion(nil, nil) // TODO: maybe add error here too?
             return
         }
         
         // Create a collection with the array of characters.
         var intentEvents = [EventType]()
         for event in events {
-            if let idString = event.id?.uuidString,
-               let title = event.title {
-                intentEvents.append(EventType(identifier: idString, display: title))
-            } else {
-//                fatalError("failed to retrieve events")
-                print("ERROR: Invalid event \(event)")
+            guard
+                let idString = event.id?.uuidString,
+                let title = event.title
+            else {
+//#if DEBUG
+//                fatalError("failed to retrieve event \(event)")
+//#else
+                continue
+//#endif
             }
+            intentEvents.append(EventType(identifier: idString, display: title))
         }
         let collection = INObjectCollection(items: intentEvents)
         completion(collection, nil)
-        
     }
     
-    func resolveEvent(for intent: EventSelectionIntent, with completion: @escaping (EventTypeResolutionResult) -> Void) {
-//        let collection = INObjectCollection(items: [
-//            EventType(identifier: "ID", display: "Meu evento 1"),
-//            EventType(identifier: "ID2", display: "Meu evento 2")
-//        ]) //(items: characters)
-        
-        completion(.success(with: EventType(identifier: "ID", display: "Meu evento 1")))
-    }
+//    static var PLACEHOLDER_IDENTIFIER = "placeholder identifier"
+//
+//    func defaultEvent(for intent: EventSelectionIntent) -> EventType? {
+//        var events: [Event] = []
+//        do {
+//            let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+//            fetchRequest.fetchLimit = 1
+//            events = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
+//        } catch {
+////#if DEBUG
+////            fatalError("Failed to retrieve event")
+////#endif
+//        }
+//
+//        if !events.isEmpty,
+//           let event = events.first,
+//           let id = event.id {
+//            return EventType(identifier: id.uuidString, display: "")
+//        }
+//        return EventType(identifier: IntentHandler.PLACEHOLDER_IDENTIFIER, display: "")
+//    }
     
 }
