@@ -17,7 +17,7 @@ class IntentHandler: INExtension, EventSelectionIntentHandling {
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
             events = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
         } catch {
-            completion(nil, nil)//NSError(domain: "Failed to retrieve Event list from CoreData", code: -1))
+            completion(nil, NSError(domain: "Failed to retrieve Event list from CoreData", code: -1))
             return
         }
         
@@ -33,11 +33,11 @@ class IntentHandler: INExtension, EventSelectionIntentHandling {
                 let idString = event.id?.uuidString,
                 let title = event.title
             else {
-//#if DEBUG
-//                fatalError("failed to retrieve event \(event)")
-//#else
+#if DEBUG
+                fatalError("failed to retrieve event \(event)")
+#else
                 continue
-//#endif
+#endif
             }
             intentEvents.append(EventType(identifier: idString, display: title))
         }
@@ -45,26 +45,26 @@ class IntentHandler: INExtension, EventSelectionIntentHandling {
         completion(collection, nil)
     }
     
-//    static var PLACEHOLDER_IDENTIFIER = "placeholder identifier"
-//
-//    func defaultEvent(for intent: EventSelectionIntent) -> EventType? {
-//        var events: [Event] = []
-//        do {
-//            let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
-//            fetchRequest.fetchLimit = 1
-//            events = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
-//        } catch {
-////#if DEBUG
-////            fatalError("Failed to retrieve event")
-////#endif
-//        }
-//
-//        if !events.isEmpty,
-//           let event = events.first,
-//           let id = event.id {
-//            return EventType(identifier: id.uuidString, display: "")
-//        }
-//        return EventType(identifier: IntentHandler.PLACEHOLDER_IDENTIFIER, display: "")
-//    }
+    static var PLACEHOLDER_IDENTIFIER = "placeholder identifier"
+
+    func defaultEvent(for intent: EventSelectionIntent) -> EventType? {
+        var events: [Event] = []
+        do {
+            let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+            fetchRequest.fetchLimit = 1
+            events = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
+        } catch {
+#if DEBUG
+            fatalError("Failed to retrieve event")
+#endif
+        }
+
+        if !events.isEmpty,
+           let event = events.first,
+           let id = event.id {
+            return EventType(identifier: id.uuidString, display: "")
+        }
+        return EventType(identifier: IntentHandler.PLACEHOLDER_IDENTIFIER, display: "")
+    }
     
 }
