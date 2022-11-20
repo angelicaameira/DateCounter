@@ -38,15 +38,8 @@ final class DateCounterUITests: XCTestCase {
 
         let eventNameTextField = app/*@START_MENU_TOKEN@*/.textFields["Event name"]/*[[".cells[\"Event name\"].textFields[\"Event name\"]",".textFields[\"Event name\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         eventNameTextField.tap()
-
-        let tKey = app/*@START_MENU_TOKEN@*/.keys["T"]/*[[".keyboards.keys[\"T\"]",".keys[\"T\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        tKey.tap()
-        let eKey = app/*@START_MENU_TOKEN@*/.keys["e"]/*[[".keyboards.keys[\"e\"]",".keys[\"e\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        eKey.tap()
-        let sKey = app/*@START_MENU_TOKEN@*/.keys["s"]/*[[".keyboards.keys[\"s\"]",".keys[\"s\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        sKey.tap()
-        let tKey2 = app/*@START_MENU_TOKEN@*/.keys["t"]/*[[".keyboards.keys[\"t\"]",".keys[\"t\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        tKey2.tap()
+        
+        eventNameTextField.typeText("Test")
         
         let day26 = app.staticTexts["26"]
         if day26.isHittable {
@@ -60,14 +53,9 @@ final class DateCounterUITests: XCTestCase {
         
         let testNavigationBar = app.navigationBars["Test"]
         testNavigationBar.buttons["Edit this event"].tap()
-        app/*@START_MENU_TOKEN@*/.textFields["Event name"]/*[[".cells.textFields[\"Event name\"]",".textFields[\"Event name\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-
-        let deleteKey = app/*@START_MENU_TOKEN@*/.keys["delete"]/*[[".keyboards",".keys[\"apagar\"]",".keys[\"delete\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/
-        deleteKey.tap()
-        deleteKey.tap()
-        deleteKey.tap()
-        deleteKey.tap()
-        deleteKey.tap()
+        let eventTitleTextField = app/*@START_MENU_TOKEN@*/.textFields["Event name"]/*[[".cells.textFields[\"Event name\"]",".textFields[\"Event name\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        eventTitleTextField.tap()
+        eventTitleTextField.clearText()
 
         let editEventNavigationBar = app.navigationBars["Edit event"]
         editEventNavigationBar.buttons["Save"].tap()
@@ -78,14 +66,15 @@ final class DateCounterUITests: XCTestCase {
             testNavigationBar.buttons["Events"].tap()
         }
 
-        XCTAssert(app.cells.containing(NSPredicate(format: "label contains[c] %@", "Test")).firstMatch.exists)
+        let cellsContainingTest = app.cells.containing(NSPredicate(format: "label contains[c] %@", "Test"))
+        XCTAssert(cellsContainingTest.firstMatch.exists)
         
         eventsNavigationBar/*@START_MENU_TOKEN@*/.buttons["Edit"]/*[[".otherElements[\"Edit\"].buttons[\"Edit\"]",".buttons[\"Edit\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        let deleteLeadingButton = app.cells.buttons["Delete "]
+        let deleteLeadingButton = cellsContainingTest.buttons["Delete "]
         if deleteLeadingButton.exists {
             deleteLeadingButton.firstMatch.tap() // iOS 15
         } else {
-            app.cells.otherElements.containing(.image, identifier:"remove").firstMatch.tap() // iOS 16
+            cellsContainingTest.otherElements.containing(.image, identifier:"remove").firstMatch.tap() // iOS 16
         }
         app.buttons["Delete"].tap()
         eventsNavigationBar/*@START_MENU_TOKEN@*/.buttons["Done"]/*[[".otherElements[\"Done\"].buttons[\"Done\"]",".buttons[\"Done\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -102,5 +91,21 @@ final class DateCounterUITests: XCTestCase {
                 XCUIApplication().launch()
             }
         }
+    }
+}
+
+extension XCUIElement {
+    /**
+     Removes any current text in the field before typing in the new value
+     - Parameter text: the text to enter into the field
+     */
+    func clearText() {
+        guard let stringValue = self.value as? String else {
+            XCTFail("Tried to clear text of a non string value")
+            return
+        }
+        self.tap()
+        let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
+        self.typeText(deleteString)
     }
 }
