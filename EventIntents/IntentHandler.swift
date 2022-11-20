@@ -11,12 +11,13 @@ import CoreData
 class IntentHandler: INExtension, EventSelectionIntentHandling {
     
     func provideEventOptionsCollection(for intent: EventSelectionIntent, with completion: @escaping (INObjectCollection<EventType>?, Error?) -> Void) {
-        
         let events: [Event]
         do {
-            events = try PersistenceController.shared.container.viewContext.fetch(NSFetchRequest<Event>(entityName: "Event"))
+            let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+            events = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
         } catch {
-            completion(nil, nil)
+            completion(nil, NSError(domain: "Failed to retrieve Event list from CoreData", code: -1))
             return
         }
         
@@ -28,26 +29,15 @@ class IntentHandler: INExtension, EventSelectionIntentHandling {
         // Create a collection with the array of characters.
         var intentEvents = [EventType]()
         for event in events {
-            if let idString = event.id?.uuidString,
-               let title = event.title {
-                intentEvents.append(EventType(identifier: idString, display: title))
-            } else {
-//                fatalError("failed to retrieve events")
-                print("ERROR: Invalid event \(event)")
+            guard
+                let idString = event.id?.uuidString,
+                let title = event.title
+            else {
+                continue
             }
+            intentEvents.append(EventType(identifier: idString, display: title))
         }
         let collection = INObjectCollection(items: intentEvents)
         completion(collection, nil)
-        
     }
-    
-    func resolveEvent(for intent: EventSelectionIntent, with completion: @escaping (EventTypeResolutionResult) -> Void) {
-//        let collection = INObjectCollection(items: [
-//            EventType(identifier: "ID", display: "Meu evento 1"),
-//            EventType(identifier: "ID2", display: "Meu evento 2")
-//        ]) //(items: characters)
-        
-        completion(.success(with: EventType(identifier: "ID", display: "Meu evento 1")))
-    }
-    
 }

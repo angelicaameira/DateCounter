@@ -12,16 +12,19 @@ import CoreData
 
 struct Provider: IntentTimelineProvider {
     
+    static let PLACEHOLDER_IDENTIFIER = "placeholder identifier"
     static let placeholderEventType: EventType = {
-        EventType(identifier: "Awesome identifier", display: "Awesome display")
+        EventType(identifier: PLACEHOLDER_IDENTIFIER, display: "Awesome display")
     }()
     
-    static func event(for selectedEvent: EventType?) -> Event {
+    static func event(for selectedEvent: EventType?) -> Event? {
         let viewContext = PersistenceController.shared.container.viewContext
         
-        if let selectedEvent = selectedEvent {
+        guard
+            let selectedEvent = selectedEvent,
+            let identifier = selectedEvent.identifier
+        else {
             let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
-            fetchRequest.predicate = NSPredicate(format: "id = %@", selectedEvent.identifier!)
             fetchRequest.fetchLimit = 1
             do {
                 let events = try viewContext.fetch(fetchRequest)
@@ -31,14 +34,30 @@ struct Provider: IntentTimelineProvider {
             } catch {
                 print("Error \(error)")
             }
+            return nil
         }
         
-        let event: Event
-        event = Event(context: viewContext)
-        event.title = "My awesome event"
-        event.eventDescription = "Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines"
-        event.date = Date(timeInterval: 150000, since: Date.now)
-        return event
+        if identifier == PLACEHOLDER_IDENTIFIER {
+            let event: Event
+            event = Event(context: viewContext)
+            event.title = "My awesome event"
+            event.eventDescription = "Event description"
+            event.date = Date(timeInterval: 150000, since: Date.now)
+            return event
+        }
+        
+        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+        fetchRequest.predicate = NSPredicate(format: "id = %@", identifier)
+        fetchRequest.fetchLimit = 1
+        do {
+            let events = try viewContext.fetch(fetchRequest)
+            if let event = events.first {
+                return event
+            }
+        } catch {
+            print("Error \(error)")
+        }
+        return nil
     }
     
     var placeholderDate: Date {
@@ -59,16 +78,16 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: EventSelectionIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let entries: [EventEntry] = [EventEntry(event: Provider.event(for: configuration.event), date: Date.now, configuration: configuration)]
         
-        let timeline = Timeline(entries: entries, policy: .never)
+        let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
 }
 
 struct EventEntry: TimelineEntry {
-    let event: Event
-    var title: String { event.title ?? "Unnamed event" }
-    var description: String { event.eventDescription ?? "" }
-    var eventDate: Date { event.date ?? Date.now }
+    let event: Event?
+    var title: String { event?.title ?? "Unnamed event" }
+    var description: String { event?.eventDescription ?? "" }
+    var eventDate: Date { event?.date ?? Date.now }
     
     let date: Date
     let configuration: EventSelectionIntent
@@ -95,6 +114,38 @@ struct EventWidgetView : View {
         }
     }
     
+    var resizableIcon: some View {
+        Image(systemName: "calendar.badge.exclamationmark")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+    }
+    
+    var noEventSelected: some View {
+        ZStack(alignment: .center) {
+            resizableIcon
+                .foregroundColor(.orange)
+                .opacity(0.2)
+            ViewThatFits(in: .vertical) {
+                Group {
+                    Text("Please edit this widget and choose an event")
+                    Text("Please edit this widget to pick an event")
+                    Text("Edit this widget and choose an event")
+                    Text("Edit this widget to pick an event")
+                    Text("Edit to choose an event")
+                    Text("Edit to pick an event")
+                    Text("Choose an event")
+                    Text("Pick an event")
+                    Text("Choose event")
+                    Text("No event")
+                }
+                .multilineTextAlignment(.center)
+                Image(systemName: "calendar.badge.exclamationmark")
+                    .font(.largeTitle)
+            }
+        }
+        .padding()
+    }
+    
     var dateRange: ClosedRange<Date> {
         if Date.now.compare(entry.eventDate).rawValue < 0 {
             return Date.now...entry.eventDate
@@ -108,79 +159,109 @@ struct EventWidgetView : View {
         return hourString ?? ""
     }
     
+    @ViewBuilder
     var accessoryCircular: some View {
-        ZStack {
-            if #available(iOSApplicationExtension 16.0, *),
-               #available(macOSApplicationExtension 13.0, *) {
-                AccessoryWidgetBackground()
-                ProgressView(timerInterval: dateRange, label: {
-                    Text(entry.title)
-                }, currentValueLabel: {
-                    Text(entry.eventDate, style: .relative)
-                        .font(.subheadline)
-                })
-                .progressViewStyle(.circular)
-            } else {
-                VStack(alignment: .center) {
-                    HStack(alignment: .center) {
+        if entry.event == nil {
+            noEventSelected
+        } else {
+            ZStack {
+                if #available(iOSApplicationExtension 16.0, *),
+                   #available(macOSApplicationExtension 13.0, *) {
+                    AccessoryWidgetBackground()
+                    ProgressView(timerInterval: dateRange, label: {
                         Text(entry.title)
-                            .textCase(.uppercase)
-                    }
-                    HStack(alignment: .center) {
-                        Spacer()
+                    }, currentValueLabel: {
                         Text(entry.eventDate, style: .relative)
+                            .font(.subheadline)
+                    })
+                    .progressViewStyle(.circular)
+                } else {
+                    VStack(alignment: .center) {
+                        HStack(alignment: .center) {
+                            Text(entry.title)
+                                .textCase(.uppercase)
+                        }
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Text(entry.eventDate, style: .relative)
+                        }
                     }
+                    .font(.footnote)
                 }
-                .font(.footnote)
             }
         }
     }
     
+    @ViewBuilder
     var defaultView: some View {
-        VStack(alignment: .leading) {
-            Spacer()
-            Text(entry.title)
-                .truncationMode(.middle)
-            Text(entry.eventDate, style: .relative)
-                .font(.largeTitle)
-                .foregroundColor(.orange)
-                .lineLimit(2)
-                .minimumScaleFactor(0.5)
-            Spacer()
+        if entry.event == nil {
+            noEventSelected
+        } else {
+            VStack(alignment: .leading) {
+                Text(entry.title)
+                    .font(.title)
+                    .truncationMode(.middle)
+                    .minimumScaleFactor(0.5)
+                    .padding(.bottom, 0.1)
+                    .foregroundColor(.orange)
+                    .bold()
+                if (!entry.description.isEmpty) {
+                    Text(entry.description)
+                        .truncationMode(.middle)
+                        .foregroundColor(.secondary)
+                        .font(.subheadline)
+                        .minimumScaleFactor(0.65)
+                        .padding(.bottom, 0.1)
+                }
+                VStack(alignment: .trailing) {
+                    Text(entry.eventDate, style: .relative)
+                        .font(.title)
+                        .minimumScaleFactor(0.5)
+                        .opacity(0.65)
+                }
+            }
+            .padding()
         }
-        
-        .padding()
     }
     
     @ViewBuilder
     var accessoryInline: some View {
-        if #available(macOSApplicationExtension 13.0, *) {
-            ViewThatFits {
-                Text("\(entry.title): \(entry.eventDate, style: .relative)")
-                Text("\(entry.title): \(entry.eventDate, style: .offset)")
-                if eventHourComponent.isEmpty {
-                    Text(entry.title)
-                } else {
-                    Text("(\(eventHourComponent)h) \(entry.title)")
-                }
-            }
+        if entry.event == nil {
+            noEventSelected
         } else {
-            Text("\(entry.title): \(entry.eventDate, style: .relative)")
+            if #available(macOSApplicationExtension 13.0, *) {
+                ViewThatFits {
+                    Text("\(entry.title): \(entry.eventDate, style: .relative)")
+                    Text("\(entry.title): \(entry.eventDate, style: .offset)")
+                    if eventHourComponent.isEmpty {
+                        Text(entry.title)
+                    } else {
+                        Text("(\(eventHourComponent)h) \(entry.title)")
+                    }
+                }
+            } else {
+                Text("\(entry.title): \(entry.eventDate, style: .relative)")
+            }
         }
     }
     
+    @ViewBuilder
     var accessoryRectangular: some View {
-        VStack(alignment: .leading) {
-            Text(entry.title)
-                .font(.headline)
+        if entry.event == nil {
+            noEventSelected
+        } else {
+            VStack(alignment: .leading) {
+                Text(entry.title)
+                    .font(.headline)
 #if !os(OSX)
-                .widgetAccentable()
+                    .widgetAccentable()
 #endif
-            Text(entry.description)
-                .foregroundColor(.secondary)
-                .font(.footnote)
-            Text(entry.eventDate, style: .relative)
-                .foregroundColor(.accentColor)
+                Text(entry.description)
+                    .foregroundColor(.secondary)
+                    .font(.footnote)
+                Text(entry.eventDate, style: .relative)
+                    .foregroundColor(.accentColor)
+            }
         }
     }
 }
@@ -236,6 +317,9 @@ struct Widgets_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(families, id: \.self) { family in
             Group {
+                EventWidgetView(entry: EventEntry(event: nil, date: Date.now, configuration: EventSelectionIntent()))
+                    .previewContext(WidgetPreviewContext(family: family))
+                    .previewDisplayName("No event \(family.description)")
                 EventWidgetView(entry: EventEntry(event: Provider.event(for: Provider.placeholderEventType), date: Date.now, configuration: EventSelectionIntent()))
                     .previewContext(WidgetPreviewContext(family: family))
                     .previewDisplayName(family.description)

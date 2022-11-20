@@ -36,14 +36,8 @@ struct DetailView: View {
             }
             .navigationTitle(event.title ?? "Unknown title")
             .toolbar {
-                toolbarContent
-                ToolbarItem(placement: .destructiveAction) {
-                    Button {
-                        showDeleteAlert = true
-                    } label: {
-                        Label("Delete this event", systemImage: "trash")
-                    }
-                }
+                editToolbarItem
+                deleteToolbarItem
             }
 #if os(OSX)
             .onDeleteCommand {
@@ -133,12 +127,22 @@ struct DetailView: View {
         return dateComponents.value(for: component)
     }
     
-    private var toolbarContent: ToolbarItem<(), Button<Label<Text, Image>>> {
+    private var editToolbarItem: ToolbarItem<(), Button<Label<Text, Image>>> {
         ToolbarItem(placement: .primaryAction) {
             Button {
                 isEditing = true
             } label: {
                 Label("Edit this event", systemImage: "pencil")
+            }
+        }
+    }
+    
+    private var deleteToolbarItem: ToolbarItem<(), Button<Label<Text, Image>>> {
+        ToolbarItem(placement: .destructiveAction) {
+            Button {
+                showDeleteAlert = true
+            } label: {
+                Label("Delete this event", systemImage: "trash")
             }
         }
     }
