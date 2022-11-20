@@ -9,8 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @State private var showAddAlert = false
-    @State private var showEditSheet = false
+    @State private var showManageEventView = false
     @State private var showError = false
     @State private var errorMessage = "No error"
     
@@ -39,7 +38,7 @@ struct ContentView: View {
 #endif
                     ToolbarItem(placement: .primaryAction) {
                         Button {
-                            showAddAlert.toggle()
+                            showManageEventView.toggle()
                         } label: {
                             Label("Add Event", systemImage: "plus")
                         }
@@ -48,7 +47,7 @@ struct ContentView: View {
             defaultDetailView
         }
         
-        .sheet(isPresented: $showAddAlert) {
+        .sheet(isPresented: $showManageEventView) {
             ManageEventView()
         }
         

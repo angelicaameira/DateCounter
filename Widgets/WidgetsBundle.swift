@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct WidgetsBundle: WidgetBundle {
     var body: some Widget {
-        Widgets()
+        SingleEventWidgets()
         if #available(iOSApplicationExtension 16.1, *) {
 #if !os(OSX)
             WidgetsLiveActivity()
