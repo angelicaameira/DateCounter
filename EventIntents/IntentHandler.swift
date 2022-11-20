@@ -22,7 +22,7 @@ class IntentHandler: INExtension, EventSelectionIntentHandling {
         }
         
         if events.isEmpty {
-            completion(nil, nil) // TODO: maybe add error here too?
+            completion(nil, nil)
             return
         }
         
@@ -33,38 +33,11 @@ class IntentHandler: INExtension, EventSelectionIntentHandling {
                 let idString = event.id?.uuidString,
                 let title = event.title
             else {
-#if DEBUG
-                fatalError("failed to retrieve event \(event)")
-#else
                 continue
-#endif
             }
             intentEvents.append(EventType(identifier: idString, display: title))
         }
         let collection = INObjectCollection(items: intentEvents)
         completion(collection, nil)
     }
-    
-    static var PLACEHOLDER_IDENTIFIER = "placeholder identifier"
-
-    func defaultEvent(for intent: EventSelectionIntent) -> EventType? {
-        var events: [Event] = []
-        do {
-            let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
-            fetchRequest.fetchLimit = 1
-            events = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
-        } catch {
-#if DEBUG
-            fatalError("Failed to retrieve event")
-#endif
-        }
-
-        if !events.isEmpty,
-           let event = events.first,
-           let id = event.id {
-            return EventType(identifier: id.uuidString, display: "")
-        }
-        return EventType(identifier: IntentHandler.PLACEHOLDER_IDENTIFIER, display: "")
-    }
-    
 }
