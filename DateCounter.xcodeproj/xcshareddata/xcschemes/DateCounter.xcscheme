@@ -20,6 +20,20 @@
                ReferencedContainer = "container:DateCounter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4369B8C428ECB1E1007B7935"
+               BuildableName = "DateCounterTests.xctest"
+               BlueprintName = "DateCounterTests"
+               ReferencedContainer = "container:DateCounter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
