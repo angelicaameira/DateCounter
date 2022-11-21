@@ -13,9 +13,12 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+        
+        for index in 1..<10 {
+            let event = Event(context: viewContext)
+            event.title = "Preview event \(index)"
+            event.eventDescription = "Event \(index) description, which might be big so we have a somewhat lengthy description here"
+            event.date = Date(timeInterval: TimeInterval(1000000*index*index), since: Date())
         }
         do {
             try viewContext.save()
@@ -31,7 +34,12 @@ struct PersistenceController {
     let container: NSPersistentCloudKitContainer
 
     init(inMemory: Bool = false) {
+        let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.br.com.angelicameira.DateCounter")!
+        let storeURL = containerURL.appendingPathComponent("DateCounter.sqlite")
+        let description = NSPersistentStoreDescription(url: storeURL)
+        
         container = NSPersistentCloudKitContainer(name: "DateCounter")
+        container.persistentStoreDescriptions = [description]
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

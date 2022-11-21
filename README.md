@@ -34,7 +34,7 @@ Examples:
 - `main` - production branch
 - `development` - development branch
 
-Branches must generally be created from the `development` branch, and when all bugs and released into production, merged into `main`.
+Branches must generally be created from the `development` branch, and when its bugs and features are released into production, merged into `main`.
 
 Committing directly into `main` or `development` is not allowed. Pull requests must pass code review.
 
