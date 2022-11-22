@@ -83,6 +83,64 @@ final class DateCounterUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 #endif
+    
+#if DEBUG
+    func testScreenshots() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            XCUIDevice.shared.orientation = .landscapeRight
+        }
+        
+        // Event list
+        attachScreenshot(name: "event-list")
+        
+        if let screenshots = ProcessInfo.processInfo.environment["APPSTORE_SCREENSHOTS"],
+           screenshots == "1" {
+            print("Environment funcionou no TEST")
+        }
+        
+        // Detail event
+        let eventTitle = "Vacation"
+        let cellsContainingTest = app.cells.containing(NSPredicate(format: "label contains[c] %@", eventTitle))
+        XCTAssert(cellsContainingTest.firstMatch.exists, "Failed to find Vacation event. Is the app running on preview mode?")
+        cellsContainingTest.firstMatch.tap()
+        attachScreenshot(name: "event-detail")
+        
+        let testNavigationBar = app.navigationBars[eventTitle]
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            testNavigationBar.buttons["Events"].tap()
+        }
+        
+        // Add event
+        let eventsNavigationBar = app.navigationBars["Events"]
+        eventsNavigationBar.buttons["Add Event"].tap()
+
+        let eventNameTextField = app/*@START_MENU_TOKEN@*/.textFields["Event name"]/*[[".cells[\"Event name\"].textFields[\"Event name\"]",".textFields[\"Event name\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        eventNameTextField.tap()
+        eventNameTextField.typeText("Disney trip")
+        
+        let day26 = app.staticTexts["26"]
+        if day26.isHittable {
+            day26.tap()
+        }
+        attachScreenshot(name: "event-add")
+        
+        let editEventNavigationBar = app.navigationBars["Add event"]
+        editEventNavigationBar.buttons["Cancel"].tap()
+    }
+#endif
+    
+    private func attachScreenshot(name: String) {
+        let app = XCUIApplication()
+        
+        let screenshot = app.windows.firstMatch.screenshot()
+        let attachment = XCTAttachment(screenshot: screenshot)
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {

@@ -18,7 +18,11 @@ struct Provider: IntentTimelineProvider {
     }()
     
     static func event(for selectedEvent: EventType?) -> Event? {
+#if APPSTORE_SCREENSHOTS
+        let viewContext = PersistenceController.preview.container.viewContext
+#else
         let viewContext = PersistenceController.shared.container.viewContext
+#endif
         
         guard
             let selectedEvent = selectedEvent,

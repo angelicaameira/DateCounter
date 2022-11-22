@@ -9,13 +9,18 @@ import Intents
 import CoreData
 
 class IntentHandler: INExtension, EventSelectionIntentHandling {
+#if APPSTORE_SCREENSHOTS
+    let persistenceController = PersistenceController.preview
+#else
+    let persistenceController = PersistenceController.shared
+#endif
     
     func provideEventOptionsCollection(for intent: EventSelectionIntent, with completion: @escaping (INObjectCollection<EventType>?, Error?) -> Void) {
         let events: [Event]
         do {
             let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-            events = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
+            events = try persistenceController.container.viewContext.fetch(fetchRequest)
         } catch {
             completion(nil, NSError(domain: "Failed to retrieve Event list from CoreData", code: -1))
             return

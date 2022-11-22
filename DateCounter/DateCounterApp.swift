@@ -9,7 +9,11 @@ import SwiftUI
 
 @main
 struct DateCounterApp: App {
+#if APPSTORE_SCREENSHOTS
+    let persistenceController = PersistenceController.preview
+#else
     let persistenceController = PersistenceController.shared
+#endif
     
     var body: some Scene {
         WindowGroup {

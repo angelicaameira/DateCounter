@@ -14,11 +14,26 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         
-        for index in 1..<10 {
+        let eventsDictionary: [(title: String, description: String)] = [
+            (title: "Visit mom", description: "We'll stay at her house for the weekend"),
+            (title: "Sara's Birthday", description: "Surprise party"),
+            (title: "New year's eve", description: ""),
+            (title: "Vacation", description: "We're going to the beach!"),
+            (title: "Routine annual doctor's appointment", description: ""),
+            (title: "Travel to Las Vegas", description: "A weekend we'll never forget"),
+            (title: "Bring pet to the vet", description: "She needs to take her vaccines"),
+            (title: "Disney trip", description: ""),
+            (title: "Reunion with long-distance friends", description: "I'm so excited to see everyone again"),
+            (title: "Graduation", description: "")
+        ]
+        
+        var index = 1
+        for previewEvent in eventsDictionary {
             let event = Event(context: viewContext)
-            event.title = "Preview event \(index)"
-            event.eventDescription = "Event \(index) description, which might be big so we have a somewhat lengthy description here"
-            event.date = Date(timeInterval: TimeInterval(1000000*index*index), since: Date())
+            event.title = previewEvent.title
+            event.eventDescription = previewEvent.description
+            event.date = Date(timeInterval: TimeInterval(1000000*index*index), since: Date.now)
+            index += 1
         }
         do {
             try viewContext.save()

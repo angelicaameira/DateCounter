@@ -1,0 +1,47 @@
+{
+  "configurations" : [
+    {
+      "id" : "BDBE9203-309A-4136-91CE-08AC9C3C8662",
+      "name" : "US English",
+      "options" : {
+        "language" : "en",
+        "region" : "US"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "commandLineArgumentEntries" : [
+      {
+        "argument" : "-com.apple.CoreData.CloudKitDebug 1"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:DateCounter.xcodeproj",
+      "identifier" : "4369B8AE28ECB1E0007B7935",
+      "name" : "TheDateCounter"
+    }
+  },
+  "testTargets" : [
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:DateCounter.xcodeproj",
+        "identifier" : "4369B8C428ECB1E1007B7935",
+        "name" : "DateCounterTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "selectedTests" : [
+        "DateCounterUITests\/testScreenshots()"
+      ],
+      "target" : {
+        "containerPath" : "container:DateCounter.xcodeproj",
+        "identifier" : "4369B8CE28ECB1E1007B7935",
+        "name" : "DateCounterUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
