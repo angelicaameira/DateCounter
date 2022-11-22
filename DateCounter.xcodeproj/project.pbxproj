@@ -141,6 +141,7 @@
 		438BB609292B997400D72883 /* App Store Screenshots.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "App Store Screenshots.xctestplan"; sourceTree = "<group>"; };
 		43F0D2222904ACE6004C1D8E /* EventListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListRow.swift; sourceTree = "<group>"; };
 		43F0D2242904CB73004C1D8E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		BF03C3D0292BDA3700D21849 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
 		BF1E20A828F5968A00D688B0 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		BF7821CB290174A600838000 /* DateCounterCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterCommands.swift; sourceTree = "<group>"; };
 		BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -245,6 +246,7 @@
 		4369B8A628ECB1E0007B7935 = {
 			isa = PBXGroup;
 			children = (
+				BF03C3D0292BDA3700D21849 /* PRIVACY.md */,
 				431B1F2B2921AF9B002791D2 /* WidgetsExtension.entitlements */,
 				43342C4028F24606004B9EE5 /* README.md */,
 				4369B8B128ECB1E0007B7935 /* DateCounter */,
