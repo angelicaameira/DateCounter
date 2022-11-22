@@ -13,6 +13,8 @@ struct ManageEventView: View {
     @Environment(\.dismiss) var dismiss
     @State private var title = ""
     @State private var eventDescription = ""
+    @State private var color1 = Color.primary
+    @State private var color2 = Color.secondary
     @State private var date = Date()
     @State private var showError = false
     @State private var errorMessage = "No error"
@@ -40,11 +42,24 @@ struct ManageEventView: View {
 #endif
             Form {
                 Section {
-                    TextField("Event name", text: $title)
+                    TextField("", text: $title)
+                } header: {
+                    Text("Event title")
                 }
+                
                 Section {
-                    TextField("Description", text: $eventDescription)
+                    TextField("", text: $eventDescription)
+                } header: {
+                    Text ("Description")
                 }
+                
+                Section {
+                    ColorPicker("Primary color", selection: $color1)
+                    ColorPicker("Secondary color", selection: $color2)
+                } header: {
+                    Text ("Select color")
+                }
+                
                 Section {
                     DatePicker("Date", selection: $date)
 #if !os(OSX)
@@ -55,6 +70,7 @@ struct ManageEventView: View {
                     guard let event = event else { return }
                     title = event.title ?? ""
                     eventDescription = event.eventDescription ?? ""
+                    // TODO: Convert Data to Color
                     date = event.date ?? Date()
                 })
             }
@@ -93,6 +109,7 @@ struct ManageEventView: View {
             newItem.title = title.isEmpty ? nil : title
             newItem.eventDescription = eventDescription.isEmpty ? nil : eventDescription
             newItem.date = date
+            // TODO: convert from Color to Data
             
             do {
                 try viewContext.save()
