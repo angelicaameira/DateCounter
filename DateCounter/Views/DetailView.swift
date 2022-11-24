@@ -24,7 +24,7 @@ struct DetailView: View {
     }
     
     var defaultDetailView: some View {
-        Text("Select an event")
+        Text("Add an event")
     }
     
     var body: some View {

@@ -8,7 +8,18 @@
 import SwiftUI
 import CoreData
 
+#if !os(OSX)
+extension UISplitViewController {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        self.preferredDisplayMode = .oneBesideSecondary
+        self.preferredSplitBehavior = .displace
+    }
+}
+#endif
+
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @State private var showManageEventView = false
     @State private var showError = false
     @State private var errorMessage = "No error"
@@ -69,8 +80,11 @@ struct ContentView: View {
                 ],
                 header: "Past"
             ){ (event: Event) in
+                
                 EventListRow(event: event)
+                
             }
+            
             FilteredList(
                 predicates: [
                     NSPredicate(format: "%K > %@", "date", Date.now as CVarArg),
@@ -120,14 +134,88 @@ struct ContentView: View {
         }
     }
     
-#if os(OSX)
     func toggleSidebar() {
+#if os(OSX)
         NSApp.sendAction(#selector(NSSplitViewController.toggleSidebar(_:)), to: nil, from: nil)
-    }
+#else
+        
 #endif
+    }
+    
+    func createEvents() {
+        let event1 = Event(context: viewContext)
+        event1.eventDescription = "Next Moon eclipse"
+        event1.title = "Next Moon eclipse"
+        event1.date = Date()
+        
+        let event2 = Event(context: viewContext)
+        event2.eventDescription = "Next snow era"
+        event2.title = "Next snow era"
+        event2.date = Date()
+        
+        let event3 = Event(context: viewContext)
+        event3.eventDescription = "Half level of Sun"
+        event3.title = "Half level of Sun"
+        event3.date = Date()
+        
+        try? viewContext.save()
+    }
+    
+    var eventCount: Int {
+        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+        do {
+            return try viewContext.count(for: fetchRequest)
+        } catch {
+#if DEBUG
+            print(error)
+#endif
+            return 0
+        }
+    }
     
     private var defaultDetailView: some View {
-        Text("Select an event")
+        VStack {
+            Text("Welcome!")
+                .font(.largeTitle)
+                .foregroundColor(.orange)
+                .multilineTextAlignment(.center)
+                .padding(.bottom)
+            
+            if eventCount == 0 {
+                completeMessageView
+            }
+            if eventCount > 0 {
+                simpleMessageView
+            }
+        }
+        .padding()
+    }
+    
+    var completeMessageView: some View {
+        HStack {
+            Text("Start by")
+            Button {
+                showManageEventView = true
+            } label: {
+                Text("creating a new event")
+            }
+            Text("or")
+            Button {
+                showManageEventView = false
+                createEvents()
+            } label: {
+                Text("adding some sample events for me")
+            }
+        }
+    }
+    
+    var simpleMessageView: some View {
+        VStack {
+            HStack {
+                Text("Tap an event to see details")
+                    .padding(.bottom)
+            }
+        }
     }
     
     func monthForFuture(period: Period) -> Date {
