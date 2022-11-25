@@ -62,7 +62,7 @@ struct ContentView: View {
             ManageEventView()
         }
         
-        .alert("An error occurred when deleting event", isPresented: $showError, actions: {
+        .alert("An error occurred to add an event", isPresented: $showError, actions: {
             Text("Ok")
         }, message: {
             Text(errorMessage)
@@ -137,28 +137,59 @@ struct ContentView: View {
     func toggleSidebar() {
 #if os(OSX)
         NSApp.sendAction(#selector(NSSplitViewController.toggleSidebar(_:)), to: nil, from: nil)
-#else
-        
 #endif
     }
     
-    func createEvents() {
+    private func createEvents() {
         let event1 = Event(context: viewContext)
-        event1.eventDescription = "Next Moon eclipse"
-        event1.title = "Next Moon eclipse"
-        event1.date = Date()
+        event1.eventDescription = "Next lunar eclipse"
+        event1.title = "Next lunar eclipse"
+        event1.date = Calendar.current
+            .date(from:
+                    DateComponents(
+                        year: 2042,
+                        month: 12,
+                        day: 15,
+                        hour: 22,
+                        minute: 54
+                    )
+            ) //FIXME: event timezone may be incorrect depending on the user timezone
         
         let event2 = Event(context: viewContext)
         event2.eventDescription = "Next snow era"
         event2.title = "Next snow era"
-        event2.date = Date()
-        
+        event2.date = Calendar.current
+            .date(from:
+                    DateComponents(
+                        year: 3500,
+                        month: 10,
+                        day: 10,
+                        hour: 13,
+                        minute: 58
+                    )
+            )
+
         let event3 = Event(context: viewContext)
         event3.eventDescription = "Half level of Sun"
         event3.title = "Half level of Sun"
-        event3.date = Date()
+        event2.date = Calendar.current
+            .date(from:
+                    DateComponents(
+                        year: 12500,
+                        month: 04,
+                        day: 02,
+                        hour: 05,
+                        minute: 12
+                    )
+            )
         
-        try? viewContext.save()
+        do {
+            try viewContext.save()
+        } catch {
+            viewContext.rollback()
+            errorMessage = error.localizedDescription
+            showError = true
+        }
     }
     
     var eventCount: Int {
@@ -204,7 +235,7 @@ struct ContentView: View {
                 showManageEventView = false
                 createEvents()
             } label: {
-                Text("adding some sample events for me")
+                Text("adding some sample events")
             }
         }
     }
