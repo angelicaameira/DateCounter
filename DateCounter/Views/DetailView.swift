@@ -26,6 +26,7 @@ struct DetailView: View {
     var body: some View {
         if !isValidEvent {
             DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
+                .navigationTitle("")
         } else {
             Group {
                 displayingView
