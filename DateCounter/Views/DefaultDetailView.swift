@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct DefaultDetailView: View {
     @Environment(\.managedObjectContext) private var viewContext
