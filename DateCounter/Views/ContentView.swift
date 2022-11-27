@@ -62,7 +62,7 @@ struct ContentView: View {
             ManageEventView()
         }
         
-        .alert("An error occurred to add an event", isPresented: $showError, actions: {
+        .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
             Text("Ok")
         }, message: {
             Text(errorMessage)
@@ -80,11 +80,8 @@ struct ContentView: View {
                 ],
                 header: "Past"
             ){ (event: Event) in
-                
                 EventListRow(event: event)
-                
             }
-            
             FilteredList(
                 predicates: [
                     NSPredicate(format: "%K > %@", "date", Date.now as CVarArg),
