@@ -64,7 +64,9 @@ struct ManageEventView: View {
                         .datePickerStyle(.graphical)
 #endif
                 } header: {
+#if !os(OSX)
                     Text("Date")
+#endif
                 }
                 .onAppear(perform: {
                     guard let event = event else { return }
