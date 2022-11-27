@@ -87,7 +87,6 @@ struct DefaultDetailView: View {
             Text("Tap an event to see details")
 #endif
         }
-        .padding()
     }
     
     private func addSampleEvents() {
@@ -143,5 +142,16 @@ struct DefaultDetailView: View {
             errorMessage = error.localizedDescription
             showError = true
         }
+    }
+}
+
+struct DefaultDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        DefaultDetailView(showError: .constant(false), errorMessage: .constant("No error message"))
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+            .previewDisplayName("No events (new user)")
+        DefaultDetailView(showError: .constant(false), errorMessage: .constant("No error message"))
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .previewDisplayName("Some events (existing user)")
     }
 }
