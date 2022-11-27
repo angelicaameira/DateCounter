@@ -19,9 +19,11 @@ struct DateCounterApp: App {
                 .frame(minWidth: 500, minHeight: 250)
 #endif
         }
+#if !os(watchOS)
         .commands {
             DateCounterCommands()
         }
+#endif
         
 #if os(macOS)
         Settings {

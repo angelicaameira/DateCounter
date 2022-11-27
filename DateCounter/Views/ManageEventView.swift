@@ -45,6 +45,7 @@ struct ManageEventView: View {
                 Section {
                     TextField("Description", text: $eventDescription)
                 }
+#if !os(watchOS)
                 Section {
                     DatePicker("Date", selection: $date)
 #if !os(OSX)
@@ -57,6 +58,7 @@ struct ManageEventView: View {
                     eventDescription = event.eventDescription ?? ""
                     date = event.date ?? Date()
                 })
+#endif
             }
             .alert("An error occurred when adding event", isPresented: $showError, actions: {
                 Text("Ok")

@@ -17,7 +17,9 @@ struct ContentView: View {
         NavigationView {
             sidebarView
                 .navigationTitle("Events")
+#if !os(watchOS)
                 .listStyle(.sidebar)
+#endif
 #if os(OSX)
                 .frame(minWidth: 220)
 #endif
