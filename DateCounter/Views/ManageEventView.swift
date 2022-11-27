@@ -39,17 +39,32 @@ struct ManageEventView: View {
                 .padding(.top)
 #endif
             Form {
+#if os(OSX)
                 Section {
                     TextField("Event name", text: $title)
                 }
                 Section {
                     TextField("Description", text: $eventDescription)
                 }
+#else
+                Section {
+                    TextEditor(text: $title)
+                } header: {
+                    Text("Title")
+                }
+                Section {
+                    TextEditor(text: $eventDescription)
+                } header: {
+                    Text("Description")
+                }
+#endif
                 Section {
                     DatePicker("Date", selection: $date)
 #if !os(OSX)
                         .datePickerStyle(.graphical)
 #endif
+                } header: {
+                    Text("Date")
                 }
                 .onAppear(perform: {
                     guard let event = event else { return }
