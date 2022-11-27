@@ -23,13 +23,9 @@ struct DetailView: View {
         return !(event.isDeleted || event.title == nil)
     }
     
-    var defaultDetailView: some View {
-        Text("Select an event")
-    }
-    
     var body: some View {
         if !isValidEvent {
-            defaultDetailView
+            DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
         } else {
             Group {
                 displayingView
