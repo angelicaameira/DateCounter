@@ -31,6 +31,61 @@ struct ManageEventView: View {
 #endif
     }
     
+    //MARK: macOS
+#if os(OSX)
+    private var formBody: some View {
+        Group {
+            Section {
+                TextField("Event name", text: $title)
+            }
+            Section {
+                TextField("Description", text: $eventDescription)
+            }
+            Section {
+                DatePicker("Date", selection: $date)
+            }
+        }
+    }
+#endif
+    
+    //MARK: iOS
+#if os(iOS)
+    private var formBody: some View {
+        Group {
+            Section {
+                TextEditor(text: $title)
+            } header: {
+                Text("Title")
+            }
+            Section {
+                TextEditor(text: $eventDescription)
+            } header: {
+                Text("Description")
+            }
+            Section {
+                DatePicker("Date", selection: $date)
+                    .datePickerStyle(.graphical)
+            } header: {
+                Text("Date")
+            }
+        }
+    }
+#endif
+    
+    //MARK: watchOS
+#if os(watchOS)
+    private var formBody: some View {
+        Group {
+            Section {
+                TextField("Event name", text: $title)
+            }
+            Section {
+                TextField("Description", text: $eventDescription)
+            }
+        }
+    }
+#endif
+    
     private var content: some View {
         VStack {
 #if os(OSX)
@@ -39,44 +94,14 @@ struct ManageEventView: View {
                 .padding(.top)
 #endif
             Form {
-#if os(OSX) || os(watchOS)
-                Section {
-                    TextField("Event name", text: $title)
-                }
-                Section {
-                    TextField("Description", text: $eventDescription)
-                }
-#else
-                Section {
-                    TextEditor(text: $title)
-                } header: {
-                    Text("Title")
-                }
-                Section {
-                    TextEditor(text: $eventDescription)
-                } header: {
-                    Text("Description")
-                }
-#endif
-#if !os(watchOS)
-                Section {
-                    DatePicker("Date", selection: $date)
-#if !os(OSX)
-                        .datePickerStyle(.graphical)
-#endif
-                } header: {
-#if !os(OSX)
-                    Text("Date")
-#endif
-                }
-                .onAppear(perform: {
-                    guard let event = event else { return }
-                    title = event.title ?? ""
-                    eventDescription = event.eventDescription ?? ""
-                    date = event.date ?? Date()
-                })
-#endif
+                formBody
             }
+            .onAppear(perform: {
+                guard let event = event else { return }
+                title = event.title ?? ""
+                eventDescription = event.eventDescription ?? ""
+                date = event.date ?? Date()
+            })
             .alert("An error occurred when adding event", isPresented: $showError, actions: {
                 Text("Ok")
             }, message: {

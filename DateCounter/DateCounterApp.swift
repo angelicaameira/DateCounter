@@ -44,7 +44,7 @@ struct DateCounterApp_Previews: PreviewProvider {
             "Buy groceries"
         ]
         event.title = eventTitles.randomElement()
-        event.eventDescription = "Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines"
+        event.eventDescription = "Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines\nSo much space"
         let timeInterval: TimeInterval
         let actualPeriod: Period
         if let period = period {
