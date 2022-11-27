@@ -171,6 +171,7 @@
 		4369B8CF28ECB1E1007B7935 /* DateCounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateCounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4369B8D328ECB1E1007B7935 /* DateCounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUITests.swift; sourceTree = "<group>"; };
 		4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		439E7F8E29340E7A00F2A5CE /* DateCounter-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DateCounter-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		43C2C79D2932E4DC00F08C36 /* LunarEclipses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarEclipses.swift; sourceTree = "<group>"; };
 		43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDetailView.swift; sourceTree = "<group>"; };
 		43C2C7A52933AEF700F08C36 /* DateCounter Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DateCounter Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -386,6 +387,7 @@
 		43C2C7A62933AEF700F08C36 /* DateCounter Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				439E7F8E29340E7A00F2A5CE /* DateCounter-Watch-App-Info.plist */,
 				43C2C7DB2933B0D800F08C36 /* DateCounter Watch App.entitlements */,
 				43C2C7AB2933AEF800F08C36 /* Assets.xcassets */,
 				43C2C7AD2933AEF800F08C36 /* Preview Content */,
@@ -1382,8 +1384,11 @@
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DateCounter-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = DateCounter;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = br.com.angelicameira.DateCounter;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1410,8 +1415,11 @@
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DateCounter-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = DateCounter;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = br.com.angelicameira.DateCounter;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
