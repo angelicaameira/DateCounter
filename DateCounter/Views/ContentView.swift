@@ -8,7 +8,18 @@
 import SwiftUI
 import CoreData
 
+#if !os(OSX) && !os(watchOS)
+extension UISplitViewController {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        self.preferredDisplayMode = .oneBesideSecondary
+        self.preferredSplitBehavior = .displace
+    }
+}
+#endif
+
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @State private var showManageEventView = false
     @State private var showError = false
     @State private var errorMessage = "No error"
@@ -46,14 +57,14 @@ struct ContentView: View {
                         }
                     }
                 }
-            defaultDetailView
+            DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
         }
         
         .sheet(isPresented: $showManageEventView) {
             ManageEventView()
         }
         
-        .alert("An error occurred when deleting event", isPresented: $showError, actions: {
+        .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
             Text("Ok")
         }, message: {
             Text(errorMessage)
@@ -122,14 +133,10 @@ struct ContentView: View {
         }
     }
     
-#if os(OSX)
     func toggleSidebar() {
+#if os(OSX)
         NSApp.sendAction(#selector(NSSplitViewController.toggleSidebar(_:)), to: nil, from: nil)
-    }
 #endif
-    
-    private var defaultDetailView: some View {
-        Text("Select an event")
     }
     
     func monthForFuture(period: Period) -> Date {
@@ -163,6 +170,10 @@ enum Period: String, CaseIterable, Codable {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+            .previewDisplayName("No events (new user)")
+        ContentView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .previewDisplayName("Some events (existing user)")
     }
 }

@@ -36,7 +36,7 @@ final class DateCounterUITests: XCTestCase {
         let eventsNavigationBar = app.navigationBars["Events"]
         eventsNavigationBar.buttons["Add Event"].tap()
 
-        let eventNameTextField = app/*@START_MENU_TOKEN@*/.textFields["Event name"]/*[[".cells[\"Event name\"].textFields[\"Event name\"]",".textFields[\"Event name\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let eventNameTextField = app.textViews.firstMatch
         eventNameTextField.tap()
         
         eventNameTextField.typeText("Test")
@@ -53,9 +53,12 @@ final class DateCounterUITests: XCTestCase {
         
         let testNavigationBar = app.navigationBars["Test"]
         testNavigationBar.buttons["Edit this event"].tap()
-        let eventTitleTextField = app/*@START_MENU_TOKEN@*/.textFields["Event name"]/*[[".cells.textFields[\"Event name\"]",".textFields[\"Event name\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let eventTitleTextField = app.textViews.firstMatch
+        
         eventTitleTextField.tap()
+        continueAfterFailure = true
         eventTitleTextField.clearText()
+        continueAfterFailure = false
 
         let editEventNavigationBar = app.navigationBars["Edit event"]
         editEventNavigationBar.buttons["Save"].tap()
@@ -105,6 +108,10 @@ extension XCUIElement {
             return
         }
         self.tap()
+        let app = XCUIApplication()
+        app/*@START_MENU_TOKEN@*/.staticTexts["Select All"]/*[[".menuItems[\"Select All\"].staticTexts[\"Select All\"]",".staticTexts[\"Select All\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.staticTexts["Cut"]/*[[".menuItems[\"Cut\"].staticTexts[\"Cut\"]",".staticTexts[\"Cut\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
         let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
         self.typeText(deleteString)
     }
