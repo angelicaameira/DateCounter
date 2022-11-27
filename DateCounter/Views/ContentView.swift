@@ -23,6 +23,7 @@ struct ContentView: View {
     @State private var showManageEventView = false
     @State private var showError = false
     @State private var errorMessage = "No error"
+    @State private var updateMessage = false
     
     var body: some View {
         NavigationView {
@@ -140,48 +141,51 @@ struct ContentView: View {
 #endif
     }
     
-    private func createEvents() {
-        let event1 = Event(context: viewContext)
-        event1.eventDescription = "Next lunar eclipse"
-        event1.title = "Next lunar eclipse"
-        event1.date = Calendar.current
-            .date(from:
-                    DateComponents(
-                        year: 2042,
-                        month: 12,
-                        day: 15,
-                        hour: 22,
-                        minute: 54
-                    )
-            ) //FIXME: event timezone may be incorrect depending on the user timezone
+    private func addSampleEvents() {
+        let gregorianCalendar = Calendar(identifier: .gregorian)
         
-        let event2 = Event(context: viewContext)
-        event2.eventDescription = "Next snow era"
-        event2.title = "Next snow era"
-        event2.date = Calendar.current
+        updateMessage.toggle()
+        
+        for lunarEclipseDate in lunarEclipseDates {
+            if let date = lunarEclipseDate.date,
+               date.compare(Date.now) == .orderedDescending {
+                let lunarEclipseEvent = Event(context: viewContext)
+                lunarEclipseEvent.title = "\(lunarEclipseDate.type.stringValue) lunar eclipse"
+                lunarEclipseEvent.eventDescription = "Will be visible from \(lunarEclipseDate.visibility).\nThe hour corresponds to the Terrestrial Dynamical Time of greatest eclipse"
+                lunarEclipseEvent.date = lunarEclipseDate.date
+                break
+            }
+        }
+        
+        let friendsBirthdayEvent = Event(context: viewContext)
+        friendsBirthdayEvent.title = "Close friend's birthday"
+        friendsBirthdayEvent.eventDescription = "Edit this event to set the birthday of a person dear to you"
+        friendsBirthdayEvent.date = Calendar.current.date(byAdding: DateComponents(month: 2, day: 5), to: Date.now)
+        
+        let iceAgeEvent = Event(context: viewContext)
+        iceAgeEvent.title = "Next ice age"
+        iceAgeEvent.eventDescription = "The amount of anthropogenic greenhouse gases emitted into Earth's oceans and atmosphere is predicted to prevent the next glacial period for the next 500,000 years, which otherwise would begin in around 50,000 years, and likely more glacial cycles after."
+        iceAgeEvent.date = gregorianCalendar
             .date(from:
                     DateComponents(
-                        year: 3500,
-                        month: 10,
-                        day: 10,
-                        hour: 13,
-                        minute: 58
+                        year: 502_022, month: 1, day: 1,
+                        hour: 0, minute: 0
                     )
             )
-
-        let event3 = Event(context: viewContext)
-        event3.eventDescription = "Half level of Sun"
-        event3.title = "Half level of Sun"
-        event2.date = Calendar.current
-            .date(from:
-                    DateComponents(
-                        year: 12500,
-                        month: 04,
-                        day: 02,
-                        hour: 05,
-                        minute: 12
-                    )
-            )
+        
+        var date: Date = Date.now,
+            intervalToWeekend: TimeInterval = 0
+        if gregorianCalendar.nextWeekend(startingAfter: Date.now, start: &date, interval: &intervalToWeekend) {
+            let nextWeekendEvent = Event(context: viewContext)
+            nextWeekendEvent.title = "Time until next weekend"
+            nextWeekendEvent.eventDescription = "Any exciting plans for the weekend? Edit this event and write them down!"
+            nextWeekendEvent.date = date
+        }
+        
+        let graduationEvent = Event(context: viewContext)
+        graduationEvent.title = "College graduation date"
+        graduationEvent.eventDescription = "If you started college today, you would graduate after about 4 years on average"
+        graduationEvent.date = gregorianCalendar.date(byAdding: DateComponents(year: 4), to: Date.now)
         
         do {
             try viewContext.save()
@@ -206,45 +210,59 @@ struct ContentView: View {
     
     private var defaultDetailView: some View {
         VStack {
-            Text("Welcome!")
-                .font(.largeTitle)
-                .foregroundColor(.orange)
-                .multilineTextAlignment(.center)
-                .padding(.bottom)
+            if updateMessage || true {
+                Text("Welcome!")
+                    .font(.largeTitle)
+                    .foregroundColor(.orange)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom)
             
-            if eventCount == 0 {
-                completeMessageView
-            }
-            if eventCount > 0 {
-                simpleMessageView
+                if eventCount == 0 {
+                    noEventsMessageView
+                } else {
+                    pickEventMessageView
+                }
             }
         }
         .padding()
     }
     
-    var completeMessageView: some View {
-        HStack {
-            Text("Start by")
-            Button {
-                showManageEventView = true
-            } label: {
-                Text("creating a new event")
-            }
-            Text("or")
-            Button {
-                showManageEventView = false
-                createEvents()
-            } label: {
-                Text("adding some sample events")
-            }
+    var pickEventMessageView: some View {
+        VStack {
+#if os(OSX) || os(tvOS)
+            Text("Click an event to see details")
+#else
+            Text("Tap an event to see details")
+#endif
         }
+        .padding()
     }
     
-    var simpleMessageView: some View {
+    @ViewBuilder
+    var noEventsMessageView: some View {
         VStack {
             HStack {
-                Text("Tap an event to see details")
-                    .padding(.bottom)
+#if os(OSX) || os(tvOS)
+                Text("Start by clicking")
+#else
+                Text("Start by tapping")
+#endif
+                Button {
+                    showManageEventView = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+                Text("to create a new event")
+            }
+            .padding(.bottom)
+            VStack {
+                Text("Want some ideas?")
+                Button {
+                    showManageEventView = false
+                    addSampleEvents()
+                } label: {
+                    Text("Add some sample events for me")
+                }
             }
         }
     }
@@ -280,6 +298,10 @@ enum Period: String, CaseIterable, Codable {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+            .previewDisplayName("No events (new user)")
+        ContentView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .previewDisplayName("Some events (existing user)")
     }
 }
