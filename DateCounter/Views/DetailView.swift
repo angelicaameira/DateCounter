@@ -77,7 +77,6 @@ struct DetailView: View {
                     Text("Date")
                 }
             }
-            
             Section {
                 ForEach(components, id: \.self) { component in
                     if let time = remainingTime(forComponent: component), time != 0 {
@@ -134,12 +133,25 @@ struct DetailView: View {
         }
     }
     
-    private var deleteToolbarItem: ToolbarItem<(), Button<Label<Text, Image>>> {
-        ToolbarItem(placement: .destructiveAction) {
+    private var deleteToolbarItemPlacement: ToolbarItemPlacement {
+#if os(OSX)
+        // the icon does not appear on macOS Ventura if using destructiveAction
+        return .automatic
+#else
+        return .destructiveAction
+#endif
+    }
+    
+    private var deleteToolbarItem: ToolbarItem<(), some View> {
+        return ToolbarItem(placement: deleteToolbarItemPlacement) {
             Button {
                 showDeleteAlert = true
             } label: {
+#if os(watchOS)
+                Image(systemName: "trash")
+#else
                 Label("Delete this event", systemImage: "trash")
+#endif
             }
         }
     }

@@ -17,6 +17,9 @@ struct ManageEventView: View {
     @State private var showError = false
     @State private var errorMessage = "No error"
     @State var event: Event? = nil
+    private var navigationBarTitle: String {
+        event == nil ? "Add event" : "Edit event"
+    }
     
     var body: some View {
 #if !os(OSX)
@@ -108,7 +111,9 @@ struct ManageEventView: View {
                 Text(errorMessage)
             })
         }
-        .navigationTitle(event == nil ? "Add event" : "Edit event")
+#if !os(watchOS)
+        .navigationTitle(navigationBarTitle)
+#endif
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save", action: saveItem)
