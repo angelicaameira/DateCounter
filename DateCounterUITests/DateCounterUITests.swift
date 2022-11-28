@@ -24,8 +24,7 @@ final class DateCounterUITests: XCTestCase {
     }
 
 #if os(iOS)
-    func testEvenHasRequiredTitleField_CancelEditing() throws {
-        // UI tests must launch the application that they test.
+    func testEventHasRequiredTitleField_CancelEditing() throws {
         let app = XCUIApplication()
         app.launch()
         
@@ -83,7 +82,68 @@ final class DateCounterUITests: XCTestCase {
         eventsNavigationBar.buttons["Done"].tap()
         
         XCTAssert(app.cells.containing(NSPredicate(format: "label contains[c] %@", "Test")).firstMatch.exists == false)
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testEventHasRequiredTitleField_FixName() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            XCUIDevice.shared.orientation = .landscapeRight
+        }
+        
+        let eventsNavigationBar = app.navigationBars["Events"]
+        eventsNavigationBar.buttons["Add Event"].tap()
+
+        let eventNameTextField = app.textViews.firstMatch
+        eventNameTextField.tap()
+        
+        eventNameTextField.typeText("Test")
+        
+        let day26 = app.staticTexts["26"]
+        if day26.isHittable {
+            day26.tap()
+        }
+
+        let saveButton = app.navigationBars["Add event"].buttons["Save"]
+        saveButton.tap()
+        
+        app.cells.containing(NSPredicate(format: "label contains[c] %@", "Test")).firstMatch.tap()
+        
+        let testNavigationBar = app.navigationBars["Test"]
+        testNavigationBar.buttons["Edit this event"].tap()
+        let eventTitleTextField = app.textViews.firstMatch
+        
+        eventTitleTextField.tap()
+        continueAfterFailure = true
+        eventTitleTextField.clearText()
+        continueAfterFailure = false
+
+        let editEventNavigationBar = app.navigationBars["Edit event"]
+        editEventNavigationBar.buttons["Save"].tap()
+        app.alerts["An error occurred when adding event"].scrollViews.otherElements.buttons["OK"].tap()
+        eventTitleTextField.tap()
+        eventTitleTextField.typeText("New name")
+        editEventNavigationBar.buttons["Save"].tap()
+        
+        let barContainingNewName = app.navigationBars.containing(NSPredicate(format: "label contains[c] %@", "New name"))
+        XCTAssert(barContainingNewName.firstMatch.exists)
+        
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            app.navigationBars["New name"].buttons["Events"].tap()
+        }
+
+        let cellsContainingNewName = app.cells.containing(NSPredicate(format: "label contains[c] %@", "Test"))//"New name")) FIXME: fix this after fixing the list update bug
+        XCTAssert(cellsContainingNewName.firstMatch.exists)
+        cellsContainingNewName.firstMatch.tap()
+
+        let newNameNavigationBar = app.navigationBars["New name"]
+        newNameNavigationBar.buttons["Delete this event"].tap()
+        app.buttons["Delete"].tap()
+
+        XCTAssert(app.navigationBars["New name"].firstMatch.exists == false) // tests removal on iPad
+        XCTAssert(app.cells.containing(NSPredicate(format: "label contains[c] %@", "New name")).firstMatch.exists == false)
     }
 #endif
 
