@@ -7,8 +7,12 @@
 
 import SwiftUI
 import CoreData
+#if os(watchOS)
+import WatchDatePicker
+#endif
 
 struct ManageEventView: View {
+    //MARK: - Properties
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.dismiss) var dismiss
     @State private var title = ""
@@ -21,73 +25,19 @@ struct ManageEventView: View {
         event == nil ? "Add event" : "Edit event"
     }
     
+    // MARK: - Views
+    // MARK: Shared
     var body: some View {
-#if !os(OSX)
-        NavigationView {
-            content
-        }
-#endif
 #if os(OSX)
         content
             .frame(minWidth: 250, maxWidth: 800)
             .padding()
-#endif
-    }
-    
-    //MARK: macOS
-#if os(OSX)
-    private var formBody: some View {
-        Group {
-            Section {
-                TextField("Event name", text: $title)
-            }
-            Section {
-                TextField("Description", text: $eventDescription)
-            }
-            Section {
-                DatePicker("Date", selection: $date)
-            }
+#else
+        NavigationView {
+            content
         }
-    }
 #endif
-    
-    //MARK: iOS
-#if os(iOS)
-    private var formBody: some View {
-        Group {
-            Section {
-                TextEditor(text: $title)
-            } header: {
-                Text("Title")
-            }
-            Section {
-                TextEditor(text: $eventDescription)
-            } header: {
-                Text("Description")
-            }
-            Section {
-                DatePicker("Date", selection: $date)
-                    .datePickerStyle(.graphical)
-            } header: {
-                Text("Date")
-            }
-        }
     }
-#endif
-    
-    //MARK: watchOS
-#if os(watchOS)
-    private var formBody: some View {
-        Group {
-            Section {
-                TextField("Event name", text: $title)
-            }
-            Section {
-                TextField("Description", text: $eventDescription)
-            }
-        }
-    }
-#endif
     
     private var content: some View {
         VStack {
@@ -129,6 +79,71 @@ struct ManageEventView: View {
 #endif
     }
     
+    // MARK: macOS
+#if os(OSX)
+    private var formBody: some View {
+        Group {
+            Section {
+                TextField("Event name", text: $title)
+            }
+            Section {
+                TextField("Description", text: $eventDescription)
+            }
+            Section {
+                DatePicker("Date", selection: $date)
+            }
+        }
+    }
+#endif
+    
+    // MARK: iOS
+#if os(iOS)
+    private var formBody: some View {
+        Group {
+            Section {
+                TextEditor(text: $title)
+            } header: {
+                Text("Title")
+            }
+            Section {
+                TextEditor(text: $eventDescription)
+            } header: {
+                Text("Description")
+            }
+            Section {
+                DatePicker("Date", selection: $date)
+                    .datePickerStyle(.graphical)
+            } header: {
+                Text("Date")
+            }
+        }
+    }
+#endif
+    
+    // MARK: watchOS
+#if os(watchOS)
+    private var formBody: some View {
+        Group {
+            Section {
+                TextField("Event name", text: $title)
+            } header: {
+                Text("Title")
+            }
+            Section {
+                TextField("Description", text: $eventDescription)
+            } header: {
+                Text("Description")
+            }
+            Section {
+                DatePicker("Date and time", selection: $date)
+            } header: {
+                Text("Date")
+            }
+        }
+    }
+#endif
+    
+    // MARK: - Functions
     private func saveItem() {
         withAnimation {
             let newItem: Event
@@ -155,6 +170,7 @@ struct ManageEventView: View {
     }
 }
 
+// MARK: - Preview
 struct ManageEventView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

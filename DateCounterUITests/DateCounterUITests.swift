@@ -72,7 +72,7 @@ final class DateCounterUITests: XCTestCase {
         let cellsContainingTest = app.cells.containing(NSPredicate(format: "label contains[c] %@", "Test"))
         XCTAssert(cellsContainingTest.firstMatch.exists)
         
-        eventsNavigationBar/*@START_MENU_TOKEN@*/.buttons["Edit"]/*[[".otherElements[\"Edit\"].buttons[\"Edit\"]",".buttons[\"Edit\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        eventsNavigationBar.buttons["Edit"].tap()
         let deleteLeadingButton = cellsContainingTest.buttons["Delete "]
         if deleteLeadingButton.exists {
             deleteLeadingButton.firstMatch.tap() // iOS 15
@@ -80,7 +80,7 @@ final class DateCounterUITests: XCTestCase {
             cellsContainingTest.otherElements.containing(.image, identifier:"remove").firstMatch.tap() // iOS 16
         }
         app.buttons["Delete"].tap()
-        eventsNavigationBar/*@START_MENU_TOKEN@*/.buttons["Done"]/*[[".otherElements[\"Done\"].buttons[\"Done\"]",".buttons[\"Done\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        eventsNavigationBar.buttons["Done"].tap()
         
         XCTAssert(app.cells.containing(NSPredicate(format: "label contains[c] %@", "Test")).firstMatch.exists == false)
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -109,8 +109,8 @@ extension XCUIElement {
         }
         self.tap()
         let app = XCUIApplication()
-        app/*@START_MENU_TOKEN@*/.staticTexts["Select All"]/*[[".menuItems[\"Select All\"].staticTexts[\"Select All\"]",".staticTexts[\"Select All\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.staticTexts["Cut"]/*[[".menuItems[\"Cut\"].staticTexts[\"Cut\"]",".staticTexts[\"Cut\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.staticTexts["Select All"].tap()
+        app.staticTexts["Cut"].tap()
         
         let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
         self.typeText(deleteString)

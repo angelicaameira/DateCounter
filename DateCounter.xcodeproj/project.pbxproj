@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430DE4CB293550F600EB5BA5 /* WatchDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 430DE4CA293550F600EB5BA5 /* WatchDatePicker */; };
 		43244DAF2927957500D7B31E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435D47B3291F2515006714A3 /* MainInterface.storyboard */; };
 		43342C4128F24606004B9EE5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 43342C4028F24606004B9EE5 /* README.md */; };
 		435D4781291B1EBA006714A3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D4780291B1EBA006714A3 /* WidgetKit.framework */; };
@@ -243,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				430DE4CB293550F600EB5BA5 /* WatchDatePicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +570,9 @@
 			dependencies = (
 			);
 			name = "DateCounter Watch App";
+			packageProductDependencies = (
+				430DE4CA293550F600EB5BA5 /* WatchDatePicker */,
+			);
 			productName = "DateCounter Watch App";
 			productReference = 43C2C7A52933AEF700F08C36 /* DateCounter Watch App.app */;
 			productType = "com.apple.product-type.application";
@@ -660,6 +665,9 @@
 				Base,
 			);
 			mainGroup = 4369B8A628ECB1E0007B7935;
+			packageReferences = (
+				430DE4C9293550F600EB5BA5 /* XCRemoteSwiftPackageReference "watch-date-picker" */,
+			);
 			productRefGroup = 4369B8B028ECB1E0007B7935 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1605,6 +1613,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		430DE4C9293550F600EB5BA5 /* XCRemoteSwiftPackageReference "watch-date-picker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/antoniogermano/watch-date-picker";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		430DE4CA293550F600EB5BA5 /* WatchDatePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 430DE4C9293550F600EB5BA5 /* XCRemoteSwiftPackageReference "watch-date-picker" */;
+			productName = WatchDatePicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */ = {
