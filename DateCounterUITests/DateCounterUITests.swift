@@ -142,7 +142,7 @@ final class DateCounterUITests: XCTestCase {
         newNameNavigationBar.buttons["Delete this event"].tap()
         app.buttons["Delete"].tap()
 
-        sleep(2)
+        sleep(3)
         XCTAssert(app.navigationBars["New name"].firstMatch.exists == false) // tests removal on iPad
         XCTAssert(app.cells.containing(NSPredicate(format: "label contains[c] %@", "New name")).firstMatch.exists == false)
     }
