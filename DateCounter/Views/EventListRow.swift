@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct EventListRow: View {
-    let event: Event
+    @ObservedObject
+    var event: Event
     
     var body: some View {
         NavigationLink {
