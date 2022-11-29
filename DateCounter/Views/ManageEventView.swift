@@ -61,9 +61,6 @@ struct ManageEventView: View {
                 Text(errorMessage)
             })
         }
-#if !os(watchOS)
-        .navigationTitle(navigationBarTitle)
-#endif
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save", action: saveItem)
@@ -74,6 +71,9 @@ struct ManageEventView: View {
                 }
             }
         }
+#if !os(watchOS)
+        .navigationTitle(navigationBarTitle)
+#endif
 #if !os(OSX)
         .navigationViewStyle(.stack)
 #endif
@@ -126,18 +126,11 @@ struct ManageEventView: View {
         Group {
             Section {
                 TextField("Event name", text: $title)
-            } header: {
-                Text("Title")
-            }
-            Section {
                 TextField("Description", text: $eventDescription)
-            } header: {
-                Text("Description")
             }
             Section {
-                DatePicker("Date and time", selection: $date)
-            } header: {
-                Text("Date")
+                DatePicker("Date time", selection: $date)
+                DatePicker("Time", selection: $date)
             }
         }
     }
@@ -172,12 +165,49 @@ struct ManageEventView: View {
 
 // MARK: - Preview
 struct ManageEventView_Previews: PreviewProvider {
+    static var addEvent: some View {
+        ManageEventView()
+    }
+    
+    static var editEvent: some View {
+        ManageEventView(event: DateCounterApp_Previews.event(period: .past))
+    }
+    
+    @ViewBuilder
+    static var shared: some View {
+        addEvent.previewDisplayName("Add event")
+        editEvent.previewDisplayName("Edit event")
+    }
+    
     static var previews: some View {
         Group {
-            ManageEventView()
-                .previewDisplayName("Add event")
-            ManageEventView(event: DateCounterApp_Previews.event(period: .past))
-                .previewDisplayName("Edit event")
+#if os(watchOS)
+            NavigationView {
+                addEvent
+            }.previewDisplayName("Add event")
+            NavigationView {
+                editEvent
+            }.previewDisplayName("Edit event")
+#endif
+#if os(iOS)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                Text("")
+                    .sheet(isPresented: .constant(true), content: {
+                        addEvent
+                    })
+                    .previewDisplayName("Add event")
+                Text("")
+                    .sheet(isPresented: .constant(true), content: {
+                        editEvent
+                    })
+                    .previewDisplayName("Edit event")
+            } else {
+                shared
+            }
+#endif
+#if os(OSX)
+            shared
+#endif
         }
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
