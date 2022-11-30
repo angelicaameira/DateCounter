@@ -11,51 +11,48 @@ import CoreData
 struct DetailView: View {
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.dismiss) var dismiss
-    var event: Event
+    @ObservedObject var event: Event
     @State private var showDeleteAlert = false
     @State private var showError = false
     @State private var errorMessage = "No error"
     @State private var errorTitle = "No action"
     @State var isEditing = false
-    @State private var updateScreen = false
-    
-    var isValidEvent: Bool {
-        return !(event.isDeleted || event.title == nil)
-    }
+    @State private var updateView = UUID()
     
     var body: some View {
-        if !isValidEvent {
-            DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
-        } else {
-            Group {
-                displayingView
-            }
-            .navigationTitle(event.title ?? "Unknown title")
-            .toolbar {
-                editToolbarItem
-                deleteToolbarItem
-            }
+        Group {
+            displayingView
+            // macOS needs this to work
+                .blankWithoutContext(event) {
+                    DefaultDetailView(showError: $showError, errorMessage: $errorMessage)//, eventCount: eventCount)
+                        .navigationTitle("")
+                }
+        }
+        .navigationTitle(event.title ?? "")
+        .toolbar {
+            editToolbarItem
+            deleteToolbarItem
+        }
 #if os(OSX)
-            .onDeleteCommand {
-                showDeleteAlert = true
-            }
+        .onDeleteCommand {
+            showDeleteAlert = true
+        }
 #endif
-            .alert("Delete event", isPresented: $showDeleteAlert) {
-                Button("Delete", role: .destructive, action: deleteEvent)
-                Button("Cancel", role: .cancel) { }
-            } message: {
-                Text("Are you sure?")
-            }
-            
-            .alert(errorTitle, isPresented: $showError, actions: {
-                Text("Ok")
-            }, message: {
-                Text(errorMessage)
-            })
-            
-            .sheet(isPresented: $isEditing) {
-                ManageEventView(event: event)
-            }
+        .alert("Delete event", isPresented: $showDeleteAlert) {
+            Button("Delete", role: .destructive, action: deleteEvent)
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("\"\(event.title ?? "It")\" will be permanently deleted.\nAre you sure?")
+        }
+        
+        .alert(errorTitle, isPresented: $showError, actions: {
+            Text("Ok")
+        }, message: {
+            Text(errorMessage)
+        })
+        
+        .sheet(isPresented: $isEditing) {
+            ManageEventView(event: event)
         }
     }
     
@@ -84,12 +81,11 @@ struct DetailView: View {
                     }
                 }
             } header: {
-                if (updateScreen || true) {
-                    Text("Remaining time on different units")
-                }
+                Text("Remaining time on different units")
             }
+            .id(updateView)
             .onReceive(Timer.publish(every: 1, on: .main, in: .default).autoconnect()) { timerOutput in
-                self.updateScreen.toggle()
+                updateView = UUID()
             }
         }
     }
@@ -145,31 +141,48 @@ struct DetailView: View {
     
     func deleteEvent() {
         viewContext.delete(event)
-        do {
-            try viewContext.save()
+//        withAnimation {
+            do {
+                try viewContext.save()
 #if !os(OSX)
-            dismiss()
+                dismiss()
 #endif
-        } catch {
-            viewContext.undo()
-            errorMessage = error.localizedDescription
-            errorTitle = "Error when deleting event"
-            showError = true
-        }
+            } catch {
+                viewContext.undo()
+                errorMessage = error.localizedDescription
+                errorTitle = "Error when deleting event"
+                showError = true
+            }
+//        }
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
 #if !os(OSX)
-        NavigationView {
-            DetailView(event: DateCounterApp_Previews.event(period: .semester))
+        Group {
+            NavigationView {
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    ContentView()
+                        .opacity(0.2)
+                    DetailView(event: DateCounterApp_Previews.event(period: .semester))
+                } else {
+                    DetailView(event: DateCounterApp_Previews.event(period: .semester))
+                }
+            }
+            .previewDisplayName("Detail")
+            NavigationView {
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    ContentView()
+                        .opacity(0.2)
+                    DetailView(event: DateCounterApp_Previews.event(period: .semester), isEditing: true)
+                } else {
+                    DetailView(event: DateCounterApp_Previews.event(period: .semester), isEditing: true)
+                }
+            }
+            .previewDisplayName("Edit")
         }
-        .previewDisplayName("Detail")
-        NavigationView {
-            DetailView(event: DateCounterApp_Previews.event(period: .semester), isEditing: true)
-        }
-        .previewDisplayName("Edit")
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 #endif
 #if os(OSX)
         DetailView(event: DateCounterApp_Previews.event(period: .past))

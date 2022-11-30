@@ -8,22 +8,40 @@
 import SwiftUI
 import CoreData
 
-#if !os(OSX)
-extension UISplitViewController {
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-        self.preferredDisplayMode = .oneBesideSecondary
-        self.preferredSplitBehavior = .displace
-    }
-}
-#endif
-
 struct ContentView: View {
+    // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
+    @State private var showDelete = false
+    @State private var selectedEvent: Event?
+    @FetchRequest<Event>(entity: Event.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)])
+    private var eventsFetchedResults: FetchedResults<Event>
+    private var sectionKeys: [Period] = [
+        .past, .month, .semester, .year, .decade
+    ]
+    private var eventsDictionary: [Period: [Event]] {
+        Dictionary(grouping: eventsFetchedResults) { event in
+            guard let date = event.date else { return .past }
+            
+            if date.compare(Date.now) == .orderedAscending {
+                return Period.past
+            }
+            if date.compare(monthForFuture(period: .month)) == .orderedAscending {
+                return Period.month
+            }
+            if date.compare(monthForFuture(period: .semester)) == .orderedAscending {
+                return Period.semester
+            }
+            if date.compare(monthForFuture(period: .year)) == .orderedAscending {
+                return Period.year
+            }
+            return Period.decade
+        }
+    }
     @State private var showManageEventView = false
     @State private var showError = false
     @State private var errorMessage = "No error"
     
+    // MARK: - Views
     var body: some View {
         NavigationView {
             sidebarView
@@ -55,8 +73,9 @@ struct ContentView: View {
                         }
                     }
                 }
-            DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
+            DefaultDetailView(showError: $showError, errorMessage: $errorMessage)//, eventCount: eventsFetchedResults.count)
         }
+        .environment(\.eventListCount, eventsFetchedResults.count)
         
         .sheet(isPresented: $showManageEventView) {
             ManageEventView()
@@ -70,63 +89,65 @@ struct ContentView: View {
     }
     
     var sidebarView: some View {
-        List {
-            FilteredList(
-                predicates: [
-                    NSPredicate(format: "%K < %@", "date", Date.now as CVarArg),
-                ],
-                ordering: [
-                    NSSortDescriptor(key: "date", ascending: true)
-                ],
-                header: "Past"
-            ){ (event: Event) in
-                EventListRow(event: event)
+        List(selection: $selectedEvent) {
+            ForEach(sectionKeys, id: \.self) { section in
+                if let events = eventsDictionary[section] {
+                    Section {
+                        ForEach(events, id: \.self) { event in
+                            EventListRow(event: event)
+                        }
+                        .onDelete { indexSet in
+                            deleteEvents(section: section, offsets: indexSet)
+                        }
+                    } header: {
+                        Text(section.stringValue)
+                    }
+                }
             }
-            FilteredList(
-                predicates: [
-                    NSPredicate(format: "%K > %@", "date", Date.now as CVarArg),
-                    NSPredicate(format: "%K < %@", "date", monthForFuture(period: .month) as CVarArg)
-                ],
-                ordering: [
-                    NSSortDescriptor(key: "date", ascending: true)
-                ],
-                header: Period.month.stringValue
-            ){ (event: Event) in
-                EventListRow(event: event)
-            }
-            FilteredList(
-                predicates: [
-                    NSPredicate(format: "%K > %@", "date", monthForFuture(period: .month) as CVarArg),
-                    NSPredicate(format: "%K < %@", "date", monthForFuture(period: .semester) as CVarArg)
-                ],
-                ordering: [
-                    NSSortDescriptor(key: "date", ascending: true)
-                ], header: Period.semester.stringValue
-            ){ (event: Event) in
-                EventListRow(event: event)
-            }
-            FilteredList(
-                predicates: [
-                    NSPredicate(format: "%K > %@", "date", monthForFuture(period: .semester) as CVarArg),
-                    NSPredicate(format: "%K < %@", "date", monthForFuture(period: .year) as CVarArg)
-                ],
-                ordering: [
-                    NSSortDescriptor(key: "date", ascending: true)
-                ],
-                header: Period.year.stringValue
-            ){ (event: Event) in
-                EventListRow(event: event)
-            }
-            FilteredList(
-                predicates: [
-                    NSPredicate(format: "%K > %@", "date", monthForFuture(period: .year) as CVarArg)
-                ],
-                ordering: [
-                    NSSortDescriptor(key: "date", ascending: true)
-                ],
-                header: Period.decade.stringValue
-            ){ (event: Event) in
-                EventListRow(event: event)
+        }
+#if os(OSX)
+        .alert("Delete event", isPresented: $showDelete, actions: {
+            Button("Delete", action: {
+                guard
+                    let selectedEvent = selectedEvent,
+                    selectedEvent.managedObjectContext != nil
+                else { return }
+                viewContext.delete(selectedEvent)
+                do {
+                    try viewContext.save()
+                } catch {
+                    errorMessage = error.localizedDescription
+                    showError = true
+                }
+            })
+            Button("Cancel", action: {
+                showDelete = false
+            })
+        }, message: {
+            Text("\"\(selectedEvent?.title ?? "It")\" will be permanently deleted.\nAre you sure?")
+        })
+        .onDeleteCommand {
+            guard
+                let selectedEvent = selectedEvent,
+                selectedEvent.managedObjectContext != nil
+            else { return }
+            showDelete = true
+        }
+#endif
+    }
+    
+    // MARK: - Functions
+    private func deleteEvents(section: Period, offsets: IndexSet) {
+        withAnimation {
+            guard let events = eventsDictionary[section] else { return }
+            
+            offsets.map { events[$0] }
+                .forEach(viewContext.delete)
+            do {
+                try viewContext.save()
+            } catch {
+                errorMessage = error.localizedDescription
+                showError = true
             }
         }
     }
@@ -165,6 +186,7 @@ enum Period: String, CaseIterable, Codable {
     var stringValue: String { rawValue }
 }
 
+// MARK: - Previews
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

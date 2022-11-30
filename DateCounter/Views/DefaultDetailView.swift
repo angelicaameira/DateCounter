@@ -11,36 +11,23 @@ import CoreData
 
 struct DefaultDetailView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.eventListCount) var eventCount: Int
     @State var showManageEventView: Bool = false
     @Binding var showError: Bool
     @Binding var errorMessage: String
-    @State private var updateMessage = false
-    var eventCount: Int {
-        let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
-        do {
-            return try viewContext.count(for: fetchRequest)
-        } catch {
-#if DEBUG
-            print(error)
-#endif
-            return 0
-        }
-    }
     
     var body: some View {
         VStack {
-            if updateMessage || true {
-                Text("Welcome!")
-                    .font(.largeTitle)
-                    .foregroundColor(.orange)
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom)
-                
-                if eventCount == 0 {
-                    noEventsMessageView
-                } else {
-                    pickEventMessageView
-                }
+            Text("Welcome!")
+                .font(.largeTitle)
+                .foregroundColor(.orange)
+                .multilineTextAlignment(.center)
+                .padding(.bottom)
+            
+            if eventCount == 0 {
+                noEventsMessageView
+            } else {
+                pickEventMessageView
             }
         }
         .padding()
@@ -92,8 +79,6 @@ struct DefaultDetailView: View {
     private func addSampleEvents() {
         let gregorianCalendar = Calendar(identifier: .gregorian)
         
-        updateMessage.toggle()
-        
         for lunarEclipseDate in lunarEclipseDates {
             if let date = lunarEclipseDate.date,
                date.compare(Date.now) == .orderedDescending {
@@ -135,12 +120,14 @@ struct DefaultDetailView: View {
         graduationEvent.eventDescription = "If you started college today, you would graduate after about 4 years on average"
         graduationEvent.date = gregorianCalendar.date(byAdding: DateComponents(year: 4), to: Date.now)
         
-        do {
-            try viewContext.save()
-        } catch {
-            viewContext.rollback()
-            errorMessage = error.localizedDescription
-            showError = true
+        withAnimation {
+            do {
+                try viewContext.save()
+            } catch {
+                viewContext.rollback()
+                errorMessage = error.localizedDescription
+                showError = true
+            }
         }
     }
 }
@@ -151,6 +138,7 @@ struct DefaultDetailView_Previews: PreviewProvider {
             .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
             .previewDisplayName("No events (new user)")
         DefaultDetailView(showError: .constant(false), errorMessage: .constant("No error message"))
+            .environment(\.eventListCount, 1)
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
             .previewDisplayName("Some events (existing user)")
     }

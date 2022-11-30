@@ -37,6 +37,8 @@
 		4369B8CA28ECB1E1007B7935 /* DateCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8C928ECB1E1007B7935 /* DateCounterTests.swift */; };
 		4369B8D428ECB1E1007B7935 /* DateCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8D328ECB1E1007B7935 /* DateCounterUITests.swift */; };
 		4369B8D628ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */; };
+		4372E7B22937002C0085FE9F /* UISplitViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372E7B12937002C0085FE9F /* UISplitViewController+Extensions.swift */; };
+		4372E7B4293700B20085FE9F /* CustomEnvironments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372E7B3293700B20085FE9F /* CustomEnvironments.swift */; };
 		43A06AF32920752C0003EB5B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B428ECB1E0007B7935 /* Persistence.swift */; };
 		43A06AF4292075300003EB5B /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
 		43C2C79E2932E4DC00F08C36 /* LunarEclipses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79D2932E4DC00F08C36 /* LunarEclipses.swift */; };
@@ -140,6 +142,8 @@
 		4369B8CF28ECB1E1007B7935 /* DateCounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateCounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4369B8D328ECB1E1007B7935 /* DateCounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUITests.swift; sourceTree = "<group>"; };
 		4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4372E7B12937002C0085FE9F /* UISplitViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISplitViewController+Extensions.swift"; sourceTree = "<group>"; };
+		4372E7B3293700B20085FE9F /* CustomEnvironments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEnvironments.swift; sourceTree = "<group>"; };
 		43C2C79D2932E4DC00F08C36 /* LunarEclipses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarEclipses.swift; sourceTree = "<group>"; };
 		43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDetailView.swift; sourceTree = "<group>"; };
 		43F0D2222904ACE6004C1D8E /* EventListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListRow.swift; sourceTree = "<group>"; };
@@ -336,6 +340,8 @@
 				BF7821CB290174A600838000 /* DateCounterCommands.swift */,
 				4369B8B428ECB1E0007B7935 /* Persistence.swift */,
 				43C2C79D2932E4DC00F08C36 /* LunarEclipses.swift */,
+				4372E7B12937002C0085FE9F /* UISplitViewController+Extensions.swift */,
+				4372E7B3293700B20085FE9F /* CustomEnvironments.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -605,8 +611,10 @@
 				BF7821CC290174A600838000 /* DateCounterCommands.swift in Sources */,
 				43C2C79E2932E4DC00F08C36 /* LunarEclipses.swift in Sources */,
 				BFEE1CD828EF6BF4004E52D8 /* DetailView.swift in Sources */,
+				4372E7B4293700B20085FE9F /* CustomEnvironments.swift in Sources */,
 				4369B8B828ECB1E0007B7935 /* DateCounter.xcdatamodeld in Sources */,
 				BF1E20A928F5968A00D688B0 /* FilteredList.swift in Sources */,
+				4372E7B22937002C0085FE9F /* UISplitViewController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
