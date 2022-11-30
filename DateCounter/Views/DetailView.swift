@@ -24,7 +24,7 @@ struct DetailView: View {
             displayingView
             // macOS needs this to work
                 .blankWithoutContext(event) {
-                    DefaultDetailView(showError: $showError, errorMessage: $errorMessage)//, eventCount: eventCount)
+                    DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
                         .navigationTitle("")
                 }
         }

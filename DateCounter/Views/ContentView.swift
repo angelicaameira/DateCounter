@@ -73,7 +73,7 @@ struct ContentView: View {
                         }
                     }
                 }
-            DefaultDetailView(showError: $showError, errorMessage: $errorMessage)//, eventCount: eventsFetchedResults.count)
+            DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
         }
         .environment(\.eventListCount, eventsFetchedResults.count)
         
