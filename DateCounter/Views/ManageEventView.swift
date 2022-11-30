@@ -20,7 +20,7 @@ struct ManageEventView: View {
     @State private var date = Date()
     @State private var showError = false
     @State private var errorMessage = "No error"
-    @State var event: Event? = nil
+    @State var event: Event?
     @State private var showTimePicker = false
     private var navigationBarTitle: String {
         event == nil ? "Add event" : "Edit event"
@@ -51,7 +51,10 @@ struct ManageEventView: View {
                 formBody
             }
             .onAppear(perform: {
-                guard let event = event else { return }
+                guard
+                    let event = event,
+                    title.isEmpty
+                else { return }
                 title = event.title ?? ""
                 eventDescription = event.eventDescription ?? ""
                 date = event.date ?? Date()
@@ -140,7 +143,6 @@ struct ManageEventView: View {
                             .foregroundColor(.secondary)
                     }
                 }
-                
                 Button {
                     showTimePicker = true
                 } label: {
