@@ -45,7 +45,6 @@
 		43C2C7A029339DA700F08C36 /* DefaultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */; };
 		43F0D2232904ACE6004C1D8E /* EventListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2222904ACE6004C1D8E /* EventListRow.swift */; };
 		43F0D2252904CB73004C1D8E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2242904CB73004C1D8E /* Preferences.swift */; };
-		BF1E20A928F5968A00D688B0 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E20A828F5968A00D688B0 /* FilteredList.swift */; };
 		BF7821CC290174A600838000 /* DateCounterCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7821CB290174A600838000 /* DateCounterCommands.swift */; };
 		BFEE1CD828EF6BF4004E52D8 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */; };
 		BFEE1CDA28EF78DF004E52D8 /* ManageEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */; };
@@ -149,7 +148,6 @@
 		43F0D2222904ACE6004C1D8E /* EventListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListRow.swift; sourceTree = "<group>"; };
 		43F0D2242904CB73004C1D8E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		BF03C3D0292BDA3700D21849 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
-		BF1E20A828F5968A00D688B0 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		BF7821CB290174A600838000 /* DateCounterCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterCommands.swift; sourceTree = "<group>"; };
 		BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageEventView.swift; sourceTree = "<group>"; };
@@ -326,7 +324,6 @@
 				4369B8B928ECB1E0007B7935 /* ContentView.swift */,
 				BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */,
 				BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */,
-				BF1E20A828F5968A00D688B0 /* FilteredList.swift */,
 				43F0D2222904ACE6004C1D8E /* EventListRow.swift */,
 				43F0D2242904CB73004C1D8E /* Preferences.swift */,
 				43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */,
@@ -613,7 +610,6 @@
 				BFEE1CD828EF6BF4004E52D8 /* DetailView.swift in Sources */,
 				4372E7B4293700B20085FE9F /* CustomEnvironments.swift in Sources */,
 				4369B8B828ECB1E0007B7935 /* DateCounter.xcdatamodeld in Sources */,
-				BF1E20A928F5968A00D688B0 /* FilteredList.swift in Sources */,
 				4372E7B22937002C0085FE9F /* UISplitViewController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
