@@ -7,8 +7,12 @@
 
 import SwiftUI
 import CoreData
+#if os(watchOS)
+import WatchDatePicker
+#endif
 
 struct ManageEventView: View {
+    //MARK: - Properties
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.dismiss) var dismiss
     @State private var title = ""
@@ -16,18 +20,23 @@ struct ManageEventView: View {
     @State private var date = Date()
     @State private var showError = false
     @State private var errorMessage = "No error"
-    @State var event: Event? = nil
+    @State var event: Event?
+    @State private var showTimePicker = false
+    private var navigationBarTitle: String {
+        event == nil ? "Add event" : "Edit event"
+    }
     
+    // MARK: - Views
+    // MARK: Shared
     var body: some View {
-#if !os(OSX)
-        NavigationView {
-            content
-        }
-#endif
 #if os(OSX)
         content
             .frame(minWidth: 250, maxWidth: 800)
             .padding()
+#else
+        NavigationView {
+            content
+        }
 #endif
     }
     
@@ -39,49 +48,23 @@ struct ManageEventView: View {
                 .padding(.top)
 #endif
             Form {
-#if os(OSX)
-                Section {
-                    TextField("Event name", text: $title)
-                }
-                Section {
-                    TextField("Description", text: $eventDescription)
-                }
-#else
-                Section {
-                    TextEditor(text: $title)
-                } header: {
-                    Text("Title")
-                }
-                Section {
-                    TextEditor(text: $eventDescription)
-                } header: {
-                    Text("Description")
-                }
-#endif
-                Section {
-                    DatePicker("Date", selection: $date)
-#if !os(OSX)
-                        .datePickerStyle(.graphical)
-#endif
-                } header: {
-#if !os(OSX)
-                    Text("Date")
-#endif
-                }
-                .onAppear(perform: {
-                    guard let event = event else { return }
-                    title = event.title ?? ""
-                    eventDescription = event.eventDescription ?? ""
-                    date = event.date ?? Date()
-                })
+                formBody
             }
+            .onAppear(perform: {
+                guard
+                    let event = event,
+                    title.isEmpty
+                else { return }
+                title = event.title ?? ""
+                eventDescription = event.eventDescription ?? ""
+                date = event.date ?? Date()
+            })
             .alert("An error occurred when adding event", isPresented: $showError, actions: {
                 Text("Ok")
             }, message: {
                 Text(errorMessage)
             })
         }
-        .navigationTitle(event == nil ? "Add event" : "Edit event")
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save", action: saveItem)
@@ -92,11 +75,103 @@ struct ManageEventView: View {
                 }
             }
         }
+#if !os(watchOS)
+        .navigationTitle(navigationBarTitle)
+#endif
 #if !os(OSX)
         .navigationViewStyle(.stack)
 #endif
     }
     
+    // MARK: macOS
+#if os(OSX)
+    private var formBody: some View {
+        Group {
+            Section {
+                TextField("Event name", text: $title)
+            }
+            Section {
+                TextField("Description", text: $eventDescription)
+            }
+            Section {
+                DatePicker("Date", selection: $date)
+            }
+        }
+    }
+#endif
+    
+    // MARK: iOS
+#if os(iOS)
+    private var formBody: some View {
+        Group {
+            Section {
+                TextEditor(text: $title)
+            } header: {
+                Text("Title")
+            }
+            Section {
+                TextEditor(text: $eventDescription)
+            } header: {
+                Text("Description")
+            }
+            Section {
+                DatePicker("Date", selection: $date)
+                    .datePickerStyle(.graphical)
+            } header: {
+                Text("Date")
+            }
+        }
+    }
+#endif
+    
+    // MARK: watchOS
+#if os(watchOS)
+    private var formBody: some View {
+        Group {
+            Section {
+                TextField("Event name", text: $title)
+                TextField("Description", text: $eventDescription)
+            }
+            Section {
+                NavigationLink {
+                    DateInputView(selection: $date)
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text("Date")
+                        Text(date, style: .date)
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                Button {
+                    showTimePicker = true
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text("Time")
+                        Text(date, style: .time)
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+            // sheet or fullScreenCover?
+            .sheet(isPresented: $showTimePicker, content: {
+                TimeInputView(selection: $date)
+                    .edgesIgnoringSafeArea(.all)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Done") {
+                                showTimePicker = false
+                            }
+                            .foregroundColor(.orange)
+                        }
+                    }
+            })
+        }
+    }
+#endif
+    
+    // MARK: - Functions
     private func saveItem() {
         withAnimation {
             let newItem: Event
@@ -123,13 +198,51 @@ struct ManageEventView: View {
     }
 }
 
+// MARK: - Preview
 struct ManageEventView_Previews: PreviewProvider {
+    static var addEvent: some View {
+        ManageEventView()
+    }
+    
+    static var editEvent: some View {
+        ManageEventView(event: DateCounterApp_Previews.event(period: .past))
+    }
+    
+    @ViewBuilder
+    static var shared: some View {
+        addEvent.previewDisplayName("Add event")
+        editEvent.previewDisplayName("Edit event")
+    }
+    
     static var previews: some View {
         Group {
-            ManageEventView()
-                .previewDisplayName("Add event")
-            ManageEventView(event: DateCounterApp_Previews.event(period: .past))
-                .previewDisplayName("Edit event")
+#if os(watchOS)
+            NavigationView {
+                addEvent
+            }.previewDisplayName("Add event")
+            NavigationView {
+                editEvent
+            }.previewDisplayName("Edit event")
+#endif
+#if os(iOS)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                Text("")
+                    .sheet(isPresented: .constant(true), content: {
+                        addEvent
+                    })
+                    .previewDisplayName("Add event")
+                Text("")
+                    .sheet(isPresented: .constant(true), content: {
+                        editEvent
+                    })
+                    .previewDisplayName("Edit event")
+            } else {
+                shared
+            }
+#endif
+#if os(OSX)
+            shared
+#endif
         }
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }

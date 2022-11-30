@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-#if !os(OSX)
+#if !os(OSX) && !os(watchOS)
 extension UISplitViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,9 @@ struct ContentView: View {
         NavigationView {
             sidebarView
                 .navigationTitle("Events")
+#if !os(watchOS)
                 .listStyle(.sidebar)
+#endif
 #if os(OSX)
                 .frame(minWidth: 220)
 #endif

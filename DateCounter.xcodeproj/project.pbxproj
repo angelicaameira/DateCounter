@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430DE4CB293550F600EB5BA5 /* WatchDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 430DE4CA293550F600EB5BA5 /* WatchDatePicker */; };
 		43244DAF2927957500D7B31E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435D47B3291F2515006714A3 /* MainInterface.storyboard */; };
 		43342C4128F24606004B9EE5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 43342C4028F24606004B9EE5 /* README.md */; };
 		435D4781291B1EBA006714A3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D4780291B1EBA006714A3 /* WidgetKit.framework */; };
@@ -37,10 +38,25 @@
 		4369B8CA28ECB1E1007B7935 /* DateCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8C928ECB1E1007B7935 /* DateCounterTests.swift */; };
 		4369B8D428ECB1E1007B7935 /* DateCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8D328ECB1E1007B7935 /* DateCounterUITests.swift */; };
 		4369B8D628ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */; };
+		4397BF422933EB64001A0464 /* DefaultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */; };
+		4397BF432933EB6A001A0464 /* LunarEclipses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79D2932E4DC00F08C36 /* LunarEclipses.swift */; };
 		43A06AF32920752C0003EB5B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B428ECB1E0007B7935 /* Persistence.swift */; };
 		43A06AF4292075300003EB5B /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
 		43C2C79E2932E4DC00F08C36 /* LunarEclipses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79D2932E4DC00F08C36 /* LunarEclipses.swift */; };
 		43C2C7A029339DA700F08C36 /* DefaultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */; };
+		43C2C7B92933AEF800F08C36 /* DateCounter_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7B82933AEF800F08C36 /* DateCounter_Watch_AppTests.swift */; };
+		43C2C7C32933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7C22933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift */; };
+		43C2C7C52933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7C42933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift */; };
+		43C2C7CF2933AF9600F08C36 /* DateCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B228ECB1E0007B7935 /* DateCounterApp.swift */; };
+		43C2C7D12933AFB700F08C36 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B428ECB1E0007B7935 /* Persistence.swift */; };
+		43C2C7D22933AFC200F08C36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B928ECB1E0007B7935 /* ContentView.swift */; };
+		43C2C7D32933AFC500F08C36 /* ManageEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */; };
+		43C2C7D42933AFC800F08C36 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */; };
+		43C2C7D52933AFCD00F08C36 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E20A828F5968A00D688B0 /* FilteredList.swift */; };
+		43C2C7D62933AFCD00F08C36 /* EventListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2222904ACE6004C1D8E /* EventListRow.swift */; };
+		43C2C7D72933AFCD00F08C36 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2242904CB73004C1D8E /* Preferences.swift */; };
+		43C2C7D92933AFF900F08C36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4369B8BB28ECB1E1007B7935 /* Assets.xcassets */; };
+		43C2C7DA2933B00400F08C36 /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
 		43F0D2232904ACE6004C1D8E /* EventListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2222904ACE6004C1D8E /* EventListRow.swift */; };
 		43F0D2252904CB73004C1D8E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2242904CB73004C1D8E /* Preferences.swift */; };
 		BF1E20A928F5968A00D688B0 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E20A828F5968A00D688B0 /* FilteredList.swift */; };
@@ -84,6 +100,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4369B8AE28ECB1E0007B7935;
 			remoteInfo = DateCounter;
+		};
+		43C2C7B52933AEF800F08C36 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4369B8A728ECB1E0007B7935 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43C2C7A42933AEF700F08C36;
+			remoteInfo = "DateCounter Watch App";
+		};
+		43C2C7BF2933AEF800F08C36 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4369B8A728ECB1E0007B7935 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43C2C7A42933AEF700F08C36;
+			remoteInfo = "DateCounter Watch App";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -140,8 +170,16 @@
 		4369B8CF28ECB1E1007B7935 /* DateCounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateCounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4369B8D328ECB1E1007B7935 /* DateCounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUITests.swift; sourceTree = "<group>"; };
 		4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		439E7F8E29340E7A00F2A5CE /* DateCounter-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DateCounter-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		43C2C79D2932E4DC00F08C36 /* LunarEclipses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarEclipses.swift; sourceTree = "<group>"; };
 		43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDetailView.swift; sourceTree = "<group>"; };
+		43C2C7A52933AEF700F08C36 /* DateCounter Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DateCounter Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43C2C7B42933AEF800F08C36 /* DateCounter Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DateCounter Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43C2C7B82933AEF800F08C36 /* DateCounter_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounter_Watch_AppTests.swift; sourceTree = "<group>"; };
+		43C2C7BE2933AEF800F08C36 /* DateCounter Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DateCounter Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43C2C7C22933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounter_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		43C2C7C42933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounter_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		43C2C7DB2933B0D800F08C36 /* DateCounter Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DateCounter Watch App.entitlements"; sourceTree = "<group>"; };
 		43F0D2222904ACE6004C1D8E /* EventListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListRow.swift; sourceTree = "<group>"; };
 		43F0D2242904CB73004C1D8E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		BF03C3D0292BDA3700D21849 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
@@ -192,6 +230,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4369B8CC28ECB1E1007B7935 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43C2C7A22933AEF700F08C36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				430DE4CB293550F600EB5BA5 /* WatchDatePicker in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43C2C7B12933AEF800F08C36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43C2C7BB2933AEF800F08C36 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -258,6 +318,9 @@
 				435D4784291B1EBA006714A3 /* Widgets */,
 				435D47A5291F2514006714A3 /* EventIntents */,
 				435D47B0291F2515006714A3 /* EventIntentsUI */,
+				43C2C7A62933AEF700F08C36 /* DateCounter Watch App */,
+				43C2C7B72933AEF800F08C36 /* DateCounter Watch AppTests */,
+				43C2C7C12933AEF800F08C36 /* DateCounter Watch AppUITests */,
 				435D477F291B1EBA006714A3 /* Frameworks */,
 				4369B8B028ECB1E0007B7935 /* Products */,
 			);
@@ -272,6 +335,9 @@
 				435D477E291B1EBA006714A3 /* WidgetsExtension.appex */,
 				435D47A2291F2514006714A3 /* EventIntents.appex */,
 				435D47AD291F2514006714A3 /* EventIntentsUI.appex */,
+				43C2C7A52933AEF700F08C36 /* DateCounter Watch App.app */,
+				43C2C7B42933AEF800F08C36 /* DateCounter Watch AppTests.xctest */,
+				43C2C7BE2933AEF800F08C36 /* DateCounter Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -314,6 +380,32 @@
 				4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */,
 			);
 			path = DateCounterUITests;
+			sourceTree = "<group>";
+		};
+		43C2C7A62933AEF700F08C36 /* DateCounter Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				439E7F8E29340E7A00F2A5CE /* DateCounter-Watch-App-Info.plist */,
+				43C2C7DB2933B0D800F08C36 /* DateCounter Watch App.entitlements */,
+			);
+			path = "DateCounter Watch App";
+			sourceTree = "<group>";
+		};
+		43C2C7B72933AEF800F08C36 /* DateCounter Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				43C2C7B82933AEF800F08C36 /* DateCounter_Watch_AppTests.swift */,
+			);
+			path = "DateCounter Watch AppTests";
+			sourceTree = "<group>";
+		};
+		43C2C7C12933AEF800F08C36 /* DateCounter Watch AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				43C2C7C22933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift */,
+				43C2C7C42933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = "DateCounter Watch AppUITests";
 			sourceTree = "<group>";
 		};
 		43F0D21F2904AC0E004C1D8E /* Views */ = {
@@ -451,6 +543,62 @@
 			productReference = 4369B8CF28ECB1E1007B7935 /* DateCounterUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		43C2C7A42933AEF700F08C36 /* DateCounter Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43C2C7CC2933AEF800F08C36 /* Build configuration list for PBXNativeTarget "DateCounter Watch App" */;
+			buildPhases = (
+				43C2C7A12933AEF700F08C36 /* Sources */,
+				43C2C7A22933AEF700F08C36 /* Frameworks */,
+				43C2C7A32933AEF700F08C36 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DateCounter Watch App";
+			packageProductDependencies = (
+				430DE4CA293550F600EB5BA5 /* WatchDatePicker */,
+			);
+			productName = "DateCounter Watch App";
+			productReference = 43C2C7A52933AEF700F08C36 /* DateCounter Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		43C2C7B32933AEF800F08C36 /* DateCounter Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43C2C7CD2933AEF800F08C36 /* Build configuration list for PBXNativeTarget "DateCounter Watch AppTests" */;
+			buildPhases = (
+				43C2C7B02933AEF800F08C36 /* Sources */,
+				43C2C7B12933AEF800F08C36 /* Frameworks */,
+				43C2C7B22933AEF800F08C36 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43C2C7B62933AEF800F08C36 /* PBXTargetDependency */,
+			);
+			name = "DateCounter Watch AppTests";
+			productName = "DateCounter Watch AppTests";
+			productReference = 43C2C7B42933AEF800F08C36 /* DateCounter Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		43C2C7BD2933AEF800F08C36 /* DateCounter Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43C2C7CE2933AEF800F08C36 /* Build configuration list for PBXNativeTarget "DateCounter Watch AppUITests" */;
+			buildPhases = (
+				43C2C7BA2933AEF800F08C36 /* Sources */,
+				43C2C7BB2933AEF800F08C36 /* Frameworks */,
+				43C2C7BC2933AEF800F08C36 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43C2C7C02933AEF800F08C36 /* PBXTargetDependency */,
+			);
+			name = "DateCounter Watch AppUITests";
+			productName = "DateCounter Watch AppUITests";
+			productReference = 43C2C7BE2933AEF800F08C36 /* DateCounter Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -481,6 +629,17 @@
 						CreatedOnToolsVersion = 14.0.1;
 						TestTargetID = 4369B8AE28ECB1E0007B7935;
 					};
+					43C2C7A42933AEF700F08C36 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					43C2C7B32933AEF800F08C36 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 43C2C7A42933AEF700F08C36;
+					};
+					43C2C7BD2933AEF800F08C36 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 43C2C7A42933AEF700F08C36;
+					};
 				};
 			};
 			buildConfigurationList = 4369B8AA28ECB1E0007B7935 /* Build configuration list for PBXProject "DateCounter" */;
@@ -492,6 +651,9 @@
 				Base,
 			);
 			mainGroup = 4369B8A628ECB1E0007B7935;
+			packageReferences = (
+				430DE4C9293550F600EB5BA5 /* XCRemoteSwiftPackageReference "watch-date-picker" */,
+			);
 			productRefGroup = 4369B8B028ECB1E0007B7935 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -502,6 +664,9 @@
 				435D477D291B1EBA006714A3 /* WidgetsExtension */,
 				435D47A1291F2514006714A3 /* EventIntents */,
 				435D47AC291F2514006714A3 /* EventIntentsUI */,
+				43C2C7A42933AEF700F08C36 /* DateCounter Watch App */,
+				43C2C7B32933AEF800F08C36 /* DateCounter Watch AppTests */,
+				43C2C7BD2933AEF800F08C36 /* DateCounter Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -548,6 +713,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4369B8CD28ECB1E1007B7935 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43C2C7A32933AEF700F08C36 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43C2C7D92933AFF900F08C36 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43C2C7B22933AEF800F08C36 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43C2C7BC2933AEF800F08C36 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -627,6 +814,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		43C2C7A12933AEF700F08C36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43C2C7DA2933B00400F08C36 /* DateCounter.xcdatamodeld in Sources */,
+				43C2C7D12933AFB700F08C36 /* Persistence.swift in Sources */,
+				43C2C7D42933AFC800F08C36 /* DetailView.swift in Sources */,
+				43C2C7D62933AFCD00F08C36 /* EventListRow.swift in Sources */,
+				43C2C7D22933AFC200F08C36 /* ContentView.swift in Sources */,
+				4397BF422933EB64001A0464 /* DefaultDetailView.swift in Sources */,
+				4397BF432933EB6A001A0464 /* LunarEclipses.swift in Sources */,
+				43C2C7D32933AFC500F08C36 /* ManageEventView.swift in Sources */,
+				43C2C7CF2933AF9600F08C36 /* DateCounterApp.swift in Sources */,
+				43C2C7D52933AFCD00F08C36 /* FilteredList.swift in Sources */,
+				43C2C7D72933AFCD00F08C36 /* Preferences.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43C2C7B02933AEF800F08C36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43C2C7B92933AEF800F08C36 /* DateCounter_Watch_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43C2C7BA2933AEF800F08C36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43C2C7C32933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift in Sources */,
+				43C2C7C52933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -657,6 +879,16 @@
 			isa = PBXTargetDependency;
 			target = 4369B8AE28ECB1E0007B7935 /* TheDateCounter */;
 			targetProxy = 4369B8D028ECB1E1007B7935 /* PBXContainerItemProxy */;
+		};
+		43C2C7B62933AEF800F08C36 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43C2C7A42933AEF700F08C36 /* DateCounter Watch App */;
+			targetProxy = 43C2C7B52933AEF800F08C36 /* PBXContainerItemProxy */;
+		};
+		43C2C7C02933AEF800F08C36 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43C2C7A42933AEF700F08C36 /* DateCounter Watch App */;
+			targetProxy = 43C2C7BF2933AEF800F08C36 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -691,7 +923,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter.Widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -720,7 +952,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter.Widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -748,7 +980,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter.EventIntentsUI;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -775,7 +1007,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter.EventIntentsUI;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -803,7 +1035,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter.EventIntents;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -830,7 +1062,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter.EventIntents;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -892,14 +1124,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = br.com.angelicameira.DateCounter;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -948,13 +1184,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = br.com.angelicameira.DateCounter;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -990,7 +1230,6 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -1032,7 +1271,6 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -1052,7 +1290,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounterTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -1073,7 +1311,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounterTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -1093,7 +1331,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounterUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = auto;
@@ -1114,7 +1352,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounterUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = auto;
@@ -1123,6 +1361,145 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TheDateCounter;
+			};
+			name = Release;
+		};
+		43C2C7C62933AEF800F08C36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DateCounter Watch App/DateCounter Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "DateCounter/Preview\\ Content";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DateCounter-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = DateCounter;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = br.com.angelicameira.DateCounter;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		43C2C7C72933AEF800F08C36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DateCounter Watch App/DateCounter Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "DateCounter/Preview\\ Content";
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DateCounter-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = DateCounter;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = br.com.angelicameira.DateCounter;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		43C2C7C82933AEF800F08C36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.angelicameira.DateCounter-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateCounter Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DateCounter Watch App";
+			};
+			name = Debug;
+		};
+		43C2C7C92933AEF800F08C36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.angelicameira.DateCounter-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateCounter Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DateCounter Watch App";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		43C2C7CA2933AEF800F08C36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.angelicameira.DateCounter-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "DateCounter Watch App";
+			};
+			name = Debug;
+		};
+		43C2C7CB2933AEF800F08C36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.angelicameira.DateCounter-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "DateCounter Watch App";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -1192,7 +1569,53 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		43C2C7CC2933AEF800F08C36 /* Build configuration list for PBXNativeTarget "DateCounter Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43C2C7C62933AEF800F08C36 /* Debug */,
+				43C2C7C72933AEF800F08C36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43C2C7CD2933AEF800F08C36 /* Build configuration list for PBXNativeTarget "DateCounter Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43C2C7C82933AEF800F08C36 /* Debug */,
+				43C2C7C92933AEF800F08C36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43C2C7CE2933AEF800F08C36 /* Build configuration list for PBXNativeTarget "DateCounter Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43C2C7CA2933AEF800F08C36 /* Debug */,
+				43C2C7CB2933AEF800F08C36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		430DE4C9293550F600EB5BA5 /* XCRemoteSwiftPackageReference "watch-date-picker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/antoniogermano/watch-date-picker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		430DE4CA293550F600EB5BA5 /* WatchDatePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 430DE4C9293550F600EB5BA5 /* XCRemoteSwiftPackageReference "watch-date-picker" */;
+			productName = WatchDatePicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */ = {
