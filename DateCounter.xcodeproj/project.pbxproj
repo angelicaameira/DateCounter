@@ -44,8 +44,6 @@
 		43A06AF4292075300003EB5B /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
 		43C2C79E2932E4DC00F08C36 /* LunarEclipses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79D2932E4DC00F08C36 /* LunarEclipses.swift */; };
 		43C2C7A029339DA700F08C36 /* DefaultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */; };
-		43C2C7AC2933AEF800F08C36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C2C7AB2933AEF800F08C36 /* Assets.xcassets */; };
-		43C2C7AF2933AEF800F08C36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C2C7AE2933AEF800F08C36 /* Preview Assets.xcassets */; };
 		43C2C7B92933AEF800F08C36 /* DateCounter_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7B82933AEF800F08C36 /* DateCounter_Watch_AppTests.swift */; };
 		43C2C7C32933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7C22933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift */; };
 		43C2C7C52933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7C42933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift */; };
@@ -176,8 +174,6 @@
 		43C2C79D2932E4DC00F08C36 /* LunarEclipses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarEclipses.swift; sourceTree = "<group>"; };
 		43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDetailView.swift; sourceTree = "<group>"; };
 		43C2C7A52933AEF700F08C36 /* DateCounter Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DateCounter Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		43C2C7AB2933AEF800F08C36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		43C2C7AE2933AEF800F08C36 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		43C2C7B42933AEF800F08C36 /* DateCounter Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DateCounter Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C2C7B82933AEF800F08C36 /* DateCounter_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounter_Watch_AppTests.swift; sourceTree = "<group>"; };
 		43C2C7BE2933AEF800F08C36 /* DateCounter Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DateCounter Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -391,18 +387,8 @@
 			children = (
 				439E7F8E29340E7A00F2A5CE /* DateCounter-Watch-App-Info.plist */,
 				43C2C7DB2933B0D800F08C36 /* DateCounter Watch App.entitlements */,
-				43C2C7AB2933AEF800F08C36 /* Assets.xcassets */,
-				43C2C7AD2933AEF800F08C36 /* Preview Content */,
 			);
 			path = "DateCounter Watch App";
-			sourceTree = "<group>";
-		};
-		43C2C7AD2933AEF800F08C36 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				43C2C7AE2933AEF800F08C36 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		43C2C7B72933AEF800F08C36 /* DateCounter Watch AppTests */ = {
@@ -737,9 +723,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43C2C7AF2933AEF800F08C36 /* Preview Assets.xcassets in Resources */,
 				43C2C7D92933AFF900F08C36 /* Assets.xcassets in Resources */,
-				43C2C7AC2933AEF800F08C36 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1388,7 +1372,7 @@
 				CODE_SIGN_ENTITLEMENTS = "DateCounter Watch App/DateCounter Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DateCounter Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "DateCounter/Preview\\ Content";
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1419,7 +1403,7 @@
 				CODE_SIGN_ENTITLEMENTS = "DateCounter Watch App/DateCounter Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DateCounter Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "DateCounter/Preview\\ Content";
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
