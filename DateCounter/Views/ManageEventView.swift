@@ -20,7 +20,8 @@ struct ManageEventView: View {
     @State private var date = Date()
     @State private var showError = false
     @State private var errorMessage = "No error"
-    @State var event: Event? = nil
+    @State var event: Event?
+    @State private var showTimePicker = false
     private var navigationBarTitle: String {
         event == nil ? "Add event" : "Edit event"
     }
@@ -50,7 +51,10 @@ struct ManageEventView: View {
                 formBody
             }
             .onAppear(perform: {
-                guard let event = event else { return }
+                guard
+                    let event = event,
+                    title.isEmpty
+                else { return }
                 title = event.title ?? ""
                 eventDescription = event.eventDescription ?? ""
                 date = event.date ?? Date()
@@ -129,9 +133,40 @@ struct ManageEventView: View {
                 TextField("Description", text: $eventDescription)
             }
             Section {
-                DatePicker("Date time", selection: $date)
-                DatePicker("Time", selection: $date)
+                NavigationLink {
+                    DateInputView(selection: $date)
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text("Date")
+                        Text(date, style: .date)
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                Button {
+                    showTimePicker = true
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text("Time")
+                        Text(date, style: .time)
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    }
+                }
             }
+            // sheet or fullScreenCover?
+            .sheet(isPresented: $showTimePicker, content: {
+                TimeInputView(selection: $date)
+                    .edgesIgnoringSafeArea(.all)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Done") {
+                                showTimePicker = false
+                            }
+                            .foregroundColor(.orange)
+                        }
+                    }
+            })
         }
     }
 #endif
