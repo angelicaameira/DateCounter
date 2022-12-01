@@ -198,9 +198,9 @@ struct DetailView_Previews: PreviewProvider {
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 #endif
 #if os(OSX)
-        DetailView(event: DateCounterApp_Previews.event(period: .past))
+        DetailView(event: TestData.event(period: .past))
             .previewDisplayName("Detail")
-        DetailView(event: DateCounterApp_Previews.event(period: .past), isEditing: true)
+        DetailView(event: TestData.event(period: .past), isEditing: true)
             .previewDisplayName("Edit")
 #endif
     }
