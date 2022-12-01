@@ -169,6 +169,7 @@ struct DetailView: View {
     }
 }
 
+#if !TEST
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
 #if !os(OSX)
@@ -177,9 +178,9 @@ struct DetailView_Previews: PreviewProvider {
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     ContentView()
                         .opacity(0.2)
-                    DetailView(event: DateCounterApp_Previews.event(period: .semester))
+                    DetailView(event: TestData.event(period: .semester))
                 } else {
-                    DetailView(event: DateCounterApp_Previews.event(period: .semester))
+                    DetailView(event: TestData.event(period: .semester))
                 }
             }
             .previewDisplayName("Detail")
@@ -187,9 +188,9 @@ struct DetailView_Previews: PreviewProvider {
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     ContentView()
                         .opacity(0.2)
-                    DetailView(event: DateCounterApp_Previews.event(period: .semester), isEditing: true)
+                    DetailView(event: TestData.event(period: .semester), isEditing: true)
                 } else {
-                    DetailView(event: DateCounterApp_Previews.event(period: .semester), isEditing: true)
+                    DetailView(event: TestData.event(period: .semester), isEditing: true)
                 }
             }
             .previewDisplayName("Edit")
@@ -204,3 +205,4 @@ struct DetailView_Previews: PreviewProvider {
 #endif
     }
 }
+#endif

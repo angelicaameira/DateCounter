@@ -132,6 +132,7 @@ struct DefaultDetailView: View {
     }
 }
 
+#if !TEST
 struct DefaultDetailView_Previews: PreviewProvider {
     static var previews: some View {
         DefaultDetailView(showError: .constant(false), errorMessage: .constant("No error message"))
@@ -143,3 +144,4 @@ struct DefaultDetailView_Previews: PreviewProvider {
             .previewDisplayName("Some events (existing user)")
     }
 }
+#endif

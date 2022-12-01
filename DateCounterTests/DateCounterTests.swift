@@ -29,7 +29,7 @@ final class DateCounterTests: XCTestCase {
     }
     
     func testRemainingTime() {
-        let detailView = DetailView(event: DateCounterApp_Previews.event(period: .month))
+        let detailView = DetailView(event: TestData.event(period: .month))
         let remainingTime = detailView.remainingTime(forComponent: .second)
         guard let remainingTime = remainingTime else {
             XCTFail("remainingTime could not be generated")

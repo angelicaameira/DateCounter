@@ -30,10 +30,11 @@ struct EventListRow: View {
     }
 }
 
+#if !TEST
 struct EventListRow_Previews: PreviewProvider {
 
     static var previews: some View {
-        EventListRow(event: DateCounterApp_Previews.event(period: nil))
+        EventListRow(event: TestData.event(period: nil))
             .previewLayout(.fixed(width: 300, height: 70))
             .previewDisplayName("Single row")
 
@@ -42,7 +43,7 @@ struct EventListRow_Previews: PreviewProvider {
                 ForEach(0...3, id: \.self) { section in
                     Section {
                         ForEach(0...4, id: \.self) { item in
-                            EventListRow(event: DateCounterApp_Previews.event(period: nil))
+                            EventListRow(event: TestData.event(period: nil))
                         }
                     } header: {
                         Text("Section \(section)")
@@ -54,3 +55,4 @@ struct EventListRow_Previews: PreviewProvider {
         .previewDisplayName("Multiple rows")
     }
 }
+#endif

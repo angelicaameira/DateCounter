@@ -199,13 +199,14 @@ struct ManageEventView: View {
 }
 
 // MARK: - Preview
+#if !TEST
 struct ManageEventView_Previews: PreviewProvider {
     static var addEvent: some View {
         ManageEventView()
     }
     
     static var editEvent: some View {
-        ManageEventView(event: DateCounterApp_Previews.event(period: .past))
+        ManageEventView(event: TestData.event(period: .past))
     }
     
     @ViewBuilder
@@ -247,3 +248,4 @@ struct ManageEventView_Previews: PreviewProvider {
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+#endif

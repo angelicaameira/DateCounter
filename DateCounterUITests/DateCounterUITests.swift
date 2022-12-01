@@ -30,6 +30,8 @@ final class DateCounterUITests: XCTestCase {
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             XCUIDevice.shared.orientation = .landscapeLeft
+        } else {
+            XCUIDevice.shared.orientation = .portrait
         }
         
         let eventsNavigationBar = app.navigationBars["Events"]
@@ -91,6 +93,8 @@ final class DateCounterUITests: XCTestCase {
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             XCUIDevice.shared.orientation = .landscapeLeft
+        } else {
+            XCUIDevice.shared.orientation = .portrait
         }
         
         let eventsNavigationBar = app.navigationBars["Events"]

@@ -189,6 +189,7 @@ enum Period: String, CaseIterable, Codable {
 }
 
 // MARK: - Previews
+#if !TEST
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
@@ -199,3 +200,4 @@ struct ContentView_Previews: PreviewProvider {
             .previewDisplayName("Some events (existing user)")
     }
 }
+#endif
