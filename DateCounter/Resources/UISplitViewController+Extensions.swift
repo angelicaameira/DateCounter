@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import CoreData
 
-#if !os(OSX)
+#if !os(OSX) && !os(watchOS)
 extension UISplitViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()

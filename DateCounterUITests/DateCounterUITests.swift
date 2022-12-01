@@ -24,13 +24,12 @@ final class DateCounterUITests: XCTestCase {
     }
 
 #if os(iOS)
-    func testEvenHasRequiredTitleField_CancelEditing() throws {
-        // UI tests must launch the application that they test.
+    func testEventHasRequiredTitleField_CancelEditing() throws {
         let app = XCUIApplication()
         app.launch()
         
         if UIDevice.current.userInterfaceIdiom == .pad {
-            XCUIDevice.shared.orientation = .landscapeRight
+            XCUIDevice.shared.orientation = .landscapeLeft
         }
         
         let eventsNavigationBar = app.navigationBars["Events"]
@@ -72,7 +71,7 @@ final class DateCounterUITests: XCTestCase {
         let cellsContainingTest = app.cells.containing(NSPredicate(format: "label contains[c] %@", "Test"))
         XCTAssert(cellsContainingTest.firstMatch.exists)
         
-        eventsNavigationBar/*@START_MENU_TOKEN@*/.buttons["Edit"]/*[[".otherElements[\"Edit\"].buttons[\"Edit\"]",".buttons[\"Edit\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        eventsNavigationBar.buttons["Edit"].tap()
         let deleteLeadingButton = cellsContainingTest.buttons["Delete "]
         if deleteLeadingButton.exists {
             deleteLeadingButton.firstMatch.tap() // iOS 15
@@ -80,10 +79,72 @@ final class DateCounterUITests: XCTestCase {
             cellsContainingTest.otherElements.containing(.image, identifier:"remove").firstMatch.tap() // iOS 16
         }
         app.buttons["Delete"].tap()
-        eventsNavigationBar/*@START_MENU_TOKEN@*/.buttons["Done"]/*[[".otherElements[\"Done\"].buttons[\"Done\"]",".buttons[\"Done\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        eventsNavigationBar.buttons["Done"].tap()
         
         XCTAssert(app.cells.containing(NSPredicate(format: "label contains[c] %@", "Test")).firstMatch.exists == false)
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testEventHasRequiredTitleField_FixName() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            XCUIDevice.shared.orientation = .landscapeLeft
+        }
+        
+        let eventsNavigationBar = app.navigationBars["Events"]
+        eventsNavigationBar.buttons["Add Event"].tap()
+
+        let eventNameTextField = app.textViews.firstMatch
+        eventNameTextField.tap()
+        
+        eventNameTextField.typeText("Test")
+        
+        let day26 = app.staticTexts["26"]
+        if day26.isHittable {
+            day26.tap()
+        }
+
+        let saveButton = app.navigationBars["Add event"].buttons["Save"]
+        saveButton.tap()
+        
+        app.cells.containing(NSPredicate(format: "label contains[c] %@", "Test")).firstMatch.tap()
+        
+        let testNavigationBar = app.navigationBars["Test"]
+        testNavigationBar.buttons["Edit this event"].tap()
+        let eventTitleTextField = app.textViews.firstMatch
+        
+        eventTitleTextField.tap()
+        continueAfterFailure = true
+        eventTitleTextField.clearText()
+        continueAfterFailure = false
+
+        let editEventNavigationBar = app.navigationBars["Edit event"]
+        editEventNavigationBar.buttons["Save"].tap()
+        app.alerts["An error occurred when adding event"].scrollViews.otherElements.buttons["OK"].tap()
+        eventTitleTextField.tap()
+        eventTitleTextField.typeText("New name")
+        editEventNavigationBar.buttons["Save"].tap()
+        
+        let barContainingNewName = app.navigationBars.containing(NSPredicate(format: "label contains[c] %@", "New name"))
+        XCTAssert(barContainingNewName.firstMatch.exists)
+        
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            app.navigationBars["New name"].buttons["Events"].tap()
+        }
+
+        let cellsContainingNewName = app.cells.containing(NSPredicate(format: "label contains[c] %@", "New name"))
+        XCTAssert(cellsContainingNewName.firstMatch.exists)
+        cellsContainingNewName.firstMatch.tap()
+
+        let newNameNavigationBar = app.navigationBars["New name"]
+        newNameNavigationBar.buttons["Delete this event"].tap()
+        app.buttons["Delete"].tap()
+
+        sleep(3)
+        XCTAssert(app.navigationBars["New name"].firstMatch.exists == false) // tests removal on iPad
+        XCTAssert(app.cells.containing(NSPredicate(format: "label contains[c] %@", "New name")).firstMatch.exists == false)
     }
 #endif
 
@@ -109,8 +170,8 @@ extension XCUIElement {
         }
         self.tap()
         let app = XCUIApplication()
-        app/*@START_MENU_TOKEN@*/.staticTexts["Select All"]/*[[".menuItems[\"Select All\"].staticTexts[\"Select All\"]",".staticTexts[\"Select All\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.staticTexts["Cut"]/*[[".menuItems[\"Cut\"].staticTexts[\"Cut\"]",".staticTexts[\"Cut\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.staticTexts["Select All"].tap()
+        app.staticTexts["Cut"].tap()
         
         let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
         self.typeText(deleteString)
