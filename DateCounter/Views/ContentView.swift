@@ -90,8 +90,16 @@ struct ContentView: View {
         })
     }
     
+    let trackCurrentEvent: Bool = {
+#if os(OSX)
+        return true
+#else
+        return false
+#endif
+    }()
+    
     var sidebarView: some View {
-        List(selection: $selectedEvent) {
+        List(selection: trackCurrentEvent ? $selectedEvent : nil) {
             ForEach(sectionKeys, id: \.self) { section in
                 if let events = eventsDictionary[section] {
                     Section {
