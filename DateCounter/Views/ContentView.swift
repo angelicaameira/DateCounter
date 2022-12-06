@@ -108,7 +108,7 @@ struct ContentView: View {
     }
     
     @ViewBuilder
-    var sidebarView: some View {
+    var sharedSidebar: some View {
 #if os(OSX)
         List(selection: $selectedEvent) {
             sidebarContent
@@ -118,6 +118,11 @@ struct ContentView: View {
             sidebarContent
         }
 #endif
+    }
+    
+    @ViewBuilder
+    var sidebarView: some View {
+        sharedSidebar
 #if os(OSX)
         .alert("Delete event", isPresented: $showDelete, actions: {
             Button("Delete", action: {
