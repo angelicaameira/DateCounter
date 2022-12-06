@@ -60,6 +60,8 @@
 		43F0D2232904ACE6004C1D8E /* EventListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2222904ACE6004C1D8E /* EventListRow.swift */; };
 		43F0D2252904CB73004C1D8E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2242904CB73004C1D8E /* Preferences.swift */; };
 		BF1E20A928F5968A00D688B0 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E20A828F5968A00D688B0 /* FilteredList.swift */; };
+		BF229F47293F78B600B22A52 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF229F46293F78B600B22A52 /* Onboarding.swift */; };
+		BF229F48293F78B600B22A52 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF229F46293F78B600B22A52 /* Onboarding.swift */; };
 		BF7821CC290174A600838000 /* DateCounterCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7821CB290174A600838000 /* DateCounterCommands.swift */; };
 		BFEE1CD828EF6BF4004E52D8 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */; };
 		BFEE1CDA28EF78DF004E52D8 /* ManageEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */; };
@@ -184,6 +186,7 @@
 		43F0D2242904CB73004C1D8E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		BF03C3D0292BDA3700D21849 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
 		BF1E20A828F5968A00D688B0 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
+		BF229F46293F78B600B22A52 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		BF7821CB290174A600838000 /* DateCounterCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterCommands.swift; sourceTree = "<group>"; };
 		BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageEventView.swift; sourceTree = "<group>"; };
@@ -418,6 +421,7 @@
 				43F0D2222904ACE6004C1D8E /* EventListRow.swift */,
 				43F0D2242904CB73004C1D8E /* Preferences.swift */,
 				43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */,
+				BF229F46293F78B600B22A52 /* Onboarding.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -791,6 +795,7 @@
 				4369B8BA28ECB1E0007B7935 /* ContentView.swift in Sources */,
 				BF7821CC290174A600838000 /* DateCounterCommands.swift in Sources */,
 				43C2C79E2932E4DC00F08C36 /* LunarEclipses.swift in Sources */,
+				BF229F47293F78B600B22A52 /* Onboarding.swift in Sources */,
 				BFEE1CD828EF6BF4004E52D8 /* DetailView.swift in Sources */,
 				4369B8B828ECB1E0007B7935 /* DateCounter.xcdatamodeld in Sources */,
 				BF1E20A928F5968A00D688B0 /* FilteredList.swift in Sources */,
@@ -824,6 +829,7 @@
 				43C2C7D62933AFCD00F08C36 /* EventListRow.swift in Sources */,
 				43C2C7D22933AFC200F08C36 /* ContentView.swift in Sources */,
 				4397BF422933EB64001A0464 /* DefaultDetailView.swift in Sources */,
+				BF229F48293F78B600B22A52 /* Onboarding.swift in Sources */,
 				4397BF432933EB6A001A0464 /* LunarEclipses.swift in Sources */,
 				43C2C7D32933AFC500F08C36 /* ManageEventView.swift in Sources */,
 				43C2C7CF2933AF9600F08C36 /* DateCounterApp.swift in Sources */,

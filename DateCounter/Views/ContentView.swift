@@ -21,8 +21,10 @@ extension UISplitViewController {
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var showManageEventView = false
+    @State private var showOnboarding = false
     @State private var showError = false
     @State private var errorMessage = "No error"
+    @State private var count = 0
     
     var body: some View {
         NavigationView {
@@ -56,6 +58,7 @@ struct ContentView: View {
                             Label("Add Event", systemImage: "plus")
                         }
                     }
+                    
                 }
             DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
         }
@@ -64,12 +67,29 @@ struct ContentView: View {
             ManageEventView()
         }
         
+       
+        
         .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
             Text("Ok")
         }, message: {
             Text(errorMessage)
         })
     }
+    
+    func createOnboarding() {
+        
+        
+        if count == 0 {
+            
+            sheet(isPresented: $showOnboarding) {
+                Onboarding()
+            }
+            
+            
+        }
+    }
+    
+    
     
     var sidebarView: some View {
         List {
