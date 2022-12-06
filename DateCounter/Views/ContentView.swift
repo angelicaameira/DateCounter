@@ -90,31 +90,34 @@ struct ContentView: View {
         })
     }
     
-    let trackCurrentEvent: Bool = {
-#if os(OSX)
-        return true
-#else
-        return false
-#endif
-    }()
-    
-    var sidebarView: some View {
-        List(selection: trackCurrentEvent ? $selectedEvent : nil) {
-            ForEach(sectionKeys, id: \.self) { section in
-                if let events = eventsDictionary[section] {
-                    Section {
-                        ForEach(events, id: \.self) { event in
-                            EventListRow(event: event)
-                        }
-                        .onDelete { indexSet in
-                            deleteEvents(section: section, offsets: indexSet)
-                        }
-                    } header: {
-                        Text(section.stringValue)
+    var sidebarContent: some View {
+        ForEach(sectionKeys, id: \.self) { section in
+            if let events = eventsDictionary[section] {
+                Section {
+                    ForEach(events, id: \.self) { event in
+                        EventListRow(event: event)
                     }
+                    .onDelete { indexSet in
+                        deleteEvents(section: section, offsets: indexSet)
+                    }
+                } header: {
+                    Text(section.stringValue)
                 }
             }
         }
+    }
+    
+    @ViewBuilder
+    var sidebarView: some View {
+#if os(OSX)
+        List(selection: $selectedEvent) {
+            sidebarContent
+        }
+#else
+        List {
+            sidebarContent
+        }
+#endif
 #if os(OSX)
         .alert("Delete event", isPresented: $showDelete, actions: {
             Button("Delete", action: {
@@ -162,11 +165,11 @@ struct ContentView: View {
         }
     }
     
-    func toggleSidebar() {
 #if os(OSX)
+    func toggleSidebar() {
         NSApp.sendAction(#selector(NSSplitViewController.toggleSidebar(_:)), to: nil, from: nil)
-#endif
     }
+#endif
     
     func monthForFuture(period: Period) -> Date {
         var components: DateComponents

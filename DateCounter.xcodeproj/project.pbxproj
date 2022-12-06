@@ -10,6 +10,8 @@
 		430DE4CB293550F600EB5BA5 /* WatchDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 430DE4CA293550F600EB5BA5 /* WatchDatePicker */; };
 		43244DAF2927957500D7B31E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435D47B3291F2515006714A3 /* MainInterface.storyboard */; };
 		43342C4128F24606004B9EE5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 43342C4028F24606004B9EE5 /* README.md */; };
+		435687092939370C005B0318 /* CustomEnvironments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372E7B3293700B20085FE9F /* CustomEnvironments.swift */; };
+		4356870A29393720005B0318 /* UISplitViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372E7B12937002C0085FE9F /* UISplitViewController+Extensions.swift */; };
 		435D4781291B1EBA006714A3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D4780291B1EBA006714A3 /* WidgetKit.framework */; };
 		435D4783291B1EBA006714A3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D4782291B1EBA006714A3 /* SwiftUI.framework */; };
 		435D4786291B1EBA006714A3 /* WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D4785291B1EBA006714A3 /* WidgetsBundle.swift */; };
@@ -824,12 +826,14 @@
 			files = (
 				43C2C7DA2933B00400F08C36 /* DateCounter.xcdatamodeld in Sources */,
 				43C2C7D12933AFB700F08C36 /* Persistence.swift in Sources */,
+				435687092939370C005B0318 /* CustomEnvironments.swift in Sources */,
 				43C2C7D42933AFC800F08C36 /* DetailView.swift in Sources */,
 				43C2C7D62933AFCD00F08C36 /* EventListRow.swift in Sources */,
 				43C2C7D22933AFC200F08C36 /* ContentView.swift in Sources */,
 				4397BF422933EB64001A0464 /* DefaultDetailView.swift in Sources */,
 				4397BF432933EB6A001A0464 /* LunarEclipses.swift in Sources */,
 				43C2C7D32933AFC500F08C36 /* ManageEventView.swift in Sources */,
+				4356870A29393720005B0318 /* UISplitViewController+Extensions.swift in Sources */,
 				43C2C7CF2933AF9600F08C36 /* DateCounterApp.swift in Sources */,
 				43C2C7D52933AFCD00F08C36 /* (null) in Sources */,
 				43C2C7D72933AFCD00F08C36 /* Preferences.swift in Sources */,
