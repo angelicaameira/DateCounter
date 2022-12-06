@@ -196,10 +196,10 @@ struct ContentView: View {
 
 enum Period: String, CaseIterable, Codable {
     case past = "Past"
-    case month = "Month"
-    case semester = "Semester"
-    case year = "Year"
-    case decade = "Decade"
+    case month = "Next month"
+    case semester = "Next semester"
+    case year = "Next year"
+    case decade = "Next decade"
     
     var stringValue: String { rawValue }
 }
