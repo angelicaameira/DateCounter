@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct EventListRow: View {
-    let event: Event
+    @ObservedObject var event: Event
     
     var body: some View {
         NavigationLink {
             DetailView(event: event)
+            // iPadOS needs this to work
+                .blankWithoutContext(event) {
+                    DefaultDetailView(showError: .constant(false), errorMessage: .constant(""))
+                        .navigationTitle("")
+                }
         } label: {
             HStack {
                 Text(event.title ?? "Unnamed event")
@@ -22,27 +27,23 @@ struct EventListRow: View {
                 }
             }
         }
-#if os(OSX)
-        .onDeleteCommand {
-            //TODO: refactor to allow deleting the row here
-        }
-#endif
     }
 }
 
+#if !TEST
 struct EventListRow_Previews: PreviewProvider {
-    
+
     static var previews: some View {
-        EventListRow(event: DateCounterApp_Previews.event(period: nil))
+        EventListRow(event: TestData.event(period: nil))
             .previewLayout(.fixed(width: 300, height: 70))
             .previewDisplayName("Single row")
-        
+
         NavigationView {
             List {
                 ForEach(0...3, id: \.self) { section in
                     Section {
                         ForEach(0...4, id: \.self) { item in
-                            EventListRow(event: DateCounterApp_Previews.event(period: nil))
+                            EventListRow(event: TestData.event(period: nil))
                         }
                     } header: {
                         Text("Section \(section)")
@@ -54,3 +55,4 @@ struct EventListRow_Previews: PreviewProvider {
         .previewDisplayName("Multiple rows")
     }
 }
+#endif

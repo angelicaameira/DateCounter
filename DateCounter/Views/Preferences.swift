@@ -27,6 +27,7 @@ struct Preferences: View {
     }
 }
 
+#if !TEST
 struct Preferences_Previews: PreviewProvider {
     static var previews: some View {
 #if os(OSX)
@@ -37,3 +38,4 @@ struct Preferences_Previews: PreviewProvider {
 #endif
     }
 }
+#endif

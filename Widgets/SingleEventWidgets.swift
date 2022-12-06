@@ -287,6 +287,7 @@ struct SingleEventWidgets: Widget {
     }
 }
 
+#if !TEST
 struct Widgets_Previews: PreviewProvider {
 #if os(OSX)
     static let families: [WidgetFamily] = [
@@ -327,3 +328,4 @@ struct Widgets_Previews: PreviewProvider {
         }
     }
 }
+#endif

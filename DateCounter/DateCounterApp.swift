@@ -33,8 +33,7 @@ struct DateCounterApp: App {
     }
 }
 
-struct DateCounterApp_Previews: PreviewProvider {
-    
+struct TestData {
     static func event(period: Period?) -> Event {
         let event = Event(context: PersistenceController.preview.container.viewContext)
         let eventTitles = [
@@ -68,12 +67,17 @@ struct DateCounterApp_Previews: PreviewProvider {
         event.date = Date(timeInterval: timeInterval, since: Date.now)
         return event
     }
+}
+
+#if !TEST
+struct DateCounterApp_Previews: PreviewProvider {
     
     static var previews: some View {
         VStack {
-            Text(event(period: .month).title!)
-            Text(event(period: .month).eventDescription!)
-            Text(event(period: .month).date!.formatted())
+            Text(TestData.event(period: .month).title!)
+            Text(TestData.event(period: .month).eventDescription!)
+            Text(TestData.event(period: .month).date!.formatted())
         }
     }
 }
+#endif
