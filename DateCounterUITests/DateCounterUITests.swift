@@ -29,7 +29,9 @@ final class DateCounterUITests: XCTestCase {
         app.launch()
         
         if UIDevice.current.userInterfaceIdiom == .pad {
-            XCUIDevice.shared.orientation = .landscapeRight
+            XCUIDevice.shared.orientation = .landscapeLeft
+        } else {
+            XCUIDevice.shared.orientation = .portrait
         }
         
         let eventsNavigationBar = app.navigationBars["Events"]
@@ -90,7 +92,9 @@ final class DateCounterUITests: XCTestCase {
         app.launch()
         
         if UIDevice.current.userInterfaceIdiom == .pad {
-            XCUIDevice.shared.orientation = .landscapeRight
+            XCUIDevice.shared.orientation = .landscapeLeft
+        } else {
+            XCUIDevice.shared.orientation = .portrait
         }
         
         let eventsNavigationBar = app.navigationBars["Events"]
@@ -134,7 +138,7 @@ final class DateCounterUITests: XCTestCase {
             app.navigationBars["New name"].buttons["Events"].tap()
         }
 
-        let cellsContainingNewName = app.cells.containing(NSPredicate(format: "label contains[c] %@", "Test"))//"New name")) FIXME: fix this after fixing the list update bug
+        let cellsContainingNewName = app.cells.containing(NSPredicate(format: "label contains[c] %@", "New name"))
         XCTAssert(cellsContainingNewName.firstMatch.exists)
         cellsContainingNewName.firstMatch.tap()
 
