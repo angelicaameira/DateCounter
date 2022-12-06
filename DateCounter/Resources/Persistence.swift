@@ -36,14 +36,6 @@ struct PersistenceController {
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "DateCounter")
         
-//        let documentsDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-//        let local = NSPersistentStoreDescription(url: documentsDirectory.appendingPathComponent("local.sqlite"))
-//        local.configuration = "Local"
-//
-//        let cloud = NSPersistentStoreDescription(url: URL(fileURLWithPath: "/files/cloud.sqlite"))
-//        cloud.configuration = "Cloud"
-//        cloud.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com .wwdc. demo" )
-        
         let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.br.com.angelicameira.DateCounter")!
         let storeURL = containerURL.appendingPathComponent("DateCounter.sqlite")
         let shared = NSPersistentStoreDescription(url: storeURL)
