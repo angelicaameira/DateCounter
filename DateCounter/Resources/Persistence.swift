@@ -34,12 +34,22 @@ struct PersistenceController {
     let container: NSPersistentCloudKitContainer
 
     init(inMemory: Bool = false) {
+        container = NSPersistentCloudKitContainer(name: "DateCounter")
+        
+//        let local = NSPersistentStoreDescription(url: URL(fileURLWithPath: "/files/local.sqlite"))
+//        local.configuration = "Local"
+//
+//        let cloud = NSPersistentStoreDescription(url: URL(fileURLWithPath: "/files/cloud.sqlite"))
+//        cloud.configuration = "Cloud"
+//        cloud.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com .wwdc. demo" )
+        
         let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.br.com.angelicameira.DateCounter")!
         let storeURL = containerURL.appendingPathComponent("DateCounter.sqlite")
-        let description = NSPersistentStoreDescription(url: storeURL)
-        
-        container = NSPersistentCloudKitContainer(name: "DateCounter")
-        container.persistentStoreDescriptions = [description]
+        let shared = NSPersistentStoreDescription(url: storeURL)
+        shared.configuration = "Shared"
+        shared.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "group.br.com.angelicameira.DateCounter")
+
+//        container.persistentStoreDescriptions = [ shared ]
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
