@@ -10,7 +10,4 @@
         </attribute>
         <attribute name="title" attributeType="String" defaultValueString=""/>
     </entity>
-    <configuration name="Shared" usedWithCloudKit="YES">
-        <memberEntity name="Event"/>
-    </configuration>
 </model>
