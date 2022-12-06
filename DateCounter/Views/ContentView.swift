@@ -69,6 +69,8 @@ struct ContentView: View {
         
        
         
+       
+        
         .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
             Text("Ok")
         }, message: {
@@ -83,6 +85,8 @@ struct ContentView: View {
             
             sheet(isPresented: $showOnboarding) {
                 Onboarding()
+                
+                
             }
             
             
@@ -172,6 +176,8 @@ struct ContentView: View {
             components = DateComponents(year: 10)
         case .past:
             components = DateComponents(nanosecond: 1) //FIXME: that's not supposed to happen
+            count += 1
+            createOnboarding()
         }
         return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
     }
