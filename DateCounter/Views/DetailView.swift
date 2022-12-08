@@ -172,7 +172,7 @@ struct DetailView: View {
 #if !TEST
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-#if !os(OSX)
+#if !os(OSX) && !os(watchOS)
         Group {
             NavigationView {
                 if UIDevice.current.userInterfaceIdiom == .pad {

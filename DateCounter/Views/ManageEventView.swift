@@ -211,37 +211,26 @@ struct ManageEventView_Previews: PreviewProvider {
     
     @ViewBuilder
     static var shared: some View {
-        addEvent.previewDisplayName("Add event")
-        editEvent.previewDisplayName("Edit event")
+        ContentView()
+            .sheet(isPresented: .constant(true)) {
+                addEvent
+            }
+            .previewDisplayName("Add event")
+        ContentView()
+            .sheet(isPresented: .constant(true)) {
+                editEvent
+            }
+            .previewDisplayName("Edit event")
     }
     
     static var previews: some View {
         Group {
-#if os(watchOS)
-            NavigationView {
-                addEvent
-            }.previewDisplayName("Add event")
-            NavigationView {
-                editEvent
-            }.previewDisplayName("Edit event")
-#endif
-#if os(iOS)
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                Text("")
-                    .sheet(isPresented: .constant(true), content: {
-                        addEvent
-                    })
-                    .previewDisplayName("Add event")
-                Text("")
-                    .sheet(isPresented: .constant(true), content: {
-                        editEvent
-                    })
-                    .previewDisplayName("Edit event")
-            } else {
-                shared
-            }
-#endif
 #if os(OSX)
+            addEvent
+                .previewDisplayName("Add event")
+            editEvent
+                .previewDisplayName("Edit event")
+#else
             shared
 #endif
         }
