@@ -8,29 +8,68 @@
 import SwiftUI
 
 struct Onboarding: View {
-    @State private var showContenteView = false
+    struct Feature {
+        let title: String
+        let featureDescription: String
+        let icon: String
+    }
+    
+    @State private var showContentView = false
+    let welcomeFeatures = [
+        Feature(title: "Track your events", featureDescription: "Find out how much time has passed for old events, or the time remaining to future events.", icon: "calendar"),
+        Feature(title: "Home screen widgets", featureDescription: "Never miss an event thanks to home screen and lock screen widgets.", icon: "square.stack"),
+        Feature(title: "Use everywhere", featureDescription: "Date Counter is a native app available on the App Store for Mac, iPad, iPhone and Apple Watch.", icon: "laptopcomputer.and.iphone"),
+        Feature(title: "iCloud support", featureDescription: "Your events are automatically synchronized to all your devices.", icon: "cloud")
+    ]
     
     var body: some View {
-        NavigationView {
-            List{
+        ScrollView {
+            VStack {
+                Text("Welcome to\nDate Counter")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 40)
                 
-                //.navigationTitle("Welcome!")
-                
-                Text("""
-             Stack Exchange has automatic filters in place to ban answers from accounts that have posted numerous low-quality answers in the past. These filters help keep the quality of our sites high.
-             
-             Users who are banned from answering see the following error message when trying to post a new answer:
-            """)
-                .padding()
-                
+                VStack(alignment: .leading) {
+                    ForEach(welcomeFeatures, id: \.title) { feature in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Image(systemName: feature.icon)
+                                    .font(.title)
+                                    .foregroundColor(.orange)
+                                    .frame(width: 55)
+                                
+                                VStack(alignment: .leading){
+                                    Text(feature.title)
+                                    
+                                    Text(feature.featureDescription)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                        }
+                        .padding([.top, .trailing])
+                    }
+                }
+            }
+            .padding()
+        }
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            VStack {
                 Button {
-                    showContenteView.toggle()
+                    showContentView.toggle()
                 } label: {
-                    Label("Continue", systemImage: "plus")
+                    Spacer()
+                    Text("Continuar")
+                        .font(.title3)
+                        .bold()
+                        .frame(height: 38)
+                    Spacer()
                 }
-                .sheet(isPresented: $showContenteView) {
-                    ContentView()
-                }
+                .buttonStyle(.borderedProminent)
+                .cornerRadius(15)
+                .padding()
+                .background(.bar)
             }
         }
     }
@@ -38,6 +77,10 @@ struct Onboarding: View {
 
 struct Onboarding_Previews: PreviewProvider {
     static var previews: some View {
-        Onboarding()
+        Color(.black)
+        .ignoresSafeArea()
+            .sheet(isPresented: .constant(true)) {
+                Onboarding()
+            }
     }
 }

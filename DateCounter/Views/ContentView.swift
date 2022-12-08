@@ -69,14 +69,13 @@ struct ContentView: View {
                         }
                     }
 #endif
-                    ToolbarItem(placement: .primaryAction) {
-                        Button {
+                    ToolbarItem(placement: .primaryAction, content: {
+                        Button(action: {
                             showManageEventView.toggle()
-                        } label: {
+                        }, label: {
                             Label("Add Event", systemImage: "plus")
-                        }
-                    }
-                    
+                        })
+                    })
                 }
             DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
         }
@@ -86,9 +85,9 @@ struct ContentView: View {
             ManageEventView()
         }
         
-       
-        
-       
+        .sheet(isPresented: $showOnboarding) {
+            Onboarding()
+        }
         
         .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
             Text("Ok")
@@ -113,15 +112,6 @@ struct ContentView: View {
 			}
 		}
 	}
-
-	func createOnboarding() {
-        if count == 0 {
-            sheet(isPresented: $showOnboarding) {
-                Onboarding()
-            }
-        }
-    }
-    
    
     @ViewBuilder
     var sharedSidebar: some View {
@@ -205,8 +195,6 @@ struct ContentView: View {
             components = DateComponents(year: 10)
         case .past:
             components = DateComponents(nanosecond: 1) //FIXME: that's not supposed to happen
-            count += 1
-            createOnboarding()
         }
         return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
     }
