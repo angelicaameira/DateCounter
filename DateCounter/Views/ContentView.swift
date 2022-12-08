@@ -38,10 +38,9 @@ struct ContentView: View {
         }
     }
     @State private var showManageEventView = false
-    @State private var showOnboarding = false
+    @State private var showOnboardingView = !UserDefaults.standard.bool(forKey: "didShowOnboarding")
     @State private var showError = false
     @State private var errorMessage = "No error"
-    @State private var count = 0
     
     // MARK: - Views
     var body: some View {
@@ -85,7 +84,9 @@ struct ContentView: View {
             ManageEventView()
         }
         
-        .sheet(isPresented: $showOnboarding) {
+        .sheet(isPresented: $showOnboardingView, onDismiss: {
+            UserDefaults.standard.set(true, forKey: "didShowOnboarding")
+        }) {
             Onboarding()
         }
         

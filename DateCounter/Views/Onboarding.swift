@@ -14,7 +14,7 @@ struct Onboarding: View {
         let icon: String
     }
     let welcomeFeatures = [
-        Feature(title: "Track your events", featureDescription: "Find out how much time has passed for old events, or the time remaining to future events.", icon: "calendar"),
+        Feature(title: "Track your events", featureDescription: "Find out how much time has passed for old events, or the time remaining until future events.", icon: "calendar"),
         Feature(title: "Home screen widgets", featureDescription: "Never miss an event thanks to home screen and lock screen widgets.", icon: "square.stack"),
         Feature(title: "Use everywhere", featureDescription: "Date Counter is a native app available on the App Store for Mac, iPad, iPhone and Apple Watch.", icon: "laptopcomputer.and.iphone"),
         Feature(title: "iCloud support", featureDescription: "Your events are automatically synchronized to all your devices.", icon: "cloud")
@@ -54,7 +54,6 @@ struct Onboarding: View {
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             VStack {
-                
                 Button(action: {
                     
                 }, label: {
