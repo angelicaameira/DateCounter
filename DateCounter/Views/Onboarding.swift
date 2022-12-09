@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct Onboarding: View {
+    
+    @Environment(\.dismiss) var dismiss
+    
     struct Feature {
         let title: String
         let featureDescription: String
         let icon: String
     }
+    
     let welcomeFeatures = [
         Feature(title: "Track your events", featureDescription: "Find out how much time has passed for old events, or the time remaining until future events.", icon: "calendar"),
         Feature(title: "Home screen widgets", featureDescription: "Never miss an event thanks to home screen and lock screen widgets.", icon: "square.stack"),
@@ -53,27 +57,26 @@ struct Onboarding: View {
             .padding()
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            VStack {
-                Button(action: {
-                    
-                }, label: {
-                    Spacer()
-                    Text("Continuar")
-                        .font(.title3)
-                        .bold()
-                        .frame(height: 38)
-                    Spacer()
-                })
-                .buttonStyle(.borderedProminent)
-                .cornerRadius(15)
-                .padding()
+            Button(action: {
+                dismiss()
+            }, label: {
+                Spacer()
+                Text("Continue")
+                    .font(.title3)
+                    .bold()
+                    .frame(height: 38)
+                Spacer()
+            })
+            .buttonStyle(.borderedProminent)
+            .cornerRadius(15)
+            .padding()
 #if !os(watchOS)
-                .background(.bar)
+            .background(.bar)
 #endif
-            }
         }
     }
 }
+
 
 struct Onboarding_Previews: PreviewProvider {
     static var previews: some View {
