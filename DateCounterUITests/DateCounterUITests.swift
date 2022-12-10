@@ -34,6 +34,8 @@ final class DateCounterUITests: XCTestCase {
             XCUIDevice.shared.orientation = .portrait
         }
         
+        app.buttons["Continue"].tap()
+        
         let eventsNavigationBar = app.navigationBars["Events"]
         eventsNavigationBar.buttons["Add Event"].tap()
 
@@ -151,15 +153,6 @@ final class DateCounterUITests: XCTestCase {
         XCTAssert(app.cells.containing(NSPredicate(format: "label contains[c] %@", "New name")).firstMatch.exists == false)
     }
 #endif
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
 }
 
 extension XCUIElement {
