@@ -66,6 +66,10 @@
 		BF229F47293F78B600B22A52 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF229F46293F78B600B22A52 /* Onboarding.swift */; };
 		BF229F48293F78B600B22A52 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF229F46293F78B600B22A52 /* Onboarding.swift */; };
 		BF7821CC290174A600838000 /* DateCounterCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7821CB290174A600838000 /* DateCounterCommands.swift */; };
+		BFA4700C2945327B00CC6381 /* DateCounterUIPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4700B2945327B00CC6381 /* DateCounterUIPerformanceTests.swift */; };
+		BFA47011294537DB00CC6381 /* DateCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8D328ECB1E1007B7935 /* DateCounterUITests.swift */; };
+		BFA47012294537DB00CC6381 /* DateCounterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */; };
+		BFA47013294537DB00CC6381 /* DateCounterUIPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4700B2945327B00CC6381 /* DateCounterUIPerformanceTests.swift */; };
 		BFEE1CD828EF6BF4004E52D8 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */; };
 		BFEE1CDA28EF78DF004E52D8 /* ManageEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */; };
 /* End PBXBuildFile section */
@@ -119,6 +123,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 43C2C7A42933AEF700F08C36;
 			remoteInfo = "DateCounter Watch App";
+		};
+		BFA4700F294537DB00CC6381 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4369B8A728ECB1E0007B7935 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4369B8AE28ECB1E0007B7935;
+			remoteInfo = DateCounter;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -192,6 +203,8 @@
 		BF03C3D0292BDA3700D21849 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
 		BF229F46293F78B600B22A52 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		BF7821CB290174A600838000 /* DateCounterCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterCommands.swift; sourceTree = "<group>"; };
+		BFA4700B2945327B00CC6381 /* DateCounterUIPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUIPerformanceTests.swift; sourceTree = "<group>"; };
+		BFA4701A294537DB00CC6381 /* DateCounterUIPerformanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateCounterUIPerformanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageEventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -259,6 +272,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		43C2C7BB2933AEF800F08C36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFA47014294537DB00CC6381 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -345,6 +365,7 @@
 				43C2C7A52933AEF700F08C36 /* DateCounter Watch App.app */,
 				43C2C7B42933AEF800F08C36 /* DateCounter Watch AppTests.xctest */,
 				43C2C7BE2933AEF800F08C36 /* DateCounter Watch AppUITests.xctest */,
+				BFA4701A294537DB00CC6381 /* DateCounterUIPerformanceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -385,6 +406,7 @@
 			children = (
 				4369B8D328ECB1E1007B7935 /* DateCounterUITests.swift */,
 				4369B8D528ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift */,
+				BFA4700B2945327B00CC6381 /* DateCounterUIPerformanceTests.swift */,
 			);
 			path = DateCounterUITests;
 			sourceTree = "<group>";
@@ -608,6 +630,24 @@
 			productReference = 43C2C7BE2933AEF800F08C36 /* DateCounter Watch AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		BFA4700D294537DB00CC6381 /* DateCounterUIPerformanceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFA47016294537DB00CC6381 /* Build configuration list for PBXNativeTarget "DateCounterUIPerformanceTests" */;
+			buildPhases = (
+				BFA47010294537DB00CC6381 /* Sources */,
+				BFA47014294537DB00CC6381 /* Frameworks */,
+				BFA47015294537DB00CC6381 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFA4700E294537DB00CC6381 /* PBXTargetDependency */,
+			);
+			name = DateCounterUIPerformanceTests;
+			productName = DateCounterUITests;
+			productReference = BFA4701A294537DB00CC6381 /* DateCounterUIPerformanceTests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -670,6 +710,7 @@
 				4369B8AE28ECB1E0007B7935 /* TheDateCounter */,
 				4369B8C428ECB1E1007B7935 /* DateCounterTests */,
 				4369B8CE28ECB1E1007B7935 /* DateCounterUITests */,
+				BFA4700D294537DB00CC6381 /* DateCounterUIPerformanceTests */,
 				435D477D291B1EBA006714A3 /* WidgetsExtension */,
 				435D47A1291F2514006714A3 /* EventIntents */,
 				435D47AC291F2514006714A3 /* EventIntentsUI */,
@@ -750,6 +791,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BFA47015294537DB00CC6381 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -822,6 +870,7 @@
 			files = (
 				4369B8D428ECB1E1007B7935 /* DateCounterUITests.swift in Sources */,
 				4369B8D628ECB1E1007B7935 /* DateCounterUITestsLaunchTests.swift in Sources */,
+				BFA4700C2945327B00CC6381 /* DateCounterUIPerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,6 +909,16 @@
 			files = (
 				43C2C7C32933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift in Sources */,
 				43C2C7C52933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFA47010294537DB00CC6381 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFA47011294537DB00CC6381 /* DateCounterUITests.swift in Sources */,
+				BFA47012294537DB00CC6381 /* DateCounterUITestsLaunchTests.swift in Sources */,
+				BFA47013294537DB00CC6381 /* DateCounterUIPerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,6 +962,11 @@
 			isa = PBXTargetDependency;
 			target = 43C2C7A42933AEF700F08C36 /* DateCounter Watch App */;
 			targetProxy = 43C2C7BF2933AEF800F08C36 /* PBXContainerItemProxy */;
+		};
+		BFA4700E294537DB00CC6381 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4369B8AE28ECB1E0007B7935 /* TheDateCounter */;
+			targetProxy = BFA4700F294537DB00CC6381 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1818,6 +1882,69 @@
 			};
 			name = Release;
 		};
+		BFA47017294537DB00CC6381 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TheDateCounter;
+			};
+			name = Debug;
+		};
+		BFA47018294537DB00CC6381 /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TheDateCounter;
+			};
+			name = Test;
+		};
+		BFA47019294537DB00CC6381 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = RGUPB9UU3P;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TheDateCounter;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1917,6 +2044,16 @@
 				43C2C7CA2933AEF800F08C36 /* Debug */,
 				4356870829382A51005B0318 /* Test */,
 				43C2C7CB2933AEF800F08C36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFA47016294537DB00CC6381 /* Build configuration list for PBXNativeTarget "DateCounterUIPerformanceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFA47017294537DB00CC6381 /* Debug */,
+				BFA47018294537DB00CC6381 /* Test */,
+				BFA47019294537DB00CC6381 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

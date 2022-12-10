@@ -57,8 +57,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4369B8CE28ECB1E1007B7935"
@@ -66,6 +65,27 @@
                BlueprintName = "DateCounterUITests"
                ReferencedContainer = "container:DateCounter.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "DateCounterUIPerformanceTests">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BFA4700D294537DB00CC6381"
+               BuildableName = "DateCounterUIPerformanceTests.xctest"
+               BlueprintName = "DateCounterUIPerformanceTests"
+               ReferencedContainer = "container:DateCounter.xcodeproj">
+            </BuildableReference>
+            <SelectedTests>
+               <Test
+                  Identifier = "DateCounterUIPerformanceTests/testLaunchPerformance()">
+               </Test>
+            </SelectedTests>
          </TestableReference>
       </Testables>
    </TestAction>
