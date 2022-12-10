@@ -68,13 +68,13 @@ struct ContentView: View {
                         }
                     }
 #endif
-                    ToolbarItem(placement: .primaryAction, content: {
-                        Button(action: {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button {
                             showManageEventView.toggle()
-                        }, label: {
+                        } label: {
                             Label("Add Event", systemImage: "plus")
-                        })
-                    })
+                        }
+                    }
                 }
             DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
         }
@@ -110,10 +110,10 @@ struct ContentView: View {
                 } header: {
                     Text(section.stringValue)
                 }
-			}
-		}
-	}
-   
+            }
+        }
+    }
+    
     @ViewBuilder
     var sharedSidebar: some View {
 #if os(OSX)
@@ -126,38 +126,38 @@ struct ContentView: View {
         }
 #endif
     }
-     
+    
     @ViewBuilder
     var sidebarView: some View {
         sharedSidebar
 #if os(OSX)
-        .alert("Delete event", isPresented: $showDelete, actions: {
-            Button("Delete", action: {
+            .alert("Delete event", isPresented: $showDelete, actions: {
+                Button("Delete", action: {
+                    guard
+                        let selectedEvent = selectedEvent,
+                        selectedEvent.managedObjectContext != nil
+                    else { return }
+                    viewContext.delete(selectedEvent)
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        errorMessage = error.localizedDescription
+                        showError = true
+                    }
+                })
+                Button("Cancel", action: {
+                    showDelete = false
+                })
+            }, message: {
+                Text("\"\(selectedEvent?.title ?? "It")\" will be permanently deleted.\nAre you sure?")
+            })
+            .onDeleteCommand {
                 guard
                     let selectedEvent = selectedEvent,
                     selectedEvent.managedObjectContext != nil
                 else { return }
-                viewContext.delete(selectedEvent)
-                do {
-                    try viewContext.save()
-                } catch {
-                    errorMessage = error.localizedDescription
-                    showError = true
-                }
-            })
-            Button("Cancel", action: {
-                showDelete = false
-            })
-        }, message: {
-            Text("\"\(selectedEvent?.title ?? "It")\" will be permanently deleted.\nAre you sure?")
-        })
-        .onDeleteCommand {
-            guard
-                let selectedEvent = selectedEvent,
-                selectedEvent.managedObjectContext != nil
-            else { return }
-            showDelete = true
-        }
+                showDelete = true
+            }
 #endif
     }
     
