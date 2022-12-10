@@ -38,6 +38,7 @@ struct ContentView: View {
         }
     }
     @State private var showManageEventView = false
+    @State private var showOnboardingView = !UserDefaults.standard.bool(forKey: "didShowOnboarding")
     @State private var showError = false
     @State private var errorMessage = "No error"
     
@@ -83,6 +84,12 @@ struct ContentView: View {
             ManageEventView()
         }
         
+        .sheet(isPresented: $showOnboardingView, onDismiss: {
+            UserDefaults.standard.set(true, forKey: "didShowOnboarding")
+        }) {
+            Onboarding()
+        }
+        
         .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
             Text("Ok")
         }, message: {
@@ -124,33 +131,33 @@ struct ContentView: View {
     var sidebarView: some View {
         sharedSidebar
 #if os(OSX)
-        .alert("Delete event", isPresented: $showDelete, actions: {
-            Button("Delete", action: {
+            .alert("Delete event", isPresented: $showDelete, actions: {
+                Button("Delete", action: {
+                    guard
+                        let selectedEvent = selectedEvent,
+                        selectedEvent.managedObjectContext != nil
+                    else { return }
+                    viewContext.delete(selectedEvent)
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        errorMessage = error.localizedDescription
+                        showError = true
+                    }
+                })
+                Button("Cancel", action: {
+                    showDelete = false
+                })
+            }, message: {
+                Text("\"\(selectedEvent?.title ?? "It")\" will be permanently deleted.\nAre you sure?")
+            })
+            .onDeleteCommand {
                 guard
                     let selectedEvent = selectedEvent,
                     selectedEvent.managedObjectContext != nil
                 else { return }
-                viewContext.delete(selectedEvent)
-                do {
-                    try viewContext.save()
-                } catch {
-                    errorMessage = error.localizedDescription
-                    showError = true
-                }
-            })
-            Button("Cancel", action: {
-                showDelete = false
-            })
-        }, message: {
-            Text("\"\(selectedEvent?.title ?? "It")\" will be permanently deleted.\nAre you sure?")
-        })
-        .onDeleteCommand {
-            guard
-                let selectedEvent = selectedEvent,
-                selectedEvent.managedObjectContext != nil
-            else { return }
-            showDelete = true
-        }
+                showDelete = true
+            }
 #endif
     }
     
