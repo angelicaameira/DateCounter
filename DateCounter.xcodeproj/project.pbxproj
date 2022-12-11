@@ -11,6 +11,7 @@
 		43244DAF2927957500D7B31E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435D47B3291F2515006714A3 /* MainInterface.storyboard */; };
 		43342C4128F24606004B9EE5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 43342C4028F24606004B9EE5 /* README.md */; };
 		433C6E512946A1E8003914A0 /* DateCounter Watch App.app in Embed Watch App */ = {isa = PBXBuildFile; fileRef = 43C2C7A52933AEF700F08C36 /* DateCounter Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		433C6E522946A3B9003914A0 /* DateCounterCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7821CB290174A600838000 /* DateCounterCommands.swift */; };
 		435687092939370C005B0318 /* CustomEnvironments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372E7B3293700B20085FE9F /* CustomEnvironments.swift */; };
 		4356870A29393720005B0318 /* UISplitViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372E7B12937002C0085FE9F /* UISplitViewController+Extensions.swift */; };
 		435D4781291B1EBA006714A3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D4780291B1EBA006714A3 /* WidgetKit.framework */; };
@@ -946,6 +947,7 @@
 				BF229F48293F78B600B22A52 /* Onboarding.swift in Sources */,
 				4397BF432933EB6A001A0464 /* LunarEclipses.swift in Sources */,
 				43C2C7D32933AFC500F08C36 /* ManageEventView.swift in Sources */,
+				433C6E522946A3B9003914A0 /* DateCounterCommands.swift in Sources */,
 				4356870A29393720005B0318 /* UISplitViewController+Extensions.swift in Sources */,
 				43C2C7CF2933AF9600F08C36 /* DateCounterApp.swift in Sources */,
 				43C2C7D52933AFCD00F08C36 /* (null) in Sources */,
