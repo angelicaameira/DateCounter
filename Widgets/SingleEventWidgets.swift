@@ -11,7 +11,6 @@ import Intents
 import CoreData
 
 struct Provider: IntentTimelineProvider {
-    
     static let placeholderIdentifier = "placeholder identifier"
     static let placeholderEventType: EventType = {
         EventType(identifier: placeholderIdentifier, display: "Awesome display")
@@ -61,7 +60,7 @@ struct Provider: IntentTimelineProvider {
     }
     
     var placeholderDate: Date {
-        let components = DateComponents(second: 150000) //FIXME: biggest date bug? After 2150000000 it begins going down
+        let components = DateComponents(second: 150000) // FIXME: biggest date bug? After 2150000000 it begins going down
         return Calendar.current.date(byAdding: components, to: Date.now)!
     }
     
@@ -69,13 +68,13 @@ struct Provider: IntentTimelineProvider {
         EventEntry(event: Provider.event(for: Provider.placeholderEventType), date: placeholderDate, configuration: EventSelectionIntent())
     }
     
-    func getSnapshot(for configuration: EventSelectionIntent, in context: Context, completion: @escaping (EventEntry) -> ()) {
+    func getSnapshot(for configuration: EventSelectionIntent, in context: Context, completion: @escaping (EventEntry) -> Void) {
         let entry = EventEntry(event: Provider.event(for: configuration.event), date: Date.now, configuration: configuration)
         
         completion(entry)
     }
     
-    func getTimeline(for configuration: EventSelectionIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(for configuration: EventSelectionIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         let entries: [EventEntry] = [EventEntry(event: Provider.event(for: configuration.event), date: Date.now, configuration: configuration)]
         
         let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -93,7 +92,7 @@ struct EventEntry: TimelineEntry {
     let configuration: EventSelectionIntent
 }
 
-struct EventWidgetView : View {
+struct EventWidgetView: View {
     @Environment(\.widgetFamily) var family
 #if !os(OSX)
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
@@ -205,7 +204,7 @@ struct EventWidgetView : View {
                     .padding(.bottom, 0.1)
                     .foregroundColor(.orange)
                     .bold()
-                if (!entry.description.isEmpty) {
+                if !entry.description.isEmpty {
                     Text(entry.description)
                         .truncationMode(.middle)
                         .foregroundColor(.secondary)

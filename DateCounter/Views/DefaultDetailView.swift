@@ -12,7 +12,7 @@ import CoreData
 struct DefaultDetailView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.eventListCount) var eventCount: Int
-    @State var showManageEventView: Bool = false
+    @State var showManageEventView = false
     @Binding var showError: Bool
     @Binding var errorMessage: String
     
@@ -101,12 +101,15 @@ struct DefaultDetailView: View {
         iceAgeEvent.date = gregorianCalendar
             .date(from:
                     DateComponents(
-                        year: 502_022, month: 1, day: 1,
-                        hour: 0, minute: 0
+                        year: 502_022,
+                        month: 1,
+                        day: 1,
+                        hour: 0,
+                        minute: 0
                     )
             )
         
-        var date: Date = Date.now,
+        var date = Date.now,
             intervalToWeekend: TimeInterval = 0
         if gregorianCalendar.nextWeekend(startingAfter: Date.now, start: &date, interval: &intervalToWeekend) {
             let nextWeekendEvent = Event(context: viewContext)

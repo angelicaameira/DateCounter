@@ -83,7 +83,7 @@ struct DetailView: View {
                 Text("Remaining time on different units")
             }
             .id(updateView)
-            .onReceive(Timer.publish(every: 1, on: .main, in: .default).autoconnect()) { timerOutput in
+            .onReceive(Timer.publish(every: 1, on: .main, in: .default).autoconnect()) { _ in
                 updateView = UUID()
             }
         }

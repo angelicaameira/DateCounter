@@ -8,8 +8,8 @@
 import XCTest
 @testable import TheDateCounter
 
+// swiftlint:disable force_unwrapping
 final class DateCounterTests: XCTestCase {
-    
     let contentView = ContentView()
 
     override func setUpWithError() throws {
@@ -81,5 +81,4 @@ final class DateCounterTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

@@ -9,7 +9,6 @@ import Intents
 import CoreData
 
 class IntentHandler: INExtension, EventSelectionIntentHandling {
-    
     func provideEventOptionsCollection(for intent: EventSelectionIntent, with completion: @escaping (INObjectCollection<EventType>?, Error?) -> Void) {
         let events: [Event]
         do {
@@ -27,7 +26,7 @@ class IntentHandler: INExtension, EventSelectionIntentHandling {
         }
         
         // Create a collection with the array of characters.
-        var intentEvents = [EventType]()
+        var intentEvents: [EventType] = []
         for event in events {
             guard
                 let idString = event.id?.uuidString,

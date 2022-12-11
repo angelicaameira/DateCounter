@@ -9,7 +9,6 @@ import XCTest
 @testable import TheDateCounter
 
 final class DateCounterUITests: XCTestCase {
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -80,7 +79,7 @@ final class DateCounterUITests: XCTestCase {
         if deleteLeadingButton.exists {
             deleteLeadingButton.firstMatch.tap() // iOS 15
         } else {
-            cellsContainingTest.otherElements.containing(.image, identifier:"remove").firstMatch.tap() // iOS 16
+            cellsContainingTest.otherElements.containing(.image, identifier: "remove").firstMatch.tap() // iOS 16
         }
         app.buttons["Delete"].tap()
         eventsNavigationBar.buttons["Done"].tap()

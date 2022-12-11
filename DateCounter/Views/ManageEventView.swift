@@ -12,7 +12,7 @@ import WatchDatePicker
 #endif
 
 struct ManageEventView: View {
-    //MARK: - Properties
+    // MARK: - Properties
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.dismiss) var dismiss
     @State private var title = ""
@@ -47,9 +47,11 @@ struct ManageEventView: View {
                 .font(.headline)
                 .padding(.top)
 #endif
+            // swiftlint:disable trailing_closure
             Form {
                 formBody
             }
+            // swiftlint:enable trailing_closure
             .onAppear(perform: {
                 guard
                     let event = event,

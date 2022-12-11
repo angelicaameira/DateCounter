@@ -75,7 +75,6 @@ struct Onboarding: View {
     }
 }
 
-
 struct Onboarding_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

@@ -15,7 +15,6 @@ import IntentsUI
 // "Send a message using <myApp>"
 
 class IntentViewController: UIViewController, INUIHostedViewControlling {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,7 +29,8 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
     }
     
     var desiredSize: CGSize {
+        // swiftlint:disable force_unwrapping
         return self.extensionContext!.hostedViewMaximumAllowedSize
+        // swiftlint:enable force_unwrapping
     }
-    
 }

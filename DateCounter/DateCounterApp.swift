@@ -49,7 +49,9 @@ enum TestData {
         if let period = period {
             actualPeriod = period
         } else {
+            // swiftlint:disable force_unwrapping
             actualPeriod = Period.allCases.randomElement()!
+            // swiftlint:enable force_unwrapping
         }
         switch actualPeriod {
         case .past:
@@ -71,9 +73,9 @@ enum TestData {
 
 #if !TEST
 struct DateCounterApp_Previews: PreviewProvider {
-    
     static var previews: some View {
         VStack {
+            // swiftlint:disable force_unwrapping
             Text(TestData.event(period: .month).title!)
             Text(TestData.event(period: .month).eventDescription!)
             Text(TestData.event(period: .month).date!.formatted())
