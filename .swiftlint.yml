@@ -31,7 +31,6 @@ opt_in_rules:
   - first_where
   - force_unwrapping
   - implicitly_unwrapped_optional
-#  - indentation_width
   - last_where
   - legacy_random
   - literal_expression_end_indentation
@@ -54,7 +53,6 @@ opt_in_rules:
   - vertical_whitespace_opening_braces
   - yoda_condition
 
-
 custom_rules:
   array_constructor:
     name: "Array/Dictionary initializer"
@@ -62,7 +60,6 @@ custom_rules:
     capture_group: 1
     message: "Use explicit type annotation when initializing empty arrays and dictionaries"
     severity: warning
-
 
 attributes:
   always_on_same_line:
@@ -82,12 +79,6 @@ identifier_name:
   excluded:
     - i
     - id
-    - x
-    - y
-    - z
-
-#indentation_width:
-#  indentation_width: 4
 
 line_length:
   warning: 300
