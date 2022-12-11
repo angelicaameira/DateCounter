@@ -84,11 +84,14 @@ struct ContentView: View {
       ManageEventView()
     }
     
-    .sheet(isPresented: $showOnboardingView, onDismiss: {
-      UserDefaults.standard.set(true, forKey: "didShowOnboarding")
-    }, content: {
-      Onboarding()
-    })
+//    .sheet(isPresented: $showOnboardingView, onDismiss: {
+//      UserDefaults.standard.set(true, forKey: "didShowOnboarding")
+//    }, content: {
+//      Onboarding()
+//#if os(OSX)
+//        .frame(minWidth: 400, idealWidth: 500, maxWidth: 700, minHeight: 370, idealHeight: 470, maxHeight: 600)
+//#endif
+//    })
     
     .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
       Text("Ok")

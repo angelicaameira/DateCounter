@@ -45,11 +45,11 @@ struct PersistenceController {
     shared.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.br.com.angelicameira.DateCounter")
     
     container.persistentStoreDescriptions = [ shared ]
-    //        do {
-    //            try container.initializeCloudKitSchema()
-    //        } catch {
-    //            print("Failed to initialize CloudKit: \(error)")
-    //        }
+//    do {
+//        try container.initializeCloudKitSchema()
+//    } catch {
+//        print("Failed to initialize CloudKit: \(error)")
+//    }
     if inMemory {
       container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
     }

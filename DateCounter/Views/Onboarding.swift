@@ -29,7 +29,12 @@ struct Onboarding: View {
           .font(.largeTitle)
           .fontWeight(.bold)
           .multilineTextAlignment(.center)
+#if os(iOS)
           .padding(.top, 40)
+#endif
+#if os(OSX)
+          .padding(.top)
+#endif
         
         VStack(alignment: .leading) {
           ForEach(welcomeFeatures, id: \.title) { feature in
@@ -55,23 +60,29 @@ struct Onboarding: View {
       .padding()
     }
     .safeAreaInset(edge: .bottom, spacing: 0) {
-      Button {
-        dismiss()
-      } label: {
-        Spacer()
-        Text("Continue")
-          .font(.title3)
-          .bold()
-          .frame(height: 38)
-        Spacer()
-      }
-      .buttonStyle(.borderedProminent)
-      .cornerRadius(15)
-      .padding()
-#if !os(watchOS)
-      .background(.bar)
-#endif
+      continueButton
     }
+  }
+  
+  var continueButton: some View {
+    Button {
+      dismiss()
+    } label: {
+      Spacer()
+      Text("Continue")
+        .font(.title3)
+        .bold()
+        .frame(height: 38)
+      Spacer()
+    }
+    .buttonStyle(.borderedProminent)
+    .padding()
+#if os(iOS)
+    .cornerRadius(15)
+#endif
+#if !os(watchOS)
+    .background(.bar)
+#endif
   }
 }
 
