@@ -1,13 +1,13 @@
 //
-//  DateCounterUIPerformanceTests.swift
-//  DateCounterUITests
+//  DateCounterWatchAppUITests.swift
+//  DateCounter Watch AppUITests
 //
-//  Created by Angélica Andrade de Meira on 10/12/22.
+//  Created by Antonio Germano on 27/11/22.
 //
 
 import XCTest
 
-final class DateCounterUIPerformanceTests: XCTestCase {
+final class DateCounterWatchAppUITests: XCTestCase {
   override func setUpWithError() throws {
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
@@ -19,6 +19,14 @@ final class DateCounterUIPerformanceTests: XCTestCase {
   
   override func tearDownWithError() throws {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+  }
+  
+  func testExample() throws {
+    // UI tests must launch the application that they test.
+    let app = XCUIApplication()
+    app.launch()
+    
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
   }
   
   func testLaunchPerformance() throws {

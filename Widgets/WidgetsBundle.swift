@@ -10,12 +10,12 @@ import SwiftUI
 
 @main
 struct WidgetsBundle: WidgetBundle {
-    var body: some Widget {
-        SingleEventWidgets()
-        if #available(iOSApplicationExtension 16.1, *) {
+  var body: some Widget {
+    SingleEventWidgets()
+    if #available(iOSApplicationExtension 16.1, *) {
 #if !os(OSX)
-            WidgetsLiveActivity()
+      WidgetsLiveActivity()
 #endif
-        }
     }
+  }
 }
