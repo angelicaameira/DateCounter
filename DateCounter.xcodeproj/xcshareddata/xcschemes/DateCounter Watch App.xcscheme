@@ -14,78 +14,41 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4369B8AE28ECB1E0007B7935"
-               BuildableName = "TheDateCounter.app"
-               BlueprintName = "TheDateCounter"
-               ReferencedContainer = "container:DateCounter.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4369B8C428ECB1E1007B7935"
-               BuildableName = "DateCounterTests.xctest"
-               BlueprintName = "DateCounterTests"
+               BlueprintIdentifier = "43C2C7A42933AEF700F08C36"
+               BuildableName = "DateCounter Watch App.app"
+               BlueprintName = "DateCounter Watch App"
                ReferencedContainer = "container:DateCounter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Test"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES"
-      localizableStringsDataGatheringEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO"
-            parallelizable = "YES"
-            testExecutionOrdering = "random">
+            parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4369B8C428ECB1E1007B7935"
-               BuildableName = "DateCounterTests.xctest"
-               BlueprintName = "DateCounterTests"
+               BlueprintIdentifier = "43C2C7B32933AEF800F08C36"
+               BuildableName = "DateCounter Watch AppTests.xctest"
+               BlueprintName = "DateCounter Watch AppTests"
                ReferencedContainer = "container:DateCounter.xcodeproj">
             </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4369B8CE28ECB1E1007B7935"
-               BuildableName = "DateCounterUITests.xctest"
-               BlueprintName = "DateCounterUITests"
-               ReferencedContainer = "container:DateCounter.xcodeproj">
-            </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "DateCounterUIPerformanceTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BFA4700D294537DB00CC6381"
-               BuildableName = "DateCounterUIPerformanceTests.xctest"
-               BlueprintName = "DateCounterUIPerformanceTests"
+               BlueprintIdentifier = "43C2C7BD2933AEF800F08C36"
+               BuildableName = "DateCounter Watch AppUITests.xctest"
+               BlueprintName = "DateCounter Watch AppUITests"
                ReferencedContainer = "container:DateCounter.xcodeproj">
             </BuildableReference>
-            <SelectedTests>
-               <Test
-                  Identifier = "DateCounterUIPerformanceTests/testLaunchPerformance()">
-               </Test>
-            </SelectedTests>
          </TestableReference>
       </Testables>
    </TestAction>
@@ -103,18 +66,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4369B8AE28ECB1E0007B7935"
-            BuildableName = "TheDateCounter.app"
-            BlueprintName = "TheDateCounter"
+            BlueprintIdentifier = "43C2C7A42933AEF700F08C36"
+            BuildableName = "DateCounter Watch App.app"
+            BlueprintName = "DateCounter Watch App"
             ReferencedContainer = "container:DateCounter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-com.apple.CoreData.CloudKitDebug 1"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -126,9 +83,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4369B8AE28ECB1E0007B7935"
-            BuildableName = "TheDateCounter.app"
-            BlueprintName = "TheDateCounter"
+            BlueprintIdentifier = "43C2C7A42933AEF700F08C36"
+            BuildableName = "DateCounter Watch App.app"
+            BlueprintName = "DateCounter Watch App"
             ReferencedContainer = "container:DateCounter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
