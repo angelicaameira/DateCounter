@@ -39,13 +39,21 @@ struct PersistenceController {
     let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.br.com.angelicameira.DateCounter")!
     let storeURL = containerURL.appendingPathComponent("DateCounter.sqlite")
     let shared = NSPersistentStoreDescription(url: storeURL)
+#if READONLY_COREDATA
+    shared.isReadOnly = true
+#endif
     shared.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.br.com.angelicameira.DateCounter")
     
     container.persistentStoreDescriptions = [ shared ]
+    //        do {
+    //            try container.initializeCloudKitSchema()
+    //        } catch {
+    //            print("Failed to initialize CloudKit: \(error)")
+    //        }
     if inMemory {
       container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
     }
-    container.loadPersistentStores { _, error in
+    container.loadPersistentStores { storeDescription, error in
       if let error = error as NSError? {
         // Replace this implementation with code to handle the error appropriately.
         // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
