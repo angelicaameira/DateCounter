@@ -527,7 +527,7 @@
 				4369B8AC28ECB1E0007B7935 /* Frameworks */,
 				4369B8AD28ECB1E0007B7935 /* Resources */,
 				435D4793291B1EBB006714A3 /* Embed Foundation Extensions */,
-				438EB0612945628100A62E7D /* ShellScript */,
+				438EB0612945628100A62E7D /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -584,6 +584,7 @@
 				43C2C7A12933AEF700F08C36 /* Sources */,
 				43C2C7A22933AEF700F08C36 /* Frameworks */,
 				43C2C7A32933AEF700F08C36 /* Resources */,
+				BFA4701B29462D7200CC6381 /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -804,7 +805,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		438EB0612945628100A62E7D /* ShellScript */ = {
+		438EB0612945628100A62E7D /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -814,6 +815,26 @@
 			);
 			inputPaths = (
 			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		BFA4701B29462D7200CC6381 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
 			outputFileListPaths = (
 			);
 			outputPaths = (
