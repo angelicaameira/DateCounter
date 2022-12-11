@@ -1,5 +1,5 @@
 //
-//  DateCounter_Watch_AppTests.swift
+//  DateCounterWatchAppTests.swift
 //  DateCounter Watch AppTests
 //
 //  Created by Antonio Germano on 27/11/22.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import DateCounter_Watch_App
 
-final class DateCounter_Watch_AppTests: XCTestCase {
+final class DateCounterWatchAppTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

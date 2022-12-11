@@ -33,7 +33,7 @@ struct DateCounterApp: App {
     }
 }
 
-struct TestData {
+enum TestData {
     static func event(period: Period?) -> Event {
         let event = Event(context: PersistenceController.preview.container.viewContext)
         let eventTitles = [

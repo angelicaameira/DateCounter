@@ -48,9 +48,9 @@
 		43A06AF4292075300003EB5B /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
 		43C2C79E2932E4DC00F08C36 /* LunarEclipses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79D2932E4DC00F08C36 /* LunarEclipses.swift */; };
 		43C2C7A029339DA700F08C36 /* DefaultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */; };
-		43C2C7B92933AEF800F08C36 /* DateCounter_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7B82933AEF800F08C36 /* DateCounter_Watch_AppTests.swift */; };
-		43C2C7C32933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7C22933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift */; };
-		43C2C7C52933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7C42933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift */; };
+		43C2C7B92933AEF800F08C36 /* DateCounterWatchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7B82933AEF800F08C36 /* DateCounterWatchAppTests.swift */; };
+		43C2C7C32933AEF800F08C36 /* DateCounterWatchAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7C22933AEF800F08C36 /* DateCounterWatchAppUITests.swift */; };
+		43C2C7C52933AEF800F08C36 /* DateCounterWatchAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7C42933AEF800F08C36 /* DateCounterWatchAppUITestsLaunchTests.swift */; };
 		43C2C7CF2933AF9600F08C36 /* DateCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B228ECB1E0007B7935 /* DateCounterApp.swift */; };
 		43C2C7D12933AFB700F08C36 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B428ECB1E0007B7935 /* Persistence.swift */; };
 		43C2C7D22933AFC200F08C36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B928ECB1E0007B7935 /* ContentView.swift */; };
@@ -154,6 +154,7 @@
 		431B1F2C2921AFAA002791D2 /* EventIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventIntents.entitlements; sourceTree = "<group>"; };
 		431B1F2D2921AFB5002791D2 /* EventIntentsUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventIntentsUI.entitlements; sourceTree = "<group>"; };
 		43342C4028F24606004B9EE5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		433C6D79294564E9003914A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		435D477E291B1EBA006714A3 /* WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		435D4780291B1EBA006714A3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		435D4782291B1EBA006714A3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -193,10 +194,10 @@
 		43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDetailView.swift; sourceTree = "<group>"; };
 		43C2C7A52933AEF700F08C36 /* DateCounter Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DateCounter Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C2C7B42933AEF800F08C36 /* DateCounter Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DateCounter Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		43C2C7B82933AEF800F08C36 /* DateCounter_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounter_Watch_AppTests.swift; sourceTree = "<group>"; };
+		43C2C7B82933AEF800F08C36 /* DateCounterWatchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterWatchAppTests.swift; sourceTree = "<group>"; };
 		43C2C7BE2933AEF800F08C36 /* DateCounter Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DateCounter Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		43C2C7C22933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounter_Watch_AppUITests.swift; sourceTree = "<group>"; };
-		43C2C7C42933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounter_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		43C2C7C22933AEF800F08C36 /* DateCounterWatchAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterWatchAppUITests.swift; sourceTree = "<group>"; };
+		43C2C7C42933AEF800F08C36 /* DateCounterWatchAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterWatchAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		43C2C7DB2933B0D800F08C36 /* DateCounter Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DateCounter Watch App.entitlements"; sourceTree = "<group>"; };
 		43F0D2222904ACE6004C1D8E /* EventListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListRow.swift; sourceTree = "<group>"; };
 		43F0D2242904CB73004C1D8E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
@@ -336,6 +337,7 @@
 		4369B8A628ECB1E0007B7935 = {
 			isa = PBXGroup;
 			children = (
+				433C6D79294564E9003914A0 /* .swiftlint.yml */,
 				BF03C3D0292BDA3700D21849 /* PRIVACY.md */,
 				431B1F2B2921AF9B002791D2 /* WidgetsExtension.entitlements */,
 				43342C4028F24606004B9EE5 /* README.md */,
@@ -423,7 +425,7 @@
 		43C2C7B72933AEF800F08C36 /* DateCounter Watch AppTests */ = {
 			isa = PBXGroup;
 			children = (
-				43C2C7B82933AEF800F08C36 /* DateCounter_Watch_AppTests.swift */,
+				43C2C7B82933AEF800F08C36 /* DateCounterWatchAppTests.swift */,
 			);
 			path = "DateCounter Watch AppTests";
 			sourceTree = "<group>";
@@ -431,8 +433,8 @@
 		43C2C7C12933AEF800F08C36 /* DateCounter Watch AppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				43C2C7C22933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift */,
-				43C2C7C42933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift */,
+				43C2C7C22933AEF800F08C36 /* DateCounterWatchAppUITests.swift */,
+				43C2C7C42933AEF800F08C36 /* DateCounterWatchAppUITestsLaunchTests.swift */,
 			);
 			path = "DateCounter Watch AppUITests";
 			sourceTree = "<group>";
@@ -525,6 +527,7 @@
 				4369B8AC28ECB1E0007B7935 /* Frameworks */,
 				4369B8AD28ECB1E0007B7935 /* Resources */,
 				435D4793291B1EBB006714A3 /* Embed Foundation Extensions */,
+				438EB0612945628100A62E7D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -800,6 +803,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		438EB0612945628100A62E7D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		435D477A291B1EBA006714A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -899,7 +922,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43C2C7B92933AEF800F08C36 /* DateCounter_Watch_AppTests.swift in Sources */,
+				43C2C7B92933AEF800F08C36 /* DateCounterWatchAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,8 +930,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43C2C7C32933AEF800F08C36 /* DateCounter_Watch_AppUITests.swift in Sources */,
-				43C2C7C52933AEF800F08C36 /* DateCounter_Watch_AppUITestsLaunchTests.swift in Sources */,
+				43C2C7C32933AEF800F08C36 /* DateCounterWatchAppUITests.swift in Sources */,
+				43C2C7C52933AEF800F08C36 /* DateCounterWatchAppUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

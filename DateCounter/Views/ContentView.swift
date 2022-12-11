@@ -86,9 +86,9 @@ struct ContentView: View {
         
         .sheet(isPresented: $showOnboardingView, onDismiss: {
             UserDefaults.standard.set(true, forKey: "didShowOnboarding")
-        }) {
+        }, content: {
             Onboarding()
-        }
+        })
         
         .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
             Text("Ok")
@@ -195,7 +195,7 @@ struct ContentView: View {
         case .decade:
             components = DateComponents(year: 10)
         case .past:
-            components = DateComponents(nanosecond: 1) //FIXME: that's not supposed to happen
+            components = DateComponents(nanosecond: 1) // FIXME: that's not supposed to happen
         }
         return Calendar.current.date(byAdding: components, to: Date.now) ?? Date.now
     }

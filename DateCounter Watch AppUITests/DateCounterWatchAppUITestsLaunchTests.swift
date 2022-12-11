@@ -1,5 +1,5 @@
 //
-//  DateCounter_Watch_AppUITestsLaunchTests.swift
+//  DateCounterWatchAppUITestsLaunchTests.swift
 //  DateCounter Watch AppUITests
 //
 //  Created by Antonio Germano on 27/11/22.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class DateCounter_Watch_AppUITestsLaunchTests: XCTestCase {
+final class DateCounterWatchAppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

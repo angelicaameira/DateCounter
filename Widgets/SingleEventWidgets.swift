@@ -12,9 +12,9 @@ import CoreData
 
 struct Provider: IntentTimelineProvider {
     
-    static let PLACEHOLDER_IDENTIFIER = "placeholder identifier"
+    static let placeholderIdentifier = "placeholder identifier"
     static let placeholderEventType: EventType = {
-        EventType(identifier: PLACEHOLDER_IDENTIFIER, display: "Awesome display")
+        EventType(identifier: placeholderIdentifier, display: "Awesome display")
     }()
     
     static func event(for selectedEvent: EventType?) -> Event? {
@@ -37,7 +37,7 @@ struct Provider: IntentTimelineProvider {
             return nil
         }
         
-        if identifier == PLACEHOLDER_IDENTIFIER {
+        if identifier == placeholderIdentifier {
             let event: Event
             event = Event(context: viewContext)
             event.title = "My awesome event"
