@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DateCounterCommands: Commands {
-    var body: some Commands {
-        SidebarCommands()
-    }
+  var body: some Commands {
+    SidebarCommands()
+  }
 }

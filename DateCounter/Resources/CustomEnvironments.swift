@@ -9,12 +9,12 @@ import Foundation
 import SwiftUI
 
 private struct EventListCount: EnvironmentKey {
-    static let defaultValue = 0
+  static let defaultValue = 0
 }
 
 extension EnvironmentValues {
-    var eventListCount: Int {
-        get { self[EventListCount.self] }
-        set { self[EventListCount.self] = newValue }
-    }
+  var eventListCount: Int {
+    get { self[EventListCount.self] }
+    set { self[EventListCount.self] = newValue }
+  }
 }
