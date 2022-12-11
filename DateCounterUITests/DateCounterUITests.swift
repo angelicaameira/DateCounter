@@ -33,7 +33,7 @@ final class DateCounterUITests: XCTestCase {
       XCUIDevice.shared.orientation = .portrait
     }
     
-    app.buttons["Continue"].tap()
+//    app.buttons["Continue"].tap()
     
     let eventsNavigationBar = app.navigationBars["Events"]
     eventsNavigationBar.buttons["Add Event"].tap()
