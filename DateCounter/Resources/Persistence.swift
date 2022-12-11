@@ -39,6 +39,9 @@ struct PersistenceController {
         let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.br.com.angelicameira.DateCounter")!
         let storeURL = containerURL.appendingPathComponent("DateCounter.sqlite")
         let shared = NSPersistentStoreDescription(url: storeURL)
+#if READONLY_COREDATA
+        shared.isReadOnly = true
+#endif
         shared.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.br.com.angelicameira.DateCounter")
 
         container.persistentStoreDescriptions = [ shared ]
