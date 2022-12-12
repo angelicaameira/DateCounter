@@ -42,6 +42,8 @@ struct PersistenceController {
 #if READONLY_COREDATA
     shared.isReadOnly = true
 #endif
+    shared.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+//    shared.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
     shared.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.br.com.angelicameira.DateCounter")
     
     container.persistentStoreDescriptions = [ shared ]
