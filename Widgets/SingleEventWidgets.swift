@@ -16,6 +16,7 @@ struct Provider: IntentTimelineProvider {
     EventType(identifier: placeholderIdentifier, display: "Awesome display")
   }()
   
+  @available(macOSApplicationExtension 13.0, *)
   func recommendations() -> [IntentRecommendation<EventSelectionIntent>] {
     return []
   }
