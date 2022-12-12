@@ -46,10 +46,10 @@
 		435D47A7291F2514006714A3 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D47A6291F2514006714A3 /* IntentHandler.swift */; };
 		435D47AF291F2514006714A3 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D47AE291F2514006714A3 /* IntentsUI.framework */; };
 		435D47B2291F2515006714A3 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D47B1291F2515006714A3 /* IntentViewController.swift */; };
-		435D47B9291F2515006714A3 /* EventIntentsUI.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47AD291F2514006714A3 /* EventIntentsUI.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		435D47BC291F2515006714A3 /* EventIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47A2291F2514006714A3 /* EventIntents.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		435D47C3291F26A8006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
 		435D47C4291F26BC006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
+		4360A7462946D7CA0027FE53 /* EventIntentsUI.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47AD291F2514006714A3 /* EventIntentsUI.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4369B8B328ECB1E0007B7935 /* DateCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B228ECB1E0007B7935 /* DateCounterApp.swift */; };
 		4369B8B528ECB1E0007B7935 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B428ECB1E0007B7935 /* Persistence.swift */; };
 		4369B8B828ECB1E0007B7935 /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
@@ -106,19 +106,19 @@
 			remoteGlobalIDString = 435D477D291B1EBA006714A3;
 			remoteInfo = WidgetsExtension;
 		};
-		435D47B7291F2515006714A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4369B8A728ECB1E0007B7935 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 435D47AC291F2514006714A3;
-			remoteInfo = EventIntentsUI;
-		};
 		435D47BA291F2515006714A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4369B8A728ECB1E0007B7935 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 435D47A1291F2514006714A3;
 			remoteInfo = EventIntents;
+		};
+		4360A7472946D7CA0027FE53 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4369B8A728ECB1E0007B7935 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 435D47AC291F2514006714A3;
+			remoteInfo = EventIntentsUI;
 		};
 		4369B8C628ECB1E1007B7935 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -163,7 +163,7 @@
 			files = (
 				435D4794291B1EBB006714A3 /* WidgetsExtension.appex in Embed Foundation Extensions */,
 				435D47BC291F2515006714A3 /* EventIntents.appex in Embed Foundation Extensions */,
-				435D47B9291F2515006714A3 /* EventIntentsUI.appex in Embed Foundation Extensions */,
+				4360A7462946D7CA0027FE53 /* EventIntentsUI.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -611,9 +611,9 @@
 			);
 			dependencies = (
 				435D4792291B1EBB006714A3 /* PBXTargetDependency */,
-				435D47B8291F2515006714A3 /* PBXTargetDependency */,
 				435D47BB291F2515006714A3 /* PBXTargetDependency */,
 				433C6E7E2946AE54003914A0 /* PBXTargetDependency */,
+				4360A7482946D7CA0027FE53 /* PBXTargetDependency */,
 			);
 			name = TheDateCounter;
 			productName = DateCounter;
@@ -996,17 +996,17 @@
 			target = 435D477D291B1EBA006714A3 /* WidgetsExtension */;
 			targetProxy = 435D4791291B1EBB006714A3 /* PBXContainerItemProxy */;
 		};
-		435D47B8291F2515006714A3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = 435D47AC291F2514006714A3 /* EventIntentsUI */;
-			targetProxy = 435D47B7291F2515006714A3 /* PBXContainerItemProxy */;
-		};
 		435D47BB291F2515006714A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
 			target = 435D47A1291F2514006714A3 /* EventIntents */;
 			targetProxy = 435D47BA291F2515006714A3 /* PBXContainerItemProxy */;
+		};
+		4360A7482946D7CA0027FE53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 435D47AC291F2514006714A3 /* EventIntentsUI */;
+			targetProxy = 4360A7472946D7CA0027FE53 /* PBXContainerItemProxy */;
 		};
 		4369B8C728ECB1E1007B7935 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1332,8 +1332,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter;
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator watchsimulator watchos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG TEST";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
@@ -1445,7 +1443,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "READONLY_COREDATA $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1473,7 +1471,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "READONLY_COREDATA $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1501,8 +1499,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "READONLY_COREDATA $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1531,7 +1530,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "READONLY_COREDATA $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1561,7 +1560,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1589,8 +1588,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "READONLY_COREDATA $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1617,8 +1617,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntentsUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1645,7 +1646,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "READONLY_COREDATA $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1673,7 +1674,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1742,8 +1743,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter;
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator watchsimulator watchos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
@@ -1803,8 +1802,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter;
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator watchsimulator watchos";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
