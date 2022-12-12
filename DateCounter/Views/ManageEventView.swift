@@ -7,9 +7,9 @@
 
 import SwiftUI
 import CoreData
-#if os(watchOS)
-import WatchDatePicker
-#endif
+//#if os(watchOS)
+//import WatchDatePicker
+//#endif
 
 struct ManageEventView: View {
   // MARK: - Properties
@@ -136,7 +136,7 @@ struct ManageEventView: View {
       }
       Section {
         NavigationLink {
-          DateInputView(selection: $date)
+//          DateInputView(selection: $date)
         } label: {
           VStack(alignment: .leading) {
             Text("Date")
@@ -158,16 +158,16 @@ struct ManageEventView: View {
       }
       // sheet or fullScreenCover?
       .sheet(isPresented: $showTimePicker, content: {
-        TimeInputView(selection: $date)
-          .edgesIgnoringSafeArea(.all)
-          .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-              Button("Done") {
-                showTimePicker = false
-              }
-              .foregroundColor(.orange)
-            }
-          }
+//        TimeInputView(selection: $date)
+//          .edgesIgnoringSafeArea(.all)
+//          .toolbar {
+//            ToolbarItem(placement: .cancellationAction) {
+//              Button("Done") {
+//                showTimePicker = false
+//              }
+//              .foregroundColor(.orange)
+//            }
+//          }
       })
     }
   }

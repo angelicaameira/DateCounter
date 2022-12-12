@@ -14,10 +14,8 @@
 		433C6E912946AF2D003914A0 /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
 		433C6E922946AF33003914A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4369B8BB28ECB1E1007B7935 /* Assets.xcassets */; };
 		433C6E932946AF3D003914A0 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2242904CB73004C1D8E /* Preferences.swift */; };
-		433C6E942946AF3D003914A0 /* ManageEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */; };
 		433C6E952946AF3D003914A0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B428ECB1E0007B7935 /* Persistence.swift */; };
 		433C6E962946AF3D003914A0 /* CustomEnvironments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372E7B3293700B20085FE9F /* CustomEnvironments.swift */; };
-		433C6E972946AF3E003914A0 /* DateCounterCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7821CB290174A600838000 /* DateCounterCommands.swift */; };
 		433C6E982946AF3E003914A0 /* LunarEclipses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79D2932E4DC00F08C36 /* LunarEclipses.swift */; };
 		433C6E992946AF3E003914A0 /* EventListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2222904ACE6004C1D8E /* EventListRow.swift */; };
 		433C6E9A2946AF3E003914A0 /* UISplitViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372E7B12937002C0085FE9F /* UISplitViewController+Extensions.swift */; };
@@ -29,6 +27,9 @@
 		433C6EA02946AF88003914A0 /* DateCounterWatchAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7C22933AEF800F08C36 /* DateCounterWatchAppUITests.swift */; };
 		433C6EA12946AF8C003914A0 /* DateCounterWatchAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7C42933AEF800F08C36 /* DateCounterWatchAppUITestsLaunchTests.swift */; };
 		433C6EA22946AF91003914A0 /* DateCounterWatchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C7B82933AEF800F08C36 /* DateCounterWatchAppTests.swift */; };
+		433C6EA52946B08D003914A0 /* DateCounterCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7821CB290174A600838000 /* DateCounterCommands.swift */; };
+		433C6EA82946B1ED003914A0 /* WatchDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 433C6EA72946B1ED003914A0 /* WatchDatePicker */; };
+		433C6EA92946B24B003914A0 /* ManageEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */; };
 		435D4781291B1EBA006714A3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D4780291B1EBA006714A3 /* WidgetKit.framework */; };
 		435D4783291B1EBA006714A3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D4782291B1EBA006714A3 /* SwiftUI.framework */; };
 		435D4786291B1EBA006714A3 /* WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D4785291B1EBA006714A3 /* WidgetsBundle.swift */; };
@@ -234,6 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				433C6EA82946B1ED003914A0 /* WatchDatePicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +501,9 @@
 			dependencies = (
 			);
 			name = "DateCounter Watch App";
+			packageProductDependencies = (
+				433C6EA72946B1ED003914A0 /* WatchDatePicker */,
+			);
 			productName = "DateCounter Watch App";
 			productReference = 433C6E5C2946AE52003914A0 /* DateCounter Watch App.app */;
 			productType = "com.apple.product-type.application";
@@ -721,7 +726,7 @@
 			);
 			mainGroup = 4369B8A628ECB1E0007B7935;
 			packageReferences = (
-				430DE4C9293550F600EB5BA5 /* XCRemoteSwiftPackageReference "watch-date-picker" */,
+				433C6EA62946B1ED003914A0 /* XCRemoteSwiftPackageReference "watch-date-picker" */,
 			);
 			productRefGroup = 4369B8B028ECB1E0007B7935 /* Products */;
 			projectDirPath = "";
@@ -854,13 +859,13 @@
 				433C6E992946AF3E003914A0 /* EventListRow.swift in Sources */,
 				433C6E9F2946AF3E003914A0 /* Onboarding.swift in Sources */,
 				433C6E9E2946AF3E003914A0 /* DefaultDetailView.swift in Sources */,
-				433C6E942946AF3D003914A0 /* ManageEventView.swift in Sources */,
 				433C6E952946AF3D003914A0 /* Persistence.swift in Sources */,
 				433C6E9B2946AF3E003914A0 /* DateCounterApp.swift in Sources */,
-				433C6E972946AF3E003914A0 /* DateCounterCommands.swift in Sources */,
+				433C6EA92946B24B003914A0 /* ManageEventView.swift in Sources */,
 				433C6E932946AF3D003914A0 /* Preferences.swift in Sources */,
 				433C6E912946AF2D003914A0 /* DateCounter.xcdatamodeld in Sources */,
 				433C6E962946AF3D003914A0 /* CustomEnvironments.swift in Sources */,
+				433C6EA52946B08D003914A0 /* DateCounterCommands.swift in Sources */,
 				433C6E9D2946AF3E003914A0 /* DetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1041,7 +1046,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DateCounter Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1075,7 +1080,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DateCounter Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1110,7 +1115,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DateCounter Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1296,7 +1301,6 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1341,6 +1345,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -1707,7 +1712,6 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1776,7 +1780,6 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1813,6 +1816,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -1856,6 +1860,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -2152,7 +2157,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		430DE4C9293550F600EB5BA5 /* XCRemoteSwiftPackageReference "watch-date-picker" */ = {
+		433C6EA62946B1ED003914A0 /* XCRemoteSwiftPackageReference "watch-date-picker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/antoniogermano/watch-date-picker";
 			requirement = {
@@ -2161,6 +2166,14 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		433C6EA72946B1ED003914A0 /* WatchDatePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 433C6EA62946B1ED003914A0 /* XCRemoteSwiftPackageReference "watch-date-picker" */;
+			productName = WatchDatePicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */ = {
