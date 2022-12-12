@@ -30,7 +30,6 @@
 		433C6EA52946B08D003914A0 /* DateCounterCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7821CB290174A600838000 /* DateCounterCommands.swift */; };
 		433C6EA82946B1ED003914A0 /* WatchDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 433C6EA72946B1ED003914A0 /* WatchDatePicker */; };
 		433C6EA92946B24B003914A0 /* ManageEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */; };
-		433C6EAB2946B7A5003914A0 /* DateCounter-Watch-App-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 433C6EAA2946B7A5003914A0 /* DateCounter-Watch-App-Info.plist */; };
 		435D4781291B1EBA006714A3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D4780291B1EBA006714A3 /* WidgetKit.framework */; };
 		435D4783291B1EBA006714A3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D4782291B1EBA006714A3 /* SwiftUI.framework */; };
 		435D4786291B1EBA006714A3 /* WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D4785291B1EBA006714A3 /* WidgetsBundle.swift */; };
@@ -752,7 +751,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				433C6EAB2946B7A5003914A0 /* DateCounter-Watch-App-Info.plist in Resources */,
 				433C6E922946AF33003914A0 /* Assets.xcassets in Resources */,
 				433C6E902946AF25003914A0 /* Preview Assets.xcassets in Resources */,
 			);
@@ -1061,7 +1059,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1096,7 +1093,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1132,7 +1128,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.angelicameira.DateCounter.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1153,7 +1148,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.angelicameira.DateCounter-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1174,7 +1168,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.angelicameira.DateCounter-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1196,7 +1189,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.angelicameira.DateCounter-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1217,7 +1209,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.angelicameira.DateCounter-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1237,7 +1228,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.angelicameira.DateCounter-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1258,7 +1248,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RGUPB9UU3P;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.angelicameira.DateCounter-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
