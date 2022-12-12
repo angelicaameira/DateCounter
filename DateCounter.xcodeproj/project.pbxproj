@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		43244DAF2927957500D7B31E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435D47B3291F2515006714A3 /* MainInterface.storyboard */; };
-		43342C4128F24606004B9EE5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 43342C4028F24606004B9EE5 /* README.md */; };
-		433C6E7F2946AE54003914A0 /* DateCounter Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 433C6E5C2946AE52003914A0 /* DateCounter Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		433C6E7F2946AE54003914A0 /* DateCounter Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 433C6E5C2946AE52003914A0 /* DateCounter Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		433C6E902946AF25003914A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4369B8BF28ECB1E1007B7935 /* Preview Assets.xcassets */; };
 		433C6E912946AF2D003914A0 /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
 		433C6E922946AF33003914A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4369B8BB28ECB1E1007B7935 /* Assets.xcassets */; };
@@ -38,14 +37,14 @@
 		435D478D291B1EBB006714A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 435D478C291B1EBB006714A3 /* Assets.xcassets */; };
 		435D478F291B1EBB006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
 		435D4790291B1EBB006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
-		435D4794291B1EBB006714A3 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D477E291B1EBA006714A3 /* WidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		435D4794291B1EBB006714A3 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D477E291B1EBA006714A3 /* WidgetsExtension.appex */; platformFilters = (ios, macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		435D479B291F070E006714A3 /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
 		435D479C291F0719006714A3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B428ECB1E0007B7935 /* Persistence.swift */; };
 		435D47A4291F2514006714A3 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D47A3291F2514006714A3 /* Intents.framework */; };
 		435D47A7291F2514006714A3 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D47A6291F2514006714A3 /* IntentHandler.swift */; };
 		435D47AF291F2514006714A3 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D47AE291F2514006714A3 /* IntentsUI.framework */; };
 		435D47B2291F2515006714A3 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D47B1291F2515006714A3 /* IntentViewController.swift */; };
-		435D47BC291F2515006714A3 /* EventIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47A2291F2514006714A3 /* EventIntents.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		435D47BC291F2515006714A3 /* EventIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47A2291F2514006714A3 /* EventIntents.appex */; platformFilters = (ios, macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		435D47C3291F26A8006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
 		435D47C4291F26BC006714A3 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 435D478B291B1EBA006714A3 /* Widgets.intentdefinition */; };
 		4360A7462946D7CA0027FE53 /* EventIntentsUI.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 435D47AD291F2514006714A3 /* EventIntentsUI.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -797,7 +796,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43342C4128F24606004B9EE5 /* README.md in Resources */,
 				4369B8C028ECB1E1007B7935 /* Preview Assets.xcassets in Resources */,
 				4369B8BC28ECB1E1007B7935 /* Assets.xcassets in Resources */,
 			);
@@ -985,18 +983,25 @@
 		};
 		433C6E7E2946AE54003914A0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 433C6E5B2946AE52003914A0 /* DateCounter Watch App */;
 			targetProxy = 433C6E7D2946AE54003914A0 /* PBXContainerItemProxy */;
 		};
 		435D4792291B1EBB006714A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
+			platformFilters = (
+				ios,
+				macos,
+			);
 			target = 435D477D291B1EBA006714A3 /* WidgetsExtension */;
 			targetProxy = 435D4791291B1EBB006714A3 /* PBXContainerItemProxy */;
 		};
 		435D47BB291F2515006714A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
+			platformFilters = (
+				ios,
+				macos,
+			);
 			target = 435D47A1291F2514006714A3 /* EventIntents */;
 			targetProxy = 435D47BA291F2515006714A3 /* PBXContainerItemProxy */;
 		};
@@ -1300,6 +1305,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.1;
@@ -1329,7 +1335,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DateCounter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Date Counter";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -1340,6 +1345,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = br.com.angelicameira.DateCounter;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1414,8 +1420,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "READONLY_COREDATA $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1442,8 +1449,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "READONLY_COREDATA $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1501,8 +1509,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "READONLY_COREDATA $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1531,8 +1540,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1617,8 +1627,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "READONLY_COREDATA $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1645,8 +1656,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).EventIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1705,6 +1717,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.1;
@@ -1763,6 +1776,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.1;
@@ -1791,7 +1805,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DateCounter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Date Counter";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -1803,7 +1816,6 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = br.com.angelicameira.DateCounter;
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1831,7 +1843,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DateCounter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Date Counter";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -1843,7 +1854,6 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = br.com.angelicameira.DateCounter;
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
