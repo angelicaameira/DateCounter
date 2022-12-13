@@ -13,6 +13,11 @@ struct ContentView: View {
   @Environment(\.managedObjectContext) private var viewContext
   @State private var showDelete = false
   @State private var selectedEvent: Event?
+  @State private var showManageEventView = false
+  @State private var showOnboardingView = !UserDefaults.standard.bool(forKey: "didShowOnboarding")
+  @State private var showError = false
+  @State private var errorMessage = "No error"
+  
   @FetchRequest<Event>(entity: Event.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)])
   private var eventsFetchedResults: FetchedResults<Event>
   private var sectionKeys: [Period] = [
@@ -37,10 +42,6 @@ struct ContentView: View {
       return Period.decade
     }
   }
-  @State private var showManageEventView = false
-  @State private var showOnboardingView = !UserDefaults.standard.bool(forKey: "didShowOnboarding")
-  @State private var showError = false
-  @State private var errorMessage = "No error"
   
   // MARK: - Views
   var body: some View {
@@ -84,14 +85,14 @@ struct ContentView: View {
       ManageEventView()
     }
     
-//    .sheet(isPresented: $showOnboardingView, onDismiss: {
-//      UserDefaults.standard.set(true, forKey: "didShowOnboarding")
-//    }, content: {
-//      Onboarding()
-//#if os(OSX)
-//        .frame(minWidth: 400, idealWidth: 500, maxWidth: 700, minHeight: 370, idealHeight: 470, maxHeight: 600)
-//#endif
-//    })
+    .sheet(isPresented: $showOnboardingView, onDismiss: {
+      UserDefaults.standard.set(true, forKey: "didShowOnboarding")
+    }, content: {
+      Onboarding()
+#if os(OSX)
+        .frame(minWidth: 400, idealWidth: 500, maxWidth: 700, minHeight: 370, idealHeight: 400, maxHeight: 600)
+#endif
+    })
     
     .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
       Text("Ok")
