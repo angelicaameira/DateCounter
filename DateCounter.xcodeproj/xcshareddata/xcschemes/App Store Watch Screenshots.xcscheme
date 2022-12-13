@@ -43,7 +43,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:DateCounterUITests/App Store Screenshots.xctestplan"
+            reference = "container:DateCounter Watch AppUITests/App Store Watch Screenshots.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

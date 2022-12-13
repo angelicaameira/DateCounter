@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "BDBE9203-309A-4136-91CE-08AC9C3C8662",
+      "name" : "US English",
+      "options" : {
+        "language" : "en",
+        "region" : "US"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "commandLineArgumentEntries" : [
+      {
+        "argument" : "-com.apple.CoreData.CloudKitDebug 1"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:DateCounter.xcodeproj",
+      "identifier" : "433C6E5B2946AE52003914A0",
+      "name" : "DateCounter Watch App"
+    }
+  },
+  "testTargets" : [
+    {
+      "selectedTests" : [
+        "DateCounterWatchUIScreenshots\/testScreenshots()"
+      ],
+      "target" : {
+        "containerPath" : "container:DateCounter.xcodeproj",
+        "identifier" : "433C6E742946AE54003914A0",
+        "name" : "DateCounter Watch AppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
