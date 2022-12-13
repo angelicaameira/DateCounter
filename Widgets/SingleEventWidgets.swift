@@ -25,7 +25,7 @@ struct Provider: IntentTimelineProvider {
 #if APPSTORE_SCREENSHOTS
     let viewContext = PersistenceController.preview.container.viewContext
 #else
-    let viewContext = PersistenceController.shared.container.viewContext
+    let viewContext = PersistenceController.readOnly.container.viewContext
 #endif
     
     guard

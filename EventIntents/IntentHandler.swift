@@ -12,7 +12,7 @@ class IntentHandler: INExtension, EventSelectionIntentHandling {
 #if APPSTORE_SCREENSHOTS
   let persistenceController = PersistenceController.preview
 #else
-  let persistenceController = PersistenceController.shared
+  let persistenceController = PersistenceController.readOnly
 #endif
   
   func provideEventOptionsCollection(for intent: EventSelectionIntent, with completion: @escaping (INObjectCollection<EventType>?, Error?) -> Void) {
