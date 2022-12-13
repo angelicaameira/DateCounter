@@ -14,7 +14,7 @@ class IntentHandler: INExtension, EventSelectionIntentHandling {
     do {
       let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
       fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-      events = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
+      events = try PersistenceController.readOnly.container.viewContext.fetch(fetchRequest)
     } catch {
       completion(nil, NSError(domain: "Failed to retrieve Event list from CoreData", code: -1))
       return

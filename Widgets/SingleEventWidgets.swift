@@ -16,8 +16,13 @@ struct Provider: IntentTimelineProvider {
     EventType(identifier: placeholderIdentifier, display: "Awesome display")
   }()
   
+  @available(macOSApplicationExtension 13.0, *)
+  func recommendations() -> [IntentRecommendation<EventSelectionIntent>] {
+    return []
+  }
+  
   static func event(for selectedEvent: EventType?) -> Event? {
-    let viewContext = PersistenceController.shared.container.viewContext
+    let viewContext = PersistenceController.readOnly.container.viewContext
     
     guard
       let selectedEvent = selectedEvent,
@@ -109,6 +114,7 @@ struct EventWidgetView: View {
     case .accessoryCircular: accessoryCircular
     case .accessoryRectangular: accessoryRectangular
     case .accessoryInline: accessoryInline
+    case .accessoryCorner: defaultView
     @unknown default: defaultView
     }
   }
@@ -124,21 +130,29 @@ struct EventWidgetView: View {
       resizableIcon
         .foregroundColor(.orange)
         .opacity(0.2)
-      ViewThatFits(in: .vertical) {
-        Group {
-          Text("Please edit this widget and choose an event")
-          Text("Please edit this widget to pick an event")
-          Text("Edit this widget and choose an event")
-          Text("Edit this widget to pick an event")
-          Text("Edit to choose an event")
-          Text("Edit to pick an event")
-          Text("Choose an event")
-          Text("Pick an event")
-          Text("Choose event")
-          Text("No event")
+      if #available(macOSApplicationExtension 13.0, *) {
+        ViewThatFits(in: .vertical) {
+          Group {
+            Text("Please edit this widget and choose an event")
+            Text("Please edit this widget to pick an event")
+            Text("Edit this widget and choose an event")
+            Text("Edit this widget to pick an event")
+            Text("Edit to choose an event")
+            Text("Edit to pick an event")
+            Text("Choose an event")
+            Text("Pick an event")
+            Text("Choose event")
+            Text("No event")
+          }
+          .multilineTextAlignment(.center)
+          Image(systemName: "calendar.badge.exclamationmark")
+            .font(.largeTitle)
         }
-        .multilineTextAlignment(.center)
-        Image(systemName: "calendar.badge.exclamationmark")
+      } else {
+        // Fallback on earlier versions
+        Text("Choose an event")
+          .multilineTextAlignment(.center)
+          Image(systemName: "calendar.badge.exclamationmark")
           .font(.largeTitle)
       }
     }
@@ -203,7 +217,7 @@ struct EventWidgetView: View {
           .minimumScaleFactor(0.5)
           .padding(.bottom, 0.1)
           .foregroundColor(.orange)
-          .bold()
+//          .bold()
         if !entry.description.isEmpty {
           Text(entry.description)
             .truncationMode(.middle)
