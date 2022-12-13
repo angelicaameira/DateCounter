@@ -14,7 +14,11 @@ struct ContentView: View {
   @State private var showDelete = false
   @State private var selectedEvent: Event?
   @State private var showManageEventView = false
+#if APPSTORE_SCREENSHOTS
+  @State private var showOnboardingView = true
+#else
   @State private var showOnboardingView = !UserDefaults.standard.bool(forKey: "didShowOnboarding")
+#endif
   @State private var showError = false
   @State private var errorMessage = "No error"
   
