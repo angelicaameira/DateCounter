@@ -9,6 +9,7 @@ import CoreData
 
 struct PersistenceController {
   static let shared = PersistenceController()
+  static let readOnly = PersistenceController(readOnly: true)
   
   static var preview: PersistenceController = {
     let result = PersistenceController(inMemory: true)
@@ -33,25 +34,26 @@ struct PersistenceController {
   
   let container: NSPersistentCloudKitContainer
   
-  init(inMemory: Bool = false) {
+  init(inMemory: Bool = false, readOnly: Bool = false) {
     container = NSPersistentCloudKitContainer(name: "DateCounter")
     
     let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.br.com.angelicameira.DateCounter")!
     let storeURL = containerURL.appendingPathComponent("DateCounter.sqlite")
     let shared = NSPersistentStoreDescription(url: storeURL)
-#if READONLY_COREDATA
-    shared.isReadOnly = true
-#endif
+    
     shared.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-//    shared.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+    shared.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
     shared.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.br.com.angelicameira.DateCounter")
+    shared.isReadOnly = readOnly
     
     container.persistentStoreDescriptions = [ shared ]
+// #if DEBUG
 //    do {
 //        try container.initializeCloudKitSchema()
 //    } catch {
 //        print("Failed to initialize CloudKit: \(error)")
 //    }
+// #endif
     if inMemory {
       container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
     }

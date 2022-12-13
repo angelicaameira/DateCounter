@@ -22,7 +22,7 @@ struct Provider: IntentTimelineProvider {
   }
   
   static func event(for selectedEvent: EventType?) -> Event? {
-    let viewContext = PersistenceController.shared.container.viewContext
+    let viewContext = PersistenceController.readOnly.container.viewContext
     
     guard
       let selectedEvent = selectedEvent,
