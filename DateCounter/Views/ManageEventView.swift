@@ -213,12 +213,12 @@ struct ManageEventView_Previews: PreviewProvider {
   
   @ViewBuilder
   static var shared: some View {
-    ContentView()
+    Color(.white)
       .sheet(isPresented: .constant(true)) {
         addEvent
       }
       .previewDisplayName("Add event")
-    ContentView()
+    Color(.white)
       .sheet(isPresented: .constant(true)) {
         editEvent
       }
