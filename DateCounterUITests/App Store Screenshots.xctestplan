@@ -34,6 +34,7 @@
     {
       "parallelizable" : true,
       "selectedTests" : [
+        "DateCounterUIScreenshots\/testScreenshots()",
         "DateCounterUITests\/testScreenshots()"
       ],
       "target" : {

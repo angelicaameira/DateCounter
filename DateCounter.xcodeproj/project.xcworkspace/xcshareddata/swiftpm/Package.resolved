@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "watch-date-picker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/antoniogermano/watch-date-picker",
+      "state" : {
+        "revision" : "fbfe18999d56d29039a2751b9c058902d88f7678",
+        "version" : "0.1.1"
+      }
+    }
+  ],
+  "version" : 2
+}
