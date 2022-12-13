@@ -22,6 +22,18 @@ struct Onboarding: View {
     Feature(title: "iCloud support", featureDescription: "Your events are automatically synchronized to all your devices.", icon: "cloud")
   ]
   
+  var greetingTitle: some View {
+    Text("Welcome to\nDate Counter")
+      .font(.largeTitle)
+      .fontWeight(.bold)
+      .multilineTextAlignment(.center)
+#if os(iOS)
+      .padding(.top, 40)
+#else
+      .padding(.top)
+#endif
+  }
+  
   var body: some View {
     ScrollView {
       VStack {
@@ -115,7 +127,7 @@ struct Onboarding: View {
 struct FeatureRow: View {
   let feature: Feature
   
-  #if os(watchOS)
+#if os(watchOS)
   var body: some View {
     VStack(alignment: .leading) {
       VStack(alignment: .leading) {
@@ -133,7 +145,7 @@ struct FeatureRow: View {
     }
     .padding([.top, .trailing])
   }
-  #else
+#else
   var body: some View {
     VStack(alignment: .leading) {
       HStack {
@@ -156,7 +168,7 @@ struct FeatureRow: View {
     }
     .padding([.top, .trailing])
   }
-  #endif
+#endif
 }
 
 struct Onboarding_Previews: PreviewProvider {
