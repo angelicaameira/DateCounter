@@ -17,14 +17,25 @@ struct ContentView: View {
   @State private var showOnboardingView = !UserDefaults.standard.bool(forKey: "didShowOnboarding")
   @State private var showError = false
   @State private var errorMessage = "No error"
+  @State private var searchText = ""
   
-  @FetchRequest<Event>(entity: Event.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)])
-  private var eventsFetchedResults: FetchedResults<Event>
+//  @FetchRequest<Event>(entity: Event.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)], predicate: NSPredicate(format: "title CONTAINS[c] \"%@\"", searchText))
+ // private var eventsFetchedResults: FetchedResults<Event>
+  
+  func eventsFetchedResults() -> FetchedResults<Event> {
+    let request = FetchRequest<Event>(
+      entity: Event.entity(),
+      sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)],
+      predicate: NSPredicate(format: "title CONTAINS[c] \"B\"")
+    )
+    return request.wrappedValue
+  }
+  
   private var sectionKeys: [Period] = [
     .past, .month, .semester, .year, .decade
   ]
   private var eventsDictionary: [Period: [Event]] {
-    Dictionary(grouping: eventsFetchedResults) { event in
+    Dictionary(grouping: eventsFetchedResults()) { event in
       guard let date = event.date else { return .past }
       
       if date.compare(Date.now) == .orderedAscending {
@@ -79,7 +90,8 @@ struct ContentView: View {
         }
       DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
     }
-    .environment(\.eventListCount, eventsFetchedResults.count)
+    .searchable(text: $searchText)
+    .environment(\.eventListCount, eventsFetchedResults().count)
     
     .sheet(isPresented: $showManageEventView) {
       ManageEventView()
