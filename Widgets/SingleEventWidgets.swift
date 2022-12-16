@@ -46,10 +46,13 @@ struct Provider: IntentTimelineProvider {
     }
     
     if identifier == placeholderIdentifier {
+      let title: LocalizedStringKey = "My awesome event"
+      let description: LocalizedStringKey = "Event description"
+      
       let event: Event
       event = Event(context: viewContext)
-      event.title = "My awesome event"
-      event.eventDescription = "Event description"
+      event.title = "\(title)"
+      event.eventDescription = "\(description)"
       event.date = Date(timeInterval: 150000, since: Date.now)
       return event
     }
@@ -137,16 +140,16 @@ struct EventWidgetView: View {
       if #available(macOSApplicationExtension 13.0, *) {
         ViewThatFits(in: .vertical) {
           Group {
-            Text("Please edit this widget and choose an event")
-            Text("Please edit this widget to pick an event")
-            Text("Edit this widget and choose an event")
-            Text("Edit this widget to pick an event")
-            Text("Edit to choose an event")
-            Text("Edit to pick an event")
-            Text("Choose an event")
-            Text("Pick an event")
-            Text("Choose event")
-            Text("No event")
+            Text("Please edit this widget and choose an event", comment: "Explains user action needed to show an event on this widget. There are 10 possible text lengths (so it adapts to screen available space), from biggest (10) to smallest (1). This is size 10")
+            Text("Please edit this widget to pick an event", comment: "Explains user action needed to show an event on this widget. There are 10 possible text lengths (so it adapts to screen available space), from biggest (10) to smallest (1). This is size 9")
+            Text("Edit this widget and choose an event", comment: "Explains user action needed to show an event on this widget. There are 10 possible text lengths (so it adapts to screen available space), from biggest (10) to smallest (1). This is size 8")
+            Text("Edit this widget to pick an event", comment: "Explains user action needed to show an event on this widget. There are 10 possible text lengths (so it adapts to screen available space), from biggest (10) to smallest (1). This is size 7")
+            Text("Edit to choose an event", comment: "Explains user action needed to show an event on this widget. There are 10 possible text lengths (so it adapts to screen available space), from biggest (10) to smallest (1). This is size 6")
+            Text("Edit to pick an event", comment: "Explains user action needed to show an event on this widget. There are 10 possible text lengths (so it adapts to screen available space), from biggest (10) to smallest (1). This is size 5")
+            Text("Choose an event", comment: "Explains user action needed to show an event on this widget. There are 10 possible text lengths (so it adapts to screen available space), from biggest (10) to smallest (1). This is size 4")
+            Text("Pick an event", comment: "Explains user action needed to show an event on this widget. There are 10 possible text lengths (so it adapts to screen available space), from biggest (10) to smallest (1). This is size 3")
+            Text("Choose event", comment: "Explains user action needed to show an event on this widget. There are 10 possible text lengths (so it adapts to screen available space), from biggest (10) to smallest (1). This is size 2")
+            Text("No event", comment: "Explains user action needed to show an event on this widget. There are 10 possible text lengths (so it adapts to screen available space), from biggest (10) to smallest (1). This is size 1")
           }
           .multilineTextAlignment(.center)
           Image(systemName: "calendar.badge.exclamationmark")
@@ -221,7 +224,7 @@ struct EventWidgetView: View {
           .minimumScaleFactor(0.5)
           .padding(.bottom, 0.1)
           .foregroundColor(.orange)
-        //          .bold()
+        
         if !entry.description.isEmpty {
           Text(entry.description)
             .truncationMode(.middle)
@@ -332,6 +335,7 @@ struct Widgets_Previews: PreviewProvider {
   ]
 #endif
   
+#if !TEST
   static var previews: some View {
     ForEach(families, id: \.self) { family in
       Group {
@@ -344,5 +348,6 @@ struct Widgets_Previews: PreviewProvider {
       }
     }
   }
+#endif
 }
 #endif

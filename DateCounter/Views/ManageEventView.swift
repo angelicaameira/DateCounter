@@ -22,7 +22,7 @@ struct ManageEventView: View {
   @State private var errorMessage = "No error"
   @State var event: Event?
   @State private var showTimePicker = false
-  private var navigationBarTitle: String {
+  private var navigationBarTitle: LocalizedStringKey {
     event == nil ? "Add event" : "Edit event"
   }
   
@@ -43,7 +43,7 @@ struct ManageEventView: View {
   private var content: some View {
     VStack {
 #if os(OSX)
-      Text(event == nil ? "Add event" : "Edit event")
+      Text(event == nil ? "Add event" : "Edit event", comment: "Title for screen responsible for adding or editing event on macOS")
         .font(.headline)
         .padding(.top)
 #endif
@@ -62,18 +62,24 @@ struct ManageEventView: View {
         date = event.date ?? Date()
       })
       .alert("An error occurred when adding event", isPresented: $showError, actions: {
-        Text("Ok")
+        Text("Ok", comment: "Acknowledge button on the error alert shown when deleting an event")
       }, message: {
         Text(errorMessage)
       })
     }
     .toolbar {
       ToolbarItem(placement: .confirmationAction) {
-        Button("Save", action: saveItem)
+        Button {
+          saveItem()
+        } label: {
+          Text("Save", comment: "Button that saves the current event (either new or editing) in a database")
+        }
       }
       ToolbarItem(placement: .cancellationAction) {
-        Button("Cancel") {
+        Button {
           dismiss()
+        } label: {
+          Text("Cancel", comment: "Cancels adding/editing an event. All changes are lost/reverted to the previous values")
         }
       }
     }
@@ -109,18 +115,18 @@ struct ManageEventView: View {
       Section {
         TextEditor(text: $title)
       } header: {
-        Text("Title")
+        Text("Title", comment: "Event name header shown on iOS")
       }
       Section {
         TextEditor(text: $eventDescription)
       } header: {
-        Text("Description")
+        Text("Description", comment: "Event description header shown on iOS")
       }
       Section {
         DatePicker("Date", selection: $date)
           .datePickerStyle(.graphical)
       } header: {
-        Text("Date")
+        Text("Date", comment: "Event date header shown on iOS")
       }
     }
   }
@@ -139,7 +145,7 @@ struct ManageEventView: View {
           DateInputView(selection: $date)
         } label: {
           VStack(alignment: .leading) {
-            Text("Date")
+            Text("Date", comment: "Event date button shown on watchOS")
             Text(date, style: .date)
               .font(.footnote)
               .foregroundColor(.secondary)
@@ -149,7 +155,7 @@ struct ManageEventView: View {
           showTimePicker = true
         } label: {
           VStack(alignment: .leading) {
-            Text("Time")
+            Text("Time", comment: "Event time button shown on watchOS")
             Text(date, style: .time)
               .font(.footnote)
               .foregroundColor(.secondary)
@@ -162,8 +168,10 @@ struct ManageEventView: View {
           .edgesIgnoringSafeArea(.all)
           .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-              Button("Done") {
+              Button {
                 showTimePicker = false
+              } label: {
+                Text("Done", comment: "Shortest possible word to confirm time selection on Apple Watch")
               }
               .foregroundColor(.orange)
             }

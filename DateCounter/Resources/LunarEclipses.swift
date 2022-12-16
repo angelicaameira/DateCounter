@@ -6,18 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct LunarEclipse {
-  enum EclipseType: String {
+  enum EclipseType: LocalizedStringKey {
     case partial = "Partial"
     case total = "Total"
     case penumbral = "Penumbral"
     
-    var stringValue: String { rawValue }
+    var stringValue: LocalizedStringKey { rawValue }
   }
   
   let date: Date?
-  let visibility: String
+  let visibility: LocalizedStringKey
   let type: EclipseType
 }
 

@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import SwiftUI
 
 struct PersistenceController {
   static let shared = PersistenceController()
@@ -15,7 +16,7 @@ struct PersistenceController {
     let result = PersistenceController(inMemory: true)
     let viewContext = result.container.viewContext
     
-    let eventsDictionary: [(title: String, description: String)] = [
+    let eventsDictionary: [(title: LocalizedStringKey, description: LocalizedStringKey)] = [
       (title: "Visit mom", description: "We'll stay at her house for the weekend"),
       (title: "Sara's Birthday", description: "Surprise party"),
       (title: "New year's eve", description: ""),
@@ -31,9 +32,9 @@ struct PersistenceController {
     var index = 1
     for previewEvent in eventsDictionary {
       let event = Event(context: viewContext)
-      event.title = previewEvent.title
-      event.eventDescription = previewEvent.description
-      event.date = Date(timeInterval: TimeInterval(1000000*index*index), since: Date.now)
+      event.title = "\(previewEvent.title)"
+      event.eventDescription = "\(previewEvent.description)"
+      event.date = Date(timeInterval: TimeInterval(1000000 * index * index), since: Date.now)
       index += 1
     }
     do {

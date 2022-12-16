@@ -9,14 +9,18 @@ import SwiftUI
 
 struct Preferences: View {
   @AppStorage("My.preference")
-  private var string = "Ops"
-  private var options = ["Test", "Two", "Oops"]
+  private var string = "Oops"
+  private var options: [(id: UUID, key: LocalizedStringKey)] = [
+    (id: UUID(), key: "Test"),
+    (id: UUID(), key: "Two"),
+    (id: UUID(), key: "Oops")
+  ]
   
   var body: some View {
     Form {
       Picker("Title", selection: $string) {
-        ForEach(options, id: \.self) { string in
-          Text(string)
+        ForEach(options, id: \.id) { string in
+          Text(string.key)
         }
       }
       .pickerStyle(.inline)

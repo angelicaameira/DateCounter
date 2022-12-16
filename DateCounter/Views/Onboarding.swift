@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct Feature {
-  let title: String
-  let featureDescription: String
+struct Feature: Identifiable {
+  let id = UUID()
+  let title: LocalizedStringKey
+  let featureDescription: LocalizedStringKey
   let icon: String
 }
 
@@ -23,7 +24,7 @@ struct Onboarding: View {
   ]
   
   var greetingTitle: some View {
-    Text("Welcome to\nDate Counter")
+    Text("Welcome to\nDate Counter", comment: "Short greeting text before briefing users on how to use the app if they have not created events yet. Below it are instructions on what to do next")
       .font(.largeTitle)
       .fontWeight(.bold)
       .multilineTextAlignment(.center)
@@ -38,7 +39,7 @@ struct Onboarding: View {
     ScrollView {
       VStack {
 #if !os(watchOS)
-        Text("Welcome to\nDate Counter")
+        Text("Welcome to\nDate Counter", comment: "Short greeting text before briefing users on how to use the app if they have not created events yet. Below it are instructions on what to do next. Shown on all platforms except for watchOS")
           .font(.largeTitle)
           .fontWeight(.bold)
           .multilineTextAlignment(.center)
@@ -49,7 +50,7 @@ struct Onboarding: View {
 #endif
 #endif
         VStack(alignment: .leading) {
-          ForEach(welcomeFeatures, id: \.title) { feature in
+          ForEach(welcomeFeatures) { feature in
             FeatureRow(feature: feature)
           }
 #if os(watchOS)
@@ -80,7 +81,7 @@ struct Onboarding: View {
       dismiss()
     } label: {
       Spacer()
-      Text("Continue")
+      Text("Continue", comment: "A button that dismisses the onboarding view. Shown only on macOS")
         .bold()
         .frame(height: 38)
       Spacer()
@@ -97,7 +98,7 @@ struct Onboarding: View {
       dismiss()
     } label: {
       Spacer()
-      Text("Continue")
+      Text("Continue", comment: "A button that dismisses the onboarding view. Shown only on iOS")
         .font(.title3)
         .bold()
         .frame(height: 38)
@@ -115,7 +116,7 @@ struct Onboarding: View {
     Button {
       dismiss()
     } label: {
-      Text("Continue")
+      Text("Continue", comment: "A button that dismisses the onboarding view. Shown only on watchOS")
         .bold()
     }
     .buttonStyle(.borderedProminent)
