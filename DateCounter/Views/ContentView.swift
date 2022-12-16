@@ -179,7 +179,7 @@ struct ContentView: View {
       do {
         try viewContext.save()
       } catch {
-//        errorMessage = error.localizedDescription
+        self.error = error as? LocalizedError
         showError = true
       }
     }
