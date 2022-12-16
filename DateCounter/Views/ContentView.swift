@@ -20,7 +20,7 @@ struct ContentView: View {
   @State private var showOnboardingView = !UserDefaults.standard.bool(forKey: "didShowOnboarding")
 #endif
   @State private var showError = false
-  @State private var errorMessage = "No error"
+  @State private var error: LocalizedError?
   
   @FetchRequest<Event>(entity: Event.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)])
   private var eventsFetchedResults: FetchedResults<Event>
@@ -81,7 +81,7 @@ struct ContentView: View {
             }
           }
         }
-      DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
+      DefaultDetailView(showError: $showError, error: $error)
     }
     .environment(\.eventListCount, eventsFetchedResults.count)
     
@@ -98,11 +98,11 @@ struct ContentView: View {
 #endif
     })
     
-    .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
-      Text("Ok")
-    }, message: {
-      Text(errorMessage)
-    })
+//    .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
+//      Text("Ok")
+//    }, message: {
+//      Text(errorMessage)
+//    })
   }
   
   var sidebarContent: some View {
@@ -149,7 +149,7 @@ struct ContentView: View {
           do {
             try viewContext.save()
           } catch {
-            errorMessage = error.localizedDescription
+//            errorMessage = error.localizedDescription
             showError = true
           }
         })
@@ -179,7 +179,7 @@ struct ContentView: View {
       do {
         try viewContext.save()
       } catch {
-        errorMessage = error.localizedDescription
+//        errorMessage = error.localizedDescription
         showError = true
       }
     }

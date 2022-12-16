@@ -14,7 +14,7 @@ struct DetailView: View {
   @ObservedObject var event: Event
   @State private var showDeleteAlert = false
   @State private var showError = false
-  @State private var errorMessage = "No error"
+  @State private var error: LocalizedError?
   @State private var errorTitle = "No action"
   @State var isEditing = false
   @State private var updateView = UUID()
@@ -24,7 +24,8 @@ struct DetailView: View {
       displayingView
       // macOS needs this to work
         .blankWithoutContext(event) {
-          DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
+//          DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
+          Text("")
             .navigationTitle("")
         }
     }
@@ -45,11 +46,11 @@ struct DetailView: View {
       Text("\"\(event.title ?? "It")\" will be permanently deleted.\nAre you sure?")
     }
     
-    .alert(errorTitle, isPresented: $showError, actions: {
-      Text("Ok")
-    }, message: {
-      Text(errorMessage)
-    })
+//    .alert(errorTitle, isPresented: $showError, actions: {
+//      Text("Ok")
+//    }, message: {
+//      Text(errorMessage)
+//    })
     
     .sheet(isPresented: $isEditing) {
       ManageEventView(event: event)
@@ -161,7 +162,7 @@ struct DetailView: View {
 #endif
     } catch {
       viewContext.undo()
-      errorMessage = error.localizedDescription
+//      errorMessage = error.localizedDescription
       errorTitle = "Error when deleting event"
       showError = true
     }

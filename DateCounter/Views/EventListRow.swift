@@ -15,7 +15,8 @@ struct EventListRow: View {
       DetailView(event: event)
       // iPadOS needs this to work
         .blankWithoutContext(event) {
-          DefaultDetailView(showError: .constant(false), errorMessage: .constant(""))
+//          DefaultDetailView(showError: .constant(false), errorMessage: .constant(""))
+          Text("")
             .navigationTitle("")
         }
     } label: {

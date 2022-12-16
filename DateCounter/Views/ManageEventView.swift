@@ -19,7 +19,7 @@ struct ManageEventView: View {
   @State private var eventDescription = ""
   @State private var date = Date()
   @State private var showError = false
-  @State private var errorMessage = "No error"
+  @State private var error: LocalizedError?
   @State var event: Event?
   @State private var showTimePicker = false
   private var navigationBarTitle: LocalizedStringKey {
@@ -61,11 +61,11 @@ struct ManageEventView: View {
         eventDescription = event.eventDescription ?? ""
         date = event.date ?? Date()
       })
-      .alert("An error occurred when adding event", isPresented: $showError, actions: {
-        Text("Ok", comment: "Acknowledge button on the error alert shown when deleting an event")
-      }, message: {
-        Text(errorMessage)
-      })
+//      .alert("An error occurred when adding event", isPresented: $showError, actions: {
+//        Text("Ok", comment: "Acknowledge button on the error alert shown when deleting an event")
+//      }, message: {
+//        Text(errorMessage)
+//      })
     }
     .toolbar {
       ToolbarItem(placement: .confirmationAction) {
@@ -201,7 +201,7 @@ struct ManageEventView: View {
         dismiss()
       } catch {
         viewContext.rollback()
-        errorMessage = error.localizedDescription
+//        errorMessage = error.localizedDescription
         showError = true
       }
     }

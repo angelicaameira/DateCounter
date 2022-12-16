@@ -14,7 +14,7 @@ struct DefaultDetailView: View {
   @Environment(\.eventListCount) var eventCount: Int
   @State var showManageEventView = false
   @Binding var showError: Bool
-  @Binding var errorMessage: String
+  @Binding var error: LocalizedError?
   
   var body: some View {
     VStack {
@@ -128,23 +128,23 @@ struct DefaultDetailView: View {
         try viewContext.save()
       } catch {
         viewContext.rollback()
-        errorMessage = error.localizedDescription
+//        errorMessage = error.localizedDescription
         showError = true
       }
     }
   }
 }
 
-#if !TEST
-struct DefaultDetailView_Previews: PreviewProvider {
-  static var previews: some View {
-    DefaultDetailView(showError: .constant(false), errorMessage: .constant("No error message"))
-      .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-      .previewDisplayName("No events (new user)")
-    DefaultDetailView(showError: .constant(false), errorMessage: .constant("No error message"))
-      .environment(\.eventListCount, 1)
-      .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-      .previewDisplayName("Some events (existing user)")
-  }
-}
-#endif
+//#if !TEST
+//struct DefaultDetailView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    DefaultDetailView(showError: .constant(false), errorMessage: .constant("No error message"))
+//      .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+//      .previewDisplayName("No events (new user)")
+//    DefaultDetailView(showError: .constant(false), errorMessage: .constant("No error message"))
+//      .environment(\.eventListCount, 1)
+//      .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//      .previewDisplayName("Some events (existing user)")
+//  }
+//}
+//#endif
