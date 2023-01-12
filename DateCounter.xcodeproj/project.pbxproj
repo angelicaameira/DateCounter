@@ -68,6 +68,8 @@
 		43F0D2232904ACE6004C1D8E /* EventListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2222904ACE6004C1D8E /* EventListRow.swift */; };
 		43F0D2252904CB73004C1D8E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2242904CB73004C1D8E /* Preferences.swift */; };
 		BF229F47293F78B600B22A52 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF229F46293F78B600B22A52 /* Onboarding.swift */; };
+		BF59938E295F09C500C21CCE /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59938D295F09C500C21CCE /* SwiftUIView.swift */; };
+		BF59938F295F09C500C21CCE /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59938D295F09C500C21CCE /* SwiftUIView.swift */; };
 		BF7821CC290174A600838000 /* DateCounterCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7821CB290174A600838000 /* DateCounterCommands.swift */; };
 		BFA4700C2945327B00CC6381 /* DateCounterUIPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4700B2945327B00CC6381 /* DateCounterUIPerformanceTests.swift */; };
 		BFA47011294537DB00CC6381 /* DateCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8D328ECB1E1007B7935 /* DateCounterUITests.swift */; };
@@ -229,6 +231,7 @@
 		BF03C3D0292BDA3700D21849 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
 		BF229F46293F78B600B22A52 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		BF40C70C294B671000CE0CD3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MainInterface.strings"; sourceTree = "<group>"; };
+		BF59938D295F09C500C21CCE /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		BF7821CB290174A600838000 /* DateCounterCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterCommands.swift; sourceTree = "<group>"; };
 		BFA4700B2945327B00CC6381 /* DateCounterUIPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUIPerformanceTests.swift; sourceTree = "<group>"; };
 		BFA4701A294537DB00CC6381 /* DateCounterUIPerformanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateCounterUIPerformanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -479,6 +482,7 @@
 				43F0D2242904CB73004C1D8E /* Preferences.swift */,
 				43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */,
 				BF229F46293F78B600B22A52 /* Onboarding.swift */,
+				BF59938D295F09C500C21CCE /* SwiftUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -877,6 +881,7 @@
 				433C6E962946AF3D003914A0 /* CustomEnvironments.swift in Sources */,
 				433C6EA52946B08D003914A0 /* DateCounterCommands.swift in Sources */,
 				433C6E9D2946AF3E003914A0 /* DetailView.swift in Sources */,
+				BF59938F295F09C500C21CCE /* SwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,6 +942,7 @@
 			files = (
 				4369B8B328ECB1E0007B7935 /* DateCounterApp.swift in Sources */,
 				BFEE1CDA28EF78DF004E52D8 /* ManageEventView.swift in Sources */,
+				BF59938E295F09C500C21CCE /* SwiftUIView.swift in Sources */,
 				435D4790291B1EBB006714A3 /* Widgets.intentdefinition in Sources */,
 				43F0D2232904ACE6004C1D8E /* EventListRow.swift in Sources */,
 				4369B8B528ECB1E0007B7935 /* Persistence.swift in Sources */,

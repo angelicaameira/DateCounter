@@ -16,6 +16,7 @@ struct DetailView: View {
   @State private var showError = false
   @State private var error: LocalizedError?
   @State private var errorTitle = "No action"
+  @State private var errorMessage = "No error"
   @State var isEditing = false
   @State private var updateView = UUID()
   
@@ -29,32 +30,36 @@ struct DetailView: View {
             .navigationTitle("")
         }
     }
-    .navigationTitle(event.title ?? "")
-    .toolbar {
-      editToolbarItem
-      deleteToolbarItem
-    }
+        
+     .navigationTitle(event.title ?? "")
+        .toolbar {
+          editToolbarItem
+          deleteToolbarItem
+        }
 #if os(OSX)
-    .onDeleteCommand {
-      showDeleteAlert = true
-    }
+        .onDeleteCommand {
+          showDeleteAlert = true
+        }
 #endif
-    .alert("Delete event", isPresented: $showDeleteAlert) {
-      Button("Delete", role: .destructive, action: deleteEvent)
-      Button("Cancel", role: .cancel) { }
-    } message: {
-      Text("\"\(event.title ?? "It")\" will be permanently deleted.\nAre you sure?")
-    }
-    
-//    .alert(errorTitle, isPresented: $showError, actions: {
-//      Text("Ok")
-//    }, message: {
-//      Text(errorMessage)
-//    })
-    
-    .sheet(isPresented: $isEditing) {
-      ManageEventView(event: event)
-    }
+        .alert("Delete event", isPresented: $showDeleteAlert) {
+          Button("Delete",role: .destructive,comment: "When user select this button, the event will be delete",
+                 role: .destructive, action: deleteEvent)
+          Button("Cancel", role:  .cancel, comment: "When user select this button, the delete action will be canceled"
+          ) { }
+        } message: {
+          Text("\"\(event.title ?? "It")\" will be permanently deleted.\nAre you sure?", comment: "if user select delete, this message will appear to confirm the action")
+        }
+      
+      //    .alert(errorTitle, isPresented: $showError, actions: {
+      //      Text("Ok")
+      //    }, message: {
+      //      Text(errorMessage)
+      //    })
+      
+        .sheet(isPresented: $isEditing) {
+          ManageEventView(event: event)
+        }
+    //}
   }
   
   private let components: [Calendar.Component] = [.era, .year, .month, .weekOfMonth, .day, .hour, .minute, .second]
@@ -64,24 +69,24 @@ struct DetailView: View {
         Section {
           Text(description)
         } header: {
-          Text("Details")
+          Text("Details", comment: "details of event")
         }
       }
       if let date = event.date {
         Section {
           Text("\(date, style: .date), \(date, style: .time)")
         } header: {
-          Text("Date")
+          Text("Date", comment: "date of event")
         }
       }
       Section {
         ForEach(components, id: \.self) { component in
           if let time = remainingTime(forComponent: component), time != 0 {
-            Text("\(time) \(stringForComponent(component))\(time > 1 || time < 1 ? "s" : "")")
+            Text(localizedPeriod(value: time, unit: component))
           }
         }
       } header: {
-        Text("Remaining time on different units")
+        Text("Remaining time on different units", comment: "show remainingTime in different ways")
       }
       .id(updateView)
       .onReceive(Timer.publish(every: 1, on: .main, in: .default).autoconnect()) { _ in
@@ -110,6 +115,10 @@ struct DetailView: View {
     case .timeZone: return "timezone"
     @unknown default: return "unknown"
     }
+  }
+  
+  func localizedPeriod(value time: Int, unit: Calendar.Component) -> LocalizedStringKey {
+    return "\(time) \(stringForComponent(unit))"
   }
   
   func remainingTime(forComponent component: Calendar.Component) -> Int? {
@@ -162,7 +171,7 @@ struct DetailView: View {
 #endif
     } catch {
       viewContext.undo()
-//      errorMessage = error.localizedDescription
+      errorMessage = error.localizedDescription
       errorTitle = "Error when deleting event"
       showError = true
     }

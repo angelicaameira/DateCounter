@@ -61,11 +61,11 @@ struct ManageEventView: View {
         eventDescription = event.eventDescription ?? ""
         date = event.date ?? Date()
       })
-//      .alert("An error occurred when adding event", isPresented: $showError, actions: {
-//        Text("Ok", comment: "Acknowledge button on the error alert shown when deleting an event")
-//      }, message: {
-//        Text(errorMessage)
-//      })
+      .alert("An error occurred when adding event", isPresented: $showError, actions: {
+        Text("Ok", comment: "Acknowledge button on the error alert shown when deleting an event")
+      }, message: {
+        Text(error?.localizedDescription ?? "")
+      })
     }
     .toolbar {
       ToolbarItem(placement: .confirmationAction) {
@@ -96,7 +96,7 @@ struct ManageEventView: View {
   private var formBody: some View {
     Group {
       Section {
-        TextField("Event name", text: $title)
+       TextField("Event name", text: $title)
       }
       Section {
         TextField("Description", text: $eventDescription)
@@ -201,7 +201,6 @@ struct ManageEventView: View {
         dismiss()
       } catch {
         viewContext.rollback()
-//        errorMessage = error.localizedDescription
         showError = true
       }
     }

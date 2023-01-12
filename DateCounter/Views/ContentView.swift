@@ -98,11 +98,9 @@ struct ContentView: View {
 #endif
     })
     
-//    .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
-//      Text("Ok")
-//    }, message: {
-//      Text(errorMessage)
-//    })
+    .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
+      Text("Ok")
+    })
   }
   
   var sidebarContent: some View {
@@ -149,25 +147,28 @@ struct ContentView: View {
           do {
             try viewContext.save()
           } catch {
-//            errorMessage = error.localizedDescription
+            errorMessage = error.localizedDescription
             showError = true
           }
         })
         Button("Cancel", action: {
           showDelete = false
+          
+        }, message: {
+          Text("\"\(selectedEvent?.title ?? "It")\" will be permanently deleted.\nAre you sure?", comment: "it shows a message to advise users about consequences to press delete" )
         })
-      }, message: {
-        Text("\"\(selectedEvent?.title ?? "It")\" will be permanently deleted.\nAre you sure?")
+        .onDeleteCommand {
+          guard
+            let selectedEvent = selectedEvent,
+            selectedEvent.managedObjectContext != nil
+          else { return }
+          showDelete = true
+        }
       })
-      .onDeleteCommand {
-        guard
-          let selectedEvent = selectedEvent,
-          selectedEvent.managedObjectContext != nil
-        else { return }
-        showDelete = true
-      }
 #endif
-  }
+      }
+             
+             
   
   // MARK: - Functions
   private func deleteEvents(section: Period, offsets: IndexSet) {
@@ -209,14 +210,14 @@ struct ContentView: View {
   }
 }
 
-enum Period: String, CaseIterable, Codable {
+enum Period: LocalizedStringKey, CaseIterable, Codable {
   case past = "Past"
   case month = "Next month"
   case semester = "Next semester"
   case year = "Next year"
   case decade = "Next decade"
   
-  var stringValue: String { rawValue }
+  var stringValue: LocalizedStringKey { rawValue }
 }
 
 // MARK: - Previews

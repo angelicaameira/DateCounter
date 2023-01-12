@@ -14,14 +14,15 @@ struct Feature: Identifiable {
   let icon: String
 }
 
+private let welcomeFeatures = [
+  Feature(title: "Track your events", featureDescription: "Find out how much time has passed for old events, or the time remaining until future events.", icon: "calendar"),
+  Feature(title: "Home screen widgets", featureDescription: "Never miss an event thanks to home screen and lock screen widgets.", icon: "square.stack"),
+  Feature(title: "Use everywhere", featureDescription: "Date Counter is a native app available on the App Store for Mac, iPad, iPhone and Apple Watch.", icon: "laptopcomputer.and.iphone"),
+  Feature(title: "iCloud support", featureDescription: "Your events are automatically synchronized to all your devices.", icon: "cloud")
+]
+
 struct Onboarding: View {
   @Environment(\.dismiss) var dismiss
-  let welcomeFeatures = [
-    Feature(title: "Track your events", featureDescription: "Find out how much time has passed for old events, or the time remaining until future events.", icon: "calendar"),
-    Feature(title: "Home screen widgets", featureDescription: "Never miss an event thanks to home screen and lock screen widgets.", icon: "square.stack"),
-    Feature(title: "Use everywhere", featureDescription: "Date Counter is a native app available on the App Store for Mac, iPad, iPhone and Apple Watch.", icon: "laptopcomputer.and.iphone"),
-    Feature(title: "iCloud support", featureDescription: "Your events are automatically synchronized to all your devices.", icon: "cloud")
-  ]
   
   var greetingTitle: some View {
     Text("Welcome to\nDate Counter", comment: "Short greeting text before briefing users on how to use the app if they have not created events yet. Below it are instructions on what to do next")
@@ -106,7 +107,6 @@ struct Onboarding: View {
     }
     .buttonStyle(.borderedProminent)
     .padding()
-    .cornerRadius(15)
     .background(.bar)
   }
 #endif
@@ -137,10 +137,10 @@ struct FeatureRow: View {
             .foregroundColor(.orange)
             .font(.headline)
             .frame(width: 25)
-          Text(feature.title)
+          Text(feature.title, comment: "title or name of event")
             .font(.headline)
         }
-        Text(feature.featureDescription)
+        Text(feature.featureDescription, comment: "more informations about de event")
           .foregroundColor(.secondary)
       }
     }
@@ -160,9 +160,9 @@ struct FeatureRow: View {
 #endif
         
         VStack(alignment: .leading) {
-          Text(feature.title)
+          Text(feature.title, comment: "title or name of event")
           
-          Text(feature.featureDescription)
+          Text(feature.featureDescription, comment: "more information about de event")
             .foregroundColor(.secondary)
         }
       }

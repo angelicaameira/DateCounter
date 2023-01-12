@@ -22,6 +22,7 @@ struct EventListRow: View {
     } label: {
       HStack {
         Text(event.title ?? "Unnamed event")
+       // Text(.self, comment: "name of event")
         Spacer()
         if let date = event.date {
           Text(date, style: .relative)

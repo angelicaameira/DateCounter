@@ -18,7 +18,7 @@ struct DefaultDetailView: View {
   
   var body: some View {
     VStack {
-      Text("Welcome!")
+      Text("Welcome to Date Counter!", comment: "Short greeting text before briefing users on how to use the app if they have not created events yet. Below it are instructions on what to do next. Shown on all platforms except for watchOS")
         .font(.largeTitle)
         .foregroundColor(.orange)
         .multilineTextAlignment(.center)
@@ -42,25 +42,25 @@ struct DefaultDetailView: View {
     VStack {
       HStack {
 #if os(OSX) || os(tvOS)
-        Text("Start by clicking")
+        Text("Start by clicking", comment: "When user have Mac or TVOS, is clicking")
 #else
-        Text("Start by tapping")
+        Text("Start by tapping", comment: "When user have Mac or TVOS, is tapping")
 #endif
         Button {
           showManageEventView = true
         } label: {
           Image(systemName: "plus")
         }
-        Text("to create a new event")
+        Text("to create a new event", comment: "select plus button to create a new event")
       }
       .padding(.bottom)
       VStack {
-        Text("Want some ideas?")
+        Text("Want some ideas?", comment: "the app shows some interesting events if the user don't have ideas")
         Button {
           showManageEventView = false
           addSampleEvents()
         } label: {
-          Text("Add some sample events for me")
+          Text("Add some sample events for me", comment: "the app shows some interesting events")
         }
       }
     }
@@ -69,9 +69,9 @@ struct DefaultDetailView: View {
   var pickEventMessageView: some View {
     VStack {
 #if os(OSX) || os(tvOS)
-      Text("Click an event to see details")
+      Text("Click an event to see details", comment: "When user have Mac or TVOS, is clicking")
 #else
-      Text("Tap an event to see details")
+      Text("Tap an event to see details", comment: "When user have Mac or TVOS, is tapping")
 #endif
     }
   }
