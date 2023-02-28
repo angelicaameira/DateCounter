@@ -43,3 +43,15 @@ While opening the pull request, the comment must note which issue is being worke
 Examples:
 - For features: `closes #17`
 - For bugs: `fixes #14`
+
+### App storage debugging
+
+Group containers folder: 
+```
+~/Library/Group Containers/group.br.com.angelicameira.DateCounter/
+```
+
+App container folder:
+```
+~/Library/Containers/Date Counter/
+```
