@@ -37,13 +37,9 @@ struct PersistenceController {
   init(inMemory: Bool = false, readOnly: Bool = false) {
     container = NSPersistentCloudKitContainer(name: "DateCounter")
     
-#if os(OSX)
     let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.br.com.angelicameira.DateCounter")!
     let storeURL = containerURL.appendingPathComponent("DateCounter.sqlite")
     let shared = NSPersistentStoreDescription(url: storeURL)
-#else
-    let shared = NSPersistentStoreDescription()
-#endif
     
     shared.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
     shared.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
