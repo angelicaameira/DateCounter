@@ -22,6 +22,9 @@ struct ManageEventView: View {
   @State private var errorMessage = "No error"
   @State var event: Event?
   @State private var showTimePicker = false
+  private var blockScreen: Bool {
+    return title != event?.title || eventDescription != event?.eventDescription
+  }
   private var navigationBarTitle: String {
     event == nil ? "Add event" : "Edit event"
   }
@@ -46,6 +49,7 @@ struct ManageEventView: View {
       Text(event == nil ? "Add event" : "Edit event")
         .font(.headline)
         .padding(.top)
+      
 #endif
       // swiftlint:disable trailing_closure
       Form {
@@ -67,6 +71,7 @@ struct ManageEventView: View {
         Text(errorMessage)
       })
     }
+    
     .toolbar {
       ToolbarItem(placement: .confirmationAction) {
         Button("Save", action: saveItem)
@@ -77,6 +82,7 @@ struct ManageEventView: View {
         }
       }
     }
+    .interactiveDismissDisabled()
 #if !os(watchOS)
     .navigationTitle(navigationBarTitle)
 #endif
@@ -174,6 +180,7 @@ struct ManageEventView: View {
 #endif
   
   // MARK: - Functions
+ 
   private func saveItem() {
     withAnimation {
       let newItem: Event
