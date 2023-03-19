@@ -11,15 +11,15 @@ import CoreData
 struct ContentView: View {
   // MARK: - Properties
   @Environment(\.managedObjectContext) private var viewContext
+  @FetchRequest<Event>(entity: Event.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)])
+  private var eventsFetchedResults: FetchedResults<Event>
   @State private var showDelete = false
   @State private var selectedEvent: Event?
   @State private var showManageEventView = false
   @State private var showOnboardingView = !UserDefaults.standard.bool(forKey: "didShowOnboarding")
   @State private var showError = false
   @State private var errorMessage = "No error"
-  
-  @FetchRequest<Event>(entity: Event.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)])
-  private var eventsFetchedResults: FetchedResults<Event>
+  @State private var searchText = ""
   private var sectionKeys: [Period] = [
     .past, .month, .semester, .year, .decade
   ]
@@ -79,6 +79,7 @@ struct ContentView: View {
         }
       DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
     }
+    .searchable(text: $searchText)
     .environment(\.eventListCount, eventsFetchedResults.count)
     
     .sheet(isPresented: $showManageEventView) {
@@ -103,7 +104,7 @@ struct ContentView: View {
   
   var sidebarContent: some View {
     ForEach(sectionKeys, id: \.self) { section in
-      if let events = eventsDictionary[section] {
+      if let events = eventsDictionary[section]?.filter({ searchText.isEmpty || ($0.title?.lowercased().contains(searchText.lowercased()) == true) }) {
         Section {
           ForEach(events, id: \.self) { event in
             EventListRow(event: event)
@@ -211,7 +212,6 @@ enum Period: String, CaseIterable, Codable {
   case semester = "Next semester"
   case year = "Next year"
   case decade = "Next decade"
-  
   var stringValue: String { rawValue }
 }
 
