@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		43244DAF2927957500D7B31E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435D47B3291F2515006714A3 /* MainInterface.storyboard */; };
+		433B504329AE64AC00CC42C3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433B504229AE64AC00CC42C3 /* CloudKit.framework */; };
 		433C6E7F2946AE54003914A0 /* DateCounter Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 433C6E5C2946AE52003914A0 /* DateCounter Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		433C6E902946AF25003914A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4369B8BF28ECB1E1007B7935 /* Preview Assets.xcassets */; };
 		433C6E912946AF2D003914A0 /* DateCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8B628ECB1E0007B7935 /* DateCounter.xcdatamodeld */; };
@@ -172,6 +173,7 @@
 		431B1F2C2921AFAA002791D2 /* EventIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventIntents.entitlements; sourceTree = "<group>"; };
 		431B1F2D2921AFB5002791D2 /* EventIntentsUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventIntentsUI.entitlements; sourceTree = "<group>"; };
 		43342C4028F24606004B9EE5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		433B504229AE64AC00CC42C3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		433C6D79294564E9003914A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		433C6E5C2946AE52003914A0 /* DateCounter Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DateCounter Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		433C6E6B2946AE53003914A0 /* DateCounter Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DateCounter Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +283,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				433B504329AE64AC00CC42C3 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +314,7 @@
 		435D477F291B1EBA006714A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				433B504229AE64AC00CC42C3 /* CloudKit.framework */,
 				435D4780291B1EBA006714A3 /* WidgetKit.framework */,
 				435D4782291B1EBA006714A3 /* SwiftUI.framework */,
 				435D47A3291F2514006714A3 /* Intents.framework */,
