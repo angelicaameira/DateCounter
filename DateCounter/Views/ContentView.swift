@@ -11,6 +11,8 @@ import CoreData
 struct ContentView: View {
   // MARK: - Properties
   @Environment(\.managedObjectContext) private var viewContext
+  @FetchRequest<Event>(entity: Event.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)])
+  private var eventsFetchedResults: FetchedResults<Event>
   @State private var showDelete = false
   @State private var selectedEvent: Event?
   @State private var showManageEventView = false
@@ -18,24 +20,11 @@ struct ContentView: View {
   @State private var showError = false
   @State private var errorMessage = "No error"
   @State private var searchText = ""
-  
-//  @FetchRequest<Event>(entity: Event.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)], predicate: NSPredicate(format: "title CONTAINS[c] \"%@\"", searchText))
- // private var eventsFetchedResults: FetchedResults<Event>
-  
-  func eventsFetchedResults() -> FetchedResults<Event> {
-    let request = FetchRequest<Event>(
-      entity: Event.entity(),
-      sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)],
-      predicate: NSPredicate(format: "title CONTAINS[c] \"B\"")
-    )
-    return request.wrappedValue
-  }
-  
   private var sectionKeys: [Period] = [
     .past, .month, .semester, .year, .decade
   ]
   private var eventsDictionary: [Period: [Event]] {
-    Dictionary(grouping: eventsFetchedResults()) { event in
+    Dictionary(grouping: eventsFetchedResults) { event in
       guard let date = event.date else { return .past }
       
       if date.compare(Date.now) == .orderedAscending {
@@ -91,7 +80,7 @@ struct ContentView: View {
       DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
     }
     .searchable(text: $searchText)
-    .environment(\.eventListCount, eventsFetchedResults().count)
+    .environment(\.eventListCount, eventsFetchedResults.count)
     
     .sheet(isPresented: $showManageEventView) {
       ManageEventView()
@@ -115,7 +104,7 @@ struct ContentView: View {
   
   var sidebarContent: some View {
     ForEach(sectionKeys, id: \.self) { section in
-      if let events = eventsDictionary[section] {
+      if let events = eventsDictionary[section]?.filter({ searchText.isEmpty || ($0.title?.lowercased().contains(searchText.lowercased()) == true) }) {
         Section {
           ForEach(events, id: \.self) { event in
             EventListRow(event: event)
@@ -223,7 +212,6 @@ enum Period: String, CaseIterable, Codable {
   case semester = "Next semester"
   case year = "Next year"
   case decade = "Next decade"
-  
   var stringValue: String { rawValue }
 }
 

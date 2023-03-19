@@ -33,8 +33,6 @@ final class DateCounterUITests: XCTestCase {
       XCUIDevice.shared.orientation = .portrait
     }
     
-    app.buttons["Continue"].tap()
-    
     let eventsNavigationBar = app.navigationBars["Events"]
     eventsNavigationBar.buttons["Add Event"].tap()
     
@@ -150,6 +148,54 @@ final class DateCounterUITests: XCTestCase {
     sleep(3)
     XCTAssert(app.navigationBars["New name"].firstMatch.exists == false) // tests removal on iPad
     XCTAssert(app.cells.containing(NSPredicate(format: "label contains[c] %@", "New name")).firstMatch.exists == false)
+  }
+  
+  func testSearchFilterFunctionality() throws {
+    let app = XCUIApplication()
+    app.launch()
+    
+    if UIDevice.current.userInterfaceIdiom == .pad {
+      XCUIDevice.shared.orientation = .landscapeLeft
+    } else {
+      XCUIDevice.shared.orientation = .portrait
+    }
+    
+    let eventsNavigationBar = app.navigationBars["Events"]
+    eventsNavigationBar.buttons["Add Event"].tap()
+    
+    let eventNameTextField = app.textViews.firstMatch
+    eventNameTextField.tap()
+    eventNameTextField.typeText("TestSearch")
+    
+    let day26 = app.staticTexts["26"]
+    if day26.isHittable {
+      day26.tap()
+    }
+    
+    let saveButton = app.navigationBars["Add event"].buttons["Save"]
+    saveButton.tap()
+    
+    // Search for the added event
+    let searchField = app.navigationBars.searchFields.firstMatch
+    searchField.tap()
+    searchField.typeText("TestSearch")
+    
+    // Check if the event is displayed
+    let searchTestEventCell = app.cells.containing(NSPredicate(format: "label contains[c] %@", "TestSearch")).firstMatch
+    XCTAssert(searchTestEventCell.exists)
+    
+    // Clear the search text and check if all events are displayed
+    searchField.buttons["Clear text"].tap()
+    
+    eventsNavigationBar.buttons["Cancel"].tap()
+    
+    // Check if the event is displayed
+    XCTAssert(searchTestEventCell.firstMatch.exists)
+    searchTestEventCell.firstMatch.tap()
+    
+    let searchTestEventDelete = app.navigationBars["TestSearch"]
+    searchTestEventDelete.buttons["Delete this event"].tap()
+    app.buttons["Delete"].tap()
   }
 #endif
 }
