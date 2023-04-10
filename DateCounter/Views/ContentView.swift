@@ -21,6 +21,8 @@ struct ContentView: View {
 #endif
   @State private var showError = false
   @State private var error: LocalizedError?
+  @State private var errorMessage = "No error"
+  @State private var errorTitle = "No action"
   
   @FetchRequest<Event>(entity: Event.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)])
   private var eventsFetchedResults: FetchedResults<Event>
@@ -77,7 +79,11 @@ struct ContentView: View {
             Button {
               showManageEventView.toggle()
             } label: {
-              Label("Add Event", systemImage: "plus")
+              Label {
+                Text("Add Event", comment: "Add a new event at ContentView screen")
+              } icon: {
+                Image(systemName: "plus")
+              }
             }
           }
         }
@@ -98,9 +104,9 @@ struct ContentView: View {
 #endif
     })
     
-    .alert("An error occurred when deleting an event", isPresented: $showError, actions: {
+    .alert(Text("An error occurred when deleting an event", comment: "alert shows a error to delete some event"), isPresented: $showError) {
       Text("Ok")
-    })
+    }
   }
   
   var sidebarContent: some View {
@@ -137,8 +143,8 @@ struct ContentView: View {
   var sidebarView: some View {
     sharedSidebar
 #if os(OSX)
-      .alert("Delete event", isPresented: $showDelete, actions: {
-        Button("Delete", action: {
+      .alert(Text("\"\(selectedEvent?.title ?? "It")\" will be permanently deleted.\nAre you sure?", comment: "it shows a message to advise users about consequences to press delete"), isPresented: $showDelete, actions: {
+        Button {
           guard
             let selectedEvent = selectedEvent,
             selectedEvent.managedObjectContext != nil
@@ -150,25 +156,24 @@ struct ContentView: View {
             errorMessage = error.localizedDescription
             showError = true
           }
-        })
-        Button("Cancel", action: {
+        } label: {
+          Text("Delete", comment: "Button that confirm the event deletion")
+        }
+        Button {
           showDelete = false
-          
-        }, message: {
-          Text("\"\(selectedEvent?.title ?? "It")\" will be permanently deleted.\nAre you sure?", comment: "it shows a message to advise users about consequences to press delete" )
-        })
-        .onDeleteCommand {
-          guard
-            let selectedEvent = selectedEvent,
-            selectedEvent.managedObjectContext != nil
-          else { return }
-          showDelete = true
+        } label: {
+          Text("Cancel", comment: "Button to cancel/prevent event deletion")
         }
       })
-#endif
+      .onDeleteCommand {
+        guard
+          let selectedEvent = selectedEvent,
+          selectedEvent.managedObjectContext != nil
+        else { return }
+        showDelete = true
       }
-             
-             
+#endif
+  }
   
   // MARK: - Functions
   private func deleteEvents(section: Period, offsets: IndexSet) {

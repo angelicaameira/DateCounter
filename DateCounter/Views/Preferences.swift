@@ -18,7 +18,7 @@ struct Preferences: View {
   
   var body: some View {
     Form {
-      Picker("Title", selection: $string) {
+      Picker(NSLocalizedString("title", comment: ""), selection: $string) {
         ForEach(options, id: \.id) { string in
           Text(string.key)
         }

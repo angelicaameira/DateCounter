@@ -157,8 +157,9 @@ struct EventWidgetView: View {
         }
       } else {
         // Fallback on earlier versions
-        Text("Choose an event")
-          .multilineTextAlignment(.center)
+        Text("Choose an event", comment: "Choose a event from event list"
+        )
+        .multilineTextAlignment(.center)
         Image(systemName: "calendar.badge.exclamationmark")
           .font(.largeTitle)
       }

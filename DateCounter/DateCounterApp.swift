@@ -40,13 +40,15 @@ struct DateCounterApp: App {
 enum TestData {
   static func event(period: Period?) -> Event {
     let event = Event(context: PersistenceController.preview.container.viewContext)
-    let eventTitles = [
+    let eventTitles: [String?] = [
       "My awesome event",
       "Sister's birthday",
       "Doctor's appointment",
-      "Buy groceries"
+      "Buy groceries",
+      "",
+      nil
     ]
-    event.title = eventTitles.randomElement()
+    event.title = eventTitles.randomElement() as! String?
     event.eventDescription = "Event description, which might be big so we have a somewhat lengthy description here, one that probably will break the window size for all platforms.\nMust be multiline as well!\nSuch description\nMany lines\nSo much space"
     let timeInterval: TimeInterval
     let actualPeriod: Period

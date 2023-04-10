@@ -1,0 +1,238 @@
+/* if user select delete, this message will appear to confirm the action */
+"\"%@\" will be permanently deleted.\nAre you sure?" = "\"%@\" será apagado permanentemente. Tem certeza?";
+
+/* No comment provided by engineer. */
+"%@, %@" = "%@, %@";
+
+/* No comment provided by engineer. */
+"%lld %@" = "%lld %@";
+
+/* No comment provided by engineer. */
+"A weekend we'll never forget" = "Um fim de semana inesquecível";
+
+/* No comment provided by engineer. */
+"Add event" = "Adicionar evento";
+
+/* Add a new event at ContentView screen */
+"Add Event" = "Adicionar Evento";
+
+/* The app shows some interesting events */
+"Add some sample events for me" = "Adicione alguns eventos para mim.";
+
+/* No comment provided by engineer. */
+"Africa, Asia, Australia" = "África, Ásia, Austrália";
+
+/* No comment provided by engineer. */
+"Americas" = "Américas";
+
+/* No comment provided by engineer. */
+"Americas, Europe, Africa" = "Américas, Europa, África";
+
+/* Inform the user about an error when adding event */
+"An error occurred when adding event" = "Um erro ocorreu ao adicionar evento";
+
+/* alert shows a error to delete some event */
+"An error occurred when deleting an event" = "Um erro ocorreu ao apagar um evento";
+
+/* No comment provided by engineer. */
+"Bring pet to the vet" = "Levar o pet ao veterinário";
+
+/* Cancels adding/editing an event. All changes are lost/reverted to the previous values */
+"Cancel" = "Cancelar";
+
+/* A button that dismisses the onboarding view. Shown only on watchOS */
+"Continue" = "Continuar";
+
+/* Select plus button to create a new event */
+"Create a new event" = "Criar um novo evento";
+
+/* date of event
+Event date button shown on watchOS */
+"Date" = "Data";
+
+/* No comment provided by engineer. */
+"Date Counter is a native app available on the App Store for Mac, iPad, iPhone and Apple Watch." = "Date Counter é um app nativo disponível na App Store for Mac, iPad, Iphone, and Apple Watch.";
+
+/* No comment provided by engineer. */
+"Delete" = "Apagar";
+
+/* Alert title confirming whether to delete the event */
+"Delete event?" = "Apagar evento?";
+
+/* Delete an event at Detail screen */
+"Delete this event" = "Apagar esse evento";
+
+/* Event description header shown on watchOS */
+"Description" = "Descrição";
+
+/* details of event */
+"Details" = "Detalhes";
+
+/* No comment provided by engineer. */
+"Disney trip" = "Passeio na Disney";
+
+/* Shortest possible word to confirm time selection on watchOS */
+"Done" = "Feito";
+
+/* No comment provided by engineer. */
+"East Americas, Europe, Africa, Asia, Australia" = "Leste das Américas, Europa, África, Ásia, Austrália";
+
+/* No comment provided by engineer. */
+"Edit event" = "Editar evento";
+
+/* Edit an existent event */
+"Edit this event" = "Editar esse evento";
+
+/* No comment provided by engineer. */
+"Europe, Africa, Asia, Australia" = "Europa, África, Ásia, Austrália";
+
+/* Event name header shown on watchOS */
+"Event name" = "Nome do evento";
+
+/* No comment provided by engineer. */
+"EventListRow" = "EventListRow";
+
+/* No comment provided by engineer. */
+"Events" = "Eventos";
+
+/* No comment provided by engineer. */
+"Find out how much time has passed for old events, or the time remaining until future events." = "Descubra quanto tempo passou após eventos antigos, ou quanto tempo falta para eventos futuros.";
+
+/* No comment provided by engineer. */
+"Graduation" = "Graduação";
+
+/* No comment provided by engineer. */
+"Home screen widgets" = "Home screen widgets";
+
+/* No comment provided by engineer. */
+"I'm so excited to see everyone again" = "Eu estou muito animado ao ver todos novamente";
+
+/* No comment provided by engineer. */
+"iCloud support" = "Suporte iCloud";
+
+/* No comment provided by engineer. */
+"Never miss an event thanks to home screen and lock screen widgets." = "Nunca perca um evento graças à tela inicial e aos widgets de tela de bloqueio.";
+
+/* No comment provided by engineer. */
+"New year's eve" = "Véspera de ano novo";
+
+/* No comment provided by engineer. */
+"Next decade" = "Próxima década";
+
+/* No comment provided by engineer. */
+"Next month" = "Próximo mês";
+
+/* No comment provided by engineer. */
+"Next semester" = "Próximo semestre";
+
+/* No comment provided by engineer. */
+"Next year" = "Próximo ano";
+
+/* Acknowledge button on the error alert shown when deleting an event */
+"Ok" = "Ok";
+
+/* No comment provided by engineer. */
+"Oops" = "Oops";
+
+/* No comment provided by engineer. */
+"Pacific, Americas, Western Europe, Western Africa" = "Oceano Pacifico, Américas, Ocidente europeu, Ocidente africano";
+
+/* No comment provided by engineer. */
+"Partial" = "Parcial";
+
+/* No comment provided by engineer. */
+"Past" = "Passado";
+
+/* No comment provided by engineer. */
+"Penumbral" = "Penumbra";
+
+/* It shows remainingTime in different ways */
+"Remaining time on different units" = "Tempo restante em diferentes unidades";
+
+/* No comment provided by engineer. */
+"Reunion with long-distance friends" = "Reencontro com amigos distantes";
+
+/* No comment provided by engineer. */
+"Routine annual doctor's appointment" = "Consulta médica de rotina anual";
+
+/* No comment provided by engineer. */
+"Sara's Birthday" = "Aniversário da Sara";
+
+/* Button that saves the current event (either new or editing) in a database */
+"Save" = "Salvar";
+
+/* No comment provided by engineer. */
+"Section %lld" = "Seção %lld";
+
+/* No comment provided by engineer. */
+"Settings" = "Configurações";
+
+/* No comment provided by engineer. */
+"She needs to take her vaccines" = "Ela precisa tomar suas vacinas";
+
+/* When user have iPhone or iPad, is tapping */
+"Start by tapping" = "Comece tocando";
+
+/* No comment provided by engineer. */
+"Surprise party" = "Festa surpresa ";
+
+/* When user have Mac or TVOS, is tapping */
+"Tap an event to see details" = "Toque em um evento para ver detalhes";
+
+/* No comment provided by engineer. */
+"Test" = "Teste";
+
+/* Event time button shown on watchOS */
+"Time" = "Tempo";
+
+/* No comment provided by engineer. */
+"title" = "Título";
+
+/* No comment provided by engineer. */
+"Total" = "Total";
+
+/* No comment provided by engineer. */
+"Track your events" = "Acompanhe seus eventos";
+
+/* No comment provided by engineer. */
+"Travel to Las Vegas" = "Viagem para Las Vegas";
+
+/* No comment provided by engineer. */
+"Two" = "Dois";
+
+/* Placeholder text which is shown when an event does not have a name */
+"Unnamed event" = "Evento sem nome";
+
+/* No comment provided by engineer. */
+"Unsupported platform\n(maybe this will change!)" = "Não suporta a plataforma (talvez isso mude!)";
+
+/* No comment provided by engineer. */
+"Use everywhere" = "Use em qualquer lugar";
+
+/* No comment provided by engineer. */
+"Vacation" = "Férias";
+
+/* No comment provided by engineer. */
+"Visit mom" = "Visitar a mãe";
+
+/* the app shows some interesting events if the user don't have ideas */
+"Want some ideas?" = "Quer algumas ideias?";
+
+/* No comment provided by engineer. */
+"We'll stay at her house for the weekend" = "Nós estaremos na casa dele no fim de semana";
+
+/* No comment provided by engineer. */
+"We're going to the beach!" = "Nós vamos à praia";
+
+/* No comment provided by engineer. */
+"Welcome" = "Bem vindo";
+
+/* Short greeting text before briefing users on how to use the app if they have not created events yet. Below it are instructions on what to do next */
+"Welcome to\nDate Counter" = "Bem vindo ao Date Counter";
+
+/* Short greeting text before briefing users on how to use the app if they have not created events yet. Below it are instructions on what to do next. Shown on all platforms except for watchOS */
+"Welcome to Date Counter!" = "Bem vindo ao Date Counter!";
+
+/* No comment provided by engineer. */
+"Your events are automatically synchronized to all your devices." = "Seus eventos são automaticamente sincronizados em todos seus dispositivos.";
+

@@ -61,7 +61,7 @@ struct ManageEventView: View {
         eventDescription = event.eventDescription ?? ""
         date = event.date ?? Date()
       })
-      .alert("An error occurred when adding event", isPresented: $showError, actions: {
+      .alert(Text("An error occurred when adding event", comment: "Inform the user about an error when adding event"), isPresented: $showError, actions: {
         Text("Ok", comment: "Acknowledge button on the error alert shown when deleting an event")
       }, message: {
         Text(error?.localizedDescription ?? "")
@@ -83,6 +83,8 @@ struct ManageEventView: View {
         }
       }
     }
+    
+    
 #if !os(watchOS)
     .navigationTitle(navigationBarTitle)
 #endif
@@ -96,13 +98,19 @@ struct ManageEventView: View {
   private var formBody: some View {
     Group {
       Section {
-       TextField("Event name", text: $title)
+        TextField(text: $title, label: {
+          Text("Event name", comment: "Event name header shown on macOS")
+        })
       }
       Section {
-        TextField("Description", text: $eventDescription)
+        TextField(text: $eventDescription, label: {
+          Text("Description", comment: "Event description header shown on macOS")
+        })
       }
       Section {
-        DatePicker("Date", selection: $date)
+        DatePicker(selection: $date, label: {
+          Text("Date", comment: "Event date header shown on macOS")
+        })
       }
     }
   }
@@ -137,8 +145,12 @@ struct ManageEventView: View {
   private var formBody: some View {
     Group {
       Section {
-        TextField("Event name", text: $title)
-        TextField("Description", text: $eventDescription)
+        TextField(text: $title, label: {
+          Text("Event name", comment:"Event name header shown on watchOS")
+        })
+        TextField(text: $eventDescription, label: {
+          Text("Description", comment: "Event description header shown on watchOS")
+        })
       }
       Section {
         NavigationLink {
@@ -171,7 +183,7 @@ struct ManageEventView: View {
               Button {
                 showTimePicker = false
               } label: {
-                Text("Done", comment: "Shortest possible word to confirm time selection on Apple Watch")
+                Text("Done", comment: "Shortest possible word to confirm time selection on watchOS")
               }
               .foregroundColor(.orange)
             }

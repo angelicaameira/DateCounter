@@ -44,14 +44,17 @@ struct DefaultDetailView: View {
 #if os(OSX) || os(tvOS)
         Text("Start by clicking", comment: "When user have Mac or TVOS, is clicking")
 #else
-        Text("Start by tapping", comment: "When user have Mac or TVOS, is tapping")
+        Text("Start by tapping", comment: "When user have iPhone or iPad, is tapping")
 #endif
         Button {
           showManageEventView = true
         } label: {
-          Image(systemName: "plus")
+          Label {
+            Text("Create a new event", comment: "Select plus button to create a new event")
+          } icon: {
+            Image(systemName: "plus")
+          }
         }
-        Text("to create a new event", comment: "select plus button to create a new event")
       }
       .padding(.bottom)
       VStack {
@@ -60,7 +63,7 @@ struct DefaultDetailView: View {
           showManageEventView = false
           addSampleEvents()
         } label: {
-          Text("Add some sample events for me", comment: "the app shows some interesting events")
+          Text("Add some sample events for me", comment: "The app shows some interesting events")
         }
       }
     }

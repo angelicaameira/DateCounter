@@ -15,14 +15,12 @@ struct EventListRow: View {
       DetailView(event: event)
       // iPadOS needs this to work
         .blankWithoutContext(event) {
-//          DefaultDetailView(showError: .constant(false), errorMessage: .constant(""))
           Text("")
             .navigationTitle("")
         }
     } label: {
       HStack {
-        Text(event.title ?? "Unnamed event")
-       // Text(.self, comment: "name of event")
+        Text(event.title ?? NSLocalizedString("Unnamed event", comment: "Placeholder text which is shown when an event does not have a name"))
         Spacer()
         if let date = event.date {
           Text(date, style: .relative)

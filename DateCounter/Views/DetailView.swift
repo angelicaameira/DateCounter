@@ -25,41 +25,31 @@ struct DetailView: View {
       displayingView
       // macOS needs this to work
         .blankWithoutContext(event) {
-//          DefaultDetailView(showError: $showError, errorMessage: $errorMessage)
           Text("")
             .navigationTitle("")
         }
     }
-        
-     .navigationTitle(event.title ?? "")
-        .toolbar {
-          editToolbarItem
-          deleteToolbarItem
-        }
+    
+    .navigationTitle(event.title ?? "")
+    .toolbar {
+      editToolbarItem
+      deleteToolbarItem
+    }
 #if os(OSX)
-        .onDeleteCommand {
-          showDeleteAlert = true
-        }
+    .onDeleteCommand {
+      showDeleteAlert = true
+    }
 #endif
-        .alert("Delete event", isPresented: $showDeleteAlert) {
-          Button("Delete",role: .destructive,comment: "When user select this button, the event will be delete",
-                 role: .destructive, action: deleteEvent)
-          Button("Cancel", role:  .cancel, comment: "When user select this button, the delete action will be canceled"
-          ) { }
-        } message: {
-          Text("\"\(event.title ?? "It")\" will be permanently deleted.\nAre you sure?", comment: "if user select delete, this message will appear to confirm the action")
-        }
-      
-      //    .alert(errorTitle, isPresented: $showError, actions: {
-      //      Text("Ok")
-      //    }, message: {
-      //      Text(errorMessage)
-      //    })
-      
-        .sheet(isPresented: $isEditing) {
-          ManageEventView(event: event)
-        }
-    //}
+    .alert(Text("Delete event?", comment: "Alert title confirming whether to delete the event"), isPresented: $showDeleteAlert) {
+      Button("Delete", role: .destructive, action: deleteEvent)
+      Button("Cancel", role: .cancel) { }
+    } message: {
+      Text("\"\(event.title ?? "It")\" will be permanently deleted.\nAre you sure?", comment: "if user select delete, this message will appear to confirm the action")
+    }
+    
+    .sheet(isPresented: $isEditing) {
+      ManageEventView(event: event)
+    }
   }
   
   private let components: [Calendar.Component] = [.era, .year, .month, .weekOfMonth, .day, .hour, .minute, .second]
@@ -86,7 +76,7 @@ struct DetailView: View {
           }
         }
       } header: {
-        Text("Remaining time on different units", comment: "show remainingTime in different ways")
+        Text("Remaining time on different units", comment: "It shows remainingTime in different ways")
       }
       .id(updateView)
       .onReceive(Timer.publish(every: 1, on: .main, in: .default).autoconnect()) { _ in
@@ -133,7 +123,11 @@ struct DetailView: View {
       Button {
         isEditing = true
       } label: {
-        Label("Edit this event", systemImage: "pencil")
+        Label {
+          Text("Edit this event", comment: "Edit an existent event")
+        }icon: {
+          Image(systemName: "pencil")
+        }
       }
     }
   }
@@ -153,9 +147,17 @@ struct DetailView: View {
         showDeleteAlert = true
       } label: {
 #if os(watchOS)
-        Image(systemName: "trash")
+        Label {
+          Text("Delete this event", comment: "Delete an event at Detail screen")
+        } icon: {
+          Image(systemName: "trash")
+        }
 #else
-        Label("Delete this event", systemImage: "trash")
+        Label {
+          Text("Delete this event", comment: "Delete an event at Detail screen")
+        } icon: {
+          Image(systemName: "trash")
+        }
 #endif
       }
     }
@@ -163,7 +165,6 @@ struct DetailView: View {
   
   func deleteEvent() {
     viewContext.delete(event)
-    //        withAnimation {
     do {
       try viewContext.save()
 #if !os(OSX)
@@ -175,7 +176,6 @@ struct DetailView: View {
       errorTitle = "Error when deleting event"
       showError = true
     }
-    //        }
   }
 }
 

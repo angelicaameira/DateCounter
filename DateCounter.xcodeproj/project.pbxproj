@@ -67,9 +67,16 @@
 		43C2C7A029339DA700F08C36 /* DefaultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */; };
 		43F0D2232904ACE6004C1D8E /* EventListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2222904ACE6004C1D8E /* EventListRow.swift */; };
 		43F0D2252904CB73004C1D8E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0D2242904CB73004C1D8E /* Preferences.swift */; };
+		BF1D91DF29E48A6100BE1BC9 /* DateCounter-Watch-App-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1D91DD29E48A6100BE1BC9 /* DateCounter-Watch-App-InfoPlist.strings */; };
+		BF1D91E229E48A6100BE1BC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1D91E029E48A6100BE1BC9 /* Localizable.strings */; };
+		BF1D91E529E48A6100BE1BC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1D91E329E48A6100BE1BC9 /* InfoPlist.strings */; };
+		BF1D91E829E48A6100BE1BC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1D91E629E48A6100BE1BC9 /* Localizable.strings */; };
+		BF1D91EB29E48A6100BE1BC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1D91E929E48A6100BE1BC9 /* InfoPlist.strings */; };
+		BF1D91EE29E48A6100BE1BC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1D91EC29E48A6100BE1BC9 /* Localizable.strings */; };
+		BF1D91F129E48A6100BE1BC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1D91EF29E48A6100BE1BC9 /* InfoPlist.strings */; };
+		BF1D91F429E48A6100BE1BC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1D91F229E48A6100BE1BC9 /* InfoPlist.strings */; };
+		BF1D91F729E48A6100BE1BC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1D91F529E48A6100BE1BC9 /* Localizable.strings */; };
 		BF229F47293F78B600B22A52 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF229F46293F78B600B22A52 /* Onboarding.swift */; };
-		BF59938E295F09C500C21CCE /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59938D295F09C500C21CCE /* SwiftUIView.swift */; };
-		BF59938F295F09C500C21CCE /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59938D295F09C500C21CCE /* SwiftUIView.swift */; };
 		BF7821CC290174A600838000 /* DateCounterCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7821CB290174A600838000 /* DateCounterCommands.swift */; };
 		BFA4700C2945327B00CC6381 /* DateCounterUIPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4700B2945327B00CC6381 /* DateCounterUIPerformanceTests.swift */; };
 		BFA47011294537DB00CC6381 /* DateCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369B8D328ECB1E1007B7935 /* DateCounterUITests.swift */; };
@@ -229,12 +236,30 @@
 		43F0D2222904ACE6004C1D8E /* EventListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListRow.swift; sourceTree = "<group>"; };
 		43F0D2242904CB73004C1D8E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		BF03C3D0292BDA3700D21849 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
+		BF1D91DE29E48A6100BE1BC9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/DateCounter-Watch-App-InfoPlist.strings"; sourceTree = "<group>"; };
+		BF1D91E129E48A6100BE1BC9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF1D91E429E48A6100BE1BC9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF1D91E729E48A6100BE1BC9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF1D91EA29E48A6100BE1BC9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF1D91ED29E48A6100BE1BC9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF1D91F029E48A6100BE1BC9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF1D91F329E48A6100BE1BC9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF1D91F629E48A6100BE1BC9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF1D91F829E48F3C00BE1BC9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/DateCounter-Watch-App-InfoPlist.strings"; sourceTree = "<group>"; };
+		BF1D91F929E48F3C00BE1BC9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BF1D91FA29E48F3C00BE1BC9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		BF1D91FB29E48F3C00BE1BC9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BF1D91FC29E48F3C00BE1BC9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		BF1D91FD29E48F3C00BE1BC9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BF1D91FE29E48F3C00BE1BC9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		BF1D91FF29E48F3C00BE1BC9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		BF1D920029E48F3C00BE1BC9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BF229F46293F78B600B22A52 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		BF40C70C294B671000CE0CD3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MainInterface.strings"; sourceTree = "<group>"; };
-		BF59938D295F09C500C21CCE /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		BF7821CB290174A600838000 /* DateCounterCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterCommands.swift; sourceTree = "<group>"; };
 		BFA4700B2945327B00CC6381 /* DateCounterUIPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterUIPerformanceTests.swift; sourceTree = "<group>"; };
 		BFA4701A294537DB00CC6381 /* DateCounterUIPerformanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateCounterUIPerformanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFAF0ACC29DEF4E5002F29DA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		BFEE1CD728EF6BF4004E52D8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BFEE1CD928EF78DF004E52D8 /* ManageEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageEventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -338,6 +363,8 @@
 				435D478B291B1EBA006714A3 /* Widgets.intentdefinition */,
 				435D478C291B1EBB006714A3 /* Assets.xcassets */,
 				435D478E291B1EBB006714A3 /* Info.plist */,
+				BF1D91F529E48A6100BE1BC9 /* Localizable.strings */,
+				BF1D91F229E48A6100BE1BC9 /* InfoPlist.strings */,
 				43A900B82946E5F700A68566 /* WidgetsExtension.entitlements */,
 			);
 			path = Widgets;
@@ -349,6 +376,8 @@
 				431B1F2C2921AFAA002791D2 /* EventIntents.entitlements */,
 				435D47A6291F2514006714A3 /* IntentHandler.swift */,
 				435D47A8291F2514006714A3 /* Info.plist */,
+				BF1D91EC29E48A6100BE1BC9 /* Localizable.strings */,
+				BF1D91E929E48A6100BE1BC9 /* InfoPlist.strings */,
 			);
 			path = EventIntents;
 			sourceTree = "<group>";
@@ -360,6 +389,7 @@
 				435D47B1291F2515006714A3 /* IntentViewController.swift */,
 				435D47B3291F2515006714A3 /* MainInterface.storyboard */,
 				435D47B6291F2515006714A3 /* Info.plist */,
+				BF1D91EF29E48A6100BE1BC9 /* InfoPlist.strings */,
 			);
 			path = EventIntentsUI;
 			sourceTree = "<group>";
@@ -405,6 +435,8 @@
 			isa = PBXGroup;
 			children = (
 				435D479A291F0617006714A3 /* Info.plist */,
+				BF1D91E629E48A6100BE1BC9 /* Localizable.strings */,
+				BF1D91E329E48A6100BE1BC9 /* InfoPlist.strings */,
 				4369B8B228ECB1E0007B7935 /* DateCounterApp.swift */,
 				43F0D2212904AC1A004C1D8E /* Resources */,
 				43F0D21F2904AC0E004C1D8E /* Views */,
@@ -448,6 +480,8 @@
 			isa = PBXGroup;
 			children = (
 				433C6EAA2946B7A5003914A0 /* DateCounter-Watch-App-Info.plist */,
+				BF1D91E029E48A6100BE1BC9 /* Localizable.strings */,
+				BF1D91DD29E48A6100BE1BC9 /* DateCounter-Watch-App-InfoPlist.strings */,
 				43C2C7DB2933B0D800F08C36 /* DateCounter Watch App.entitlements */,
 			);
 			path = "DateCounter Watch App";
@@ -482,7 +516,6 @@
 				43F0D2242904CB73004C1D8E /* Preferences.swift */,
 				43C2C79F29339DA700F08C36 /* DefaultDetailView.swift */,
 				BF229F46293F78B600B22A52 /* Onboarding.swift */,
-				BF59938D295F09C500C21CCE /* SwiftUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -738,6 +771,7 @@
 				en,
 				Base,
 				"pt-BR",
+				es,
 			);
 			mainGroup = 4369B8A628ECB1E0007B7935;
 			packageReferences = (
@@ -767,6 +801,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				433C6E922946AF33003914A0 /* Assets.xcassets in Resources */,
+				BF1D91E229E48A6100BE1BC9 /* Localizable.strings in Resources */,
+				BF1D91DF29E48A6100BE1BC9 /* DateCounter-Watch-App-InfoPlist.strings in Resources */,
 				433C6E902946AF25003914A0 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -790,6 +826,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				435D478D291B1EBB006714A3 /* Assets.xcassets in Resources */,
+				BF1D91F729E48A6100BE1BC9 /* Localizable.strings in Resources */,
+				BF1D91F429E48A6100BE1BC9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,6 +835,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1D91EB29E48A6100BE1BC9 /* InfoPlist.strings in Resources */,
+				BF1D91EE29E48A6100BE1BC9 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,6 +845,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43244DAF2927957500D7B31E /* MainInterface.storyboard in Resources */,
+				BF1D91F129E48A6100BE1BC9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +854,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4369B8C028ECB1E1007B7935 /* Preview Assets.xcassets in Resources */,
+				BF1D91E829E48A6100BE1BC9 /* Localizable.strings in Resources */,
+				BF1D91E529E48A6100BE1BC9 /* InfoPlist.strings in Resources */,
 				4369B8BC28ECB1E1007B7935 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -881,7 +924,6 @@
 				433C6E962946AF3D003914A0 /* CustomEnvironments.swift in Sources */,
 				433C6EA52946B08D003914A0 /* DateCounterCommands.swift in Sources */,
 				433C6E9D2946AF3E003914A0 /* DetailView.swift in Sources */,
-				BF59938F295F09C500C21CCE /* SwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,7 +984,6 @@
 			files = (
 				4369B8B328ECB1E0007B7935 /* DateCounterApp.swift in Sources */,
 				BFEE1CDA28EF78DF004E52D8 /* ManageEventView.swift in Sources */,
-				BF59938E295F09C500C21CCE /* SwiftUIView.swift in Sources */,
 				435D4790291B1EBB006714A3 /* Widgets.intentdefinition in Sources */,
 				43F0D2232904ACE6004C1D8E /* EventListRow.swift in Sources */,
 				4369B8B528ECB1E0007B7935 /* Persistence.swift in Sources */,
@@ -1054,8 +1095,90 @@
 			children = (
 				435D47B4291F2515006714A3 /* Base */,
 				BF40C70C294B671000CE0CD3 /* pt-BR */,
+				BFAF0ACC29DEF4E5002F29DA /* es */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		BF1D91DD29E48A6100BE1BC9 /* DateCounter-Watch-App-InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF1D91DE29E48A6100BE1BC9 /* es */,
+				BF1D91F829E48F3C00BE1BC9 /* pt-BR */,
+			);
+			name = "DateCounter-Watch-App-InfoPlist.strings";
+			sourceTree = "<group>";
+		};
+		BF1D91E029E48A6100BE1BC9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF1D91E129E48A6100BE1BC9 /* es */,
+				BF1D91F929E48F3C00BE1BC9 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		BF1D91E329E48A6100BE1BC9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF1D91E429E48A6100BE1BC9 /* es */,
+				BF1D91FA29E48F3C00BE1BC9 /* pt-BR */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BF1D91E629E48A6100BE1BC9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF1D91E729E48A6100BE1BC9 /* es */,
+				BF1D91FB29E48F3C00BE1BC9 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		BF1D91E929E48A6100BE1BC9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF1D91EA29E48A6100BE1BC9 /* es */,
+				BF1D91FC29E48F3C00BE1BC9 /* pt-BR */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BF1D91EC29E48A6100BE1BC9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF1D91ED29E48A6100BE1BC9 /* es */,
+				BF1D91FD29E48F3C00BE1BC9 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		BF1D91EF29E48A6100BE1BC9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF1D91F029E48A6100BE1BC9 /* es */,
+				BF1D91FE29E48F3C00BE1BC9 /* pt-BR */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BF1D91F229E48A6100BE1BC9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF1D91F329E48A6100BE1BC9 /* es */,
+				BF1D91FF29E48F3C00BE1BC9 /* pt-BR */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BF1D91F529E48A6100BE1BC9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF1D91F629E48A6100BE1BC9 /* es */,
+				BF1D920029E48F3C00BE1BC9 /* pt-BR */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
